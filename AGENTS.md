@@ -11,9 +11,11 @@
 - Write tests for implemented functionality, including failure behavior.
 - Keep code modular and readable. Target Python 3.11 and portable pathlib paths.
 - Do not add unnecessary frontend, API, dashboard, database, or cloud infrastructure.
-- Stop after the requested stage. Stage 1 is initialization only; Stage 2 is dataset loading and descriptive statistics only. Further stages require user approval.
+- Stop after the requested stage. Stage 1 is initialization; Stage 2 is data inspection; Stage 3 is original-UGO implementation and software checks. Further stages require user approval.
 - Do not implement SMOTE, UGO, RB-UGO, model training, dataset downloading, or experiments in Stage 1.
 - Codex and Antigravity are separate tools; never assume cloud changes have synchronized locally.
 - After completing and validating each requested stage, commit its changes and push to GitHub. Report the commit and branch; do not proceed to the next stage without approval.
 - Use small, meaningful commits for independently validated changes, with accurate messages; do not fabricate work history or rewrite existing commits to disguise authorship.
 - Stage 2 must not fit preprocessing, split or resample data, train models, calculate model performance, or implement UGO/RB-UGO. Synthetic fixtures are software tests only; never commit real or private raw datasets.
+- Stage 3 may fit internal UGO classifiers on fitting data only. Do not implement Risk-Budgeted UGO, held-out batch selection, FPR constraints, final-model scoring, or benchmark experiments.
+- The Stage 3 implementation is provisional until the full paper is checked. Read docs/ugo_reproduction.md; do not call the assumed cap, pools, rounding, or noise conventions verified paper rules. Keep opt-in and diagnostic status explicit.
