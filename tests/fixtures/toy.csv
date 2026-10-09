@@ -1,0 +1,7 @@
+amount,color,class
+1,red,normal
+2,"blue, pale",normal
+?,red,normal
+1,red,normal
+1,red,rare
+4,?,normal

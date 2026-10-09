@@ -1,0 +1,14 @@
+% Synthetic software-test fixture; not a research benchmark.
+@relation toy
+@attribute amount real [0, 10]
+@attribute color {red, 'blue, pale'}
+@attribute class {normal, rare}
+@inputs amount, color
+@outputs class
+@data
+1,red,normal
+2,'blue, pale',normal
+?,red,normal
+1,red,normal
+1,red,rare
+4,?,normal
