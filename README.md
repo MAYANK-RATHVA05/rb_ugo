@@ -1,11 +1,14 @@
 # Risk-Budgeted Uncertainty-Guided Oversampling (RB-UGO)
 
-## Scope: Stages 1 and 2
+## Scope: Stages 1–3
 
 This portable Python 3.11 research repository provides configuration and directory
 validation (Stage 1), plus binary CSV/KEEL loading and descriptive imbalance
-analysis (Stage 2). It does not preprocess, split, resample, train, calculate model
-performance, or implement UGO/RB-UGO. Further stages require explicit approval.
+analysis (Stage 2). Stage 3 adds provisional, prompt-based UGO-ROS/UGO-SMOTE and
+an artificial-data sanity check. The full paper was inaccessible; this is not a
+verified faithful reproduction. Only the internal UGO classifier is fitted. No
+automatic preprocessing, evaluation splits, final model scoring, benchmark
+experiments, or Risk-Budgeted UGO are implemented. Further stages require approval.
 
 ## Research motivation
 
@@ -42,12 +45,19 @@ rb_ugo/                     # Repository root, not a second nested directory
 │   ├── __init__.py
 │   ├── config.py           # Paths and RANDOM_STATE = 42
 │   ├── data_loader.py      # Strict CSV/KEEL binary loader
-│   └── imbalance_stats.py  # Descriptive counts and readable summary
+│   ├── imbalance_stats.py  # Descriptive counts and readable summary
+│   ├── _validation.py     # Numerical input checks
+│   ├── uncertainty.py     # Signed MMA
+│   ├── noise_detection.py # Neighbor votes and relocation
+│   ├── stopping.py        # Welch decision and provisional cap
+│   └── ugo.py             # Provisional UGO variants and diagnostics
 ├── notebooks/.gitkeep      # Future exploratory notebooks
 ├── results/.gitkeep        # Future generated research outputs
-├── tests/                 # Stage 1/2 tests and synthetic fixtures
+├── tests/                 # Stage 1/2/3 tests and synthetic fixtures
 ├── main_stage1.py          # Directory checks and environment display
 ├── main_stage2.py          # Dataset inspection CLI
+├── main_stage3.py          # Provisional UGO software sanity check
+├── docs/ugo_reproduction.md # Equations, assumptions, evidence, unresolved fidelity
 ├── requirements.txt       # Pinned research dependencies
 ├── requirements-dev.txt   # Runtime dependencies plus pytest
 ├── README.md
@@ -220,3 +230,41 @@ If this is your first local setup, use the Python 3.11 environment-creation step
 above before these commands. Open this repository root in Antigravity and select
 `.venv\Scripts\python.exe`. Linux cloud validation does not establish that the
 Windows environment has already been tested or synchronized.
+
+## Stage 3: provisional original-UGO implementation
+
+Read [docs/ugo_reproduction.md](docs/ugo_reproduction.md) first. The implementation
+follows the supplied signed MMA equation and highest-mean-uncertainty class rule,
+with kNN noise detection, relocation, and Welch stopping. It does not silently
+force minority-only generation or replace uncertainty selection with ordinary
+SMOTE. The cap formula, selection pools, rounding, and neighborhood rules are
+explicitly provisional because the full paper could not be read.
+
+```python
+from sklearn.linear_model import LogisticRegression
+from src.ugo import UGO
+
+# X_fit/y_fit must be fitting data only: finite numerical features, two classes.
+sampler = UGO(LogisticRegression(max_iter=1000, random_state=42),
+              variant="smote", allow_provisional=True)
+# X_augmented, y_augmented = sampler.fit_resample(X_fit, y_fit)
+# print(sampler.diagnostics_)
+```
+
+Run the included artificial-data sanity check on Windows after synchronizing:
+
+```powershell
+git fetch origin
+git switch stage3-ugo-reproduction
+git pull --ff-only
+.\.venv\Scripts\python.exe main_stage1.py
+.\.venv\Scripts\python.exe main_stage3.py
+.\.venv\Scripts\python.exe -m pytest -q
+```
+
+Linux uses `.venv/bin/python main_stage3.py`. The demo's counts and stopping
+diagnostics are software evidence only; it reports no accuracy or benchmark
+results. Categorical/missing features require future training-only preprocessing
+outside UGO. Already-converted numeric category codes cannot be detected by
+dtype alone; callers must ensure numerical distance is meaningful. Stage 1/2
+entry points continue to work unchanged. Stop after Stage 3.
