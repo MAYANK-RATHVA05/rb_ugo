@@ -48,6 +48,14 @@ def test_nonfinite_statistical_result(monkeypatch) -> None:
     assert result.reason == "nonfinite_statistical_result"
 
 
+def test_out_of_range_statistical_result(monkeypatch) -> None:
+    monkeypatch.setattr(stopping, "ttest_ind", lambda *a, **k:
+                        SimpleNamespace(statistic=1.0, pvalue=1.1, df=2.0))
+    result = welch_stopping([0, 1], [0.1, 0.2])
+    assert not result.stop and not result.defined
+    assert result.reason == "invalid_statistical_result"
+
+
 @pytest.mark.parametrize("a,b,alpha", [([0, np.nan], [0, 1], 0.05),
                                          ([0, 1], [0, 1], 0),
                                          ([0, 1], [0, 1], np.nan)])

@@ -40,6 +40,8 @@ def welch_stopping(group_a: Any, group_b: Any, alpha: float = 0.05) -> WelchDeci
     result = ttest_ind(*groups, equal_var=False, alternative="two-sided")
     if not np.isfinite([result.statistic, result.pvalue, result.df]).all():
         return WelchDecision(None, None, None, False, False, "nonfinite_statistical_result")
+    if not 0 <= result.pvalue <= 1 or result.df <= 0:
+        return WelchDecision(None, None, None, False, False, "invalid_statistical_result")
     stop = bool(result.pvalue >= alpha)
     return WelchDecision(float(result.statistic), float(result.pvalue), float(result.df),
                          stop, True, "fail_to_reject" if stop else "reject_equal_means")
