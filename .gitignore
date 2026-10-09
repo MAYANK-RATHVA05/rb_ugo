@@ -1,0 +1,24 @@
+# Python environments and generated caches
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.coverage
+htmlcov/
+.ipynb_checkpoints/
+.env
+.env.*
+!.env.example
+# Keep data and experiment artifacts local; retain directory markers.
+data/raw/*
+!data/raw/.gitkeep
+data/processed/*
+!data/processed/.gitkeep
+results/*
+!results/.gitkeep
+# Editor and operating system metadata
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
