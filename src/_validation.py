@@ -1,7 +1,7 @@
 """Shared numerical validation; never encode or preprocess features."""
 from __future__ import annotations
 
-from numbers import Integral
+from numbers import Integral, Real
 from typing import Any
 
 import numpy as np
@@ -16,7 +16,9 @@ def numeric_matrix(X: Any, *, allow_empty: bool = False) -> NDArray[np.float64]:
                isinstance(dtype, pd.CategoricalDtype) or
                pd.api.types.is_bool_dtype(dtype) for dtype in X.dtypes):
             raise ValueError("Features must be numerical; categorical input is unsupported.")
-    array = np.asarray(X)
+        array = X.to_numpy(dtype=np.float64, na_value=np.nan)
+    else:
+        array = np.asarray(X)
     if array.ndim != 2 or array.shape[1] == 0 or (not allow_empty and len(array) == 0):
         raise ValueError("X must be a nonempty two-dimensional numerical feature matrix.")
     if array.dtype.kind not in "fiu":
@@ -50,3 +52,10 @@ def positive_integer(value: Any, name: str) -> int:
     if isinstance(value, bool) or not isinstance(value, Integral) or value <= 0:
         raise ValueError(f"{name} must be a positive integer.")
     return int(value)
+
+
+def finite_real(value: Any, name: str) -> float:
+    """Validate a finite real scalar, excluding booleans and strings."""
+    if isinstance(value, bool) or not isinstance(value, Real) or not np.isfinite(value):
+        raise ValueError(f"{name} must be a finite real number.")
+    return float(value)

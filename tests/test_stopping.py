@@ -27,6 +27,12 @@ def test_welch_fails_to_reject() -> None:
     assert result.reason == "fail_to_reject"
 
 
+def test_one_constant_group_remains_defined() -> None:
+    result = welch_stopping([0.0, 0.0, 0.0], [0.1, 0.2, 0.3])
+    assert result.defined
+    assert result.statistic == pytest.approx(ttest_ind([0, 0, 0], [0.1, 0.2, 0.3], equal_var=False).statistic)
+
+
 @pytest.mark.parametrize("a,b,reason", [
     ([0.1], [0.1, 0.2], "too_small_groups"),
     ([], [0.1, 0.2], "too_small_groups"),

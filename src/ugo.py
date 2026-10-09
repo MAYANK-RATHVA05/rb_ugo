@@ -14,7 +14,7 @@ import numpy as np
 from numpy.typing import NDArray
 from sklearn.base import BaseEstimator, clone
 
-from src._validation import binary_labels, numeric_matrix, positive_integer
+from src._validation import binary_labels, finite_real, numeric_matrix, positive_integer
 from src.noise_detection import (
     nearest_indices, noise_final_detect_and_relocate, noise_pre_detect,
 )
@@ -48,7 +48,8 @@ def informative_seed_indices(
         raise ValueError("Scores, labels, and noise mask must be aligned vectors.")
     if noise.dtype.kind != "b" or not np.isfinite(uncertainty).all():
         raise ValueError("Noise mask must be boolean and scores finite.")
-    if not np.isfinite(lambda_select) or not 0 < lambda_select <= 1:
+    lambda_select = finite_real(lambda_select, "lambda_select")
+    if not 0 < lambda_select <= 1:
         raise ValueError("lambda_select must lie in (0, 1].")
     eligible = np.flatnonzero((y == selected_class) & ~noise)
     if not len(eligible):
@@ -98,14 +99,14 @@ class UGO(BaseEstimator):
         if self.variant not in {"ros", "smote"}:
             raise ValueError("variant must be 'ros' or 'smote'.")
         for name in ["lambda_select", "lambda_step"]:
-            value = getattr(self, name)
-            if isinstance(value, bool) or not np.isfinite(value) or not 0 < value <= 1:
+            value = finite_real(getattr(self, name), name)
+            if not 0 < value <= 1:
                 raise ValueError(f"{name} must be finite and lie in (0, 1].")
         for name in ["k_pre", "k_after", "k_smote", "max_iter"]:
             positive_integer(getattr(self, name), name)
         if isinstance(self.random_state, bool) or not isinstance(self.random_state, Integral) or not 0 <= self.random_state < 2 ** 32:
             raise ValueError("random_state must be an integer in [0, 2**32).")
-        if isinstance(self.alpha, bool) or not np.isfinite(self.alpha) or not 0 < self.alpha < 1:
+        if not 0 < finite_real(self.alpha, "alpha") < 1:
             raise ValueError("alpha must lie in (0, 1).")
         for method in ["fit", "predict_proba"]:
             if not callable(getattr(self.estimator, method, None)):
@@ -168,7 +169,7 @@ class UGO(BaseEstimator):
         self.classes_ = classes.copy()
         self.n_features_in_ = original_X.shape[1]
         current_X, current_y = original_X.copy(), original_y.copy()
-        parameters = {name: getattr(self, name) for name in [
+        parameters = {name: self._scalar(getattr(self, name)) for name in [
             "variant", "lambda_select", "lambda_step", "phi", "k_pre", "k_after",
             "alpha", "random_state", "max_iter", "k_smote", "allow_provisional",
         ]}

@@ -7,6 +7,8 @@ from typing import Any
 import numpy as np
 from scipy.stats import ttest_ind
 
+from src._validation import finite_real
+
 
 @dataclass(frozen=True)
 class WelchDecision:
@@ -27,7 +29,8 @@ def welch_stopping(group_a: Any, group_b: Any, alpha: float = 0.05) -> WelchDeci
     p-value. The UGO loop terminates separately with an engineering reason when
     the test is undefined. One constant group is valid if the other varies.
     """
-    if isinstance(alpha, bool) or not np.isfinite(alpha) or not 0 < alpha < 1:
+    alpha = finite_real(alpha, "alpha")
+    if not 0 < alpha < 1:
         raise ValueError("alpha must be finite and strictly between zero and one.")
     groups = [np.asarray(group_a), np.asarray(group_b)]
     for group in groups:
@@ -58,7 +61,8 @@ def generation_cap(class_counts: Any, phi: float = 2.5) -> int:
     counts = np.asarray(class_counts)
     if counts.shape != (2,) or counts.dtype.kind not in "iu" or (counts <= 0).any():
         raise ValueError("Generation cap requires two positive integer original class counts.")
-    if isinstance(phi, bool) or not np.isfinite(phi) or phi <= 0:
+    phi = finite_real(phi, "phi")
+    if phi <= 0:
         raise ValueError("phi must be a finite positive number.")
     budget = phi * len(counts) * int(counts.max()) - sum(int(count) for count in counts)
     if not np.isfinite(budget):

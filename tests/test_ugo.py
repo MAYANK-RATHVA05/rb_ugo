@@ -174,7 +174,24 @@ def test_cloning_training_sizes_and_no_test_inputs(toy, monkeypatch) -> None:
     for X, y in references:
         np.testing.assert_array_equal(X, toy[0])
         np.testing.assert_array_equal(y, toy[1])
-    assert all(not (X == 9999).any() for X, _ in ToyEstimator.fits)
+    with pytest.raises(TypeError, match="unexpected keyword"):
+        sampler.fit_resample(*toy, X_test=np.array([[9999.0]]))
+
+
+def test_loop_reports_and_applies_relocation(toy) -> None:
+    class ForcedNoisyGenerator(UGO):
+        def _generate(self, X, y, seeds, selected, pre_noise, batch_size, rng):
+            # Isolate final relocation from the seed/interpolation tests.
+            return np.full((batch_size, X.shape[1]), 10.0), {}
+
+    sampler = ForcedNoisyGenerator(ToyEstimator(), k_pre=1, max_iter=1,
+                                   allow_provisional=True)
+    with pytest.warns(UserWarning, match="Provisional UGO"):
+        X_new, y_new = sampler.fit_resample(*toy)
+    np.testing.assert_array_equal(X_new[-1], [3.0])
+    assert y_new[-1] == 0
+    assert sampler.diagnostics_["generated_noisy_samples_relocated"] == 1
+    assert sampler.diagnostics_["history"][0]["relocation_reference_indices"] == [3]
 
 
 def test_insufficient_smote_neighbors_is_diagnosed(toy, monkeypatch) -> None:
@@ -260,6 +277,14 @@ def test_failed_second_run_clears_stale_diagnostics(toy) -> None:
     with pytest.raises(ValueError):
         sampler.fit_resample(*toy)
     assert not hasattr(sampler, "diagnostics_")
+
+
+def test_nullable_numeric_dataframe_without_missing_values(toy) -> None:
+    frame = pd.DataFrame(toy[0], columns=["measurement"], dtype="Float64")
+    before = frame.copy()
+    _, X_new, _ = run(frame, toy[1])
+    assert len(X_new) > len(frame)
+    pd.testing.assert_frame_equal(frame, before)
 
 
 @pytest.mark.parametrize("kwargs", [{"lambda_select": 0}, {"lambda_step": np.nan},
