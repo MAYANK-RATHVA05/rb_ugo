@@ -1,10 +1,11 @@
 # Risk-Budgeted Uncertainty-Guided Oversampling (RB-UGO)
 
-## Scope: Stage 1
+## Scope: Stages 1 and 2
 
-This portable Python 3.11 research repository currently provides configuration,
-directory validation, and tests only. No datasets, oversampling algorithms,
-training, or experiments are implemented. Stage 2 requires explicit approval.
+This portable Python 3.11 research repository provides configuration and directory
+validation (Stage 1), plus binary CSV/KEEL loading and descriptive imbalance
+analysis (Stage 2). It does not preprocess, split, resample, train, calculate model
+performance, or implement UGO/RB-UGO. Further stages require explicit approval.
 
 ## Research motivation
 
@@ -40,15 +41,17 @@ rb_ugo/                     # Repository root, not a second nested directory
 ├── src/
 │   ├── __init__.py
 │   ├── config.py           # Paths and RANDOM_STATE = 42
-│   ├── data_loader.py      # Documented placeholder
-│   └── imbalance_stats.py  # Documented placeholder
+│   ├── data_loader.py      # Strict CSV/KEEL binary loader
+│   └── imbalance_stats.py  # Descriptive counts and readable summary
 ├── notebooks/.gitkeep      # Future exploratory notebooks
 ├── results/.gitkeep        # Future generated research outputs
-├── tests/test_stage1.py    # Configuration and initialization tests
+├── tests/                 # Stage 1/2 tests and synthetic fixtures
 ├── main_stage1.py          # Directory checks and environment display
+├── main_stage2.py          # Dataset inspection CLI
 ├── requirements.txt       # Pinned research dependencies
 ├── requirements-dev.txt   # Runtime dependencies plus pytest
 ├── README.md
+├── DATASETS.md             # Benchmark provenance and manual data handling
 ├── AGENTS.md               # Permanent research rules
 └── .gitignore
 ```
@@ -101,3 +104,119 @@ No credentials or external services are needed for Stage 1 beyond package
 installation. The initialization script prints the Python version and configured
 paths, then reports success only if all required directories exist. Tests cover
 path configuration, successful initialization, and missing or invalid directories.
+
+## Stage 2: inspect a dataset
+
+From the repository root, CSV needs an explicit target (the column containing
+class labels). KEEL normally identifies it through a single `@outputs` entry:
+
+```bash
+.venv/bin/python main_stage2.py --help
+.venv/bin/python main_stage2.py --data tests/fixtures/toy.csv --target class
+.venv/bin/python main_stage2.py --data tests/fixtures/toy.dat
+.venv/bin/python main_stage2.py --data tests/fixtures/toy.csv --target class --save-json csv_report.json
+.venv/bin/python main_stage2.py --data tests/fixtures/toy.dat --save-json keel_report.json
+```
+
+For your own manually downloaded files, substitute `data/raw/example.csv` or
+`data/raw/example.dat`. Nothing downloads real datasets automatically. Read
+[DATASETS.md](DATASETS.md) before adding benchmark data.
+
+`--save-json` optionally takes a simple `.json` filename. Without a filename it
+uses `<dataset-stem>_report.json`. Reports always go into `results/stage2/`, include
+metadata and counts but no sample rows, and never overwrite existing reports.
+Use a new filename or deliberately remove an old local report to rerun. Identical
+CSV and DAT stems otherwise share the default output name. Reports are ignored
+by Git. Errors print a readable message and return a nonzero exit code.
+
+### What the numbers mean
+
+The majority class is the more frequent class, encoded as **0**. The minority
+class is the less frequent class, encoded as **1**. Original labels are retained,
+and the mapping is reported. A tie has no automatic minority: use
+`--minority-label "rare"` to designate a class. An explicit label must exist and
+cannot select a class with a greater count than the other class. These are
+file-level inspection labels; later evaluation must define the positive outcome
+and class roles from fitting data or an explicit research definition, never from
+outer-test data to guide training or selection.
+
+The **imbalance ratio** is majority count divided by minority count. For example,
+90 majority and 10 minority records give 9.0. Our six-record toy fixtures give
+5.0; this is a software-test example, not a research result.
+
+The summary also counts samples, features, class percentages, numerical and
+categorical columns, missing feature entries, and rows with any missing features.
+Duplicate feature rows compare features alone; duplicate complete rows compare
+features **and the target**. Both count additional occurrences after the first,
+so three identical rows yield two duplicates. Matching missing values are treated
+as equal in these comparisons. Different labels with identical features increase
+feature duplicates but do not necessarily increase complete-row duplicates.
+No missing values or duplicates are removed.
+
+### Python interface and file support
+
+```python
+from src.data_loader import load_dataset
+from src.imbalance_stats import calculate_statistics
+
+dataset = load_dataset("tests/fixtures/toy.csv", target_column="class")
+# dataset.X: feature DataFrame; dataset.y: aligned integer target Series
+# dataset.original_y: original text labels; dataset.label_mapping: label -> 0/1
+stats = calculate_statistics(dataset)
+print(stats.to_dict())
+```
+
+`LoadedDataset` documents feature names/types, majority/minority labels/counts,
+target name, source filename, and format. `ImbalanceStats` documents all 13
+statistics. Loading does not mutate the file, reorder or remove rows, or fit
+anything.
+
+- Files must be UTF-8 (a UTF-8 BOM is supported), with `.csv` or `.dat` suffixes.
+- CSV uses comma separators, a unique nonempty header, and standard double-quoted
+  fields, including embedded commas, doubled double quotes, and multiline fields.
+  A feature is numerical if every nonmissing value parses numerically; otherwise
+  it is categorical. All-missing CSV columns are categorical because type cannot
+  be inferred. Numeric-looking category codes/identifiers may therefore need a
+  future explicit schema; CSV does not carry declared feature types.
+- KEEL accepts `@relation`, `@attribute`, `@inputs`, `@outputs`, and `@data`,
+  with case-insensitive directives; real/numeric/integer and declared nominal
+  attributes; and optional numeric range metadata. Declared ranges are parsed
+  but not used to filter or clip values. Integers and finite numerical values are
+  validated; undeclared nominal values fail.
+- KEEL supports full-line `%` comments, comma-delimited records, single/double
+  quoted names/values, and doubled matching quotes. Sparse records, multiline
+  records, inline comments, and backslash escapes are unsupported. This is a
+  documented KEEL subset, not a general ARFF parser.
+- KEEL respects `@inputs` when present; otherwise non-target attributes become
+  features. `--target` overrides KEEL output selection and makes all other
+  declared attributes features. Multiple declared outputs remain unsupported,
+  including with an override. Missing output metadata requires an override.
+- Empty fields and `?` represent missing values. Text such as `NA` is preserved
+  as text, not silently treated as missing. Numeric infinity is rejected.
+- Target labels remain strings, so `01` and `1` stay distinct. Missing targets,
+  empty data, one-class or multiclass targets, inconsistent record widths,
+  malformed declarations, and target-only datasets are rejected. Columns with
+  missing features remain available without imputation or feature encoding.
+- The loader reads the whole file into memory. No schema override, streaming,
+  multiclass support, or original train/test split interpretation is implemented.
+
+### Run Stage 2 in Antigravity on Windows
+
+Synchronize the Stage 2 feature branch first (or pull `main` after its PR merges):
+
+```powershell
+git fetch origin
+git switch stage2-data-loading
+git pull --ff-only
+.\.venv\Scripts\python.exe -m pip install -r requirements-dev.txt
+.\.venv\Scripts\python.exe main_stage1.py
+.\.venv\Scripts\python.exe main_stage2.py --help
+.\.venv\Scripts\python.exe main_stage2.py --data tests/fixtures/toy.csv --target class
+.\.venv\Scripts\python.exe main_stage2.py --data tests/fixtures/toy.dat --save-json keel_report.json
+.\.venv\Scripts\python.exe -m pytest -q
+```
+
+If this is your first local setup, use the Python 3.11 environment-creation steps
+above before these commands. Open this repository root in Antigravity and select
+`.venv\Scripts\python.exe`. Linux cloud validation does not establish that the
+Windows environment has already been tested or synchronized.
