@@ -88,7 +88,7 @@ def test_unsupported_format(tmp_path: Path) -> None:
 
 def test_csv_quoted_multiline_and_missing_column(tmp_path: Path) -> None:
     path = tmp_path / "quoted.csv"
-    path.write_text('text,missing,class\n"hello, \"\"world\"\"",?,a\n"two\nlines",?,a\nother,?,b\n', encoding="utf-8")
+    path.write_text('text,missing,class\n"hello, \"\"world\"\"",?,a\n"two\nlines",?,a\nother,?,b\n', encoding="utf-8", newline="\n")
     dataset = load_dataset(path, "class")
     assert dataset.X.loc[0, "text"] == 'hello, "world"'
     assert dataset.X.loc[1, "text"] == "two\nlines"
