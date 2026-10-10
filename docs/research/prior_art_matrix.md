@@ -84,21 +84,21 @@ Full-text source: [PMLR PDF mirror](https://raw.githubusercontent.com/mlresearch
 
 In Section 3.1, Eqs. (1)–(2), their bilevel objective is:
 
-\[
+$$
 \theta^*(w)=\arg\min_\theta\sum_{i=1}^{N}w_i f_i(\theta),\qquad
 w^*=\arg\min_{w\ge0}\frac1M\sum_{j=1}^{M}f_j^v(\theta^*(w)).
-\]
+$$
 
 Their Eqs. (5), (7), and (8) use a one-step perturbed training update and a
 validation meta-gradient:
 
-\[
+$$
 \widehat\theta_{t+1}(\epsilon)=\theta_t-
 \alpha\sum_{i=1}^{n}\epsilon_i\nabla f_i(\theta_t),\quad
 u_{i,t}=-\eta\left.\frac{\partial}{\partial\epsilon_i}
 \frac1m\sum_j f_j^v(\widehat\theta_{t+1}(\epsilon))\right|_{\epsilon=0},\quad
 \widetilde w_{i,t}=\max(u_{i,t},0).
-\]
+$$
 
 Eq. (9) normalizes these weights, handling an all-zero batch explicitly.
 This verifies that **validation-guided marginal training influence is already a
@@ -111,8 +111,8 @@ Section 3.4, Lemma 1 and Theorem 2, claim monotone validation-loss behavior and
 a stationary-point rate under a Lipschitz-smooth validation objective, bounded
 training-loss gradients, a restricted step size, and the full validation batch
 condition discussed there. Specifically the lemma gives
-\(\alpha_t\le2n/(L\sigma^2)\), and Eq. (15) bounds
-\(\min_{0<t<T}\mathbb E\|\nabla G(\theta_t)\|^2\le C/\sqrt T\).
+$\alpha_t\le2n/(L\sigma^2)$, and Eq. (15) bounds
+$\min_{0<t<T}\mathbb E\|\nabla G(\theta_t)\|^2\le C/\sqrt T$.
 These are authors' stated **optimization** claims, not guarantees of outer-test
 improvement, minority recall, safe synthetic labels, or no false-positive harm.
 The setup permits the small validation set to belong to the training set; that
@@ -127,9 +127,9 @@ Full-text source: [PMLR PDF mirror](https://raw.githubusercontent.com/mlresearch
 Section 2 defines the value function V(S) for a learning algorithm trained on S
 and a chosen evaluation metric. Eq. (2) expresses the Shapley value as:
 
-\[
+$$
 \phi_i=\mathbb E_\pi[V(S_\pi^i\cup\{i\})-V(S_\pi^i)],
-\]
+$$
 
 where S_pi^i precedes i in a uniformly sampled ordering. Proposition 2.1
 characterizes the value up to scale using null contribution, symmetry, and
@@ -151,6 +151,21 @@ contributions vanish. Section 4 explicitly separates the data used for V from
 another held-out set used for reporting final results. That is a directly
 relevant precedent for avoiding valuation/evaluation reuse.
 
+**Critical guarantee check (our mathematical counterexample, not a reported
+paper result):** the three displayed properties alone do not establish the
+claimed uniqueness. The uniform-subset marginal functional
+$\beta_i=2^{-(n-1)}\sum_{S\subseteq D\setminus\{i\}}
+[V(S\cup\{i\})-V(S)]$ also satisfies null contribution, symmetry and additivity.
+For n=3 and $V(S)=1\{\{1,2\}\subseteq S\}+1\{\{1,2,3\}\subseteq S\}$,
+Eq. (2)'s permutation value is (5/6,5/6,1/3), whereas beta is (3/4,3/4,1/4).
+They are not proportional even within this single game. An additional condition,
+such as efficiency in the usual normalized game formulation, is needed to rule
+out this alternative. Thus Proposition 2.1's displayed uniqueness claim should
+be recorded as **claimed, not independently established from those three axioms**.
+The Eq. (2) value remains a well-defined and relevant published valuation method;
+this objection does not erase its group/acquisition prior art. No safety or
+generalization guarantee follows from either functional.
+
 ### [I] Koh & Liang (2017), Understanding Black-box Predictions via Influence Functions
 
 Full-text source: [PMLR PDF mirror](https://raw.githubusercontent.com/mlresearch/v70/gh-pages/koh17a/koh17a.pdf).
@@ -158,11 +173,11 @@ Full-text source: [PMLR PDF mirror](https://raw.githubusercontent.com/mlresearch
 
 Section 2.1, Eqs. (1)–(2), gives the influence of upweighting an example z:
 
-\[
+$$
 I_{up,params}(z)=-H_{\widehat\theta}^{-1}\nabla_\theta L(z,\widehat\theta),\quad
 I_{up,loss}(z,z_{eval})=-\nabla_\theta L(z_{eval},\widehat\theta)^\top
 H_{\widehat\theta}^{-1}\nabla_\theta L(z,\widehat\theta).
-\]
+$$
 
 The paper calls the query point z_test; here it is renamed z_eval to avoid
 suggesting that outer-test labels can guide our synthesis or selection. The
@@ -188,7 +203,7 @@ needs direct confirmation rather than an influence-score guarantee.
 | Source | Separate unlabelled features | Pseudo-labels | Classifier dependence | Marginal additions | Threshold-only comparison | Guarantee scope |
 | --- | --- | --- | --- | --- | --- | --- |
 | [R] | Algorithm 1 uses labelled training and clean validation; no distinct U input | Not a pseudo-label generator | Yes, through training/validation gradients | Infinitesimal example-weight effects; no synthetic-batch test | Not identified in reported experiments | Smoothness/gradient/step-size-dependent optimization result |
-| [D] | Core valuation is supervised; acquisition pool covariates are used in §4.1 | Not in the core valuation algorithm | Yes, learner A is part of V | Yes; finite data/group contributions; acquisition guidance | Not identified in §§4.1–4.5 | Valuation axioms, not synthetic safety or outer generalization |
+| [D] | Core valuation is supervised; acquisition pool covariates are used in §4.1 | Not in the core valuation algorithm | Yes, learner A is part of V | Yes; finite data/group contributions; acquisition guidance | Not identified in §§4.1–4.5 | Claimed axiomatic uniqueness; counterexample to displayed three-axiom sufficiency above; no synthetic safety guarantee |
 | [I] | Labelled training and an evaluation query; not a semi-supervised generator | Not part of its influence formula | Yes, gradients and Hessian | Infinitesimal weight effects; finite changes approximated | Not identified in reported comparisons | Differentiability, optimum and Hessian assumptions |
 
 “Not identified” is limited to the reviewed full-text method/experiment sections,

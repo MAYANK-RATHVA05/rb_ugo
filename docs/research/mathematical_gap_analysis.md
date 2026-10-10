@@ -36,10 +36,10 @@ defined from features alone.
 
 Let s(x) be a minority score and d_tau(x)=1{s(x)>=tau}. Define:
 
-\[
+$$
 R_{bal}(s,\tau)=\tfrac12\left[
 P(s(X)<\tau\mid Y=1)+P(s(X)\ge\tau\mid Y=0)\right].
-\]
+$$
 
 This is 1 minus balanced accuracy, whose equation is verified in [S2]. It is not
 the same as prevalence-weighted total error. With class prevalence pi and
@@ -60,9 +60,9 @@ estimated independently, not known by an oracle.
 
 For a fixed set of scored observations, AP is:
 
-\[
+$$
 AP=\sum_j (Recall_j-Recall_{j-1})Precision_j.
-\]
+$$
 
 This is the verified non-interpolated [S2] definition. Do not call it trapezoidal
 PR-AUC. A strictly increasing score transformation preserves ordering and score
@@ -77,9 +77,9 @@ a causal measure of sample usefulness. Report a declared AP implementation.
 For positive class weights w_1,w_0, pointwise minimization of population weighted
 binary log loss gives this audit derivation:
 
-\[
+$$
 \eta_w(x)=\frac{w_1\eta(x)}{w_1\eta(x)+w_0(1-\eta(x))}.
-\]
+$$
 
 It is strictly increasing in eta. Thresholding eta_w at 0.5 is equivalent to
 thresholding eta at w_0/(w_0+w_1). Under this unrestricted, well-specified
@@ -91,10 +91,10 @@ threshold and weighting controls [S1; R, Eqs. (1)–(2)].
 For ROS with actual integer multiplicities m_i, the augmented empirical objective
 can be written exactly as:
 
-\[
+$$
 J(\theta)=\frac{\sum_i m_i\ell_i(\theta)}{\sum_i m_i}
 +\lambda\Omega(\theta).
-\]
+$$
 
 This is an audit identity, not a general guarantee about all training code. A
 weighted learner using those multiplicities and the same normalized objective
@@ -111,10 +111,10 @@ Consider a generator S drawn from a kernel K(S|F,xi), with randomness independen
 of an unknown population parameter theta once F is given. An audit factorization
 shows:
 
-\[
+$$
 p(\theta\mid F,S)\propto p(\theta,F)K(S\mid F)
 \quad\Longrightarrow\quad p(\theta\mid F,S)=p(\theta\mid F).
-\]
+$$
 
 The synthetic sample conveys no additional independent population evidence
 conditional on its inputs. If U is used, replace F by (F,U); the same statement
@@ -144,9 +144,9 @@ or cluster sparsity [S5, S6].
 **Irreducible-overlap counterexample (audit derivation).** With balanced evaluation
 densities, the optimal expected error is:
 
-\[
+$$
 R^*_{bal}=\tfrac12\int\min(p_0(x),p_1(x))\,dx.
-\]
+$$
 
 This follows by choosing the smaller class-specific error contribution at each x.
 If p_0=p_1 everywhere, the optimum is 0.5, regardless of sample count. Increasing
@@ -167,26 +167,26 @@ in [S6]. A partition plus UGO does not establish novelty.
 
 For region r, a fixed generator g, batch size m, learner A, and paired seed xi:
 
-\[
+$$
 f_0=A(F;\xi),\qquad f_{r,m}=A(F\cup S_{r,m}(F,U;\xi);\xi).
-\]
+$$
 
 Use H, separately from A, to tune each model's threshold by the same rule.
 Candidate comparisons can estimate:
 
-\[
+$$
 \Delta_R=R_{bal}(f_0,\tau_0)-R_{bal}(f_{r,m},\tau_{r,m}),\quad
 \Delta_{AP}=AP(f_{r,m})-AP(f_0),\quad
 h_0=FPR(f_{r,m},\tau_{r,m})-FPR(f_0,\tau_0).
-\]
+$$
 
 For local ranking define, explicitly, a minority-region versus **global-majority**
 comparison:
 
-\[
+$$
 AUC_r(s)=P(s(X_1)>s(X_0)\mid X_1\in G_r)
 +\tfrac12P(s(X_1)=s(X_0)\mid X_1\in G_r).
-\]
+$$
 
 X_1 and X_0 are independent class-conditional draws. This is not within-region
 overlap estimation; a separate conditional-majority FPR_r needs majority audit
@@ -214,9 +214,9 @@ The detailed proposal and bounds are in [candidate_hypotheses.md](candidate_hypo
 U can estimate feature-space support, connectivity, relative mass and potential
 distribution shift. It cannot by itself identify eta(x), because:
 
-\[
+$$
 p_X(x)=\pi p_1(x)+(1-\pi)p_0(x)
-\]
+$$
 
 does not uniquely determine the two class-conditionals. As an audit construction,
 let X be uniform on [0,1] and pi=0.1. One compatible model has Y independent of

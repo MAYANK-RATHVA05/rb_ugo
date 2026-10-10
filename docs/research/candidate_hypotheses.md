@@ -33,23 +33,23 @@ claiming an influence approximation exactly predicts a finite batch.
 
 For candidate a and each control j, calculate on A:
 
-\[
+$$
 \widehat\Delta_{R,a,j}=\tfrac12\sum_{y=0}^1
 \frac1{n_y}\sum_{i:Y_i=y}
 \left[1\{d_j(X_i)\ne Y_i\}-1\{d_a(X_i)\ne Y_i\}\right].
-\]
+$$
 
 For each region, preselect independent class-conditional pairs
-\((X^+_{r,k},X^-_k)\), each audit observation used at most once **within** that
+$(X^+_{r,k},X^-_k)$, each audit observation used at most once **within** that
 contrast. Pairing uses a fixed random seed, not scores. Define
-\(\psi(s;x^+,x^-)=1\{s(x^+)>s(x^-)\}+\frac12 1\{s(x^+)=s(x^-)\}\) and:
+$\psi(s;x^+,x^-)=1\{s(x^+)>s(x^-)\}+\frac12 1\{s(x^+)=s(x^-)\}$ and:
 
-\[
+$$
 \widehat\Delta_{Q,a,j}=
 \frac1{P_r}\sum_{k=1}^{P_r}
 [\psi(s_a;X^+_{r,k},X^-_k)-\psi(s_j;X^+_{r,k},X^-_k)],
 \qquad P_r=\min(n_{1r},n_0).
-\]
+$$
 
 This estimates minority-region versus global-majority ranking benefit. It is not
 a claim to estimate local Bayes overlap. The disjoint-pair definition sacrifices
@@ -61,26 +61,26 @@ the target of the elementary confidence formula below.
 
 Against a predeclared tuned no-augmentation reference b, define majority harm:
 
-\[
+$$
 \widehat h_{a,b}=
 \frac1{n_0}\sum_{i:Y_i=0}[d_a(X_i)-d_b(X_i)].
-\]
+$$
 
 Let J count all predeclared scalar means audited, including class-specific risk
 differences, pairwise-ranking differences, harm contrasts and any threshold-only
 contrasts. For delta in (0,1), use:
 
-\[
+$$
 b(n)=\sqrt{2\log(2J/\delta)/n},\quad
 b_R=\tfrac12[b(n_1)+b(n_0)],\quad
 b_Q=b(P_r),\quad b_h=b(n_0).
-\]
+$$
 
 These are **audit-derived conservative bounds**, not claimed novel statistics or
 equations attributed to any inaccessible paper. Each summand difference lies
 in [-1,1]. For n independent such differences, the bounded exponential-moment
 inequality gives
-\(P(|\bar Z-EZ|>e)\le2\exp(-ne^2/2)\). Substituting b(n) bounds failure by
+$P(|\bar Z-EZ|>e)\le2\exp(-ne^2/2)$. Substituting b(n) bounds failure by
 delta/J for each scalar mean; a union bound gives simultaneous coverage at least
 1-delta. Weighting the two class-mean bounds by 1/2 gives b_R. Conditional on F,H,
 fixed candidates and class/region counts, this applies to independent audit draws.
@@ -91,11 +91,11 @@ separate-selection/evaluation design rationale, not this particular equation.
 Predeclare practical margins epsilon_R>0, epsilon_Q>0 and acceptable FPR increase
 epsilon_h>=0. A region/candidate receives **supported incremental benefit** only if:
 
-\[
+$$
 \min_{j\in C_a}(\widehat\Delta_{R,a,j}-b_R)>\epsilon_R,\quad
 \min_{j\in C_a}(\widehat\Delta_{Q,a,j}-b_Q)>\epsilon_Q,\quad
 \widehat h_{a,b}+b_h\le\epsilon_h.
-\]
+$$
 
 These are separate contrasts/constraints, not multiplied heuristic scores.
 The policy does not tune only an oversampling amount: it attempts to distinguish
@@ -198,17 +198,17 @@ Let q_i in [0,1] be an **anchor-consistency potential**, not a calibrated class
 probability. On genuine labelled anchors, q_i=y_i. Let L be the weighted graph
 Laplacian and define:
 
-\[
+$$
 E(q)=q^\top Lq=\sum_{i<j}w_{ij}(q_i-q_j)^2,\qquad
 \mathcal Q_\rho=\{q\in[0,1]^N:q_{labelled}=y_{labelled},\ E(q)\le\rho\}.
-\]
+$$
 
 The exact proposed structural interval at z is:
 
-\[
+$$
 \underline q_z=\inf_{q\in\mathcal Q_\rho}q_z,\qquad
 \overline q_z=\sup_{q\in\mathcal Q_\rho}q_z.
-\]
+$$
 
 If the set is empty, report inconsistent assumptions. If z has no anchor-connected
 component, report [0,1]. A proposed structural veto rejects an intended minority
@@ -217,13 +217,13 @@ asserts that a surviving point has a genuine known minority label.
 
 For a graph where every unlabelled component connects to an anchor, L_uu is
 positive definite and the unconstrained harmonic extension is
-\(h_u=-L_{uu}^{-1}L_{ul}y_l\). For these nonnegative graph weights it lies in
+$h_u=-L_{uu}^{-1}L_{ul}y_l$. For these nonnegative graph weights it lies in
 [0,1]. Let delta=rho-E(h)>=0. Completing the square gives the audit identity:
 
-\[
+$$
 E(q)=E(h)+(q_u-h_u)^\top L_{uu}(q_u-h_u),\quad
 |q_z-h_z|\le\sqrt{\delta(L_{uu}^{-1})_{zz}}.
-\]
+$$
 
 The second bound follows from Cauchy–Schwarz in the L_uu norm. Without box
 constraints, both extremes are attained along L_uu^{-1}e_z. With box constraints,
