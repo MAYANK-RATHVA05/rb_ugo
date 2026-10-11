@@ -34,6 +34,13 @@ baselines, the LEAO comparator, and constructors for NORES/RUS/ROS/SMOTE.
 See the [generator alignment report](docs/reproduction/GENERATOR_ALIGNMENT.md)
 for source equations, numerical scope and unresolved conventions.
 
+Stage 4R-4 prepares the two paper simulations, a provenance-guarded registry
+of eight **unverified** dataset candidates, and all fourteen paper classifier
+identities. Nine local classifier substitutes pass fitting-only probability
+checks; five require external or custom implementations. See the
+[experiment setup report](docs/reproduction/EXPERIMENT_SETUP.md). The 74-dataset
+supplement remains necessary for exact benchmark membership and comparison.
+
 ## Research motivation
 
 In imbalanced classification, a minority class has fewer observations than the
@@ -78,6 +85,9 @@ rb_ugo/                     # Repository root, not a second nested directory
 │   ├── mcsmote.py        # Gaussian transition and Sinkhorn MCSMOTE
 │   ├── leao.py           # LEAO comparator
 │   ├── comparators.py    # NORES and standalone comparator constructors
+│   ├── simulations.py    # Declared linear/nonlinear paper reconstructions
+│   ├── dataset_registry.py # Historical candidate file/hash checks
+│   ├── classifier_registry.py # Fourteen names and available smoke models
 │   └── ugo.py             # Provisional UGO variants and diagnostics
 ├── notebooks/.gitkeep      # Future exploratory notebooks
 ├── results/.gitkeep        # Future generated research outputs
@@ -85,6 +95,7 @@ rb_ugo/                     # Repository root, not a second nested directory
 ├── main_stage1.py          # Directory checks and environment display
 ├── main_stage2.py          # Dataset inspection CLI
 ├── main_stage3.py          # Provisional UGO software sanity check
+├── main_stage4r4.py        # Experiment-input and capability inspection
 ├── docs/ugo_reproduction.md # Equations, assumptions, evidence, unresolved fidelity
 ├── requirements.txt       # Pinned research dependencies
 ├── requirements-dev.txt   # Runtime dependencies plus pytest

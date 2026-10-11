@@ -295,7 +295,10 @@ paper value, reproduced value, protocol/source differences and fidelity status.
 
 This table was the initial stage plan. Stages 4R-1 and 4R-2 are complete;
 Stage 4R-3 now has all numerical methods with documented source choices.
-The remaining experiment stages are planned.
+Stage 4R-4 prepares two simulations, eight unverified historical dataset
+candidates and the fourteen-classifier identity registry, with nine available
+Python approximations. See [EXPERIMENT_SETUP.md](EXPERIMENT_SETUP.md).
+The remaining evaluation and analysis stages are planned.
 
 | Stage | Work | Exit evidence |
 | --- | --- | --- |

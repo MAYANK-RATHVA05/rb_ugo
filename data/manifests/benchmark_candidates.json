@@ -1,0 +1,66 @@
+{
+  "schema_version": 1,
+  "scope": "Historically inspected KEEL-format candidates; UGO 74-dataset membership is unverified",
+  "historical_inspection_commit": "0d78c2d9db22f92cee912c94671705d4cd5ef8b9",
+  "historical_manifest": "data/manifests/keel_dataset_manifest.csv",
+  "source_authentication": "User-supplied KEEL-format files; provider URLs and licenses were not independently verified",
+  "local_path_rule": "data/raw/<filename>; raw files are not committed",
+  "candidates": [
+    {
+      "id": "abalone19", "filename": "abalone19.dat", "sha256": "6aa5b1ffd05eb4c8c74bb07e6bab248cdb4fc327f5f62bb77339097e92bc76fa",
+      "archive_filename": "abalone19.zip", "archive_sha256": "595f3332d093368652a55dcef4c4fde60c432b2f7030965b2a661409bdc6f4b1",
+      "rows": 4174, "features": 8, "majority_count": 4142, "minority_count": 32,
+      "target": "Class", "majority_label": "negative", "minority_label": "positive", "categorical_features": ["Sex"], "official_fold_pairs": 0,
+      "ugo_paper_membership": "unverified"
+    },
+    {
+      "id": "ecoli2", "filename": "ecoli2.dat", "sha256": "0fd2a70626e5361c9676ce80088c501c865320195396434e175e1f0c555d044a",
+      "archive_filename": "ecoli2.zip", "archive_sha256": "def399f8e74a577679c129e4de20ec3cd1fc491acfa2a415040ef9a2cca989f6",
+      "rows": 336, "features": 7, "majority_count": 284, "minority_count": 52,
+      "target": "Class", "majority_label": "negative", "minority_label": "positive", "categorical_features": [], "official_fold_pairs": 0,
+      "ugo_paper_membership": "unverified"
+    },
+    {
+      "id": "ecoli4", "filename": "ecoli4.dat", "sha256": "1890c32ba2550cfe106d0524ebf6a42c2b50730f6521bd4f22eb58e7bda86bcb",
+      "archive_filename": "ecoli4.zip", "archive_sha256": "75f3a62a1d23b0081976131f6c18331219e29b07ea616620a650b68a27c831d7",
+      "rows": 336, "features": 7, "majority_count": 316, "minority_count": 20,
+      "target": "Class", "majority_label": "negative", "minority_label": "positive", "categorical_features": [], "official_fold_pairs": 0,
+      "ugo_paper_membership": "unverified"
+    },
+    {
+      "id": "glass6", "filename": "glass6.dat", "sha256": "aab1a0cc86ccb6ce766034eb915756698748b58e8164e6b0f663b13290668dee",
+      "archive_filename": "glass6.zip", "archive_sha256": "48ddbaf671a6001233445a263473facb1e3b0504311147ec98b73104ec8de2d2",
+      "rows": 214, "features": 9, "majority_count": 185, "minority_count": 29,
+      "target": "Class", "majority_label": "negative", "minority_label": "positive", "categorical_features": [], "official_fold_pairs": 0,
+      "ugo_paper_membership": "unverified"
+    },
+    {
+      "id": "page-blocks0", "filename": "page-blocks0.dat", "sha256": "c46bf830740d44bf8d4042b1679424857bcfd770568d2c250f92a91a12d425b2",
+      "archive_filename": "page-blocks0.zip", "archive_sha256": "82b3c11b0bb0e84357033faecebf5fa91d93cb4c41eac48b815a949a4e59a86d",
+      "rows": 5472, "features": 10, "majority_count": 4913, "minority_count": 559,
+      "target": "Class", "majority_label": "negative", "minority_label": "positive", "categorical_features": [], "official_fold_pairs": 0,
+      "ugo_paper_membership": "unverified"
+    },
+    {
+      "id": "segment0", "filename": "segment0.dat", "sha256": "687eba2ccc7abb653b902b2885a8c6761fcf30d86d6f978270828ab1c77678df",
+      "archive_filename": "segment0.zip", "archive_sha256": "ed1e778dc9d4aa217ab2ea6bfeb45bb4930c144fc57ab1f3782cd4b0cd3bb221",
+      "rows": 2308, "features": 19, "majority_count": 1979, "minority_count": 329,
+      "target": "Class", "majority_label": "negative", "minority_label": "positive", "categorical_features": [], "official_fold_pairs": 0,
+      "ugo_paper_membership": "unverified"
+    },
+    {
+      "id": "yeast3", "filename": "yeast3.dat", "sha256": "fda5bea98b4891a3320d02394d11c691eca642cc5cd72e7a206c2cf9cae6092e",
+      "archive_filename": "yeast3.zip", "archive_sha256": "9827788f17f3bcf36d57bb4cb3b0bc278f9aa539843d567cf1c8c884b29bd94d",
+      "rows": 1484, "features": 8, "majority_count": 1321, "minority_count": 163,
+      "target": "Class", "majority_label": "negative", "minority_label": "positive", "categorical_features": [], "official_fold_pairs": 0,
+      "ugo_paper_membership": "unverified"
+    },
+    {
+      "id": "yeast4", "filename": "yeast4.dat", "sha256": "2e50d1b43c97875d2071859428d718487086e695a1a6ec559336ccadb40c1ff0",
+      "archive_filename": "yeast4.zip", "archive_sha256": "dda966d6e09c665bab0325e3481dc0045e7f2fb9a4ddabdf47607ef4031b88b5",
+      "rows": 1484, "features": 8, "majority_count": 1433, "minority_count": 51,
+      "target": "Class", "majority_label": "negative", "minority_label": "positive", "categorical_features": [], "official_fold_pairs": 0,
+      "ugo_paper_membership": "unverified"
+    }
+  ]
+}

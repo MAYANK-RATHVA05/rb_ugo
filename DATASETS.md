@@ -11,7 +11,13 @@ KEEL is a repository and software ecosystem for machine-learning datasets and
 experimentation, including imbalanced classification. Its `.dat` files can
 declare attribute types, input columns, and output columns. Consult the dataset's
 official documentation for its provenance and intended use. This project does
-not yet specify the original UGO paper's experimental datasets or configurations.
+not yet have the UGO paper's full experimental dataset list. Its 74 binary
+variants are identified in supplementary material that is unavailable here.
+Stage 4R-4 records eight historically inspected files as unverified candidates
+in [benchmark_candidates.json](data/manifests/benchmark_candidates.json), with
+hashes and counts from the prior audit. None is asserted to be in the 74.
+The [experiment setup report](docs/reproduction/EXPERIMENT_SETUP.md) explains
+how a newly placed file is checked against that historical evidence.
 
 Some KEEL datasets have specialized binary variants, for example a selected
 class versus other classes or selected groups of classes. The variant defines

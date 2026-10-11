@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "reviewed_on": "2026-10-11",
-  "scope": "Original binary UGO reproduction; source inventory and Stage 4R-3 numerical generator/comparator implementation",
+  "scope": "Original binary UGO reproduction; source inventory through Stage 4R-4 experiment setup",
   "baseline_commit": "c2fa7f333689df14c5ab4bb542500bf2676ac897",
   "historical_audit_commit": "0866dc936f231feef9df5e1538b8df206741735d",
   "historical_resource_branch_commit": "0d78c2d9db22f92cee912c94671705d4cd5ef8b9",
@@ -188,6 +188,19 @@
       "official_folds_in_historical_upload": 0
     }
   ],
+  "experiment_setup_status": {
+    "stage": "4R-4",
+    "paper_benchmark_count": 74,
+    "paper_benchmarks_confirmed": 0,
+    "historical_candidates": 8,
+    "candidate_raw_files_currently_available": 0,
+    "official_fold_pairs_currently_available": 0,
+    "paper_supplement_status": "missing",
+    "paper_simulations_declared": 2,
+    "paper_classifier_identities": 14,
+    "python_approximations_smoke_checked": 9,
+    "classifiers_without_implementation": 5
+  },
   "source_access_checks": [
     {
       "url": "https://doi.org/10.1016/j.knosys.2026.115886",
