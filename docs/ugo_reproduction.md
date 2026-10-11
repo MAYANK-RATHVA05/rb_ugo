@@ -1,5 +1,12 @@
 # Original UGO reproduction: provisional Stage 3 implementation
 
+> Source-status update, 2026-10-11: the full uploaded paper has now been reviewed.
+> See the [original-paper specification](reproduction/SPECIFICATION.md) and
+> [source register](reproduction/SOURCE_REGISTER.json) for current evidence,
+> historical recovery candidates and unresolved choices. The implementation
+> described below remains the unchanged Stage 3 baseline; statements about the
+> unavailable paper describe its original development context.
+
 ## Evidence and status
 
 **This is a prompt-based provisional implementation, not a verified faithful

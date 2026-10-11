@@ -6,9 +6,23 @@ This portable Python 3.11 research repository provides configuration and directo
 validation (Stage 1), plus binary CSV/KEEL loading and descriptive imbalance
 analysis (Stage 2). Stage 3 adds provisional, prompt-based UGO-ROS/UGO-SMOTE and
 an artificial-data sanity check. The full paper was inaccessible; this is not a
-verified faithful reproduction. Only the internal UGO classifier is fitted. No
+verified faithful reproduction. That describes the historical Stage 3 source
+status; the full PDF has now been reviewed for the original-paper reproduction
+specification below. Only the internal UGO classifier is fitted. No
 automatic preprocessing, evaluation splits, final model scoring, benchmark
 experiments, or Risk-Budgeted UGO are implemented. Further stages require approval.
+
+## Original UGO reproduction specification
+
+Stage 4R-1 records the full-paper requirements in
+[the reproduction specification](docs/reproduction/SPECIFICATION.md) and
+[source register](docs/reproduction/SOURCE_REGISTER.json). It inventories the
+available article, missing supplementary materials, fourteen classifiers,
+comparison methods, experiment outputs and unresolved paper choices. It also
+identifies reusable batch/cap corrections on the historical verification branch.
+This documentation stage does not apply those corrections or run experiments.
+The current executable baseline remains Stage 3; original UGO reproduction is
+separate from the RB-UGO research motivation below.
 
 ## Research motivation
 
