@@ -80,7 +80,7 @@ def test_majority_class_can_be_selected_and_outputs_preserved(toy, variant) -> N
     np.testing.assert_array_equal(X, X_before)
     np.testing.assert_array_equal(y, y_before)
     assert sampler.diagnostics_["stopping_reason"] == "max_iterations_safeguard"
-    assert sampler.diagnostics_["reproduction_status"] == "provisional_prompt_based"
+    assert sampler.diagnostics_["reproduction_status"] == "source_audited_with_ambiguities"
     assert sampler.diagnostics_["final_class_counts"][0]["count"] > 4
 
 
@@ -232,8 +232,7 @@ def test_demo_executes_generation_for_both_variants() -> None:
     assert "UGO-ROS (provisional)" in result.stdout
     assert "UGO-SMOTE (provisional)" in result.stdout
     assert result.stdout.count("stopping_reason: welch_fail_to_reject") == 2
-    assert "number_of_synthetic_samples: 3" in result.stdout
-    assert "number_of_synthetic_samples: 6" in result.stdout
+    assert result.stdout.count("number_of_synthetic_samples: 12") == 2  # Fixed n*lambda_step batch.
 
 
 @pytest.mark.parametrize("features", [np.array([["red"], ["blue"]]),
@@ -293,3 +292,16 @@ def test_nullable_numeric_dataframe_without_missing_values(toy) -> None:
 def test_invalid_parameters(toy, kwargs) -> None:
     with pytest.raises(ValueError):
         UGO(ToyEstimator(), allow_provisional=True, **kwargs).fit_resample(*toy)
+
+
+def test_paper_batch_uses_fixed_original_total_not_class_count(toy) -> None:
+    sampler, _, _ = run(*toy, lambda_step=0.5, max_iter=2)
+    assert sampler.diagnostics_["nominal_batch_size"] == 3  # n=6, not selected-class n=4.
+    assert [r["generated_count"] for r in sampler.diagnostics_["history"]] == [3, 3]
+    assert sampler.diagnostics_["cap_interpretation"] == "section_3_3"
+
+
+def test_table4_cap_is_available_without_silent_default_switch(toy) -> None:
+    sampler, _, _ = run(*toy, cap_interpretation="table4")
+    assert sampler.diagnostics_["generation_cap"] == 10
+    assert sampler.diagnostics_["effective_parameters"]["cap_interpretation"] == "table4"

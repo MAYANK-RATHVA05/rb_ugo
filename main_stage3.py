@@ -13,7 +13,7 @@ from src.ugo import UGO
 
 def main() -> None:
     """Run both variants on one deterministic artificial fitting dataset."""
-    print("PROVISIONAL: full paper unavailable; this is not verified reproduction.")
+    print("PROVISIONAL: source audited, but paper ambiguities prevent verified reproduction.")
     print("Software sanity check only; no validation/test data or performance metrics.")
     X, y = make_classification(
         n_samples=120, n_features=4, n_informative=3, n_redundant=0,

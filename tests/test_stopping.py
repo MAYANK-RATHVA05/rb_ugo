@@ -70,10 +70,10 @@ def test_invalid_welch_input(a, b, alpha) -> None:
         welch_stopping(a, b, alpha)
 
 
-def test_provisional_cap_arithmetic_and_rounding() -> None:
-    # These validate the DECLARED interpretation, not the inaccessible paper.
+def test_section_3_3_integer_threshold() -> None:
+    # PDF p6 threshold: smallest integer at or above the real-valued limit.
     assert generation_cap([90, 10], 2.5) == 350
-    assert generation_cap([3, 2], 1.1) == 1
+    assert generation_cap([3, 2], 1.1) == 2
     assert generation_cap([3, 2], 0.1) == 0
 
 
@@ -82,3 +82,10 @@ def test_provisional_cap_arithmetic_and_rounding() -> None:
 def test_invalid_cap(counts, phi) -> None:
     with pytest.raises(ValueError):
         generation_cap(counts, phi)
+
+
+def test_conflicting_table4_threshold_is_explicit() -> None:
+    assert generation_cap([90, 10], 2.5, interpretation="table4") == 225
+    assert generation_cap([90, 10], 2.5, interpretation="section_3_3") == 350
+    with pytest.raises(ValueError, match="interpretation"):
+        generation_cap([90, 10], interpretation="invented")
