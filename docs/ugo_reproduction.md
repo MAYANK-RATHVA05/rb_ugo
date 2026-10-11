@@ -8,6 +8,10 @@ reproduction with explicit paper ambiguities**, not reproduced benchmark evidenc
 See the [reproduction specification](reproduction/SPECIFICATION.md),
 [source register](reproduction/SOURCE_REGISTER.json) and
 [current core alignment report](reproduction/CORE_ALIGNMENT.md).
+Partial Stage 4R-3 adds a shared generator interface, numerical RWO baseline and
+UGO-RWO; see [GENERATOR_ALIGNMENT.md](reproduction/GENERATOR_ALIGNMENT.md).
+RWO uses inspected third-party code as numerical evidence, not verified author
+code. MCSMOTE and LEAO remain unavailable.
 The historical Stage 3 prototype is preserved at
 [c2fa7f3](https://github.com/MAYANK-RATHVA05/rb_ugo/commit/c2fa7f333689df14c5ab4bb542500bf2676ac897).
 
@@ -113,6 +117,11 @@ Current explicit conventions:
   same-class neighbors, and generates (1-r)*seed+r*neighbor with uniform r in
   [0,1). k_smote=5 follows Section 4.2, p8; it is clamped to eligible count-1.
   Fewer than two eligible same-class rows stops with a diagnosed reason.
+- Numerical RWO adds independent Gaussian perturbations with population standard
+  deviation of the original pre-clean selected class divided by sqrt(class size).
+  Informative seeds are centers; clean nonseed class rows contribute spread.
+  It requires provisional opt-in and reports separate third-party source status.
+  Discrete/categorical RWO rules are not implemented.
 
 The paper does not uniquely settle every pool, vote-tie and draw convention.
 Section 3.1 supports augmented retraining, while Table 4 omits the corresponding
@@ -156,7 +165,7 @@ is a separate engineering bound; all-noise/no-neighbor paths are also diagnosed.
 
 | Parameter | Default | Meaning |
 | --- | --- | --- |
-| variant | ros | ROS or SMOTE; no silent fallback |
+| variant | ros | ROS, SMOTE or provisional numerical RWO; no silent fallback |
 | lambda_select | 0.5 | Eligible-original seed fraction; rounding convention above |
 | lambda_step | 0.1 | Fixed original-total nominal batch fraction |
 | phi | 2.5 | Selected source threshold multiplier |
@@ -168,10 +177,13 @@ is a separate engineering bound; all-noise/no-neighbor paths are also diagnosed.
 | max_iter | 100 | Engineering bound |
 | allow_provisional | False | Explicit opt-in to remaining ambiguities |
 
-Diagnostics record implementation_revision=stage4r2_fixed_original_total_batch,
+Diagnostics record implementation_revision=stage4r3_shared_generators_provisional_numeric_rwo,
 nominal_batch_size, cap policy/budget, effective parameters, original/final
 counts, noise/relocation counts, selected classes/seeds, Welch values and status,
 drawn seeds/partners/interpolation steps, generated counts and stopping reason.
+Generator metadata distinguishes RWO's third-party evidence from ROS/SMOTE's
+source audit. RWO batch records include spread reference indices, perturbation
+scales, ddof and zero-spread features.
 They contain no predictive-performance metrics.
 
     from sklearn.linear_model import LogisticRegression
@@ -202,6 +214,11 @@ both minority and majority counts, verify fixed batches and augmented fits acros
 iterations for both generators, test both cap policies and fractional/integral
 thresholds, check clipped final batches, and reject invalid policy without stale
 fitted state.
+
+Partial Stage 4R-3 extends shared UGO checks to RWO and adds numerical generator
+and standalone baseline checks. The full suite has 198 passing tests. ROS/SMOTE
+samples and generation diagnostics matched four captured pre-refactor cases
+exactly. These remain software checks, not reproduced paper results.
 
 The demo remains an artificial 120-row/four-feature make_classification example
 with seed 42 and logistic regression. It does not reproduce either paper

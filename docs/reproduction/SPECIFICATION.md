@@ -8,6 +8,9 @@ Current implementation update: Stage 4R-2 has since recovered the fixed-batch
 and explicit-cap corrections. See [CORE_ALIGNMENT.md](CORE_ALIGNMENT.md) for
 that stage's validation evidence. Baseline-status statements below describe
 commit `c2fa7f3`, preserved as the specification's starting point.
+Partial Stage 4R-3 now provides a shared batch interface and provisional numerical
+RWO/UGO-RWO from a verified third-party archive; original RWO verification,
+MCSMOTE and LEAO remain pending. See [GENERATOR_ALIGNMENT.md](GENERATOR_ALIGNMENT.md).
 
 ## Objective and baseline
 

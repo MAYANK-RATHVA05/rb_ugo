@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "reviewed_on": "2026-10-11",
-  "scope": "Original binary UGO paper reproduction; specification stage only",
+  "scope": "Original binary UGO reproduction; source inventory and partial Stage 4R-3 generator implementation",
   "baseline_commit": "c2fa7f333689df14c5ab4bb542500bf2676ac897",
   "historical_audit_commit": "0866dc936f231feef9df5e1538b8df206741735d",
   "historical_resource_branch_commit": "0d78c2d9db22f92cee912c94671705d4cd5ef8b9",
@@ -89,6 +89,30 @@
       "article_reference": 38,
       "status": "citation_read_full_text_not_available_here",
       "sha256": null
+    },
+    {
+      "id": "RWO-SMOTE-VARIANTS-1.0.1",
+      "kind": "third_party_numeric_implementation",
+      "package": "smote-variants",
+      "version": "1.0.1",
+      "url": "https://files.pythonhosted.org/packages/7b/4c/85c7fbe56abeceaea6aa8e74401ebeda28aae8b296fb5b2e5166cd537422/smote_variants-1.0.1.tar.gz",
+      "sha256": "2c14ad98cf6b9a3150c2217742a6f49686c9c4085dde887f1088e88108b7c206",
+      "files": [
+        {
+          "path": "smote_variants/oversampling/_rwo_sampling.py",
+          "sha256": "121b0914e73740917012e07e4b6a9eff213ab78af8dfee1eb53b3987ab77d23d"
+        },
+        {
+          "path": "smote_variants/base/_simplexsampling.py",
+          "sha256": "c3579642e68ebf36803ae088d9d8ed61666c465c6d7536f51c441d0da8819acf"
+        }
+      ],
+      "license": "MIT",
+      "status": "download_checksum_verified_source_inspected_original_algorithm_unverified",
+      "retrieved_on": "2026-10-11",
+      "installed": false,
+      "tracked_archive": false,
+      "note": "Evidence for numerical Gaussian population-std/sqrt(n) perturbation only. UGO pools and NumPy RNG are explicit adaptations; no author-code equivalence or discrete-rule coverage claim."
     }
   ],
   "historical_dataset_candidates": [
@@ -170,6 +194,42 @@
       "proxy_status": 403,
       "endpoint_http_status": null,
       "curl_exit_code": 56
+    },
+    {
+      "url": "https://doi.org/10.1016/j.inffus.2013.12.003",
+      "checked_on": "2026-10-11",
+      "result": "http_error_reported_by_curl",
+      "observed_http_status": 403,
+      "curl_exit_code": 22,
+      "response_body_available": false,
+      "note": "No inference about source existence or origin of the denial."
+    },
+    {
+      "url": "https://doi.org/10.1016/j.asoc.2025.113906",
+      "checked_on": "2026-10-11",
+      "result": "http_error_reported_by_curl",
+      "observed_http_status": 403,
+      "curl_exit_code": 22,
+      "response_body_available": false,
+      "note": "No inference about source existence or origin of the denial."
+    },
+    {
+      "url": "https://api.github.com/search/repositories?q=MCSMOTE",
+      "checked_on": "2026-10-11",
+      "result": "http_error_reported_by_curl",
+      "observed_http_status": 403,
+      "curl_exit_code": 22,
+      "response_body_available": false,
+      "note": "No inference about source existence or origin of the denial."
+    },
+    {
+      "url": "https://pypi.org/pypi/mcsmote/json",
+      "checked_on": "2026-10-11",
+      "result": "http_error_reported_by_curl",
+      "observed_http_status": 404,
+      "curl_exit_code": 22,
+      "response_body_available": false,
+      "note": "No inference about source existence or origin of the denial."
     }
   ],
   "missing_evidence_policy": "Continue independent implementation after separately authorized stages; mark affected fidelity as unresolved. Do not fabricate supplementary filenames, author links, datasets, splits or results."

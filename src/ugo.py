@@ -1,4 +1,4 @@
-"""Source-audited UGO-ROS/SMOTE with documented paper ambiguities.
+"""Provisional UGO generators with documented paper and source ambiguities.
 
 This is not RB-UGO. No validation/test data, performance scores, or risk budgets
 are used. Read docs/ugo_reproduction.md before research use.
@@ -15,8 +15,9 @@ from numpy.typing import NDArray
 from sklearn.base import BaseEstimator, clone
 
 from src._validation import binary_labels, finite_real, numeric_matrix, positive_integer
+from src.generators import generate_batch, generator_metadata
 from src.noise_detection import (
-    nearest_indices, noise_final_detect_and_relocate, noise_pre_detect,
+    noise_final_detect_and_relocate, noise_pre_detect,
 )
 from src.stopping import generation_cap, welch_stopping
 from src.uncertainty import modified_margin_uncertainty
@@ -66,7 +67,7 @@ class UGO(BaseEstimator):
     clones it, fits a copied augmented fitting set, and measures MMA on clean
     original rows. Only fitting data are accepted by fit_resample(X, y).
 
-    Use variant='ros' or 'smote'. Source-audited defaults and unresolved
+    Use variant='ros', 'smote' or provisional numeric 'rwo'. Defaults and unresolved
     details are listed in ASSUMPTIONS. allow_provisional=True is required while
     documented source ambiguities remain. max_iter=100 is an engineering bound,
     not a paper stopping rule. k_smote=5 follows the paper experiment. Random states
@@ -98,8 +99,7 @@ class UGO(BaseEstimator):
     def _validate_parameters(self) -> Any:
         if not isinstance(self.allow_provisional, bool) or not self.allow_provisional:
             raise ValueError("Paper ambiguities remain; set allow_provisional=True only for a documented provisional run.")
-        if self.variant not in {"ros", "smote"}:
-            raise ValueError("variant must be 'ros' or 'smote'.")
+        generator_metadata(self.variant)
         for name in ["lambda_select", "lambda_step"]:
             value = finite_real(getattr(self, name), name)
             if not 0 < value <= 1:
@@ -122,28 +122,8 @@ class UGO(BaseEstimator):
         self, X: NDArray, y: NDArray, seeds: NDArray, selected: Any,
         pre_noise: NDArray, batch_size: int, rng: np.random.Generator,
     ) -> tuple[NDArray | None, dict[str, Any]]:
-        draws = rng.choice(seeds, size=batch_size, replace=True)
-        info: dict[str, Any] = {"drawn_seed_indices": draws.tolist()}
-        if self.variant == "ros":
-            return X[draws].copy(), info
-        eligible = np.flatnonzero((y == selected) & ~pre_noise)
-        if len(eligible) < 2:
-            return None, {"effective_k_smote": 0}
-        k = min(self.k_smote, len(eligible) - 1)
-        neighborhoods = nearest_indices(X[eligible], X[eligible], k, exclude_self=True)
-        seed_to_local = {int(index): local for local, index in enumerate(eligible)}
-        partners = np.array([
-            eligible[rng.choice(neighborhoods[seed_to_local[int(seed)]])]
-            for seed in draws
-        ])
-        steps = rng.random((batch_size, 1))
-        # Convex form avoids overflow in X_neighbor-X_seed for large values.
-        generated = (1 - steps) * X[draws] + steps * X[partners]
-        if not np.isfinite(generated).all():
-            raise ValueError("Synthetic interpolation produced nonfinite values.")
-        info.update({"neighbor_indices": partners.tolist(), "interpolation_steps": steps[:, 0].tolist(),
-                     "effective_k_smote": k})
-        return generated, info
+        return generate_batch(self.variant, X, y, seeds, selected, pre_noise,
+                              batch_size, rng, k_smote=self.k_smote)
 
     def fit_resample(self, X: Any, y: Any) -> tuple[NDArray, NDArray]:
         """Return copied augmented fitting data and expose diagnostics_.
@@ -183,13 +163,16 @@ class UGO(BaseEstimator):
             template.set_params(**filled_seeds)
         parameters["estimator_random_states"] = {**estimator_seeds, **filled_seeds}
         notes = list(ASSUMPTIONS)
+        if self.variant == "rwo":
+            notes.append("Numeric RWO uses a third-party reference, not verified original/author code; clean original selected-class population spread is a convention.")
         if self.k_pre > len(original_X) - 1:
             notes.append("k_pre clamped to original sample count minus one.")
         if self.k_after > len(original_X):
             notes.append("k_after clamped to original sample count.")
         self.diagnostics_ = {
             "reproduction_status": "source_audited_with_ambiguities",
-            "implementation_revision": "stage4r2_fixed_original_total_batch",
+            "implementation_revision": "stage4r3_shared_generators_provisional_numeric_rwo",
+            "generator": generator_metadata(self.variant),
             "nominal_batch_size": nominal_batch_size,
             "original_class_counts": self._counts(original_y, classes),
             "generation_cap": cap, "cap_interpretation": self.cap_interpretation,
