@@ -22,3 +22,6 @@ results/*
 .idea/
 .DS_Store
 Thumbs.db
+# Stage 4A-R user-supplied resources and temporary verification artifacts
+data/incoming/
+papers/
