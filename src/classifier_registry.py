@@ -1,6 +1,6 @@
 """Fourteen UGO classifier identities, source settings, and local availability.
 
-Constructors marked python_approximation are usable smoke models, not claims
+Constructors marked python_approximation are usable local models, not claims
 of R/Python author-package equivalence. Others fail explicitly by name.
 """
 from __future__ import annotations
@@ -62,7 +62,7 @@ def get_classifier_spec(name: str) -> ClassifierSpec:
 
 
 def make_classifier(name: str, *, seed: int = 42) -> Any:
-    """Construct a local training-only smoke model for a supported identity."""
+    """Construct a fresh local approximation for a supported identity."""
     if isinstance(seed, bool) or not isinstance(seed, Integral) or not 0 <= seed < 2 ** 32:
         raise ValueError("seed must be an integer in [0, 2**32).")
     spec = get_classifier_spec(name)

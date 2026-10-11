@@ -298,7 +298,10 @@ Stage 4R-3 now has all numerical methods with documented source choices.
 Stage 4R-4 prepares two simulations, eight unverified historical dataset
 candidates and the fourteen-classifier identity registry, with nine available
 Python approximations. See [EXPERIMENT_SETUP.md](EXPERIMENT_SETUP.md).
-The remaining evaluation and analysis stages are planned.
+Stage 4R-5 implements fold-local preprocessing, source-checked metrics and the
+paired ten-fold runner with atomic resumable records. Its verification uses
+artificial fixtures; see [EVALUATION.md](EVALUATION.md). Stages 4R-6 through
+4R-8 remain planned.
 
 | Stage | Work | Exit evidence |
 | --- | --- | --- |

@@ -233,8 +233,13 @@ The demo remains an artificial 120-row/four-feature make_classification example
 with seed 42 and logistic regression. It does not reproduce either paper
 simulation or report held-out scores. Its diagnostics are software evidence only.
 
-Still required: evidence for ambiguous conventions and author code, simulations,
-verified benchmark variants,
-classifier settings, training-only preprocessing, evaluation, statistical
-analyses and paper-result comparison. Stop after the requested stage; later
-stages require separate authorization under AGENTS.md.
+Stage 4R-4 adds declared simulation reconstructions and classifier/dataset
+registries. Stage 4R-5 implements training-only preprocessing, IAM/MCC/F1,
+paired ten-fold evaluation, fresh final fitting and atomic resumable results;
+see [the evaluation contract](reproduction/EVALUATION.md). All evaluation
+verification so far uses artificial software fixtures.
+
+Still required: evidence for ambiguous conventions and author code, verified
+benchmark variants, exact missing classifier implementations, measured paper
+pilots/experiments, statistical analyses and paper-result comparison. Stop after
+the requested stage; later stages require separate authorization under AGENTS.md.

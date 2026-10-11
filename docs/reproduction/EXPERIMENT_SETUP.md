@@ -93,5 +93,6 @@ labels, and the nonlinear seed-42 default reports 925/75.
 
 Use the actual UGO supplement to confirm the 74 variants and compare published
 data; obtain exact classifier implementations/configuration where possible.
-Stage 4R-5 can build and pilot a transparent partial matrix while unresolved
-methods remain excluded from exact-result claims.
+Stage 4R-5 has implemented the [evaluation engine](EVALUATION.md), verified on
+artificial software fixtures. The measured simulation/dataset pilot belongs to
+Stage 4R-6; unresolved methods remain excluded from exact-result claims.

@@ -10,10 +10,11 @@ after reading the full paper; unresolved source choices still prevent a verified
 faithful reproduction claim. Stage 4R-3 uses the three uploaded original method
 papers for numerical RWO, MCSMOTE, LEAO, and all four UGO generator variants.
 Their source conflicts and remaining implementation conventions are recorded.
-UGO fits its internal scoring classifier; LEAO fits its probability model on
-fitting rows. No
-automatic preprocessing, evaluation splits, final model scoring, benchmark
-experiments, or Risk-Budgeted UGO are implemented. Further stages require approval.
+Stage 4R-4 prepares simulations, dataset candidates and classifier identities.
+Stage 4R-5 adds training-only preprocessing, paired ten-fold evaluation,
+fresh final model fitting, IAM/MCC/F1 and atomic resumable results. Validation
+uses artificial software fixtures; paper pilots and benchmark experiments remain
+for later authorized stages. Risk-Budgeted UGO is not implemented.
 
 ## Original UGO reproduction specification
 
@@ -40,6 +41,14 @@ identities. Nine local classifier substitutes pass fitting-only probability
 checks; five require external or custom implementations. See the
 [experiment setup report](docs/reproduction/EXPERIMENT_SETUP.md). The 74-dataset
 supplement remains necessary for exact benchmark membership and comparison.
+
+Stage 4R-5 supplies the [evaluation runner](docs/reproduction/EVALUATION.md)
+with all eleven conditions and mandatory NORES. Its manifest records source
+ambiguities, classifier approximations, exact folds, configuration and hashes;
+failures and unavailable classifiers retain empty scores and explicit coverage.
+Verify the software fixture and resume by repeating:
+
+    .venv/bin/python main_stage4r5.py --software-check --output results/stage4r5-software-check
 
 ## Research motivation
 
@@ -87,7 +96,11 @@ rb_ugo/                     # Repository root, not a second nested directory
 │   ├── comparators.py    # NORES and standalone comparator constructors
 │   ├── simulations.py    # Declared linear/nonlinear paper reconstructions
 │   ├── dataset_registry.py # Historical candidate file/hash checks
-│   ├── classifier_registry.py # Fourteen names and available smoke models
+│   ├── classifier_registry.py # Fourteen names and available local approximations
+│   ├── preprocessing.py   # Fold-local imputation, encoding, filtering and scaling
+│   ├── metrics.py         # IAM/MCC/F1 with fixed source labels
+│   ├── evaluation.py      # Paired ten-fold runner and fresh final fits
+│   ├── results.py         # Atomic records and strict resume identity
 │   └── ugo.py             # Provisional UGO variants and diagnostics
 ├── notebooks/.gitkeep      # Future exploratory notebooks
 ├── results/.gitkeep        # Future generated research outputs
@@ -96,6 +109,7 @@ rb_ugo/                     # Repository root, not a second nested directory
 ├── main_stage2.py          # Dataset inspection CLI
 ├── main_stage3.py          # Provisional UGO software sanity check
 ├── main_stage4r4.py        # Experiment-input and capability inspection
+├── main_stage4r5.py        # Evaluation CLI and artificial integration check
 ├── docs/ugo_reproduction.md # Equations, assumptions, evidence, unresolved fidelity
 ├── requirements.txt       # Pinned research dependencies
 ├── requirements-dev.txt   # Runtime dependencies plus pytest

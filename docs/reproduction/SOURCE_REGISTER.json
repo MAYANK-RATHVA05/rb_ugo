@@ -201,6 +201,21 @@
     "python_approximations_smoke_checked": 9,
     "classifiers_without_implementation": 5
   },
+  "evaluation_implementation_status": {
+    "stage": "4R-5",
+    "preprocessing": "training-only with declared author-unknown conventions",
+    "metrics": ["IAM", "MCC", "F1"],
+    "outer_folds": 10,
+    "default_folds": "recorded deterministic stratified approximation; not author folds",
+    "conditions_supported": 11,
+    "fresh_final_fit": true,
+    "atomic_resumable_records": true,
+    "validation_population": "artificial software fixtures only",
+    "paper_pilot_executed": false,
+    "paper_benchmark_executed": false,
+    "missing_classifier_implementations": 5,
+    "paper_supplement_status": "missing"
+  },
   "source_access_checks": [
     {
       "url": "https://doi.org/10.1016/j.knosys.2026.115886",
