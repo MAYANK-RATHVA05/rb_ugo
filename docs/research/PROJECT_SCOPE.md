@@ -14,7 +14,8 @@ identity, not a completed or validated algorithm.
 
 Each requires a specific methodology and independent experimental evidence.
 Implementing ordinary uncertainty ranking, subgroup allocation or pseudo-labels
-is not sufficient novelty; several ingredients already exist [S3, S5, S6 in the
+is not sufficient novelty; direct remedy and validation-size competitors exist
+[B pp5,8–9; T p22] alongside [S3, S5, S6 in the
 reference register](PRIOR_ART_MATRIX.md#verified-reference-register-and-audit-limits).
 
 ## Core hypothesis
@@ -63,29 +64,35 @@ and explicitly versioned baseline; no silent comparator changes.
 
 ## In scope and out of scope
 
-Stage 4A covers legitimate source verification, explicit source limitations,
-mathematical comparison and counterexamples, at most three candidate mechanisms,
-README/agent rules, roadmap, dataset/evaluation planning, existing tests, and a
-separate review PR. Two mechanisms are discussed, neither established as novel
+Stage 4A-R covers actual supplied-file inventories/offline safe imports,
+verified full-data manifests/fold checks, Stage 2 reaudit, demonstrated UGO
+source-fidelity repairs with regressions, official-training-fold-only smoke
+verification, full-text mathematical comparison and documentation in a separate PR. Two mechanisms are discussed, neither established as novel
 [CANDIDATE_HYPOTHESES.md](CANDIDATE_HYPOTHESES.md).
 
-No source/test rewrite, new oversampler, benchmark-data download, experiment,
-dependency change, repository rename or published-result reproduction occurs
-here. No Stage 4B decision is made on the user's behalf. Synthetic observations
+Source/test changes here are limited to authorized verification utilities and
+paper-grounded UGO repairs. No new research sampler, pseudo-labelling, full
+benchmark, dependency change, repository rename or published-result reproduction
+occurs here. No Stage 4B decision is made on the user's behalf. Synthetic observations
 are not independent evidence; confident pseudo-labels are not ground truth.
 
 ## Open decisions
 
-The six core papers remain inaccessible even at abstract level. Exact titles and
-method topics in the brief are user-supplied, not independent verification.
-Remedy decomposition and risk/mismatch/VTSS are direct novelty-threat questions,
-not verified findings. See [REFERENCE_STATUS.md](REFERENCE_STATUS.md).
+The six core full papers are now available and inspected in the stated method
+scope. B already supplies the remedy decomposition/targeted intervention framing;
+T supplies balanced-risk mismatch theory and VTSS. See
+[REFERENCE_STATUS.md](REFERENCE_STATUS.md) and [PRIOR_ART_MATRIX.md](PRIOR_ART_MATRIX.md).
+The reported 13-paper ZIP exceeds the attachment transfer limit; its members
+remain FULL TEXT UNAVAILABLE.
 
-KEEL variants, target meanings, counts, schemas, folds and licenses need checking;
-[DATASET_PLAN.md](DATASET_PLAN.md) does not invent statistics. Decisions also remain
-on region definitions, independent validation budgets, generators, practical
-benefit/harm margins, graph smoothness assumptions and matched compute budgets.
+All eight supplied full datasets load; exact counts/schema/hashes are verified
+[DATASET_VERIFICATION.md](DATASET_VERIFICATION.md). Official folds, authenticated
+provider/license/domain class grouping and unique record identity are absent.
+Requested real-fold UGO smokes are blocked; full files are not substituted.
+UGO batch size is repaired but cap/pool/rounding interpretations need clarification.
+Region definitions, independent validation power, graph assumptions, practical
+margins and label/compute parity remain unresolved research decisions.
 
 Current decision: **no defensible methodological novelty established**.
 [NOVELTY_DECISION.md](NOVELTY_DECISION.md) gives the implementation gates.
-Stop at Stage 4A for user review before Stage 4B.
+Stop at Stage 4A-R for user review before any Stage 4B or new implementation.

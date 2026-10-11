@@ -10,8 +10,8 @@
 
 This B.Tech AI research project investigates when classifier-specific minority
 augmentation can help, when threshold changes suffice, and when synthesis may
-reinforce overlap or noise. Software Stages 1–3 are implemented; Stage 4A updates
-research scope, mathematical analysis and planning. No DRA-UGO mechanism has been
+reinforce overlap or noise. Software Stages 1–3 are implemented. Stage 4A-R verifies supplied
+resources, repairs demonstrated UGO source mismatches and updates the full-text audit. No DRA-UGO mechanism has been
 finalized, implemented or benchmarked. The current audit concludes **no defensible
 methodological novelty established** with the available evidence.
 
@@ -46,15 +46,18 @@ three ordinary techniques does not establish a novel contribution.
 
 ## 5. Original UGO baseline
 
-The local baseline provides provisional UGO-ROS/UGO-SMOTE with internal classifier
-scoring, signed label-aware MMA, noise handling and stopping diagnostics. Its
-cap, pools, rounding and neighborhood conventions remain prompt-based assumptions;
-the full original paper was inaccessible. **Software tests do not establish
-paper fidelity or published-result reproduction.** Preserve the baseline unchanged.
+UGO-ROS/SMOTE is now audited against supplied full-text pp5–8: MMA, class choice,
+noise filtering/relocation and Welch stopping match the stated core behavior.
+The demonstrated batch mismatch is repaired to fixed original-total size.
+The conflicting cap formulas are explicit options; pool/rounding/neighbor
+conventions remain disclosed. **Complete faithful reproduction and published
+performance reproduction are not established.** The historical pre-repair code
+is preserved in Git; new research mechanisms must preserve the current comparator.
 
-Read [the reproduction record](docs/ugo_reproduction.md). Runtime requires
-`allow_provisional=True`. Original class selection can choose the majority class;
-do not silently force minority-only generation or ordinary SMOTE behavior.
+Read [the operation audit](docs/research/UGO_PAPER_CODE_AUDIT.md) and
+[API/reproduction record](docs/ugo_reproduction.md). Runtime still requires
+`allow_provisional=True`; diagnostics report `source_audited_with_ambiguities`.
+Class selection may choose the majority: do not force minority-only behavior.
 
 ## 6. Updated research hypothesis
 
@@ -87,20 +90,24 @@ No arbitrary entropy/density/confidence product is introduced. A UGO-plus-cluste
 pseudo-label, boundary-filter or count-tuning combination is insufficient novelty.
 Implementation needs Stage 4B source/design review and subsequent explicit approval.
 
-## 8. Datasets and simulations
+## 8. Verified datasets and proposed simulations
 
-Proposed KEEL shortlist: Ecoli2, Glass6, Yeast3, Page-blocks0, Ecoli4 and Yeast4.
-Additional possibilities: Segment0, Glass2, Abalone19, and Pima or Ecoli1 for the
-user's proposed lower-imbalance stress test. **Names/variants, targets, counts,
-feature schemas, licenses and predefined folds remain unverified.** None were
-downloaded or evaluated in this stage.
+Eight supplied full files load: Ecoli2 (336 rows), Glass6 (214), Yeast3 (1484),
+Page-blocks0 (5472), Ecoli4 (336), Yeast4 (1484), Segment0 (2308), Abalone19 (4174).
+All have negative/positive labels and no missing values. Abalone19 has nominal
+Sex; the others are numerical. Counts, exact schemas, duplicates and hashes are
+in [the manifest](data/manifests/keel_dataset_manifest.csv) and
+[verification record](docs/research/DATASET_VERIFICATION.md).
 
-Proposed simulations vary (A) known class overlap, (B) unequal minority subgroup
-representation, (C) fitting-label noise and minority count, and (D) hidden fitting
-labels at 10%, 25%, 50% and 100%. No outer features/labels enter U. Hidden truth
-is diagnostic-only, and H/A labels count in the total visible-label budget.
-[DATASET_PLAN.md](docs/research/DATASET_PLAN.md) specifies distributions,
-provenance gaps, question-specific metrics and safeguards.
+Every archive contains only its full file: **official folds are missing**.
+Ecoli2/Yeast3/Ecoli4 UGO fold-smoke checks are blocked, not replaced by full data.
+Dataset licenses/provider semantics remain unverified. No benchmark is complete.
+
+Future simulations separate known overlap (A), unequal minority subgroups (B),
+label noise/minority size and train-only label masking at 10/25/50/100% (C).
+Fixed-k anchor infeasibility is explicitly calculated in
+[DATASET_PLAN.md](docs/research/DATASET_PLAN.md). Hidden labels/outer features
+never enter training. See [question coverage](docs/research/PROBLEM_STATEMENT_COVERAGE.md).
 
 ## 9. Evaluation and baselines
 
@@ -118,43 +125,45 @@ budgets. Use fitting-only preprocessing/resampling, independent inner selection,
 untouched outer tests, ablations and prespecified statistical comparisons.
 No benchmark results exist here.
 
-## 10. Research papers
+## 10. Research papers and access
 
-The six requested sources are UGO, SLEO, SSHR, GDEO, *Don't Oversample the Boundary*
-and *Synthetic Augmentation in Imbalanced Learning*. Their exact supplied titles,
-DOI/arXiv links and unresolved claims are in
-[REFERENCE_STATUS.md](docs/research/REFERENCE_STATUS.md). **Neither full text nor
-abstract was verified** because the environment blocked their URLs. Title and
-method topics supplied in the brief are not independently verified metadata.
+**Six supplied full texts inspected:** UGO, SLEO, SSHR, GDEO, *Don't oversample
+the boundary*, and *Synthetic Augmentation in Imbalanced Learning* v3.
+[REFERENCE_STATUS.md](docs/research/REFERENCE_STATUS.md) lists exact PDF names,
+read sections and limits; [the matrix](docs/research/PRIOR_ART_MATRIX.md) gives
+actual equations/page citations. Abstract-only verified papers: **none**.
 
-Additional full texts verified: Ren et al. (2018), *Learning to Reweight Examples
-for Robust Deep Learning*; Ghorbani & Zou (2019), *Data Shapley*; Koh & Liang (2017),
-*Understanding Black-box Predictions via Influence Functions*. None were reviewed
-from abstracts only. The [matrix](docs/research/PRIOR_ART_MATRIX.md) records actual
-author equations, assumptions and limits; pinned library sources are distinguished
-from original-paper verification.
+Earlier additional full-text verification covers Ren et al. (2018), Ghorbani &
+Zou (2019) and Koh & Liang (2017). Library sources are distinguished from papers.
+The reported 13-paper ZIP exceeds the 32 MiB attachment transfer limit; its
+related methods remain FULL TEXT UNAVAILABLE. PDFs remain local and ignored.
 
-## 11. Current implementation status
+The boundary paper already supplies remedy decomposition and category-matched
+augmentation; augmentation theory already supplies mismatch/size selection.
+No defensible DRA-UGO methodological novelty is established.
 
-| Stage | Implemented software / research status |
+## 11. Current implementation and verification status
+
+| Category | Status |
 | --- | --- |
-| 1 | Configuration/path checks and portable initialization |
-| 2 | Strict binary CSV/KEEL loading and descriptive imbalance reports |
-| 3 | Provisional UGO variants and artificial-data sanity checks |
-| 4A | Evidence-limited mathematical audit and updated research documentation |
-| 4B onward | Not approved or implemented; planned stages only |
+| Completed software | Stage 1 setup, Stage 2 binary loader/statistics, Stage 3 UGO-ROS/SMOTE |
+| Real-data support | All eight supplied full files parse; nominal feature preserved; no Stage 2 bug demonstrated |
+| Paper alignment | Full-source audit; fixed batch / integer cap handling repaired; conflicting caps and conventions disclosed |
+| UGO real-data smoke | **Blocked:** no official folds; six blocked CSV rows, no real UGO fit |
+| Full-text research audit | Six core papers inspected; reported collection inaccessible; novelty unestablished |
+| Tests | 175 passed, no skips in this cloud with local resources |
+| Pending | Final mechanism, DRA-UGO implementation, semi-supervised extension, full benchmarks, ablations and research paper |
 
-No automatic benchmark acquisition, evaluation splitting, preprocessing pipeline,
-final-model scoring or new oversampler is implemented. Internal Stage 3 fits are
-software checks, not research experiments. UGO fidelity and result reproduction
-remain pending. Existing entry points and tests are preserved.
+Offline import/fold/statistics/smoke utilities are implemented. No new oversampler,
+pseudo-labelling or full benchmark is implemented. Software checks do not establish
+predictive superiority or unique paper fidelity. Stop after Stage 4A-R for review.
 
 ## 12. Updated development roadmap
 
 [RESEARCH_ROADMAP.md](docs/research/RESEARCH_ROADMAP.md) defines the approval gates:
 
 - 1–3: existing setup, data infrastructure and provisional original UGO.
-- 4A: literature verification, mathematical audit and documentation update.
+- 4A: initial audit; 4A-R: source/data recovery, documented UGO repairs and verification.
 - 4B: final mathematical method selection and research-design review.
 - 5: leakage-free benchmark infrastructure and faithful UGO evaluation.
 - 6: approved new mechanism, conditional on Stage 4B approval.
@@ -162,7 +171,7 @@ remain pending. Existing entry points and tests are preserved.
 - 8: boundary, intra-class imbalance, U benefit and ablations.
 - 9: statistics, robustness, complexity and research writing.
 
-All stages after 4A are provisional. Development/pilot data must be distinct from
+Stages 4B onward remain provisional and need approval. Development/pilot data must be distinct from
 final outer evaluation. Stop after this update for review; a roadmap is not
 permission to implement.
 
@@ -171,8 +180,12 @@ permission to implement.
 ```text
 rb_ugo/                     # Repository root, not a second nested directory
 ├── data/
-│   ├── raw/.gitkeep         # Original inputs (future stages)
-│   └── processed/.gitkeep   # Derived data (future stages)
+│   ├── incoming/            # Ignored unchanged source ZIPs
+│   ├── raw/keel/            # Ignored extracted full data/source folds
+│   ├── processed/           # Ignored derived data
+│   └── manifests/           # Tracked statistics, resource hashes/provenance
+├── papers/                  # Ignored supplied PDFs
+├── scripts/                 # Offline import, dataset/fold verification and smoke
 ├── src/
 │   ├── __init__.py
 │   ├── config.py           # Paths and RANDOM_STATE = 42
@@ -190,7 +203,7 @@ rb_ugo/                     # Repository root, not a second nested directory
 ├── main_stage2.py          # Dataset inspection CLI
 ├── main_stage3.py          # Provisional UGO software sanity check
 ├── docs/
-│   ├── ugo_reproduction.md # Historical provisional UGO reproduction record
+│   ├── ugo_reproduction.md # Current source audit/API; historical code preserved in Git
 │   └── research/          # Scope, roadmap, evidence, mathematics, dataset plan
 ├── requirements.txt       # Pinned research dependencies
 ├── requirements-dev.txt   # Runtime dependencies plus pytest
@@ -210,7 +223,7 @@ directory. Initialization checks directories and never creates missing ones.
 
 Codex Cloud and Google Antigravity are separate environments. First synchronize
 the project through Git; cloud edits are not automatically visible in your IDE.
-The documentation-review branch is `research-stage4a-novelty-audit`; after its
+The verification-review branch is `stage4ar-paper-data-verification`; after its
 PR merges, use `main`. From a fresh clone:
 
 ```powershell
@@ -218,7 +231,7 @@ git clone https://github.com/MAYANK-RATHVA05/rb_ugo.git
 Set-Location rb_ugo
 # For an existing clone, start with git fetch below in its repository folder.
 git fetch origin
-git switch research-stage4a-novelty-audit
+git switch stage4ar-paper-data-verification
 git pull --ff-only
 py -3.11 --version
 py -3.11 -m venv .venv
@@ -356,7 +369,7 @@ Use the synchronized branch chosen above (or `main` after the documentation PR m
 
 ```powershell
 git fetch origin
-git switch research-stage4a-novelty-audit
+git switch stage4ar-paper-data-verification
 git pull --ff-only
 .\.venv\Scripts\python.exe -m pip install -r requirements-dev.txt
 .\.venv\Scripts\python.exe main_stage1.py
@@ -377,8 +390,8 @@ Read [docs/ugo_reproduction.md](docs/ugo_reproduction.md) first. The implementat
 follows the supplied signed MMA equation and highest-mean-uncertainty class rule,
 with kNN noise detection, relocation, and Welch stopping. It does not silently
 force minority-only generation or replace uncertainty selection with ordinary
-SMOTE. The cap formula, selection pools, rounding, and neighborhood rules are
-explicitly provisional because the full paper could not be read.
+SMOTE. The source-based batch correction and explicit cap alternatives are audited;
+selection pools, rounding, neighborhood rules and cap conflict remain disclosed.
 
 ```python
 from sklearn.linear_model import LogisticRegression
@@ -395,7 +408,7 @@ Run the included artificial-data sanity check on Windows after synchronizing:
 
 ```powershell
 git fetch origin
-git switch research-stage4a-novelty-audit
+git switch stage4ar-paper-data-verification
 git pull --ff-only
 .\.venv\Scripts\python.exe main_stage1.py
 .\.venv\Scripts\python.exe main_stage3.py
@@ -410,15 +423,38 @@ dtype alone; callers must ensure numerical distance is meaningful. Stage 1/2
 entry points continue to work unchanged. These commands exercise implemented
 software; they do not implement or evaluate the proposed method.
 
-## 15. Research limitations
+### Offline resources and verification commands
 
-The six core papers and authoritative KEEL variant/fold metadata remain
-inaccessible. The collection of CFS-SMOTE, BFCH-SMOTE, EC-EBO and related methods
-needs exact bibliographic sources. No exhaustive novelty search, benchmark
-superiority, intrinsic error decomposition or safety guarantee has been established.
-Small subgroup audit counts may make proposed bounds uninformative. Graph support
-can be misleading under overlap, poor anchors or shift; validation adaptation can
-overfit. No proposed method is ready for implementation on present evidence.
+Use configurable local archive paths; preserve the originals. Full Windows
+commands for all eight ZIPs and paper imports are in
+[DATASET_VERIFICATION.md](docs/research/DATASET_VERIFICATION.md#offline-import-in-windows-antigravity).
+Typical Linux commands:
+
+```bash
+.venv/bin/python scripts/import_resources.py --dataset-zip "ecoli2=/your/downloads/ecoli2.zip"
+.venv/bin/python scripts/verify_keel.py
+.venv/bin/python scripts/ugo_smoke.py
+.venv/bin/python -m pytest -q
+```
+
+Scripts run offline, accept `--help`, refuse conflicting raw contents and preserve
+filenames/hashes. Raw data, PDFs and reports stay ignored; clone/pull does not
+transfer them. Import your matching archives separately in Antigravity.
+Smoke currently exits 2 because official folds are absent. It does not fit full
+data or create substitutes. Windows execution remains untested in this Linux cloud.
+
+## 15. Research limitations and blockers
+
+Provide official five-fold archives/provenance, author UGO clarification/code,
+and individual PDFs or archive parts under 32 MiB for the related collection.
+Dataset licenses/class grouping and record identity need authoritative evidence.
+Core methods are read, but not every supplemental proof or experiment is audited.
+
+Boundary remedy/targeted augmentation and mismatch/count tuning are direct prior
+art. The proposed finite-region diagnostic has serious minority-audit power and
+validation-adaptation limits; graph support cannot establish minority truth under
+overlap or shift. No new method, performance superiority or safety guarantee is
+established. Stage 4B should review sources/design before any new implementation.
 
 ## 16. Reproducibility and citation guidance
 

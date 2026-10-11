@@ -1,44 +1,73 @@
 # Dataset, simulation and evaluation plan
 
-Updated 2026-10-11. **Proposed studies only: no benchmark data downloaded, no
-simulation executed, no model-performance results produced.** The primary
-proposed provider is [KEEL's imbalanced-learning repository](https://sci2s.ugr.es/keel/imbalanced.php).
-Its index was blocked; the accessible [official KEEL project README](https://raw.githubusercontent.com/SCI2SUGR/KEEL/master/README.md)
-does not verify individual dataset metadata. [REFERENCE_STATUS.md](REFERENCE_STATUS.md)
-records source limits; [DATASETS.md](../../DATASETS.md) preserves manual handling rules.
+Updated after Stage 4A-R verification, 2026-10-11. Eight supplied **full files**
+are imported and parsed; no official folds are supplied, no controlled simulation
+has been executed and no predictive benchmark result exists. The proposed study
+below remains unimplemented. See [actual verification](DATASET_VERIFICATION.md),
+[reference evidence](REFERENCE_STATUS.md) and [question coverage](PROBLEM_STATEMENT_COVERAGE.md).
 
-## KEEL shortlist and provenance gaps
+## Verified files and remaining provenance gaps
 
-Names are proposed by the user; even canonical spelling/variant mapping remains
-unverified. Do not infer target definitions from suffixes or substitute a source
-multiclass dataset for a KEEL binary variant.
+| Relation / filename | Rows | Features (numeric/categorical) | Majority / minority | IR | Missing | Feature / complete duplicates | Fold pairs |
+| --- | ---: | --- | --- | ---: | ---: | --- | ---: |
+| ecoli2 / ecoli2.dat | 336 | 7 (7/0) | 284 / 52 | 5.461538 | 0 | 0 / 0 | 0 |
+| glass6 / glass6.dat | 214 | 9 (9/0) | 185 / 29 | 6.379310 | 0 | 1 / 1 | 0 |
+| yeast3 / yeast3.dat | 1484 | 8 (8/0) | 1321 / 163 | 8.104294 | 0 | 31 / 31 | 0 |
+| page-blocks0 / page-blocks0.dat | 5472 | 10 (10/0) | 4913 / 559 | 8.788909 | 0 | 79 / 69 | 0 |
+| ecoli4 / ecoli4.dat | 336 | 7 (7/0) | 316 / 20 | 15.800000 | 0 | 0 / 0 | 0 |
+| yeast4 / yeast4.dat | 1484 | 8 (8/0) | 1433 / 51 | 28.098039 | 0 | 31 / 31 | 0 |
+| segment0 / segment0.dat | 2308 | 19 (19/0) | 1979 / 329 | 6.015198 | 0 | 224 / 224 | 0 |
+| abalone19 / abalone19.dat | 4174 | 8 (7/1) | 4142 / 32 | 129.437500 | 0 | 0 / 0 | 0 |
 
-| Proposed benchmark | Priority | Exact canonical name/target | Counts and class ratio | Feature types/missingness | Authoritative artifact and predefined folds |
-| --- | --- | --- | --- | --- | --- |
-| Ecoli2 | Initial | UNVERIFIED | UNVERIFIED | UNVERIFIED | KEEL proposed; archive/manifest and folds UNVERIFIED |
-| Glass6 | Initial | UNVERIFIED | UNVERIFIED | UNVERIFIED | KEEL proposed; archive/manifest and folds UNVERIFIED |
-| Yeast3 | Initial | UNVERIFIED | UNVERIFIED | UNVERIFIED | KEEL proposed; archive/manifest and folds UNVERIFIED |
-| Page-blocks0 | Initial | UNVERIFIED | UNVERIFIED | UNVERIFIED | KEEL proposed; archive/manifest and folds UNVERIFIED |
-| Ecoli4 | Initial | UNVERIFIED | UNVERIFIED | UNVERIFIED | KEEL proposed; archive/manifest and folds UNVERIFIED |
-| Yeast4 | Initial | UNVERIFIED | UNVERIFIED | UNVERIFIED | KEEL proposed; archive/manifest and folds UNVERIFIED |
-| Segment0 | Additional | UNVERIFIED | UNVERIFIED | UNVERIFIED | KEEL proposed; archive/manifest and folds UNVERIFIED |
-| Glass2 | Additional | UNVERIFIED | UNVERIFIED | UNVERIFIED | KEEL proposed; archive/manifest and folds UNVERIFIED |
-| Abalone19 | Additional | UNVERIFIED | UNVERIFIED | UNVERIFIED | KEEL proposed; archive/manifest and folds UNVERIFIED |
-| Pima or Ecoli1 | Lower-imbalance stress test proposed by user | Variant choice and target UNVERIFIED | UNVERIFIED, including proposed lower-imbalance characterization | UNVERIFIED | KEEL proposed; exact problem and folds UNVERIFIED |
+All target labels are negative/positive (minority positive), missingness zero.
+Exact feature names/types/hashes are in the tracked manifest. Numeric distances
+are unsuitable for Abalone19's Sex without future training-only preprocessing.
+Provider URL/license, original class grouping, record IDs and official fold protocol
+remain unverified. Glass2, Pima and Ecoli1 are **not supplied** and no statistics
+are asserted. Keep raw files and existing source folds unchanged; do not regenerate
+folds to fill this task's missing-official-fold requirement.
 
-Before Stage 5, obtain an authoritative dataset entry and manifest for each
-selected variant: provider URL, release/version/date, checksum, license, archive
-members, target meanings/class grouping, units/types, missing values, full and
-per-fold counts, split IDs and repeated-fold conventions. Distinguish verified
-provider statistics from counts computed by the existing loader. Preserve raw
-files and source folds; do not silently merge repeated copies of a dataset.
-Check duplicate identities across folds and related variants before inference.
+Future benchmark selection needs authenticated variant metadata/license, split
+provenance and an independent outer protocol. Test mapping must follow training
+or a documented scientific positive outcome, not test frequencies. Related binary
+variants and their fold files are not independent extra datasets. No automatic
+acquisition or full experiment is authorized by this plan.
 
-The repository loader handles a documented KEEL subset, not general ARFF. Mixed
-or missing features require future fitting-only encoding/imputation/scaling;
-UGO currently accepts finite numerical matrices. Positive outcome is defined
-by documented domain semantics or fitting data, never outer-test frequencies.
-No automatic acquisition is authorized in Stage 4A.
+## Preliminary label-budget feasibility
+
+The table gives **floor(fraction × full-file minority count)** as a transparent
+planning calculation, not actual masked fitting counts or permission to train on
+full data. An outer training fold and F/H/A split can only reduce usable anchors.
+Actual feasibility must be checked for each future fitting partition/mask.
+
+| Dataset | Full minority | 10% | 25% | 50% | 100% |
+| --- | ---: | ---: | ---: | ---: | ---: |
+| ecoli2 | 52 | 5 | 13 | 26 | 52 |
+| glass6 | 29 | 2 | 7 | 14 | 29 |
+| yeast3 | 163 | 16 | 40 | 81 | 163 |
+| page-blocks0 | 559 | 55 | 139 | 279 | 559 |
+| ecoli4 | 20 | 2 | 5 | 10 | 20 |
+| yeast4 | 51 | 5 | 12 | 25 | 51 |
+| segment0 | 329 | 32 | 82 | 164 | 329 |
+| abalone19 | 32 | 3 | 8 | 16 | 32 |
+
+Declare the exact mask rounding before testing, with deterministic stratified
+allocation when feasible. Do not retry masks using hidden outcomes. Require two
+clean same-class anchors for any interpolation arm, and **six** if a fixed five
+neighbor protocol is required; effective-k alternatives must be explicit separate
+protocols. Under the floor planning convention, 10% conditions for Glass6,
+Ecoli4, Yeast4 and Abalone19 already fail the fixed-k=5 six-anchor requirement
+on the full file; mark that fixed-k condition **infeasible**. Yeast4 25% and
+Abalone19 25% are only preliminary counts; independent splits/noise can still
+make them infeasible. Do not silently inflate minority proportions, expose hidden
+labels or relax k to rescue an arm. A documented clamped-k software smoke run is
+not evidence of statistically meaningful benefit detection.
+
+H/A labels count in the total visible-label budget. Audit n_y or n_1r=0 makes
+comparisons undefined; tiny positive counts may yield uninformative intervals,
+which must be marked inconclusive and fail the predeclared power criterion.
+Minority anchor feasibility and audit power are distinct. No actual mask experiment
+is reported because official folds are absent and the new mechanism is unapproved.
 
 ## Controlled simulations: proposed exact designs
 
@@ -127,7 +156,7 @@ data provision for U-capable comparators, not forcing labelled-only baselines to
 use it. Compare no U, same-distribution U, volume-matched U, shifted U and
 feature-destroyed U; explain transformations and avoid confounding size/compute.
 Test ordinary graph SSL/self-training and faithfully implementable resampling
-baselines; SSHR's protocol is unverified [S3 and the matrix].
+baselines; SSHR does use a separate U pool [H pp4–6], but its exact experimental label-mask and printed metric conventions remain unresolved [H pp6–7].
 
 ## Learners, baselines and tuning opportunities
 
@@ -137,11 +166,11 @@ calibration/SVM probability fits require fitting-only or declared inner data,
 counted in the budget. Do not use outer labels for calibration [S1, S4].
 
 Core controls: no resampling (default and tuned threshold), class weighting
-with tuned threshold, random oversampling, SMOTE, Borderline-SMOTE, preserved
-UGO, and a validation-tuned synthetic-count baseline. Include KMeansSMOTE/ADASYN,
+with tuned threshold, random oversampling, SMOTE, Borderline-SMOTE, source-audited
+UGO with its explicit cap/pool conventions, and a validation-tuned synthetic-count baseline. Include KMeansSMOTE/ADASYN,
 matched point weights and group-valuation/influence controls where feasible.
-Advanced/SSL methods including SSHR/SLEO/GDEO require verified source protocols;
-an approximation cannot be labelled faithful. Future DRA-UGO appears only after
+SSHR/SLEO/GDEO full methods are accessible, with specific reproduction ambiguities
+[H pp6–7; L pp5–7; G pp4–6]. An approximation cannot be labelled faithful. Future DRA-UGO appears only after
 Stage 4B selects a mechanism and later implementation is separately approved.
 [R, D, I, S1, S3, S5, S6 in the matrix] identify why these are strong alternatives.
 

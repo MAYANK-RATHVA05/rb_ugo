@@ -25,15 +25,19 @@ DRA-UGO research direction.
 
 ## Current proposed research plan
 
-The provisional DRA-UGO shortlist, known-overlap/subgroup/noise simulations,
-labelled/unlabelled budgets and independent A/B/C evaluation are in
-[docs/research/DATASET_PLAN.md](docs/research/DATASET_PLAN.md). They are proposed,
-not downloaded/evaluated benchmarks. Individual KEEL metadata and folds remain
-unverified; no statistics should be inferred from dataset names.
+Eight actual user-supplied full KEEL-format datasets now parse and have verified
+file-level statistics/checksums. See [DATASET_VERIFICATION.md](docs/research/DATASET_VERIFICATION.md)
+and [the machine-readable manifest](data/manifests/keel_dataset_manifest.csv).
+None of the supplied archives includes official folds; real-fold UGO smoke checks
+are blocked. Provider authentication, domain class grouping/license and record
+identity remain unresolved. No predictive benchmark has run.
 
-No benchmark-data download is authorized in the current Stage 4A. The rules
-below apply to a future approved acquisition task. Preserve any source-provided
-folds and keep outer-test features and labels out of the unlabelled fitting pool.
+The provisional DRA-UGO simulations, label-budget feasibility and independent
+A/B/C evaluation are in [DATASET_PLAN.md](docs/research/DATASET_PLAN.md).
+They remain research plans, not completed experiments. Use the offline import
+CLI in the verification document for Windows/Linux. Source ZIPs and extracted
+raw files/PDFs stay ignored by Git; do not regenerate official folds or expose
+outer-test rows to an unlabelled fitting pool.
 
 ## Adding external data manually
 

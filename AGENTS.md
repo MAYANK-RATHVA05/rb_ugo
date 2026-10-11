@@ -14,8 +14,10 @@
 
 ## Research integrity and baseline protection
 
-- Preserve original UGO as an unchanged baseline. Do not silently revise `src/ugo.py` or its supporting modules while developing a proposed method.
-- Stage 3 is a prompt-based provisional implementation. Read `docs/ugo_reproduction.md`; cap, pools, rounding and noise conventions are not verified paper rules. Keep opt-in and diagnostic status explicit.
+- Freeze the explicitly source-audited UGO revision as the comparison baseline. Never silently mix new research mechanisms into `src/ugo.py` or its supporting modules. Historical pre-repair code is preserved in Git at `2c54d3d`.
+- Stage 4A-R explicitly authorizes demonstrated source-fidelity repairs, with before/after records and regression tests. Read `docs/research/UGO_PAPER_CODE_AUDIT.md` and `docs/ugo_reproduction.md`: fixed original-total batches are repaired; conflicting caps/pools/rounding remain disclosed. Keep `allow_provisional=True` opt-in and `source_audited_with_ambiguities` diagnostics.
+- Consult supplied U/L/H/G/B/T papers using exact filename/hash/page/section references in `REFERENCE_STATUS.md` and `PRIOR_ART_MATRIX.md`. Do not replace evidence with earlier generated descriptions. Full-text availability is not a comprehensive proof audit or reproduction of author results.
+- B already provides remedy decomposition and targeted matched-budget interventions; T provides mismatch theory and size search. No DRA-UGO novelty is established. The inaccessible 13-paper collection remains FULL TEXT UNAVAILABLE.
 - Distinguish implemented software, faithful reproduction, hypotheses, completed experiments and literature-verified facts. Stages 1–3 software exists; UGO fidelity and published-result reproduction remain pending.
 - Audit mathematical novelty and direct competitors before implementation. Clustering, entropy weighting, pseudo-labels, boundary-distance filtering, count tuning or multiplying existing scores is not sufficient novelty by itself.
 - Never invent citations, paper access, equations, datasets, counts, results or guarantees. Label missing evidence UNVERIFIED; prompt-supplied titles are not independent metadata verification.
@@ -38,8 +40,11 @@
 ## Approved stages and engineering safeguards
 
 - Implement only the stage explicitly approved. Stop after it and await approval; roadmap entries do not authorize future stages.
-- Current Stage 4A permits documentation and mathematical research only: no new oversampler, dataset download, experiment, dependency change, source rewrite or test rewrite. Run existing tests for the documentation update.
-- Stage 4B is mathematical method selection and research-design review. Stages after 4A are provisional.
+- Current Stage 4A-R permits supplied-resource offline imports, provenance/manifests, fold checks, all-file Stage 2 validation, demonstrated UGO source repairs/tests, official-training-fold-only software smoke checks, and research documentation. It authorizes no new DRA-UGO mechanism, pseudo-labelling, generation heuristic or full benchmark.
+- All eight supplied archives have full files but no official folds. Do not substitute full data/generated folds for the requested Ecoli2/Yeast3/Ecoli4 smoke checks. Keep blocked outcomes explicit. Authenticate source split provenance before calling future folds official.
+- Imports preserve original names/source ZIPs, verify hashes, reject unsafe entries/conflicting contents and run offline. Real raw assets, PDFs and outputs stay ignored; portable scripts/manifests are tracked. Regenerating a derived report must not overwrite a raw resource.
+- Fold mappings come from training and are reapplied to held-out partitions; test-frequency reversal must not change the positive class. Identical-valued rows without record IDs cannot prove distinct record identity.
+- Stage 4B is mathematical method selection and research-design review. Stop after Stage 4A-R for review; later roadmap entries are unapproved.
 - Stage 1 was initialization only; Stage 2 loading/descriptive inspection without splitting, preprocessing fitting, resampling or training; Stage 3 internal UGO scoring and software sanity checks only. Preserve those limits in historical reports.
 - Keep working Stages 1–3 unchanged unless a separately approved task requires a specific fix.
 - Write meaningful tests for implemented functionality, including failure behavior. Do not weaken assertions or treat software fixtures as research evidence.
