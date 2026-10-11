@@ -80,7 +80,7 @@ def test_majority_class_can_be_selected_and_outputs_preserved(toy, variant) -> N
     np.testing.assert_array_equal(X, X_before)
     np.testing.assert_array_equal(y, y_before)
     assert sampler.diagnostics_["stopping_reason"] == "max_iterations_safeguard"
-    assert sampler.diagnostics_["reproduction_status"] == "provisional_prompt_based"
+    assert sampler.diagnostics_["reproduction_status"] == "paper_checked_assumptions_unresolved"
     assert sampler.diagnostics_["final_class_counts"][0]["count"] > 4
 
 
@@ -121,6 +121,37 @@ def test_cap_truncates_last_batch(toy) -> None:
     assert sampler.diagnostics_["number_of_synthetic_samples"] == 2
     assert len(X_new) == 8
     assert sampler.diagnostics_["stopping_reason"] == "provisional_generation_cap"
+
+
+@pytest.mark.parametrize("uncertain_region,selected_class", [("low", 0), ("high", 1)])
+def test_fixed_batch_uses_original_total_despite_changing_class_counts(
+    toy, uncertain_region, selected_class,
+) -> None:
+    ToyEstimator.fits = []
+    sampler, X_new, _ = run(*toy, estimator=ToyEstimator(uncertain_region),
+                            lambda_step=0.5, max_iter=3)
+    history = sampler.diagnostics_["history"]
+    assert [record["selected_class"] for record in history] == [selected_class] * 3
+    assert [record["generated_count"] for record in history] == [3, 3, 3]
+    assert [len(X) for X, _ in ToyEstimator.fits] == [6, 9, 12]
+    assert len(X_new) == 15
+    assert sampler.diagnostics_["fixed_batch_size"] == 3  # ceil(0.5 * 6).
+
+
+@pytest.mark.parametrize("cap_policy,cap,batches", [
+    ("section_3_3", 2, [2]), ("table_4", 4, [3, 1]),
+])
+def test_cap_policy_is_applied_and_reported(toy, cap_policy, cap, batches) -> None:
+    sampler, X_new, _ = run(*toy, cap_policy=cap_policy, phi=1.0,
+                            lambda_step=0.5, max_iter=20)
+    diagnostics = sampler.diagnostics_
+    assert diagnostics["cap_policy"] == cap_policy
+    assert diagnostics["effective_parameters"]["cap_policy"] == cap_policy
+    assert diagnostics["generation_cap"] == cap
+    assert diagnostics["fixed_batch_size"] == 3
+    assert [record["generated_count"] for record in diagnostics["history"]] == batches
+    assert len(X_new) == len(toy[0]) + cap
+    assert diagnostics["stopping_reason"] == "provisional_generation_cap"
 
 
 def test_zero_cap_no_op(toy) -> None:
@@ -232,8 +263,8 @@ def test_demo_executes_generation_for_both_variants() -> None:
     assert "UGO-ROS (provisional)" in result.stdout
     assert "UGO-SMOTE (provisional)" in result.stdout
     assert result.stdout.count("stopping_reason: welch_fail_to_reject") == 2
-    assert "number_of_synthetic_samples: 3" in result.stdout
-    assert "number_of_synthetic_samples: 6" in result.stdout
+    # Both variants actually generate the initialized batch: ceil(0.1 * 120).
+    assert result.stdout.count("number_of_synthetic_samples: 12\n") == 2
 
 
 @pytest.mark.parametrize("features", [np.array([["red"], ["blue"]]),
@@ -289,7 +320,8 @@ def test_nullable_numeric_dataframe_without_missing_values(toy) -> None:
 
 @pytest.mark.parametrize("kwargs", [{"lambda_select": 0}, {"lambda_step": np.nan},
                                       {"k_pre": 0}, {"max_iter": 0}, {"phi": -1},
-                                      {"alpha": 1}, {"random_state": None}, {"variant": "ordinary_smote"}])
+                                      {"alpha": 1}, {"random_state": None}, {"variant": "ordinary_smote"},
+                                      {"cap_policy": "unknown"}, {"cap_policy": None}])
 def test_invalid_parameters(toy, kwargs) -> None:
     with pytest.raises(ValueError):
         UGO(ToyEstimator(), allow_provisional=True, **kwargs).fit_resample(*toy)
