@@ -138,7 +138,7 @@ def main() -> int:
         if not manifest:raise DatasetError('No dataset directories found')
         a.manifest.parent.mkdir(parents=True,exist_ok=True)
         with a.manifest.open('w',newline='',encoding='utf-8') as f:
-            w=csv.DictWriter(f,fieldnames=list(manifest[0]));w.writeheader();w.writerows(manifest)
+            w=csv.DictWriter(f,fieldnames=list(manifest[0]),lineterminator='\n');w.writeheader();w.writerows(manifest)
         a.fold_report.parent.mkdir(parents=True,exist_ok=True)
         a.fold_report.write_text(json.dumps(folds,indent=2)+'\n',encoding='utf-8')
         for d in manifest:print(f"{d['dataset']}: {d['total_samples']} rows; {d['fold_status']}")
