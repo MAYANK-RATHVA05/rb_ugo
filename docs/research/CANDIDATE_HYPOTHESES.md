@@ -2,9 +2,13 @@
 
 These are mathematical proposals for review, not implemented algorithms or
 established novel contributions. Citations [R], [D], [I], [S1]–[S7] refer to the
-[verified reference register](prior_art_matrix.md#verified-reference-register-and-audit-limits).
+[verified reference register](PRIOR_ART_MATRIX.md#verified-reference-register-and-audit-limits).
 The six requested papers remain UNVERIFIED; either may already cover an apparent
 difference. No new method name or combined heuristic product is proposed.
+
+DRA-UGO is the provisional project name, not a new name for either mechanism.
+Both candidates must answer A/B/C separately; neither provides an intrinsic
+remedy decomposition. That specific competing literature remains unverified.
 
 ## Candidate 1: control-adjusted local augmentation contrasts
 
@@ -115,6 +119,46 @@ Missing classes/region observations make the output inconclusive. Bounds wider
 than the possible effect also force inconclusive; they must not be clipped into
 apparently informative guarantees.
 
+### Uncertainty, locations, subregions and U: proposed operational specification
+
+To make the intervention family concrete, one **ordinary proposal generator**
+can use a clone of a probability learner fitted on F. For a labelled minority
+anchor i, define $u_i=1-2s_F(1\mid x_i)$; the local repository implements the
+other-minus-true form in [src/uncertainty.py](../../src/uncertainty.py). This is
+signed disagreement, not verified author UGO fidelity or epistemic/aleatoric
+uncertainty. Its in-fitting optimism is a limitation; a fitting-only cross-fit
+score is a separately prespecified variant, never an audit-label estimate.
+
+Let E_{r,k} be the min(k,n_1r) highest-u original minority anchors in a frozen G_r, with
+row index breaking ties. Fix k, neighbor count, m and seed independently of A.
+For a declared interpolation arm, draw i uniformly from E_{r,k}, j uniformly
+from its nearest original minority neighbors within G_r, and lambda uniformly
+on [0,1); generate $z=(1-\lambda)x_i+\lambda x_j$ with assigned label 1.
+Do not use synthetic rows or U pseudo-labels as observed minority anchors.
+Insufficient anchors/neighbors make that arm infeasible; do not silently switch
+to copying. A separate copying/point-weight arm is an explicit matched control.
+This is an existing interpolation ingredient [S5], not the contribution.
+Original UGO runs unchanged as a comparator and may choose the majority class;
+this proposed minority-region arm does not redefine its selection rule.
+
+Uncertainty thus proposes a finite family, while independent risk/ranking/harm
+contrasts accept, reject or leave an intervention inconclusive. It is **not** an
+entropy/density product or an assumption that high-u regions need more data.
+A predeclared region budget tests each eligible rare/dense region with reported
+fitting/audit counts; allocation can only follow confirmed effects under a fixed
+selection rule. It must not guarantee equal recall or force synthesis in a
+rare region without evidence. A global gate can miss small useful disjuncts,
+so report regional effects even when no policy is accepted.
+
+Optional U enters only a fitting-defined structural proposal/veto, for example
+Candidate 2 below. It contributes no labels to u_i, thresholds or the audit.
+Compare that arm against identical anchors/generation without U and ordinary
+SSL/support filters at matched compute. The U extension is optional and must
+not be counted as evidence from an additional independent candidate unless
+prespecified in the finite family. No generated point is declared correctly
+labelled by either acceptance test. A/B are conditional diagnostic targets;
+C requires separate U incremental-value experiments [DATASET_PLAN.md](DATASET_PLAN.md).
+
 ### Assumptions and interpretation
 
 - F,H,A have independent relevant sampling units and matching evaluation targets;
@@ -152,7 +196,7 @@ but the wrong default threshold can show large recall gain after ROS. The tuned
 baseline already fixes it; the ranking contrast is zero. No synthetic-information
 contribution should be accepted. Likewise, exact ROS/sample-weight objective
 equivalence defeats a supposed discrimination gain attributable to new information
-([gap analysis §§1–3](mathematical_gap_analysis.md)). A region with few minority
+([gap analysis §§1–3](MATHEMATICAL_GAP_ANALYSIS.md)). A region with few minority
 audit labels may be useful yet never pass the bound: abstention is not evidence
 of irreducibility. Interactions also mean two individually helpful regional batches
 need not be helpful jointly [D's coalition-value formulation].
@@ -169,6 +213,10 @@ result has yet been observed.
 For R regions, M counts, G generators and B paired training seeds, K=RMGB
 interventions. If C controls are fitted per intervention, a conservative cost is
 O(K(C+1)[T_fit(N+m,d)+T_score(n_H+n_A,d)+n_H log n_H]) plus generator cost.
+For the concrete proposal, brute-force within-region minority distances add
+O(sum_r n_1r^2 d), at most O(n_1^2 d) for a partition, with corresponding
+quadratic stored distances; ranking seeds costs O(n_1 log n_1). Reuse across
+fixed counts/seeds is permissible when the fitting anchors stay fixed.
 Computing AP adds O(n_A log n_A) per scored model; disjoint local pair comparisons
 are O(P_r) per contrast. These costs can be lower with shared fixed controls, but
 matching stochastic fits/normalization still matters. Storage for candidate
@@ -232,6 +280,41 @@ necessarily the exact optimized interval. Computing the exact box-constrained
 extrema requires convex optimization. These are proposed sensitivity calculations,
 not equations attributed to an inaccessible graph paper or a new theorem claim.
 
+### Uncertainty, location rejection, intra-class imbalance and U
+
+For an exact possible feature-graph specification, first fit scaling on F (and
+declared U only if the entire protocol permits it). With fixed k and ell>0,
+let N_k(i) exclude i and resolve distance ties by index, and set
+
+$$
+w_{ij}=\exp[-\|x_i-x_j\|^2/(2\ell^2)]
+1\{j\in N_k(i)\text{ or }i\in N_k(j)\},\qquad w_{ii}=0.
+$$
+
+This symmetric nonnegative graph defines L above. Freeze bandwidth/neighbor
+selection outside A; changing them after audit inspection invalidates a fixed
+candidate-family claim. Ordinary graph constructions are established [S3, S7].
+Candidate locations are the fitting-minority interpolation proposals specified
+for Candidate 1, or another completely predeclared generator; the graph does
+not create independent minority anchors.
+
+The interval width measures **sensitivity of anchor-compatible fields**, not
+posterior confidence or a formal aleatoric/epistemic decomposition. Local
+classifier disagreement can propose which locations to examine, but does not
+enter the energy as an invented score weight. Accept for structural review only
+when the exact lower bound exceeds beta, or when the conservative containing
+interval's lower endpoint does so. Failing that conservative check is an
+uncertain structural rejection, not proof of majority membership. High overlap
+requires independent harm/discrimination confirmation regardless of the field.
+
+U supplies graph nodes/connectivity, not clamped labels. Minority subgroups are
+examined separately with anchor counts and rejection rates; a poorly connected
+rare group can get wide intervals and lose beneficial proposals. No automatic
+sparsity compensation is asserted. Question A tests harmful-location rejection,
+B tests lost rare-region coverage, and C tests actual U value versus the same
+anchors/graph machinery without U. This mechanism cannot solve all three merely
+by displaying a consistency score.
+
 ### Assumptions, comparison and limits
 
 Graph distances must be meaningful after fitting-only preprocessing. Anchors
@@ -258,7 +341,7 @@ comparison, which remains unavailable.
 **Counterexample:** a dense majority bridge between minority anchors can produce
 high harmonic q along the bridge. With rho=E(h), the feasible field collapses to
 h and the interval falsely looks certain about actual membership. The non-identifiability
-construction in [gap analysis §6](mathematical_gap_analysis.md) permits the same
+construction in [gap analysis §6](MATHEMATICAL_GAP_ANALYSIS.md) permits the same
 unlabelled structure to have opposite labels there. A wider radius may instead
 reject a genuine sparse minority island. These are consequences of assumptions,
 not guarantees of boundary safety.

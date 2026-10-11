@@ -1,13 +1,14 @@
 # Stage 4A novelty decision
 
 **Decision: no defensible methodological novelty established. Do not implement
-a new oversampler or claim an RB-UGO contribution yet.** This decision is supported
+a new oversampler or claim a DRA-UGO contribution yet.** This decision is supported
 by verified related prior art and substantial missing source evidence; it is not
 an exhaustive proof that no useful future contribution exists.
 
-The deliverables are [the prior-art matrix](prior_art_matrix.md),
-[mathematical gap analysis](mathematical_gap_analysis.md), and
-[two candidate definitions](candidate_hypotheses.md). Reference identifiers below
+The deliverables are [the prior-art matrix](PRIOR_ART_MATRIX.md),
+[mathematical gap analysis](MATHEMATICAL_GAP_ANALYSIS.md), and
+[two candidate definitions](CANDIDATE_HYPOTHESES.md). DRA-UGO is a provisional research identity; the earlier RB-UGO title is historical.
+Reference identifiers below
 resolve to the matrix's linked, access-labelled source register. No source or test
 code, original-UGO behavior, data, metrics implementation, or dependency was changed.
 
@@ -36,6 +37,18 @@ subgroup need, validation benefit and unlabelled support is sufficient novelty.
 They do not prove that any particular combination is identical to one of the
 six requested papers, whose methods remain unavailable.
 
+## Incremental ingredients and genuinely unresolved questions
+
+Validation-based weighting/data valuation, graph propagation, subgroup partitioning
+and threshold/count tuning are known ingredients [R, D, I, S1, S3, S5, S6].
+Their composition, new title or classifier-specific use does not establish novelty.
+The remaining **research questions**, not proven literature gaps, are whether a
+finite regional intervention diagnostic is predictive at realistic label budgets,
+whether discrimination gains survive the required controls, and whether U adds
+useful structure without label assumptions causing harm. No intrinsic or
+irreducible-region oracle is established. The absent core sources prevent claiming
+that these questions are new. See [PROJECT_SCOPE.md](PROJECT_SCOPE.md).
+
 ## B. What remains unverified?
 
 1. **All six requested publications**, including their title/DOI metadata,
@@ -54,7 +67,7 @@ six requested papers, whose methods remain unavailable.
    minority audit counts, stable across seeds/learners, and replicable on new data.
 5. Whether U contributes beyond its anchors, sample volume, graph construction
    and extra computation; density alone does not establish class membership
-   ([gap analysis §6](mathematical_gap_analysis.md)).
+   ([gap analysis §6](MATHEMATICAL_GAP_ANALYSIS.md)).
 6. Any empirical advantage, novelty, robust safety, or benchmark result. None was
    measured in Stage 4A. R's optimization and D's valuation guarantees do not
    establish an outer-test safety guarantee for our hypothetical generator.
@@ -74,7 +87,7 @@ Reject **as present novelty arguments**:
   [S4; R's validation-guided objective].
 - “Data-limited region detection” inferred solely from high uncertainty, sparse
   density, no observed gain, or graph support. Counterexamples are derived in the
-  [gap analysis](mathematical_gap_analysis.md).
+  [gap analysis](MATHEMATICAL_GAP_ANALYSIS.md).
 - Candidate 2, anchor-compatible graph sensitivity intervals, as a standalone
   novel oversampler. Its core harmonic extension is established graph machinery
   [S3, S7]; an interval does not remove the unknown label-smoothness assumption.
@@ -178,7 +191,7 @@ The following review gates must be met **before any new oversampler code**:
    Candidate 1 will often be wide for small disjuncts; do not promise a practical
    safety guarantee without showing a feasible budget. Resolve AP/all-pairs AUC
    inference separately rather than counting correlated pairs as independent.
-7. Pre-register the controls listed in [gap analysis §7](mathematical_gap_analysis.md),
+7. Pre-register the controls listed in [gap analysis §7](MATHEMATICAL_GAP_ANALYSIS.md),
    U ablations, known-overlap regimes, minority-subregion recall, harm margins,
    reportable inconclusive outcomes, and untouched outer evaluation.
 8. Obtain user review and explicit approval for the next stage. Stage 4A proposes
@@ -209,8 +222,11 @@ were checked as documentation/implementation evidence, not classified as papers.
 
 ## Review and synchronization
 
-Only the four requested files under `docs/research/` belong in the Stage 4A PR.
-The baseline source/tests/dependencies and previous documentation remain unchanged.
+The expanded Stage 4A PR updates README.md, AGENTS.md, DATASETS.md and research
+planning/evidence documents, and adds a current-status note to the historical UGO
+reproduction record. Source, tests, entry points and dependencies remain unchanged.
+The canonical research filenames use uppercase, with no parallel lowercase copies.
+The [roadmap](RESEARCH_ROADMAP.md) stops at Stage 4A and requires Stage 4B review.
 Review the evidence limitations first, then the derivations/controls, then whether
 either conditional question merits further source work. If the conclusion remains
 “no defensible novelty established,” that is the research result of this audit,

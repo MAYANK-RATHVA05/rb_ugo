@@ -1,6 +1,6 @@
 # Stage 4A: prior-art evidence and mathematical comparison
 
-Audit date: 2026-10-10. This is an evidence-limited research audit, not an
+Initial audit: 2026-10-10; DRA-UGO documentation/source-access update: 2026-10-11. This is an evidence-limited research audit, not an
 implementation or a benchmark report. All links below are citations, not evidence
 that every linked page was accessible. Claim scope and access status are explicit.
 
@@ -24,13 +24,21 @@ algorithms from their titles would fabricate evidence, so the comparison cells
 below deliberately remain unknown. No negative novelty claim about any of the six
 is licensed by missing access.
 
-Workspace and merged `main` contained only `docs/ugo_reproduction.md`, not a
-related-paper audit. The available Stage 2 branch had no research audit either.
-No paper PDFs were attached. The existing UGO document explicitly records
+At the initial audit, merged `main` contained only `docs/ugo_reproduction.md`,
+not a related-paper audit. The current documents preserve and extend that audit. The available Stage 2 branch had no research audit either.
+The earlier pasted Stage 1–3 instructions contained no identifiable related-paper
+collection; no core-paper PDFs were attached. The existing UGO document explicitly records
 provisional pools, cap, rounding, and neighbor conventions. Its code was preserved
 unchanged in this stage; “original UGO” is still an **unverified reproduction
 baseline**, not a source-validated original algorithm. See
 [the existing reproduction record](../ugo_reproduction.md).
+
+A new access check on 2026-10-11 returned the same proxy error for the six
+landing pages, the augmentation PDF and Crossref's UGO record. The three PMLR
+PDFs below remained accessible, with the same SHA-256 hashes. This confirms
+availability, not additional theorem verification. Exact user-supplied titles,
+missing metadata and the expanded related-paper checklist are recorded in
+[REFERENCE_STATUS.md](REFERENCE_STATUS.md).
 
 ## Required comparison: six requested sources
 
@@ -53,6 +61,20 @@ baseline**, not a source-validated original algorithm. See
 | GDEO | U | U | U | U | U | U |
 | Don't Oversample the Boundary | U | U | U | U | U | U |
 | Synthetic Augmentation in Imbalanced Learning | U | U | U | U | U | U |
+
+| Source | Synthetic-point generation | Verifiable complexity | Closest relationship to DRA-UGO |
+| --- | --- | --- | --- |
+| UGO | U | U | Candidate classifier-specific baseline; exact method correspondence U |
+| SLEO | U | U | Requested small-disjunct/entropy comparator; actual correspondence U |
+| SSHR | U | U | Requested semi-supervised comparator; actual separate-U protocol U |
+| GDEO | U | U | Requested discriminative/overlap comparator; exact constraints U |
+| Don't Oversample the Boundary | U | U | User identifies remedy decomposition as a major novelty threat; its actual mathematical criteria U |
+| Synthetic Augmentation in Imbalanced Learning | U | U | User identifies risk/mismatch/VTSS as competing explanations; exact theory/VTSS rule U |
+
+These relationships describe **questions to verify from the user's research
+brief**, not method findings inferred from titles. The earlier tables plus this
+one cover all requested quantities, mechanisms, uncertainty, overlap, subgroup,
+U/pseudo-label, marginal-benefit, threshold, guarantee and complexity dimensions.
 
 For each source, the author equations are **not verified**. Before replacing a U,
 record the exact page/section/equation and whether it came from full text, an

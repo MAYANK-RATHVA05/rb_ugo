@@ -2,8 +2,14 @@
 
 ## Evidence boundary and problem formulation
 
+This audit now supports the provisional DRA-UGO research direction. “Data
+reducibility” refers to an estimated intervention response, not an identified
+intrinsic property. No finalized RB-UGO/DRA-UGO algorithm is established. The
+[scope](PROJECT_SCOPE.md), [roadmap](RESEARCH_ROADMAP.md) and
+[dataset/evaluation plan](DATASET_PLAN.md) address official questions A, B and C.
+
 The six requested publications cannot presently be verified even from abstracts.
-The [prior-art matrix](prior_art_matrix.md) distinguishes that missing evidence
+The [prior-art matrix](PRIOR_ART_MATRIX.md) distinguishes that missing evidence
 from three verified additional full texts and pinned library sources. Citations
 R/D/I and S1–S7 below refer to its linked reference register. Equations explicitly
 called “audit derivations” are our reasoning, not newly discovered paper equations
@@ -13,7 +19,7 @@ The operational question is: **for a fixed learner, generator, fitting set and
 evaluation distribution, which proposed local augmentation improves confirmed
 discrimination beyond threshold changes, weighting, and matched-count controls?**
 It is not “which regions intrinsically need synthetic data?” Data value depends on
-the learner, metric and other data, as explicitly formulated in [D, §§1–2, 6](prior_art_matrix.md#d-ghorbani--zou-2019-data-shapley-equitable-valuation-of-data-for-machine-learning).
+the learner, metric and other data, as explicitly formulated in [D, §§1–2, 6](PRIOR_ART_MATRIX.md#d-ghorbani--zou-2019-data-shapley-equitable-valuation-of-data-for-machine-learning).
 Training influence depends on curvature and optimization assumptions [I, §2].
 Validation-guided weighting is already an objective in [R, §3.1].
 
@@ -207,7 +213,7 @@ The output categories must be cautious:
 - **Inconclusive:** insufficient support or precision. Failure to reject no
   benefit is not proof of no benefit; it is especially common for small disjuncts.
 
-The detailed proposal and bounds are in [candidate_hypotheses.md](candidate_hypotheses.md).
+The detailed proposal and bounds are in [CANDIDATE_HYPOTHESES.md](CANDIDATE_HYPOTHESES.md).
 
 ## 6. What unlabelled X can and cannot tell us
 
@@ -303,6 +309,32 @@ the selected **procedure**, not only the winning inner candidate. Predeclare
 practical effect margins; wide intervals produce “inconclusive,” not a favourable
 safe/beneficial designation. [D, §4] separates valuation from final reporting;
 [R]'s validation-objective convergence is not a substitute for this separation.
+
+## 9. Direct novelty threats and exact three-question interpretation
+
+The user identifies remedy decomposition (threshold-recoverable, data-reducible,
+irreducible) and augmentation risk/generator mismatch/VTSS as particularly close
+competitors. Their full text and even abstracts remain unavailable. Accordingly,
+no partition criterion, risk equation, sample-size rule, statistical condition or
+local-benefit claim is attributed to either paper. The audit's equations above
+are independently derived, not reconstructions of those authors' equations.
+[REFERENCE_STATUS.md](REFERENCE_STATUS.md) specifies the missing source sections.
+
+The gap to investigate is not simply “UGO does not use our scores”. It is whether
+an independently confirmed regional response has useful predictive value beyond
+published valuation/reweighting/influence and remedy/count-selection mechanisms
+[R, D, I; six requested methods unverified]. If the inaccessible papers already
+specify the same estimand, controls and decision rule, the supposed gap closes.
+No novelty follows from choosing AP, FPR, a subgroup or a confidence interval.
+
+For **A**, a beneficial near-boundary candidate must improve discrimination or
+the declared decision objective beyond tuned controls without unacceptable harm;
+uncertainty and geometric proximity alone are insufficient. For **B**, region
+counts identify representation, not benefit: demonstrate rare-region effects and
+coverage independently of global gains. For **C**, identify a matched U increment
+under explicit structural assumptions rather than treating density as minority
+truth. The proposed controlled distributions and metrics are in
+[DATASET_PLAN.md](DATASET_PLAN.md), not completed experiments.
 
 ## Conclusion
 
