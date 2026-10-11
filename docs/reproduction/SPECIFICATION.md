@@ -4,6 +4,11 @@ Stage 4R-1: source inventory, paper-to-code specification and recovery review.
 Prepared 2026-10-11. This stage changes documentation only; no algorithm repair,
 data acquisition, final-model training or benchmark experiment is executed here.
 
+Current implementation update: Stage 4R-2 has since recovered the fixed-batch
+and explicit-cap corrections. See [CORE_ALIGNMENT.md](CORE_ALIGNMENT.md) for
+that stage's validation evidence. Baseline-status statements below describe
+commit `c2fa7f3`, preserved as the specification's starting point.
+
 ## Objective and baseline
 
 Reproduce the original UGO framework and its reported experiments, tables and

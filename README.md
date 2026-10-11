@@ -1,14 +1,13 @@
 # Risk-Budgeted Uncertainty-Guided Oversampling (RB-UGO)
 
-## Scope: Stages 1–3
+## Scope: foundation and original UGO reproduction
 
 This portable Python 3.11 research repository provides configuration and directory
 validation (Stage 1), plus binary CSV/KEEL loading and descriptive imbalance
-analysis (Stage 2). Stage 3 adds provisional, prompt-based UGO-ROS/UGO-SMOTE and
-an artificial-data sanity check. The full paper was inaccessible; this is not a
-verified faithful reproduction. That describes the historical Stage 3 source
-status; the full PDF has now been reviewed for the original-paper reproduction
-specification below. Only the internal UGO classifier is fitted. No
+analysis (Stage 2). Stage 3 added provisional UGO-ROS/UGO-SMOTE and an artificial
+sanity check. Stage 4R-2 applies reviewed fixed-batch and explicit-cap corrections
+after reading the full paper; unresolved source choices still prevent a verified
+faithful reproduction claim. Only the internal UGO classifier is fitted. No
 automatic preprocessing, evaluation splits, final model scoring, benchmark
 experiments, or Risk-Budgeted UGO are implemented. Further stages require approval.
 
@@ -20,9 +19,11 @@ Stage 4R-1 records the full-paper requirements in
 available article, missing supplementary materials, fourteen classifiers,
 comparison methods, experiment outputs and unresolved paper choices. It also
 identifies reusable batch/cap corrections on the historical verification branch.
-This documentation stage does not apply those corrections or run experiments.
-The current executable baseline remains Stage 3; original UGO reproduction is
-separate from the RB-UGO research motivation below.
+Stage 4R-2 selectively recovers those corrections, with conformance tests and
+[a core alignment report](docs/reproduction/CORE_ALIGNMENT.md). Batches now use
+the fixed original total; `cap_interpretation` exposes both conflicting published
+thresholds. Neither stage runs benchmark experiments. Original UGO reproduction
+is separate from the RB-UGO research motivation below.
 
 ## Research motivation
 
@@ -37,9 +38,9 @@ necessarily improve generalization, and false positives can increase.
 The base paper, **“Uncertainty guided oversampling: A classifier-specific approach
 for effective handling of class imbalance in machine learning,”** motivates using
 classifier uncertainty to guide oversampling for a particular classifier. A
-faithful implementation requires examining the original algorithm and protocol;
-this scaffold does not claim to reproduce it yet. Bibliographic metadata and
-algorithm details must be verified before adding citations or implementation.
+faithful implementation requires resolving the source conflicts and completing
+its experimental protocol. The available article has been audited; this project
+does not yet claim unique author-code equivalence or reproduced paper results.
 
 Our proposed research question is whether accepting or rejecting uncertainty-guided
 synthetic minority batches according to held-out balanced risk and majority-class
@@ -245,14 +246,15 @@ above before these commands. Open this repository root in Antigravity and select
 `.venv\Scripts\python.exe`. Linux cloud validation does not establish that the
 Windows environment has already been tested or synchronized.
 
-## Stage 3: provisional original-UGO implementation
+## Original UGO software: Stage 3 and Stage 4R-2 corrections
 
 Read [docs/ugo_reproduction.md](docs/ugo_reproduction.md) first. The implementation
-follows the supplied signed MMA equation and highest-mean-uncertainty class rule,
+follows the paper's signed MMA equation and highest-mean-uncertainty class rule,
 with kNN noise detection, relocation, and Welch stopping. It does not silently
 force minority-only generation or replace uncertainty selection with ordinary
-SMOTE. The cap formula, selection pools, rounding, and neighborhood rules are
-explicitly provisional because the full paper could not be read.
+SMOTE. It uses fixed original-total batches and names the two conflicting cap
+expressions. Selection pools, rounding, neighborhood details and batch clipping
+remain explicit reproduction conventions where the paper is ambiguous.
 
 ```python
 from sklearn.linear_model import LogisticRegression
@@ -260,7 +262,8 @@ from src.ugo import UGO
 
 # X_fit/y_fit must be fitting data only: finite numerical features, two classes.
 sampler = UGO(LogisticRegression(max_iter=1000, random_state=42),
-              variant="smote", allow_provisional=True)
+              variant="smote", cap_interpretation="section_3_3",
+              allow_provisional=True)
 # X_augmented, y_augmented = sampler.fit_resample(X_fit, y_fit)
 # print(sampler.diagnostics_)
 ```
@@ -269,7 +272,7 @@ Run the included artificial-data sanity check on Windows after synchronizing:
 
 ```powershell
 git fetch origin
-git switch stage3-ugo-reproduction
+git switch ugo-paper-reproduction
 git pull --ff-only
 .\.venv\Scripts\python.exe main_stage1.py
 .\.venv\Scripts\python.exe main_stage3.py
@@ -281,4 +284,5 @@ diagnostics are software evidence only; it reports no accuracy or benchmark
 results. Categorical/missing features require future training-only preprocessing
 outside UGO. Already-converted numeric category codes cannot be detected by
 dtype alone; callers must ensure numerical distance is meaningful. Stage 1/2
-entry points continue to work unchanged. Stop after Stage 3.
+entry points continue to work unchanged. Stop after the requested reproduction
+stage; subsequent stages require separate authorization under AGENTS.md.
