@@ -7,10 +7,11 @@ validation (Stage 1), plus binary CSV/KEEL loading and descriptive imbalance
 analysis (Stage 2). Stage 3 added provisional UGO-ROS/UGO-SMOTE and an artificial
 sanity check. Stage 4R-2 applies reviewed fixed-batch and explicit-cap corrections
 after reading the full paper; unresolved source choices still prevent a verified
-faithful reproduction claim. Partial Stage 4R-3 adds a shared generator interface,
-provisional numerical RWO and UGO-RWO using a checksum-verified third-party source.
-Original RWO, MCSMOTE and LEAO specifications remain unavailable. Only the
-internal UGO classifier is fitted. No
+faithful reproduction claim. Stage 4R-3 uses the three uploaded original method
+papers for numerical RWO, MCSMOTE, LEAO, and all four UGO generator variants.
+Their source conflicts and remaining implementation conventions are recorded.
+UGO fits its internal scoring classifier; LEAO fits its probability model on
+fitting rows. No
 automatic preprocessing, evaluation splits, final model scoring, benchmark
 experiments, or Risk-Budgeted UGO are implemented. Further stages require approval.
 
@@ -28,10 +29,10 @@ the fixed original total; `cap_interpretation` exposes both conflicting publishe
 thresholds. Neither stage runs benchmark experiments. Original UGO reproduction
 is separate from the RB-UGO research motivation below.
 
-Partial Stage 4R-3 adds `variant="rwo"` and `RandomWalkOversampler`, with
-separate third-party source status and explicit opt-in. See the
-[generator alignment report](docs/reproduction/GENERATOR_ALIGNMENT.md) for its
-numerical scope, verification and remaining MCSMOTE/LEAO source requirements.
+Stage 4R-3 adds `variant="rwo"`, `variant="mcsmote"`, their standalone
+baselines, the LEAO comparator, and constructors for NORES/RUS/ROS/SMOTE.
+See the [generator alignment report](docs/reproduction/GENERATOR_ALIGNMENT.md)
+for source equations, numerical scope and unresolved conventions.
 
 ## Research motivation
 
@@ -73,7 +74,10 @@ rb_ugo/                     # Repository root, not a second nested directory
 │   ├── uncertainty.py     # Signed MMA
 │   ├── noise_detection.py # Neighbor votes and relocation
 │   ├── stopping.py        # Welch decision and provisional cap
-│   ├── generators.py      # Shared batches and provisional numerical RWO baseline
+│   ├── generators.py      # Shared batches and numerical RWO baseline
+│   ├── mcsmote.py        # Gaussian transition and Sinkhorn MCSMOTE
+│   ├── leao.py           # LEAO comparator
+│   ├── comparators.py    # NORES and standalone comparator constructors
 │   └── ugo.py             # Provisional UGO variants and diagnostics
 ├── notebooks/.gitkeep      # Future exploratory notebooks
 ├── results/.gitkeep        # Future generated research outputs

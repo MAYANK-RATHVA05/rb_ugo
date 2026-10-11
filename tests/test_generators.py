@@ -41,7 +41,7 @@ def test_singleton_rwo_has_zero_spread_without_method_switch(pool):
     assert info["zero_spread_features"] == [0, 1]
 
 
-@pytest.mark.parametrize("variant", ["ros", "smote", "rwo"])
+@pytest.mark.parametrize("variant", ["ros", "smote", "rwo", "mcsmote"])
 def test_generators_repeat_with_same_seed_and_use_only_fitting_references(pool, variant):
     X, y, noise = pool
     first, info = generate_batch(variant, X, y, [0, 1], 0, noise, 9, np.random.default_rng(42))
@@ -52,6 +52,9 @@ def test_generators_repeat_with_same_seed_and_use_only_fitting_references(pool, 
     if variant == "smote":
         assert set(info["neighbor_indices"]) <= {0, 1, 2}
         assert info["effective_k_smote"] == 2
+    if variant == "mcsmote":
+        assert set(info["target_indices"]) <= {0, 1, 2}
+        assert info["transition_reference_indices"] == [0, 1, 2]
 
 
 @pytest.mark.parametrize("seeds", [[-1], [5], [3], [4], [], [0.5], [[0]]])
@@ -79,13 +82,12 @@ def test_nonfinite_rwo_perturbation_fails_explicitly():
                        [False, False, False], 2, np.random.default_rng(42))
 
 
-def test_mcsmote_never_falls_back():
-    with pytest.raises(ValueError, match="MCSMOTE is unavailable"):
-        generator_metadata("mcsmote")
+def test_mcsmote_metadata_records_paper_conflict():
+    assert generator_metadata("mcsmote")["source_id"] == "MCSMOTE-PDF"
 
 
-def test_rwo_metadata_does_not_claim_author_verification():
-    assert generator_metadata("rwo")["status"] == "third_party_numeric_reference_original_unverified"
+def test_rwo_metadata_identifies_original_source():
+    assert generator_metadata("rwo")["source_id"] == "RWO-PDF"
 
 
 def test_standalone_rwo_balances_minority_preserves_inputs_and_is_cloneable():
@@ -100,6 +102,7 @@ def test_standalone_rwo_balances_minority_preserves_inputs_and_is_cloneable():
     assert sampler.diagnostics_["generation"]["spread_reference_indices"] == [4, 5]
     assert set(sampler.diagnostics_["generation"]["drawn_seed_indices"]) <= {4, 5}
     assert sampler.diagnostics_["number_of_synthetic_samples"] == 2
+    assert sampler.diagnostics_["generation"]["drawn_seed_indices"] == [4, 5]
 
 
 def test_balanced_standalone_rwo_returns_copies():

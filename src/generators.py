@@ -1,7 +1,7 @@
 """Fitting-only batch generation shared by provisional UGO variants.
 
-RWO's numerical perturbation follows the inspected smote-variants 1.0.1 source,
-not verified author code. See docs/reproduction/GENERATOR_ALIGNMENT.md.
+Numerical RWO and MCSMOTE follow their original papers with the conventions
+recorded in docs/reproduction/GENERATOR_ALIGNMENT.md.
 """
 from __future__ import annotations
 
@@ -14,18 +14,20 @@ from numpy.typing import NDArray
 from sklearn.base import BaseEstimator
 
 from src._validation import binary_labels, numeric_matrix, positive_integer
+from src.mcsmote import mcsmote_batch, validate_transition_parameters
 from src.noise_detection import nearest_indices
 
 
 def generator_metadata(variant: str) -> dict[str, str]:
     """Expose evidence separately from UGO's core reproduction status."""
-    if not isinstance(variant, str) or variant not in {"ros", "smote", "rwo"}:
-        if variant == "mcsmote":
-            raise ValueError("MCSMOTE is unavailable: its full specification or verified code is required.")
-        raise ValueError("variant must be 'ros', 'smote', or 'rwo'.")
+    if not isinstance(variant, str) or variant not in {"ros", "smote", "rwo", "mcsmote"}:
+        raise ValueError("variant must be 'ros', 'smote', 'rwo', or 'mcsmote'.")
     if variant == "rwo":
-        return {"method": variant, "source_id": "RWO-SMOTE-VARIANTS-1.0.1",
-                "status": "third_party_numeric_reference_original_unverified"}
+        return {"method": variant, "source_id": "RWO-PDF",
+                "status": "original_source_numeric_with_ugo_pool_conventions"}
+    if variant == "mcsmote":
+        return {"method": variant, "source_id": "MCSMOTE-PDF",
+                "status": "original_source_with_declared_conflict_resolutions"}
     return {"method": variant, "source_id": "UGO-PDF",
             "status": "source_audited_with_pool_and_draw_conventions"}
 
@@ -33,6 +35,8 @@ def generator_metadata(variant: str) -> dict[str, str]:
 def generate_batch(
     variant: str, X: Any, y: Any, seeds: Any, selected: Any,
     pre_noise: Any, batch_size: int, rng: np.random.Generator, *, k_smote: int = 5,
+    q_mcsmote: float = 0.1, sinkhorn_tolerance: float = 1e-4,
+    max_sinkhorn_iter: int = 1000,
 ) -> tuple[NDArray | None, dict[str, Any]]:
     """Generate exactly one batch from explicit original fitting pools.
 
@@ -42,6 +46,8 @@ def generate_batch(
     None means insufficient SMOTE partners; there is no method substitution.
     """
     generator_metadata(variant)
+    if variant == "mcsmote":
+        validate_transition_parameters(q_mcsmote, sinkhorn_tolerance, max_sinkhorn_iter)
     matrix = numeric_matrix(X)
     labels, _ = binary_labels(y, len(matrix))
     noise = np.asarray(pre_noise)
@@ -64,7 +70,7 @@ def generate_batch(
         return matrix[draws].copy(), info
     eligible = np.flatnonzero((labels == selected) & ~noise)
     if variant == "rwo":
-        # Third-party source uses population std (ddof=0), not sample std.
+        # RWO Algorithm 1 uses population variance (1/n), then sqrt(n).
         with np.errstate(over="ignore", invalid="ignore"):
             scale = np.std(matrix[eligible], axis=0, ddof=0) / np.sqrt(len(eligible))
             generated = matrix[draws] + rng.normal(size=(batch_size, matrix.shape[1])) * scale
@@ -73,6 +79,12 @@ def generate_batch(
         info.update({"spread_reference_indices": eligible.tolist(),
                      "perturbation_scale": scale.tolist(), "std_ddof": 0,
                      "zero_spread_features": np.flatnonzero(scale == 0).tolist()})
+        return generated, info
+    if variant == "mcsmote":
+        generated, details = mcsmote_batch(matrix, eligible, draws, rng,
+                                            q=q_mcsmote, tolerance=sinkhorn_tolerance,
+                                            max_iter=max_sinkhorn_iter)
+        info.update(details)
         return generated, info
     if len(eligible) < 2:
         return None, {"effective_k_smote": 0}
@@ -93,11 +105,11 @@ def generate_batch(
 
 
 class RandomWalkOversampler(BaseEstimator):
-    """Provisional numeric RWO baseline; balance the original minority count.
+    """Original-source numerical RWO baseline; balance minority count.
 
     Uses all original minority rows as seeds/spread references, with no UGO
     noise filtering, uncertainty selection, stopping test, or relocation.
-    Dense numerical features only; discrete-feature RWO is not implemented.
+    Dense numerical features only; paper's categorical roulette is unimplemented.
     """
 
     def __init__(self, random_state: int = 42, allow_provisional: bool = False) -> None:
@@ -109,14 +121,14 @@ class RandomWalkOversampler(BaseEstimator):
             if hasattr(self, attr):
                 delattr(self, attr)
         if not isinstance(self.allow_provisional, bool) or not self.allow_provisional:
-            raise ValueError("Original RWO source is unverified; set allow_provisional=True.")
+            raise ValueError("RWO numeric-only conventions remain; set allow_provisional=True.")
         if isinstance(self.random_state, bool) or not isinstance(self.random_state, Integral) or not 0 <= self.random_state < 2 ** 32:
             raise ValueError("random_state must be an integer in [0, 2**32).")
         matrix = numeric_matrix(X)
         labels, classes = binary_labels(y, len(matrix))
         counts = np.array([(labels == label).sum() for label in classes])
         count = int(counts.max() - counts.min())
-        warnings.warn("Provisional RWO: third-party numeric source; original specification unverified.",
+        warnings.warn("Provisional RWO: original-source numeric rule; categorical support and UGO conventions remain unresolved.",
                       UserWarning, stacklevel=2)
         self.classes_ = classes.copy()
         self.n_features_in_ = matrix.shape[1]
@@ -128,9 +140,21 @@ class RandomWalkOversampler(BaseEstimator):
             return matrix, labels
         selected = classes[int(np.argmin(counts))]
         seeds = np.flatnonzero(labels == selected)
-        generated, info = generate_batch("rwo", matrix, labels, seeds, selected,
-                                         np.zeros(len(matrix), dtype=bool), count,
-                                         np.random.default_rng(self.random_state))
+        rng = np.random.default_rng(self.random_state)
+        # RWO Algorithm 1 cycles through every original minority point per
+        # 100% oversampling pass. Randomize only a partial final pass.
+        full, remainder = divmod(count, len(seeds))
+        tail = rng.permutation(seeds)[:remainder] if remainder else seeds[:0]
+        draws = np.concatenate((np.tile(seeds, full), tail))
+        with np.errstate(over="ignore", invalid="ignore"):
+            scale = np.std(matrix[seeds], axis=0, ddof=0) / np.sqrt(len(seeds))
+            generated = matrix[draws] + rng.normal(size=(count, matrix.shape[1])) * scale
+        if not np.isfinite(scale).all() or not np.isfinite(generated).all():
+            raise ValueError("RWO perturbation produced nonfinite values.")
+        info = {"drawn_seed_indices": draws.tolist(), "spread_reference_indices": seeds.tolist(),
+                "perturbation_scale": scale.tolist(), "std_ddof": 0,
+                "zero_spread_features": np.flatnonzero(scale == 0).tolist(),
+                "seed_schedule": "full_original_passes_then_permuted_remainder"}
         self.diagnostics_["generation"] = info
         return (np.vstack((matrix, generated)),
                 np.concatenate((labels, np.full(count, selected, dtype=labels.dtype))))

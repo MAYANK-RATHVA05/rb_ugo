@@ -8,10 +8,12 @@ reproduction with explicit paper ambiguities**, not reproduced benchmark evidenc
 See the [reproduction specification](reproduction/SPECIFICATION.md),
 [source register](reproduction/SOURCE_REGISTER.json) and
 [current core alignment report](reproduction/CORE_ALIGNMENT.md).
-Partial Stage 4R-3 adds a shared generator interface, numerical RWO baseline and
-UGO-RWO; see [GENERATOR_ALIGNMENT.md](reproduction/GENERATOR_ALIGNMENT.md).
-RWO uses inspected third-party code as numerical evidence, not verified author
-code. MCSMOTE and LEAO remain unavailable.
+Stage 4R-3 adds a shared generator interface, numerical RWO and MCSMOTE
+baselines, UGO-RWO and UGO-MCSMOTE, the LEAO comparator, and the remaining
+standalone method constructors. See
+[GENERATOR_ALIGNMENT.md](reproduction/GENERATOR_ALIGNMENT.md). All three
+original method papers are now available; source conflicts and implementation
+choices still prevent unique author-code equivalence.
 The historical Stage 3 prototype is preserved at
 [c2fa7f3](https://github.com/MAYANK-RATHVA05/rb_ugo/commit/c2fa7f333689df14c5ab4bb542500bf2676ac897).
 
@@ -120,8 +122,12 @@ Current explicit conventions:
 - Numerical RWO adds independent Gaussian perturbations with population standard
   deviation of the original pre-clean selected class divided by sqrt(class size).
   Informative seeds are centers; clean nonseed class rows contribute spread.
-  It requires provisional opt-in and reports separate third-party source status.
+  It requires provisional opt-in and reports original-source numerical status.
   Discrete/categorical RWO rules are not implemented.
+- MCSMOTE constructs a Gaussian kernel over clean selected-class originals,
+  Sinkhorn-normalizes it, samples transition targets and interpolates from
+  informative seeds. The published sign and stopping conflicts are resolved
+  explicitly as described in the generator alignment report.
 
 The paper does not uniquely settle every pool, vote-tie and draw convention.
 Section 3.1 supports augmented retraining, while Table 4 omits the corresponding
@@ -165,25 +171,28 @@ is a separate engineering bound; all-noise/no-neighbor paths are also diagnosed.
 
 | Parameter | Default | Meaning |
 | --- | --- | --- |
-| variant | ros | ROS, SMOTE or provisional numerical RWO; no silent fallback |
+| variant | ros | ROS, SMOTE, numerical RWO or MCSMOTE; no silent fallback |
 | lambda_select | 0.5 | Eligible-original seed fraction; rounding convention above |
 | lambda_step | 0.1 | Fixed original-total nominal batch fraction |
 | phi | 2.5 | Selected source threshold multiplier |
 | cap_interpretation | section_3_3 | Named paper expression; alternative table4 |
 | k_pre / k_after | 5 / 1 | Initial and final votes |
 | k_smote | 5 | Same-class interpolation neighborhood |
+| q_mcsmote | 0.1 | Declared Gaussian bandwidth quantile default; paper tunes per dataset |
+| sinkhorn_tolerance | 1e-4 | MCSMOTE marginal convergence threshold |
+| max_sinkhorn_iter | 1000 | Engineering safeguard against nonconvergence |
 | alpha | 0.05 | Defined Welch failure-to-reject threshold |
 | random_state | 42 | Local default, not a verified author seed |
 | max_iter | 100 | Engineering bound |
 | allow_provisional | False | Explicit opt-in to remaining ambiguities |
 
-Diagnostics record implementation_revision=stage4r3_shared_generators_provisional_numeric_rwo,
+Diagnostics record implementation_revision=stage4r3_original_source_generators,
 nominal_batch_size, cap policy/budget, effective parameters, original/final
 counts, noise/relocation counts, selected classes/seeds, Welch values and status,
 drawn seeds/partners/interpolation steps, generated counts and stopping reason.
-Generator metadata distinguishes RWO's third-party evidence from ROS/SMOTE's
-source audit. RWO batch records include spread reference indices, perturbation
-scales, ddof and zero-spread features.
+Generator metadata identifies the original source for RWO and MCSMOTE.
+RWO batch records include spread references and scales; MCSMOTE records
+transition references, targets, interpolation steps and matrix diagnostics.
 They contain no predictive-performance metrics.
 
     from sklearn.linear_model import LogisticRegression
@@ -215,8 +224,8 @@ iterations for both generators, test both cap policies and fractional/integral
 thresholds, check clipped final batches, and reject invalid policy without stale
 fitted state.
 
-Partial Stage 4R-3 extends shared UGO checks to RWO and adds numerical generator
-and standalone baseline checks. The full suite has 198 passing tests. ROS/SMOTE
+Stage 4R-3 extends shared UGO checks to RWO and MCSMOTE and adds numerical
+generator, LEAO and comparator checks. ROS/SMOTE
 samples and generation diagnostics matched four captured pre-refactor cases
 exactly. These remain software checks, not reproduced paper results.
 
@@ -224,8 +233,8 @@ The demo remains an artificial 120-row/four-feature make_classification example
 with seed 42 and logistic regression. It does not reproduce either paper
 simulation or report held-out scores. Its diagnostics are software evidence only.
 
-Still required: evidence for ambiguous conventions, authoritative missing
-generator/comparator implementations, simulations, verified benchmark variants,
+Still required: evidence for ambiguous conventions and author code, simulations,
+verified benchmark variants,
 classifier settings, training-only preprocessing, evaluation, statistical
 analyses and paper-result comparison. Stop after the requested stage; later
 stages require separate authorization under AGENTS.md.

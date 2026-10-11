@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "reviewed_on": "2026-10-11",
-  "scope": "Original binary UGO reproduction; source inventory and partial Stage 4R-3 generator implementation",
+  "scope": "Original binary UGO reproduction; source inventory and Stage 4R-3 numerical generator/comparator implementation",
   "baseline_commit": "c2fa7f333689df14c5ab4bb542500bf2676ac897",
   "historical_audit_commit": "0866dc936f231feef9df5e1538b8df206741735d",
   "historical_resource_branch_commit": "0d78c2d9db22f92cee912c94671705d4cd5ef8b9",
@@ -64,31 +64,46 @@
       "note": "No author-code repository is identified in the uploaded article; do not treat our GitHub implementation as author code."
     },
     {
-      "id": "RWO-SOURCE",
+      "id": "RWO-PDF",
       "kind": "generator_reference",
       "title": "RWO-sampling: A random walk over-sampling approach to imbalanced data classification",
       "doi": "10.1016/j.inffus.2013.12.003",
       "article_reference": 50,
-      "status": "citation_read_full_text_not_available_here",
-      "sha256": null
+      "status": "user_supplied_full_text_available_algorithm_inspected_numerical_equation_implemented",
+      "received_filename": "rwo paper.pdf",
+      "bytes": 1138274,
+      "pages": 18,
+      "sha256": "01c97213a4713aaa04cdbad577a275f9c26981d7bc1cbbb4caf3062f7327be46",
+      "tracked_pdf": false,
+      "note": "Section 3, Eq. 4 and Algorithm 1 inspected; numerical rule implemented, categorical roulette remains unsupported."
     },
     {
-      "id": "MCSMOTE-SOURCE",
+      "id": "MCSMOTE-PDF",
       "kind": "generator_reference",
       "title": "MCSMOTE: a transition matrix-driven oversampling technique for class imbalance",
       "doi": "10.1016/j.asoc.2025.113906",
       "article_reference": 37,
-      "status": "citation_read_full_text_not_available_here",
-      "sha256": null
+      "status": "user_supplied_full_text_available_algorithm_inspected_with_pseudocode_conflicts",
+      "received_filename": "mcsmote.pdf",
+      "bytes": 7930516,
+      "pages": 20,
+      "sha256": "d5ddad5569e6207da55f6e62eceb9e6b8383e9758c7f999004c7b3b59e4e1053",
+      "tracked_pdf": false,
+      "note": "Section 3, Eqs. 1–4 and Algorithms 1–2 inspected. Algorithm 2's interpolation sign and loop condition conflict with its equation/prose; numerical conventions documented."
     },
     {
-      "id": "LEAO-SOURCE",
+      "id": "LEAO-PDF",
       "kind": "comparator_reference",
       "title": "Local entropy-adversarial oversampling for imbalanced datasets",
       "doi": "10.1016/j.neucom.2025.131959",
       "article_reference": 38,
-      "status": "citation_read_full_text_not_available_here",
-      "sha256": null
+      "status": "user_supplied_full_text_available_algorithm_inspected_with_entropy_and_execution_ambiguities",
+      "received_filename": "lco paper.pdf",
+      "bytes": 8669831,
+      "pages": 12,
+      "sha256": "a01a7f26b0df6397eefbc8a2cad5b02ee39b9ef084bbf2ab188f46266175e0aa",
+      "tracked_pdf": false,
+      "note": "Filename says lco but title and DOI identify LEAO. Equation 1 entropy sign and Algorithm 1 execution gaps require documented conventions."
     },
     {
       "id": "RWO-SMOTE-VARIANTS-1.0.1",
@@ -108,7 +123,7 @@
         }
       ],
       "license": "MIT",
-      "status": "download_checksum_verified_source_inspected_original_algorithm_unverified",
+      "status": "download_checksum_verified_source_inspected_now_secondary_reference",
       "retrieved_on": "2026-10-11",
       "installed": false,
       "tracked_archive": false,

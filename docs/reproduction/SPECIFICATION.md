@@ -8,9 +8,10 @@ Current implementation update: Stage 4R-2 has since recovered the fixed-batch
 and explicit-cap corrections. See [CORE_ALIGNMENT.md](CORE_ALIGNMENT.md) for
 that stage's validation evidence. Baseline-status statements below describe
 commit `c2fa7f3`, preserved as the specification's starting point.
-Partial Stage 4R-3 now provides a shared batch interface and provisional numerical
-RWO/UGO-RWO from a verified third-party archive; original RWO verification,
-MCSMOTE and LEAO remain pending. See [GENERATOR_ALIGNMENT.md](GENERATOR_ALIGNMENT.md).
+Stage 4R-3 now provides all four numerical UGO generators and all standalone
+comparators from the uploaded original RWO, MCSMOTE and LEAO papers. It retains
+declared source ambiguities and lacks author-code equivalence. See
+[GENERATOR_ALIGNMENT.md](GENERATOR_ALIGNMENT.md).
 
 ## Objective and baseline
 
@@ -67,7 +68,8 @@ Next source actions:
   downloads; preserve originals, record hashes, then inspect working copies.
 - Locate author code and configuration if published; otherwise retain
   `not_located`, not a fabricated link.
-- Obtain authoritative RWO, MCSMOTE and LEAO specifications/implementations.
+- Original RWO, MCSMOTE and LEAO papers are now obtained; check author code or
+  supplementary settings if available before claiming exact author equivalence.
 - Record exact data releases, binaries, folds and software versions when found.
 - Continue independent software work while materials remain missing, but do not
   claim exact results where required evidence is absent.
@@ -113,7 +115,7 @@ and nsyn the accumulated generated count. UGO receives fitting data only.
 | U09 | §3.4 and Table 4 | Relocate generated noise to nearest clean same-class reference. Present | Actual destination coordinates and no eligible destination |
 | U10 | §3.3, p6 | Stop on Welch non-rejection. Present as equivalent binary two-sided t-test | Two-group ANOVA equivalence, both decisions, degenerate groups |
 | U11 | §3.3 versus Table 4 | Conflicting cap expressions. Main exposes one only | Recover named policies; validate threshold arithmetic and diagnostics |
-| U12 | §4.2, p8 | UGO-RWO and UGO-MCSMOTE. Missing | Source-backed generator equations and common UGO behavioral contracts |
+| U12 | §4.2, p8 | UGO-RWO and UGO-MCSMOTE. Both numerical variants implemented with source conflict diagnostics | Source-backed generator equations and common UGO behavioral contracts |
 
 Source conflicts and reproduction policy:
 
@@ -291,7 +293,9 @@ paper value, reproduced value, protocol/source differences and fidelity status.
 
 ## Implementation checklist and stage gates
 
-All following stages are planned, not completed by this specification.
+This table was the initial stage plan. Stages 4R-1 and 4R-2 are complete;
+Stage 4R-3 now has all numerical methods with documented source choices.
+The remaining experiment stages are planned.
 
 | Stage | Work | Exit evidence |
 | --- | --- | --- |

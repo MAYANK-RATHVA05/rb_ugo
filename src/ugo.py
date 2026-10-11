@@ -67,7 +67,7 @@ class UGO(BaseEstimator):
     clones it, fits a copied augmented fitting set, and measures MMA on clean
     original rows. Only fitting data are accepted by fit_resample(X, y).
 
-    Use variant='ros', 'smote' or provisional numeric 'rwo'. Defaults and unresolved
+    Use variant='ros', 'smote', 'rwo' or 'mcsmote'. Defaults and unresolved
     details are listed in ASSUMPTIONS. allow_provisional=True is required while
     documented source ambiguities remain. max_iter=100 is an engineering bound,
     not a paper stopping rule. k_smote=5 follows the paper experiment. Random states
@@ -80,7 +80,8 @@ class UGO(BaseEstimator):
         lambda_step: float = 0.1, phi: float = 2.5, k_pre: int = 5,
         k_after: int = 1, alpha: float = 0.05, random_state: int = 42,
         max_iter: int = 100, k_smote: int = 5, allow_provisional: bool = False,
-        cap_interpretation: str = "section_3_3",
+        cap_interpretation: str = "section_3_3", q_mcsmote: float = 0.1,
+        sinkhorn_tolerance: float = 1e-4, max_sinkhorn_iter: int = 1000,
     ) -> None:
         self.estimator = estimator
         self.variant = variant
@@ -95,11 +96,18 @@ class UGO(BaseEstimator):
         self.k_smote = k_smote
         self.allow_provisional = allow_provisional
         self.cap_interpretation = cap_interpretation
+        self.q_mcsmote = q_mcsmote
+        self.sinkhorn_tolerance = sinkhorn_tolerance
+        self.max_sinkhorn_iter = max_sinkhorn_iter
 
     def _validate_parameters(self) -> Any:
         if not isinstance(self.allow_provisional, bool) or not self.allow_provisional:
             raise ValueError("Paper ambiguities remain; set allow_provisional=True only for a documented provisional run.")
         generator_metadata(self.variant)
+        if self.variant == "mcsmote":
+            from src.mcsmote import validate_transition_parameters
+            validate_transition_parameters(self.q_mcsmote, self.sinkhorn_tolerance,
+                                           self.max_sinkhorn_iter)
         for name in ["lambda_select", "lambda_step"]:
             value = finite_real(getattr(self, name), name)
             if not 0 < value <= 1:
@@ -123,7 +131,10 @@ class UGO(BaseEstimator):
         pre_noise: NDArray, batch_size: int, rng: np.random.Generator,
     ) -> tuple[NDArray | None, dict[str, Any]]:
         return generate_batch(self.variant, X, y, seeds, selected, pre_noise,
-                              batch_size, rng, k_smote=self.k_smote)
+                              batch_size, rng, k_smote=self.k_smote,
+                              q_mcsmote=self.q_mcsmote,
+                              sinkhorn_tolerance=self.sinkhorn_tolerance,
+                              max_sinkhorn_iter=self.max_sinkhorn_iter)
 
     def fit_resample(self, X: Any, y: Any) -> tuple[NDArray, NDArray]:
         """Return copied augmented fitting data and expose diagnostics_.
@@ -155,6 +166,7 @@ class UGO(BaseEstimator):
         parameters = {name: self._scalar(getattr(self, name)) for name in [
             "variant", "lambda_select", "lambda_step", "phi", "k_pre", "k_after",
             "alpha", "random_state", "max_iter", "k_smote", "allow_provisional", "cap_interpretation",
+            "q_mcsmote", "sinkhorn_tolerance", "max_sinkhorn_iter",
         ]}
         estimator_seeds = {key: value for key, value in template.get_params(deep=True).items()
                            if key == "random_state" or key.endswith("__random_state")}
@@ -164,14 +176,16 @@ class UGO(BaseEstimator):
         parameters["estimator_random_states"] = {**estimator_seeds, **filled_seeds}
         notes = list(ASSUMPTIONS)
         if self.variant == "rwo":
-            notes.append("Numeric RWO uses a third-party reference, not verified original/author code; clean original selected-class population spread is a convention.")
+            notes.append("Numerical RWO matches original Eq. 4; clean selected-class spread and informative replacement draws are UGO conventions.")
+        if self.variant == "mcsmote":
+            notes.append("MCSMOTE uses original Eq. 1 convex interpolation; Algorithm 2 has a conflicting minus sign and inverted loop test.")
         if self.k_pre > len(original_X) - 1:
             notes.append("k_pre clamped to original sample count minus one.")
         if self.k_after > len(original_X):
             notes.append("k_after clamped to original sample count.")
         self.diagnostics_ = {
             "reproduction_status": "source_audited_with_ambiguities",
-            "implementation_revision": "stage4r3_shared_generators_provisional_numeric_rwo",
+            "implementation_revision": "stage4r3_original_source_generators",
             "generator": generator_metadata(self.variant),
             "nominal_batch_size": nominal_batch_size,
             "original_class_counts": self._counts(original_y, classes),
