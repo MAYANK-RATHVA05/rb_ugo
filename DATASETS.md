@@ -20,20 +20,7 @@ class grouping instead of treating it as interchangeable with the source dataset
 
 `tests/fixtures/toy.csv` and `toy.dat` are deliberately tiny, synthetic software
 fixtures. They test parser behavior and count calculations only. They are not
-research benchmarks, experimental results, or evidence for UGO or the provisional
-DRA-UGO research direction.
-
-## Current proposed research plan
-
-The provisional DRA-UGO shortlist, known-overlap/subgroup/noise simulations,
-labelled/unlabelled budgets and independent A/B/C evaluation are in
-[docs/research/DATASET_PLAN.md](docs/research/DATASET_PLAN.md). They are proposed,
-not downloaded/evaluated benchmarks. Individual KEEL metadata and folds remain
-unverified; no statistics should be inferred from dataset names.
-
-No benchmark-data download is authorized in the current Stage 4A. The rules
-below apply to a future approved acquisition task. Preserve any source-provided
-folds and keep outer-test features and labels out of the unlabelled fitting pool.
+research benchmarks, experimental results, or evidence for UGO/RB-UGO.
 
 ## Adding external data manually
 
