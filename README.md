@@ -13,7 +13,8 @@ Their source conflicts and remaining implementation conventions are recorded.
 Stage 4R-4 prepares simulations, dataset candidates and classifier identities.
 Stage 4R-5 adds training-only preprocessing, paired ten-fold evaluation,
 fresh final model fitting, IAM/MCC/F1 and atomic resumable results. Validation
-uses artificial software fixtures; paper pilots and benchmark experiments remain
+includes artificial software fixtures. Stage 4R-6 executes a measured pilot of
+both declared paper simulation reconstructions. Real benchmark experiments remain
 for later authorized stages. Risk-Budgeted UGO is not implemented.
 
 ## Original UGO reproduction specification
@@ -49,6 +50,14 @@ failures and unavailable classifiers retain empty scores and explicit coverage.
 Verify the software fixture and resume by repeating:
 
     .venv/bin/python main_stage4r5.py --software-check --output results/stage4r5-software-check
+
+Stage 4R-6 completes 300 simulation fold jobs with LogReg/GNB/KNN and five
+methods. The [pilot report](docs/reproduction/SIMULATION_PILOT.md) records
+mixed scores, 19 UGO cap stops, a 25.11-second invocation, 168.44 MiB process
+peak, complete resume, and differences from Tables 9–10. The paper's F1 averaging
+is unresolved; no exact-result or general superiority claim is made.
+
+    .venv/bin/python main_stage4r6.py --report-dir docs/reproduction/pilot_stage4r6
 
 ## Research motivation
 
@@ -101,6 +110,7 @@ rb_ugo/                     # Repository root, not a second nested directory
 │   ├── metrics.py         # IAM/MCC/F1 with fixed source labels
 │   ├── evaluation.py      # Paired ten-fold runner and fresh final fits
 │   ├── results.py         # Atomic records and strict resume identity
+│   ├── pilot.py           # Fixed simulations, paired summaries and resources
 │   └── ugo.py             # Provisional UGO variants and diagnostics
 ├── notebooks/.gitkeep      # Future exploratory notebooks
 ├── results/.gitkeep        # Future generated research outputs
@@ -110,6 +120,7 @@ rb_ugo/                     # Repository root, not a second nested directory
 ├── main_stage3.py          # Provisional UGO software sanity check
 ├── main_stage4r4.py        # Experiment-input and capability inspection
 ├── main_stage4r5.py        # Evaluation CLI and artificial integration check
+├── main_stage4r6.py        # Measured simulation pilot and descriptive export
 ├── docs/ugo_reproduction.md # Equations, assumptions, evidence, unresolved fidelity
 ├── requirements.txt       # Pinned research dependencies
 ├── requirements-dev.txt   # Runtime dependencies plus pytest

@@ -1,0 +1,16 @@
+{
+  "schema_version": 1,
+  "seed": 42,
+  "native_threads": 1,
+  "classifiers": ["LogReg", "GNB", "KNN"],
+  "methods": ["nores", "ros", "smote", "ugo_ros", "ugo_smote"],
+  "scale": true,
+  "method_parameters": {
+    "ugo_ros": {"cap_interpretation": "section_3_3", "max_iter": 100},
+    "ugo_smote": {"cap_interpretation": "section_3_3", "max_iter": 100}
+  },
+  "simulations": {
+    "linear": {"n_majority": 1000, "n_minority": 50, "noise_fraction": 0.3, "normal_second_parameter": "sd"},
+    "nonlinear": {"n_samples": 1000, "noise_fraction": 0.3}
+  }
+}

@@ -245,6 +245,11 @@ Metric definitions:
 - Standard true-row/predicted-column TP/TN/FP/FN; Table 6 p10 swaps FP and FN
   labels. Do not copy that error into FPR or class-specific measures.
 - F1=2TP/(2TP+FP+FN), with declared positive outcome and zero-denominator policy.
+- Stage 4R-6 identifies an unresolved averaging discrepancy: Table 10 LogReg
+  NORES F1=.478 is consistent with macro F1 for majority-only predictions on
+  the illustrated class counts, whereas minority-positive F1 would be zero.
+  This is an inference, not confirmation of author averaging. Keep our fixed
+  positive-label definition and flag F1 comparisons until author evidence resolves it.
 - MCC=(TP*TN-FP*FN)/sqrt((TP+FP)(TP+FN)(TN+FP)(TN+FN)), with explicit degenerate policy.
 - IAM, §4.3 p9: mean over classes i of
   (Cii-max(sum off-diagonal row i, sum off-diagonal column i)) /
@@ -300,8 +305,10 @@ candidates and the fourteen-classifier identity registry, with nine available
 Python approximations. See [EXPERIMENT_SETUP.md](EXPERIMENT_SETUP.md).
 Stage 4R-5 implements fold-local preprocessing, source-checked metrics and the
 paired ten-fold runner with atomic resumable records. Its verification uses
-artificial fixtures; see [EVALUATION.md](EVALUATION.md). Stages 4R-6 through
-4R-8 remain planned.
+artificial fixtures; see [EVALUATION.md](EVALUATION.md). Stage 4R-6 completes
+the selected 300-job simulation pilot, measured resources, resume and descriptive
+paper comparison; see [SIMULATION_PILOT.md](SIMULATION_PILOT.md). Real-data
+pilot expansion needs verified inputs. Stages 4R-7 and 4R-8 remain planned.
 
 | Stage | Work | Exit evidence |
 | --- | --- | --- |

@@ -144,7 +144,9 @@ all 20 saved records. The CLI tests also verify nonzero exit status and ten
 empty-score records for an unavailable classifier.
 
 The supplement's 74 dataset identities/folds and five classifier implementations
-remain unavailable. Next is **4R-6**, the separately authorized measured pilot.
+remain unavailable. The subsequently authorized **4R-6** simulation pilot is
+documented in [SIMULATION_PILOT.md](SIMULATION_PILOT.md), including cap stops
+and the unresolved paper F1 averaging discrepancy.
 Stages **4R-7** and **4R-8** cover the full declared matrix/additional analyses
 and final tables/figures/report. This stage completes the evaluation engine,
 not the whole paper reproduction.

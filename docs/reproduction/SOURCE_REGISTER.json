@@ -211,10 +211,31 @@
     "fresh_final_fit": true,
     "atomic_resumable_records": true,
     "validation_population": "artificial software fixtures only",
-    "paper_pilot_executed": false,
+    "paper_pilot_executed": true,
+    "pilot_fidelity": "Stage 4R-6 declared simulation reconstructions; not author exact rows",
     "paper_benchmark_executed": false,
     "missing_classifier_implementations": 5,
     "paper_supplement_status": "missing"
+  },
+  "simulation_pilot_execution_status": {
+    "stage": "4R-6",
+    "configuration": "configs/stage4r6_pilot.json",
+    "report": "docs/reproduction/SIMULATION_PILOT.md",
+    "simulation_reconstructions_executed": 2,
+    "selected_classifier_approximations": ["LogReg", "GNB", "KNN"],
+    "selected_methods": ["nores", "ros", "smote", "ugo_ros", "ugo_smote"],
+    "expected_fold_jobs": 300,
+    "successful_fold_jobs": 300,
+    "failed_fold_jobs": 0,
+    "unavailable_fold_jobs_in_selected_matrix": 0,
+    "ugo_generation_cap_terminations": 19,
+    "all_cached_jobs_replayed": 300,
+    "measured_wall_seconds": 25.110306950999984,
+    "measured_process_peak_rss_bytes": 176619520,
+    "paper_reference_cells_audited": 90,
+    "paper_f1_averaging": "unresolved formula/table discrepancy",
+    "real_benchmark_datasets_executed": 0,
+    "exact_published_results_reproduced_claim": false
   },
   "source_access_checks": [
     {
