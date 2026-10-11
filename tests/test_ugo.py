@@ -294,6 +294,12 @@ def test_invalid_parameters(toy, kwargs) -> None:
         UGO(ToyEstimator(), allow_provisional=True, **kwargs).fit_resample(*toy)
 
 
+<<<<<<< HEAD
+def test_paper_batch_uses_fixed_original_total_not_class_count(toy) -> None:
+    sampler, _, _ = run(*toy, lambda_step=0.5, max_iter=2)
+    assert sampler.diagnostics_["nominal_batch_size"] == 3  # n=6, not selected-class n=4.
+    assert [r["generated_count"] for r in sampler.diagnostics_["history"]] == [3, 3]
+=======
 @pytest.mark.parametrize("variant", ["ros", "smote"])
 @pytest.mark.parametrize("region,selected", [("low", 0), ("high", 1)])
 def test_paper_batch_uses_fixed_original_total_not_class_count(toy, variant, region, selected) -> None:
@@ -306,6 +312,7 @@ def test_paper_batch_uses_fixed_original_total_not_class_count(toy, variant, reg
     assert [len(X) for X, _ in ToyEstimator.fits] == [6, 9]
     assert len(X_new) == len(y_new) == 12
     assert (y_new[6:] == selected).all()
+>>>>>>> origin/main
     assert sampler.diagnostics_["cap_interpretation"] == "section_3_3"
 
 
@@ -313,6 +320,8 @@ def test_table4_cap_is_available_without_silent_default_switch(toy) -> None:
     sampler, _, _ = run(*toy, cap_interpretation="table4")
     assert sampler.diagnostics_["generation_cap"] == 10
     assert sampler.diagnostics_["effective_parameters"]["cap_interpretation"] == "table4"
+<<<<<<< HEAD
+=======
 
 
 @pytest.mark.parametrize("variant", ["ros", "smote"])
@@ -342,3 +351,4 @@ def test_invalid_cap_policy_clears_previous_state_before_fitting(toy) -> None:
     assert not ToyEstimator.fits
     assert not hasattr(sampler, "diagnostics_")
     assert not hasattr(sampler, "estimator_")
+>>>>>>> origin/main

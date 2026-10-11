@@ -89,6 +89,8 @@ def test_conflicting_table4_threshold_is_explicit() -> None:
     assert generation_cap([90, 10], 2.5, interpretation="section_3_3") == 350
     with pytest.raises(ValueError, match="interpretation"):
         generation_cap([90, 10], interpretation="invented")
+<<<<<<< HEAD
+=======
 
 
 @pytest.mark.parametrize("policy,phi,expected", [
@@ -103,3 +105,4 @@ def test_cap_is_minimal_integer_meeting_selected_threshold(policy, phi, expected
     assert cap == expected
     assert cap >= threshold
     assert cap - 1 < threshold
+>>>>>>> origin/main
