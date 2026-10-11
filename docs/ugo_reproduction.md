@@ -1,5 +1,15 @@
 # Original UGO reproduction: provisional Stage 3 implementation
 
+## Current project direction (documentation note, 2026-10-11)
+
+This is the historical Stage 3 baseline record; its implementation and declared
+assumptions are unchanged. The current provisional research title is DRA-UGO,
+not a finalized Risk-Budgeted UGO method. See
+[the project scope](research/PROJECT_SCOPE.md) and
+[roadmap](research/RESEARCH_ROADMAP.md). Stage 4A is documentation/research only;
+paper fidelity and published-result reproduction remain pending. Stage 4B needs
+user review. Earlier stage-stop instructions below describe Stage 3's boundary.
+
 ## Evidence and status
 
 **This is a prompt-based provisional implementation, not a verified faithful

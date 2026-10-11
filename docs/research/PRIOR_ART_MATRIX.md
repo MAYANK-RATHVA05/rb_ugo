@@ -95,7 +95,7 @@ the local provisional formula as a published equation.
 Three complete 10-page PDFs were obtained with HTTP 200 from **PMLR's public
 GitHub repositories**. Their titles/authors match the official repository's
 publication metadata. Relevant mathematical and experimental sections were read;
-supplementary appendices/proofs were not obtained. PDF hashes are recorded below.
+supplementary appendices/proofs were not comprehensively audited. PDF hashes are recorded below.
 These sources do not fill the six requested evidence gaps, but they materially
 limit possible novelty claims.
 
