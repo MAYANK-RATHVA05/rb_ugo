@@ -116,7 +116,7 @@ def test_ros_only_copies_selected_seeds(toy) -> None:
 
 def test_cap_truncates_last_batch(toy) -> None:
     sampler, X_new, _ = run(*toy, phi=1.0, lambda_step=1.0, max_iter=20)
-    # Original counts [4,2]: floor(1*2*4-6)=2 synthetic rows.
+    # Section 3.3 threshold for original counts [4,2]: 1*2*4-6=2.
     assert sampler.diagnostics_["generation_cap"] == 2
     assert sampler.diagnostics_["number_of_synthetic_samples"] == 2
     assert len(X_new) == 8
@@ -294,10 +294,25 @@ def test_invalid_parameters(toy, kwargs) -> None:
         UGO(ToyEstimator(), allow_provisional=True, **kwargs).fit_resample(*toy)
 
 
+<<<<<<< HEAD
 def test_paper_batch_uses_fixed_original_total_not_class_count(toy) -> None:
     sampler, _, _ = run(*toy, lambda_step=0.5, max_iter=2)
     assert sampler.diagnostics_["nominal_batch_size"] == 3  # n=6, not selected-class n=4.
     assert [r["generated_count"] for r in sampler.diagnostics_["history"]] == [3, 3]
+=======
+@pytest.mark.parametrize("variant", ["ros", "smote"])
+@pytest.mark.parametrize("region,selected", [("low", 0), ("high", 1)])
+def test_paper_batch_uses_fixed_original_total_not_class_count(toy, variant, region, selected) -> None:
+    ToyEstimator.fits = []
+    sampler, X_new, y_new = run(*toy, variant=variant, estimator=ToyEstimator(region),
+                                lambda_step=0.5, max_iter=2)
+    assert sampler.diagnostics_["nominal_batch_size"] == 3  # n=6, not selected-class n=4.
+    assert [r["generated_count"] for r in sampler.diagnostics_["history"]] == [3, 3]
+    assert [r["selected_class"] for r in sampler.diagnostics_["history"]] == [selected, selected]
+    assert [len(X) for X, _ in ToyEstimator.fits] == [6, 9]
+    assert len(X_new) == len(y_new) == 12
+    assert (y_new[6:] == selected).all()
+>>>>>>> origin/main
     assert sampler.diagnostics_["cap_interpretation"] == "section_3_3"
 
 
@@ -305,3 +320,35 @@ def test_table4_cap_is_available_without_silent_default_switch(toy) -> None:
     sampler, _, _ = run(*toy, cap_interpretation="table4")
     assert sampler.diagnostics_["generation_cap"] == 10
     assert sampler.diagnostics_["effective_parameters"]["cap_interpretation"] == "table4"
+<<<<<<< HEAD
+=======
+
+
+@pytest.mark.parametrize("variant", ["ros", "smote"])
+@pytest.mark.parametrize("policy,phi", [("section_3_3", 1.3), ("table4", 1.1)])
+def test_fractional_cap_clips_only_last_fixed_batch(toy, variant, policy, phi) -> None:
+    # Each source expression gives a real threshold 4.4: five generated rows
+    # meet it, whereas four do not. A nominal batch of three must end with two.
+    sampler, X_new, y_new = run(*toy, variant=variant, cap_interpretation=policy,
+                                phi=phi, lambda_step=0.5, max_iter=20)
+    assert sampler.diagnostics_["generation_cap"] == 5
+    assert sampler.diagnostics_["nominal_batch_size"] == 3
+    assert [r["generated_count"] for r in sampler.diagnostics_["history"]] == [3, 2]
+    assert sampler.diagnostics_["number_of_synthetic_samples"] == 5
+    assert sampler.diagnostics_["stopping_reason"] == "provisional_generation_cap"
+    assert sampler.diagnostics_["cap_interpretation"] == policy
+    assert len(X_new) == len(y_new) == 11
+    np.testing.assert_array_equal(X_new[:6], toy[0])
+    np.testing.assert_array_equal(y_new[:6], toy[1])
+
+
+def test_invalid_cap_policy_clears_previous_state_before_fitting(toy) -> None:
+    sampler, _, _ = run(*toy)
+    ToyEstimator.fits = []
+    sampler.set_params(cap_interpretation="invented")
+    with pytest.raises(ValueError, match="interpretation"):
+        sampler.fit_resample(*toy)
+    assert not ToyEstimator.fits
+    assert not hasattr(sampler, "diagnostics_")
+    assert not hasattr(sampler, "estimator_")
+>>>>>>> origin/main

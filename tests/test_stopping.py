@@ -89,3 +89,20 @@ def test_conflicting_table4_threshold_is_explicit() -> None:
     assert generation_cap([90, 10], 2.5, interpretation="section_3_3") == 350
     with pytest.raises(ValueError, match="interpretation"):
         generation_cap([90, 10], interpretation="invented")
+<<<<<<< HEAD
+=======
+
+
+@pytest.mark.parametrize("policy,phi,expected", [
+    ("section_3_3", 1.3, 5), ("table4", 1.1, 5),
+    ("section_3_3", 1.25, 4), ("table4", 1.0, 4),
+])
+def test_cap_is_minimal_integer_meeting_selected_threshold(policy, phi, expected) -> None:
+    # Counts [4,2] give N=6 and Nmax=4; expected values distinguish ceil from
+    # floor for fractional limits without increasing an exactly integral limit.
+    cap = generation_cap([4, 2], phi, interpretation=policy)
+    threshold = phi * 8 - 6 if policy == "section_3_3" else phi * 4
+    assert cap == expected
+    assert cap >= threshold
+    assert cap - 1 < threshold
+>>>>>>> origin/main

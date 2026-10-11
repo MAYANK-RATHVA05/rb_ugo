@@ -1,5 +1,6 @@
 # Research and development rules
 
+<<<<<<< HEAD
 ## Current research identity
 
 - Working title: **Data-Reducibility-Aware Uncertainty-Guided Oversampling for Imbalanced Classification (DRA-UGO)**. This is provisional, not an implemented or validated algorithm.
@@ -54,3 +55,24 @@
 - Codex and Antigravity are separate environments: cloud edits require Git synchronization, and cloud tests do not verify Windows execution.
 - After completing and validating an authorized stage, commit and push to the existing GitHub repository. Use small, meaningful commits with accurate messages; do not fabricate work history or rewrite commits to disguise authorship.
 - Do not force-push, overwrite existing branches or merge without authorization. Report actual branch, commits, checks and PR status; stop before the next stage.
+=======
+- Never leak outer-test data into training or model selection.
+- Fit preprocessing on training partitions only.
+- Generate synthetic examples from fitting data only.
+- Use nested evaluation or separate selection data where necessary.
+- Always compare against the original no-resampling baseline.
+- Distinguish faithfully reproduced UGO from our proposed changes.
+- Set and report random seeds (default RANDOM_STATE = 42).
+- Never invent datasets, results, citations, or theoretical guarantees.
+- Write tests for implemented functionality, including failure behavior.
+- Keep code modular and readable. Target Python 3.11 and portable pathlib paths.
+- Do not add unnecessary frontend, API, dashboard, database, or cloud infrastructure.
+- Stop after the requested stage. Stage 1 is initialization; Stage 2 is data inspection; Stage 3 is original-UGO implementation and software checks. Further stages require user approval.
+- Do not implement SMOTE, UGO, RB-UGO, model training, dataset downloading, or experiments in Stage 1.
+- Codex and Antigravity are separate tools; never assume cloud changes have synchronized locally.
+- After completing and validating each requested stage, commit its changes and push to GitHub. Report the commit and branch; do not proceed to the next stage without approval.
+- Use small, meaningful commits for independently validated changes, with accurate messages; do not fabricate work history or rewrite existing commits to disguise authorship.
+- Stage 2 must not fit preprocessing, split or resample data, train models, calculate model performance, or implement UGO/RB-UGO. Synthetic fixtures are software tests only; never commit real or private raw datasets.
+- Stage 3 may fit internal UGO classifiers on fitting data only. Do not implement Risk-Budgeted UGO, held-out batch selection, FPR constraints, final-model scoring, or benchmark experiments.
+- The Stage 3 implementation is provisional until the full paper is checked. Read docs/ugo_reproduction.md; do not call the assumed cap, pools, rounding, or noise conventions verified paper rules. Keep opt-in and diagnostic status explicit.
+>>>>>>> origin/main

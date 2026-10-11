@@ -31,7 +31,8 @@ def main() -> None:
         print(f"Final class counts: {dict(zip(*np.unique(augmented_y, return_counts=True)))}")
         for field in ["number_of_synthetic_samples", "number_of_iterations",
                       "pre_detected_noisy_samples", "generated_noisy_samples_relocated",
-                      "generation_cap", "stopping_reason", "reproduction_status"]:
+                      "nominal_batch_size", "generation_cap", "cap_interpretation",
+                      "stopping_reason", "reproduction_status", "implementation_revision"]:
             print(f"{field}: {diagnostics[field]}")
         print("Selected classes:", [record["selected_class"] for record in diagnostics["history"]])
         if diagnostics["history"]:

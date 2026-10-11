@@ -1,40 +1,64 @@
-# Data-Reducibility-Aware Uncertainty-Guided Oversampling for Imbalanced Classification
+# Risk-Budgeted Uncertainty-Guided Oversampling (RB-UGO)
 
-## 1. Research title
+## Scope: foundation and original UGO reproduction
 
-**DRA-UGO** is the provisional working name. The earlier **Risk-Budgeted UGO
-(RB-UGO)** title is historical; neither is a validated new algorithm. Repository
-`MAYANK-RATHVA05/rb_ugo` and existing `src.*` Python import paths stay unchanged.
+This portable Python 3.11 research repository provides configuration and directory
+validation (Stage 1), plus binary CSV/KEEL loading and descriptive imbalance
+analysis (Stage 2). Stage 3 added provisional UGO-ROS/UGO-SMOTE and an artificial
+sanity check. Stage 4R-2 applies reviewed fixed-batch and explicit-cap corrections
+after reading the full paper; unresolved source choices still prevent a verified
+faithful reproduction claim. Only the internal UGO classifier is fitted. No
+automatic preprocessing, evaluation splits, final model scoring, benchmark
+experiments, or Risk-Budgeted UGO are implemented. Further stages require approval.
 
-## 2. Project overview
+## Original UGO reproduction specification
 
+<<<<<<< HEAD
 This B.Tech AI research project investigates when classifier-specific minority
 augmentation can help, when threshold changes suffice, and when synthesis may
 reinforce overlap or noise. Software Stages 1–3 are implemented. Stage 4A-R verifies supplied
 resources, repairs demonstrated UGO source mismatches and updates the full-text audit. No DRA-UGO mechanism has been
 finalized, implemented or benchmarked. The current audit concludes **no defensible
 methodological novelty established** with the available evidence.
+=======
+Stage 4R-1 records the full-paper requirements in
+[the reproduction specification](docs/reproduction/SPECIFICATION.md) and
+[source register](docs/reproduction/SOURCE_REGISTER.json). It inventories the
+available article, missing supplementary materials, fourteen classifiers,
+comparison methods, experiment outputs and unresolved paper choices. It also
+identifies reusable batch/cap corrections on the historical verification branch.
+Stage 4R-2 selectively recovers those corrections, with conformance tests and
+[a core alignment report](docs/reproduction/CORE_ALIGNMENT.md). Batches now use
+the fixed original total; `cap_interpretation` exposes both conflicting published
+thresholds. Neither stage runs benchmark experiments. Original UGO reproduction
+is separate from the RB-UGO research motivation below.
+>>>>>>> origin/main
 
-See [project scope](docs/research/PROJECT_SCOPE.md),
-[novelty decision](docs/research/NOVELTY_DECISION.md) and
-[reference status](docs/research/REFERENCE_STATUS.md).
+## Research motivation
 
-## 3. Why class imbalance is difficult
+In imbalanced classification, a minority class has fewer observations than the
+majority class. Overall accuracy can hide poor minority detection; evaluation
+must consider both classes and the costs of errors.
 
-Overall accuracy can hide missed minority observations. Rare minority subgroups
-can be neglected even when aggregate recall looks adequate. Interpolation can
-place minority-labelled points in ambiguous regions, while duplication can act
-like weighting rather than supply independent information. A default decision
-threshold can also cause avoidable minority errors without poor ranking.
+Basic oversampling can duplicate observations, encourage overfitting, or produce
+synthetic points in ambiguous or noisy regions. More minority examples do not
+necessarily improve generalization, and false positives can increase.
 
-These effects require separate tests. Threshold/ranking separation is documented
-in scikit-learn [S1]; ordinary oversampling caveats in imbalanced-learn [S5];
-model-dependent data value in Data Shapley [D]. Citations resolve to the
-[verified source register](docs/research/PRIOR_ART_MATRIX.md#verified-reference-register-and-audit-limits).
-The mathematical counterexamples are audit derivations, not benchmark findings.
+The base paper, **“Uncertainty guided oversampling: A classifier-specific approach
+for effective handling of class imbalance in machine learning,”** motivates using
+classifier uncertainty to guide oversampling for a particular classifier. A
+faithful implementation requires resolving the source conflicts and completing
+its experimental protocol. The available article has been audited; this project
+does not yet claim unique author-code equivalence or reproduced paper results.
 
-## 4. Official problem statement: Questions A, B and C
+Our proposed research question is whether accepting or rejecting uncertainty-guided
+synthetic minority batches according to held-out balanced risk and majority-class
+false-positive constraints improves reliability. This is a hypothesis, not a
+claim of novelty or superiority. Literature review and controlled experiments,
+including the original no-resampling baseline and faithfully reproduced UGO,
+are required. Selection data must remain separate from the outer test data.
 
+<<<<<<< HEAD
 - **A:** How can we generate minority samples close to the decision boundary
   without increasing harmful class overlap?
 - **B:** How can we handle intra-class imbalance, where different regions or
@@ -176,6 +200,9 @@ final outer evaluation. Stop after this update for review; a roadmap is not
 permission to implement.
 
 ## 13. Project structure
+=======
+## Layout
+>>>>>>> origin/main
 
 ```text
 rb_ugo/                     # Repository root, not a second nested directory
@@ -202,9 +229,13 @@ rb_ugo/                     # Repository root, not a second nested directory
 ├── main_stage1.py          # Directory checks and environment display
 ├── main_stage2.py          # Dataset inspection CLI
 ├── main_stage3.py          # Provisional UGO software sanity check
+<<<<<<< HEAD
 ├── docs/
 │   ├── ugo_reproduction.md # Current source audit/API; historical code preserved in Git
 │   └── research/          # Scope, roadmap, evidence, mathematics, dataset plan
+=======
+├── docs/ugo_reproduction.md # Equations, assumptions, evidence, unresolved fidelity
+>>>>>>> origin/main
 ├── requirements.txt       # Pinned research dependencies
 ├── requirements-dev.txt   # Runtime dependencies plus pytest
 ├── README.md
@@ -217,22 +248,28 @@ Data and generated results are ignored by Git; directory markers are retained.
 Paths are resolved from the source location, independently of the shell's current
 directory. Initialization checks directories and never creates missing ones.
 
-## 14. Installation and execution instructions
-
-### Antigravity setup on Windows (PowerShell)
+## Antigravity setup on Windows (PowerShell)
 
 Codex Cloud and Google Antigravity are separate environments. First synchronize
 the project through Git; cloud edits are not automatically visible in your IDE.
+<<<<<<< HEAD
 The verification-review branch is `stage4ar-paper-data-verification`; after its
 PR merges, use `main`. From a fresh clone:
+=======
+Once the Stage 1 files have been committed and pushed to GitHub:
+>>>>>>> origin/main
 
 ```powershell
 git clone https://github.com/MAYANK-RATHVA05/rb_ugo.git
 Set-Location rb_ugo
+<<<<<<< HEAD
 # For an existing clone, start with git fetch below in its repository folder.
 git fetch origin
 git switch stage4ar-paper-data-verification
 git pull --ff-only
+=======
+# For an existing clone, use git pull on the branch containing Stage 1 instead.
+>>>>>>> origin/main
 py -3.11 --version
 py -3.11 -m venv .venv
 .\.venv\Scripts\python.exe -m pip install -r requirements-dev.txt
@@ -252,7 +289,7 @@ To check the installed dependencies:
 .\.venv\Scripts\python.exe -c "import numpy, pandas, sklearn, imblearn, scipy, matplotlib, seaborn, tqdm, pytest; print('Dependency imports successful.')"
 ```
 
-### Cloud / Linux setup
+## Cloud / Linux setup
 
 With Python 3.11 available, from the repository root:
 
@@ -268,7 +305,7 @@ installation. The initialization script prints the Python version and configured
 paths, then reports success only if all required directories exist. Tests cover
 path configuration, successful initialization, and missing or invalid directories.
 
-### Stage 2: inspect a dataset
+## Stage 2: inspect a dataset
 
 From the repository root, CSV needs an explicit target (the column containing
 class labels). KEEL normally identifies it through a single `@outputs` entry:
@@ -292,7 +329,7 @@ Use a new filename or deliberately remove an old local report to rerun. Identica
 CSV and DAT stems otherwise share the default output name. Reports are ignored
 by Git. Errors print a readable message and return a nonzero exit code.
 
-#### What the numbers mean
+### What the numbers mean
 
 The majority class is the more frequent class, encoded as **0**. The minority
 class is the less frequent class, encoded as **1**. Original labels are retained,
@@ -316,7 +353,7 @@ as equal in these comparisons. Different labels with identical features increase
 feature duplicates but do not necessarily increase complete-row duplicates.
 No missing values or duplicates are removed.
 
-#### Python interface and file support
+### Python interface and file support
 
 ```python
 from src.data_loader import load_dataset
@@ -363,13 +400,17 @@ anything.
 - The loader reads the whole file into memory. No schema override, streaming,
   multiclass support, or original train/test split interpretation is implemented.
 
-#### Run Stage 2 in Antigravity on Windows
+### Run Stage 2 in Antigravity on Windows
 
-Use the synchronized branch chosen above (or `main` after the documentation PR merges):
+Synchronize the Stage 2 feature branch first (or pull `main` after its PR merges):
 
 ```powershell
 git fetch origin
+<<<<<<< HEAD
 git switch stage4ar-paper-data-verification
+=======
+git switch stage2-data-loading
+>>>>>>> origin/main
 git pull --ff-only
 .\.venv\Scripts\python.exe -m pip install -r requirements-dev.txt
 .\.venv\Scripts\python.exe main_stage1.py
@@ -384,14 +425,20 @@ above before these commands. Open this repository root in Antigravity and select
 `.venv\Scripts\python.exe`. Linux cloud validation does not establish that the
 Windows environment has already been tested or synchronized.
 
-### Stage 3: provisional original-UGO implementation
+## Original UGO software: Stage 3 and Stage 4R-2 corrections
 
 Read [docs/ugo_reproduction.md](docs/ugo_reproduction.md) first. The implementation
-follows the supplied signed MMA equation and highest-mean-uncertainty class rule,
+follows the paper's signed MMA equation and highest-mean-uncertainty class rule,
 with kNN noise detection, relocation, and Welch stopping. It does not silently
 force minority-only generation or replace uncertainty selection with ordinary
+<<<<<<< HEAD
 SMOTE. The source-based batch correction and explicit cap alternatives are audited;
 selection pools, rounding, neighborhood rules and cap conflict remain disclosed.
+=======
+SMOTE. It uses fixed original-total batches and names the two conflicting cap
+expressions. Selection pools, rounding, neighborhood details and batch clipping
+remain explicit reproduction conventions where the paper is ambiguous.
+>>>>>>> origin/main
 
 ```python
 from sklearn.linear_model import LogisticRegression
@@ -399,7 +446,8 @@ from src.ugo import UGO
 
 # X_fit/y_fit must be fitting data only: finite numerical features, two classes.
 sampler = UGO(LogisticRegression(max_iter=1000, random_state=42),
-              variant="smote", allow_provisional=True)
+              variant="smote", cap_interpretation="section_3_3",
+              allow_provisional=True)
 # X_augmented, y_augmented = sampler.fit_resample(X_fit, y_fit)
 # print(sampler.diagnostics_)
 ```
@@ -408,7 +456,11 @@ Run the included artificial-data sanity check on Windows after synchronizing:
 
 ```powershell
 git fetch origin
+<<<<<<< HEAD
 git switch stage4ar-paper-data-verification
+=======
+git switch ugo-paper-reproduction
+>>>>>>> origin/main
 git pull --ff-only
 .\.venv\Scripts\python.exe main_stage1.py
 .\.venv\Scripts\python.exe main_stage3.py
@@ -420,6 +472,7 @@ diagnostics are software evidence only; it reports no accuracy or benchmark
 results. Categorical/missing features require future training-only preprocessing
 outside UGO. Already-converted numeric category codes cannot be detected by
 dtype alone; callers must ensure numerical distance is meaningful. Stage 1/2
+<<<<<<< HEAD
 entry points continue to work unchanged. These commands exercise implemented
 software; they do not implement or evaluate the proposed method.
 
@@ -469,3 +522,7 @@ working title, not a published method to cite as validated. Negative/inconclusiv
 findings and failed source access must remain visible. Check
 [NOVELTY_DECISION.md](docs/research/NOVELTY_DECISION.md) before proceeding; Stage 4B
 requires user review and approval.
+=======
+entry points continue to work unchanged. Stop after the requested reproduction
+stage; subsequent stages require separate authorization under AGENTS.md.
+>>>>>>> origin/main

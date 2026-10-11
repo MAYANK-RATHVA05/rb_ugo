@@ -20,6 +20,7 @@ class grouping instead of treating it as interchangeable with the source dataset
 
 `tests/fixtures/toy.csv` and `toy.dat` are deliberately tiny, synthetic software
 fixtures. They test parser behavior and count calculations only. They are not
+<<<<<<< HEAD
 research benchmarks, experimental results, or evidence for UGO or the provisional
 DRA-UGO research direction.
 
@@ -38,6 +39,9 @@ They remain research plans, not completed experiments. Use the offline import
 CLI in the verification document for Windows/Linux. Source ZIPs and extracted
 raw files/PDFs stay ignored by Git; do not regenerate official folds or expose
 outer-test rows to an unlabelled fitting pool.
+=======
+research benchmarks, experimental results, or evidence for UGO/RB-UGO.
+>>>>>>> origin/main
 
 ## Adding external data manually
 

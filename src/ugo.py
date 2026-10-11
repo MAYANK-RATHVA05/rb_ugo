@@ -68,8 +68,13 @@ class UGO(BaseEstimator):
 
     Use variant='ros' or 'smote'. Source-audited defaults and unresolved
     details are listed in ASSUMPTIONS. allow_provisional=True is required while
+<<<<<<< HEAD
     documented source ambiguities remain. max_iter=100 is an engineering bound, not a paper
     stopping rule. k_smote=5 follows the paper experiment. Random states
+=======
+    documented source ambiguities remain. max_iter=100 is an engineering bound,
+    not a paper stopping rule. k_smote=5 follows the paper experiment. Random states
+>>>>>>> origin/main
     unset on estimator/nested estimators are filled from random_state; explicit
     estimator random states are preserved and reported.
     """
@@ -189,7 +194,11 @@ class UGO(BaseEstimator):
             notes.append("k_after clamped to original sample count.")
         self.diagnostics_ = {
             "reproduction_status": "source_audited_with_ambiguities",
+<<<<<<< HEAD
             "implementation_revision": "stage4ar_fixed_original_total_batch",
+=======
+            "implementation_revision": "stage4r2_fixed_original_total_batch",
+>>>>>>> origin/main
             "nominal_batch_size": nominal_batch_size,
             "original_class_counts": self._counts(original_y, classes),
             "generation_cap": cap, "cap_interpretation": self.cap_interpretation,
