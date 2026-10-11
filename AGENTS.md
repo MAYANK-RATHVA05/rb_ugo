@@ -19,3 +19,11 @@
 - Stage 2 must not fit preprocessing, split or resample data, train models, calculate model performance, or implement UGO/RB-UGO. Synthetic fixtures are software tests only; never commit real or private raw datasets.
 - Stage 3 may fit internal UGO classifiers on fitting data only. Do not implement Risk-Budgeted UGO, held-out batch selection, FPR constraints, final-model scoring, or benchmark experiments.
 - The Stage 3 implementation is provisional until the full paper is checked. Read docs/ugo_reproduction.md; do not call the assumed cap, pools, rounding, or noise conventions verified paper rules. Keep opt-in and diagnostic status explicit.
+
+## Authorized original-UGO training pilot
+
+- The user has explicitly authorized a working original-UGO training pipeline beyond Stage 3. Earlier stage restrictions describe those stages; they do not block this authorized pilot.
+- The full supplied paper has been checked. Its fixed original-total batch is implemented; the conflicting Section 3.3/Table 4 limits and remaining pool/rounding choices stay explicit in diagnostics.
+- The current pilot compares no resampling, UGO-ROS and UGO-SMOTE with fresh final Logistic Regression classifiers on one fixed stratified holdout. Fit all preprocessing and feature filtering using training data only.
+- Save fitted preprocessing with each final classifier and record data checksum, source commit, seed, split indices, class mapping, metrics and stopping diagnostics. Keep raw datasets, uploaded papers and generated models/results out of Git.
+- Complete and report this working pilot. Do not add extension research, new UGO generators, threshold selection, or claim reproduction of the complete published benchmark without a separate request.

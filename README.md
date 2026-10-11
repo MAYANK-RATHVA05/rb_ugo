@@ -1,14 +1,20 @@
 # Risk-Budgeted Uncertainty-Guided Oversampling (RB-UGO)
 
-## Scope: Stages 1–3
+## Scope: original UGO implementation and first training pipeline
 
 This portable Python 3.11 research repository provides configuration and directory
 validation (Stage 1), plus binary CSV/KEEL loading and descriptive imbalance
-analysis (Stage 2). Stage 3 adds provisional, prompt-based UGO-ROS/UGO-SMOTE and
-an artificial-data sanity check. The full paper was inaccessible; this is not a
-verified faithful reproduction. Only the internal UGO classifier is fitted. No
-automatic preprocessing, evaluation splits, final model scoring, benchmark
-experiments, or Risk-Budgeted UGO are implemented. Further stages require approval.
+analysis (Stage 2). Stage 3 introduced UGO-ROS/UGO-SMOTE and an artificial-data
+sanity check. The supplied full paper has now been checked, the generation batch
+has been corrected, and a working single-dataset training pipeline has been added.
+It fits training-only preprocessing, generates training observations, trains fresh
+final Logistic Regression classifiers, evaluates a shared untouched holdout, and
+saves models and audit records. The paper's cap conflict and several execution
+conventions remain explicit assumptions. The full 74-dataset benchmark and
+Risk-Budgeted UGO are not implemented.
+
+Start with the [training guide](docs/ugo_training.md). Place extracted KEEL
+`.dat` files in `data/raw/`; dataset ZIPs are not accepted by the training CLI.
 
 ## Research motivation
 
@@ -23,24 +29,21 @@ necessarily improve generalization, and false positives can increase.
 The base paper, **“Uncertainty guided oversampling: A classifier-specific approach
 for effective handling of class imbalance in machine learning,”** motivates using
 classifier uncertainty to guide oversampling for a particular classifier. A
-faithful implementation requires examining the original algorithm and protocol;
-this scaffold does not claim to reproduce it yet. Bibliographic metadata and
-algorithm details must be verified before adding citations or implementation.
+faithful implementation requires examining the original algorithm and protocol.
+The supplied full text is documented in [the reproduction audit](docs/ugo_reproduction.md).
 
-Our proposed research question is whether accepting or rejecting uncertainty-guided
-synthetic minority batches according to held-out balanced risk and majority-class
-false-positive constraints improves reliability. This is a hypothesis, not a
-claim of novelty or superiority. Literature review and controlled experiments,
-including the original no-resampling baseline and faithfully reproduced UGO,
-are required. Selection data must remain separate from the outer test data.
+The current priority is to implement and evaluate original UGO before considering
+extensions. This pipeline compares the same classifier with no resampling,
+UGO-ROS, and UGO-SMOTE. It makes no claim of methodological novelty or general
+superiority and uses no test observations to select thresholds or generation.
 
 ## Layout
 
 ```text
 rb_ugo/                     # Repository root, not a second nested directory
 ├── data/
-│   ├── raw/.gitkeep         # Original inputs (future stages)
-│   └── processed/.gitkeep   # Derived data (future stages)
+│   ├── raw/.gitkeep         # Local original .dat/.csv inputs; ignored by Git
+│   └── processed/.gitkeep   # Local derived data
 ├── src/
 │   ├── __init__.py
 │   ├── config.py           # Paths and RANDOM_STATE = 42
@@ -50,14 +53,17 @@ rb_ugo/                     # Repository root, not a second nested directory
 │   ├── uncertainty.py     # Signed MMA
 │   ├── noise_detection.py # Neighbor votes and relocation
 │   ├── stopping.py        # Welch decision and provisional cap
-│   └── ugo.py             # Provisional UGO variants and diagnostics
+│   ├── ugo.py             # Paper-checked UGO variants; explicit assumptions
+│   └── training.py        # Train-only preprocessing, final models and metrics
 ├── notebooks/.gitkeep      # Future exploratory notebooks
 ├── results/.gitkeep        # Future generated research outputs
 ├── tests/                 # Stage 1/2/3 tests and synthetic fixtures
 ├── main_stage1.py          # Directory checks and environment display
 ├── main_stage2.py          # Dataset inspection CLI
 ├── main_stage3.py          # Provisional UGO software sanity check
+├── main_train.py           # Real-data training CLI and artifact export
 ├── docs/ugo_reproduction.md # Equations, assumptions, evidence, unresolved fidelity
+├── docs/ugo_training.md    # Windows/Linux training and model loading
 ├── requirements.txt       # Pinned research dependencies
 ├── requirements-dev.txt   # Runtime dependencies plus pytest
 ├── README.md
@@ -74,12 +80,13 @@ directory. Initialization checks directories and never creates missing ones.
 
 Codex Cloud and Google Antigravity are separate environments. First synchronize
 the project through Git; cloud edits are not automatically visible in your IDE.
-Once the Stage 1 files have been committed and pushed to GitHub:
+For a new checkout of the training branch:
 
 ```powershell
-git clone https://github.com/MAYANK-RATHVA05/rb_ugo.git
+git clone --branch ugo-working-training-pipeline https://github.com/MAYANK-RATHVA05/rb_ugo.git
 Set-Location rb_ugo
-# For an existing clone, use git pull on the branch containing Stage 1 instead.
+# For an existing clone: git fetch origin; git switch ugo-working-training-pipeline;
+# then git pull --ff-only. Preserve any existing local changes before switching.
 py -3.11 --version
 py -3.11 -m venv .venv
 .\.venv\Scripts\python.exe -m pip install -r requirements-dev.txt
@@ -237,8 +244,9 @@ Read [docs/ugo_reproduction.md](docs/ugo_reproduction.md) first. The implementat
 follows the supplied signed MMA equation and highest-mean-uncertainty class rule,
 with kNN noise detection, relocation, and Welch stopping. It does not silently
 force minority-only generation or replace uncertainty selection with ordinary
-SMOTE. The cap formula, selection pools, rounding, and neighborhood rules are
-explicitly provisional because the full paper could not be read.
+SMOTE. The full paper has now been inspected; selection pools, rounding, and
+neighborhood conventions remain explicit assumptions. Choose the conflicting
+published cap through `cap_policy="section_3_3"` or `"table_4"`.
 
 ```python
 from sklearn.linear_model import LogisticRegression
@@ -255,7 +263,7 @@ Run the included artificial-data sanity check on Windows after synchronizing:
 
 ```powershell
 git fetch origin
-git switch stage3-ugo-reproduction
+git switch ugo-working-training-pipeline
 git pull --ff-only
 .\.venv\Scripts\python.exe main_stage1.py
 .\.venv\Scripts\python.exe main_stage3.py
@@ -264,7 +272,27 @@ git pull --ff-only
 
 Linux uses `.venv/bin/python main_stage3.py`. The demo's counts and stopping
 diagnostics are software evidence only; it reports no accuracy or benchmark
-results. Categorical/missing features require future training-only preprocessing
-outside UGO. Already-converted numeric category codes cannot be detected by
+results. `main_train.py` supplies training-only preprocessing outside UGO.
+Already-converted numeric category codes cannot be detected by
 dtype alone; callers must ensure numerical distance is meaningful. Stage 1/2
-entry points continue to work unchanged. Stop after Stage 3.
+entry points continue to work unchanged. Only the original-UGO training pilot is
+authorized; further paper-reproduction stages and extensions are separate work.
+
+## Train on a real dataset
+
+Extract your dataset archive and copy `ecoli2.dat` into `data/raw/`. On Windows:
+
+```powershell
+.\.venv\Scripts\python.exe main_train.py --data data/raw/ecoli2.dat
+```
+
+On Linux:
+
+```bash
+.venv/bin/python main_train.py --data data/raw/ecoli2.dat
+```
+
+The command reports IAM, MCC, F1 and minority recall for all three methods. It
+saves prediction pipelines, metrics, holdout predictions, split indices and UGO
+diagnostics in a new ignored directory under `results/ugo_training/`. See
+[the training guide](docs/ugo_training.md) for reproducibility and inference.
