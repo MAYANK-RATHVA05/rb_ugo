@@ -1,7 +1,7 @@
 """kNN pre-detection and generated-point relocation on fitting data only.
 
-Tie handling and some reference eligibility details are not uniquely specified
-by the paper. Equal-distance neighbors are ordered by reference row index.
+Tie handling and reference eligibility are provisional until the paper's tables
+can be inspected. Equal-distance neighbors are ordered by reference row index.
 """
 from __future__ import annotations
 

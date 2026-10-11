@@ -13,7 +13,7 @@ from src.ugo import UGO
 
 def main() -> None:
     """Run both variants on one deterministic artificial fitting dataset."""
-    print("PROVISIONAL: source audited, but paper ambiguities prevent verified reproduction.")
+    print("PROVISIONAL: full paper unavailable; this is not verified reproduction.")
     print("Software sanity check only; no validation/test data or performance metrics.")
     X, y = make_classification(
         n_samples=120, n_features=4, n_informative=3, n_redundant=0,
@@ -31,8 +31,7 @@ def main() -> None:
         print(f"Final class counts: {dict(zip(*np.unique(augmented_y, return_counts=True)))}")
         for field in ["number_of_synthetic_samples", "number_of_iterations",
                       "pre_detected_noisy_samples", "generated_noisy_samples_relocated",
-                      "nominal_batch_size", "generation_cap", "cap_interpretation",
-                      "stopping_reason", "reproduction_status", "implementation_revision"]:
+                      "generation_cap", "stopping_reason", "reproduction_status"]:
             print(f"{field}: {diagnostics[field]}")
         print("Selected classes:", [record["selected_class"] for record in diagnostics["history"]])
         if diagnostics["history"]:

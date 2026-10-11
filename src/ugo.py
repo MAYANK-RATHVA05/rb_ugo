@@ -1,4 +1,4 @@
-"""Source-audited UGO-ROS/SMOTE with documented paper ambiguities.
+"""Provisional prompt-based UGO-ROS/SMOTE, pending full-paper verification.
 
 This is not RB-UGO. No validation/test data, performance scores, or risk budgets
 are used. Read docs/ugo_reproduction.md before research use.
@@ -23,12 +23,12 @@ from src.uncertainty import modified_margin_uncertainty
 
 
 ASSUMPTIONS = (
-    "Full text audited; cap/pool/rounding ambiguities prevent complete fidelity claims.",
-    "Cap policy explicitly selects Section 3.3 or the conflicting Table 4 threshold; ceil discretization.",
+    "Full paper unavailable; implementation is provisional, not verified reproduction.",
+    "Cap is floor(phi * number_of_classes * original_largest_count - original_total).",
     "Uncertainty and seed pools are original pre-clean fitting samples only.",
     "Noisy original samples remain in estimator fitting data; they cannot be seeds.",
     "Selection count is ceil(lambda_select * eligible_selected_class_count), at least one.",
-    "Fixed batch size is ceil(lambda_step * original_total), per PDF p7 and Table 4 p8, truncated at cap.",
+    "Batch size is ceil(lambda_step * current_selected_class_count), truncated at cap.",
     "Binary neighbor-vote ties retain assigned labels; distance and score ties use row order.",
     "SMOTE neighbors are original pre-clean same-class rows, excluding each seed by index.",
     "Final votes use all original fitting rows; relocation uses original pre-clean same-class rows.",
@@ -66,15 +66,10 @@ class UGO(BaseEstimator):
     clones it, fits a copied augmented fitting set, and measures MMA on clean
     original rows. Only fitting data are accepted by fit_resample(X, y).
 
-    Use variant='ros' or 'smote'. Source-audited defaults and unresolved
-    details are listed in ASSUMPTIONS. allow_provisional=True is required while
-<<<<<<< HEAD
-    documented source ambiguities remain. max_iter=100 is an engineering bound, not a paper
-    stopping rule. k_smote=5 follows the paper experiment. Random states
-=======
-    documented source ambiguities remain. max_iter=100 is an engineering bound,
-    not a paper stopping rule. k_smote=5 follows the paper experiment. Random states
->>>>>>> origin/main
+    Use variant='ros' or 'smote'. Defaults match the supplied prompt; unresolved
+    details are listed in ASSUMPTIONS. allow_provisional=True is required until
+    the full paper is checked. max_iter=100 is an engineering bound, not a paper
+    stopping rule. k_smote=5 is a provisional neighborhood choice. Random states
     unset on estimator/nested estimators are filled from random_state; explicit
     estimator random states are preserved and reported.
     """
@@ -84,7 +79,6 @@ class UGO(BaseEstimator):
         lambda_step: float = 0.1, phi: float = 2.5, k_pre: int = 5,
         k_after: int = 1, alpha: float = 0.05, random_state: int = 42,
         max_iter: int = 100, k_smote: int = 5, allow_provisional: bool = False,
-        cap_interpretation: str = "section_3_3",
     ) -> None:
         self.estimator = estimator
         self.variant = variant
@@ -98,11 +92,10 @@ class UGO(BaseEstimator):
         self.max_iter = max_iter
         self.k_smote = k_smote
         self.allow_provisional = allow_provisional
-        self.cap_interpretation = cap_interpretation
 
     def _validate_parameters(self) -> Any:
         if not isinstance(self.allow_provisional, bool) or not self.allow_provisional:
-            raise ValueError("Paper ambiguities remain; set allow_provisional=True only for a documented provisional run.")
+            raise ValueError("Paper verification is unresolved; set allow_provisional=True only for a provisional run.")
         if self.variant not in {"ros", "smote"}:
             raise ValueError("variant must be 'ros' or 'smote'.")
         for name in ["lambda_select", "lambda_step"]:
@@ -167,9 +160,8 @@ class UGO(BaseEstimator):
         original_X = numeric_matrix(X)
         original_y, classes = binary_labels(y, len(original_X))
         counts = np.array([(original_y == label).sum() for label in classes])
-        cap = generation_cap(counts, self.phi, interpretation=self.cap_interpretation)
-        nominal_batch_size = max(1, int(np.ceil(self.lambda_step * len(original_X))))
-        warnings.warn("Provisional UGO: full text audited; cap/pool/rounding ambiguities remain.",
+        cap = generation_cap(counts, self.phi)
+        warnings.warn("Provisional UGO: full-paper alignment and cap remain unverified.",
                       UserWarning, stacklevel=2)
         rng = np.random.default_rng(self.random_state)
         pre_noise = noise_pre_detect(original_X, original_y, self.k_pre)
@@ -179,7 +171,7 @@ class UGO(BaseEstimator):
         current_X, current_y = original_X.copy(), original_y.copy()
         parameters = {name: self._scalar(getattr(self, name)) for name in [
             "variant", "lambda_select", "lambda_step", "phi", "k_pre", "k_after",
-            "alpha", "random_state", "max_iter", "k_smote", "allow_provisional", "cap_interpretation",
+            "alpha", "random_state", "max_iter", "k_smote", "allow_provisional",
         ]}
         estimator_seeds = {key: value for key, value in template.get_params(deep=True).items()
                            if key == "random_state" or key.endswith("__random_state")}
@@ -193,15 +185,9 @@ class UGO(BaseEstimator):
         if self.k_after > len(original_X):
             notes.append("k_after clamped to original sample count.")
         self.diagnostics_ = {
-            "reproduction_status": "source_audited_with_ambiguities",
-<<<<<<< HEAD
-            "implementation_revision": "stage4ar_fixed_original_total_batch",
-=======
-            "implementation_revision": "stage4r2_fixed_original_total_batch",
->>>>>>> origin/main
-            "nominal_batch_size": nominal_batch_size,
+            "reproduction_status": "provisional_prompt_based",
             "original_class_counts": self._counts(original_y, classes),
-            "generation_cap": cap, "cap_interpretation": self.cap_interpretation,
+            "generation_cap": cap, "cap_interpretation": "provisional_total_augmented_budget",
             "pre_detected_noisy_samples": int(pre_noise.sum()),
             "effective_k_pre": min(self.k_pre, len(original_X) - 1),
             "effective_parameters": parameters, "warnings": notes,
@@ -258,7 +244,7 @@ class UGO(BaseEstimator):
             if not len(seeds):
                 reason = "no_eligible_non_noisy_seeds"
                 break
-            batch_size = min(remaining, nominal_batch_size)
+            batch_size = min(remaining, max(1, int(np.ceil(self.lambda_step * (current_y == selected).sum()))))
             generated, generation_info = self._generate(
                 original_X, original_y, seeds, selected, pre_noise, batch_size, rng,
             )

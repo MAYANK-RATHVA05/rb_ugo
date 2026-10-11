@@ -1,4 +1,4 @@
-"""Welch stopping and source-explicit UGO generation thresholds."""
+"""Welch stopping and explicitly provisional generation-budget interpretation."""
 from __future__ import annotations
 
 from dataclasses import dataclass
@@ -50,13 +50,13 @@ def welch_stopping(group_a: Any, group_b: Any, alpha: float = 0.05) -> WelchDeci
                          stop, True, "fail_to_reject" if stop else "reject_equal_means")
 
 
-def generation_cap(class_counts: Any, phi: float = 2.5, *, interpretation: str = "section_3_3") -> int:
-    """Minimal integer synthetic count meeting a documented paper threshold.
+def generation_cap(class_counts: Any, phi: float = 2.5) -> int:
+    """PROVISIONAL cap: max(0, floor(phi*C*N_max - N_original)).
 
-    section_3_3 (default): ceil(phi*K*N_max-N_original), PDF p6.
-    table4: ceil(phi*N_max), PDF p8. The paper gives conflicting rules;
-    selecting one does not establish complete paper fidelity. Counts are frozen.
-    Batch clipping is a documented finite-budget safeguard, not a table rule.
+    Treat phi*C*N_max as a total augmented-size budget and subtract original
+    samples. This is a declared interpretation, NOT a verified paper equation:
+    Section 3.3 and Table 4 were inaccessible. Original counts are frozen for
+    the entire run; truncating the last batch prevents overshooting this budget.
     """
     counts = np.asarray(class_counts)
     if counts.shape != (2,) or counts.dtype.kind not in "iu" or (counts <= 0).any():
@@ -64,10 +64,7 @@ def generation_cap(class_counts: Any, phi: float = 2.5, *, interpretation: str =
     phi = finite_real(phi, "phi")
     if phi <= 0:
         raise ValueError("phi must be a finite positive number.")
-    if interpretation not in {"section_3_3", "table4"}:
-        raise ValueError("interpretation must be 'section_3_3' or 'table4'.")
-    budget = (phi * len(counts) * int(counts.max()) - sum(int(count) for count in counts)
-              if interpretation == "section_3_3" else phi * int(counts.max()))
+    budget = phi * len(counts) * int(counts.max()) - sum(int(count) for count in counts)
     if not np.isfinite(budget):
         raise ValueError("Generation budget is not finite.")
-    return max(0, int(np.ceil(budget)))
+    return max(0, int(np.floor(budget)))

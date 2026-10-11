@@ -70,10 +70,10 @@ def test_invalid_welch_input(a, b, alpha) -> None:
         welch_stopping(a, b, alpha)
 
 
-def test_section_3_3_integer_threshold() -> None:
-    # PDF p6 threshold: smallest integer at or above the real-valued limit.
+def test_provisional_cap_arithmetic_and_rounding() -> None:
+    # These validate the DECLARED interpretation, not the inaccessible paper.
     assert generation_cap([90, 10], 2.5) == 350
-    assert generation_cap([3, 2], 1.1) == 2
+    assert generation_cap([3, 2], 1.1) == 1
     assert generation_cap([3, 2], 0.1) == 0
 
 
@@ -82,27 +82,3 @@ def test_section_3_3_integer_threshold() -> None:
 def test_invalid_cap(counts, phi) -> None:
     with pytest.raises(ValueError):
         generation_cap(counts, phi)
-
-
-def test_conflicting_table4_threshold_is_explicit() -> None:
-    assert generation_cap([90, 10], 2.5, interpretation="table4") == 225
-    assert generation_cap([90, 10], 2.5, interpretation="section_3_3") == 350
-    with pytest.raises(ValueError, match="interpretation"):
-        generation_cap([90, 10], interpretation="invented")
-<<<<<<< HEAD
-=======
-
-
-@pytest.mark.parametrize("policy,phi,expected", [
-    ("section_3_3", 1.3, 5), ("table4", 1.1, 5),
-    ("section_3_3", 1.25, 4), ("table4", 1.0, 4),
-])
-def test_cap_is_minimal_integer_meeting_selected_threshold(policy, phi, expected) -> None:
-    # Counts [4,2] give N=6 and Nmax=4; expected values distinguish ceil from
-    # floor for fractional limits without increasing an exactly integral limit.
-    cap = generation_cap([4, 2], phi, interpretation=policy)
-    threshold = phi * 8 - 6 if policy == "section_3_3" else phi * 4
-    assert cap == expected
-    assert cap >= threshold
-    assert cap - 1 < threshold
->>>>>>> origin/main
