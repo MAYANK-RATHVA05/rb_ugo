@@ -1,4 +1,4 @@
-# Stage 4A: mathematical gap analysis
+# Stage 4A-R: mathematical gap analysis
 
 ## Evidence boundary and problem formulation
 
@@ -8,12 +8,12 @@ intrinsic property. No finalized RB-UGO/DRA-UGO algorithm is established. The
 [scope](PROJECT_SCOPE.md), [roadmap](RESEARCH_ROADMAP.md) and
 [dataset/evaluation plan](DATASET_PLAN.md) address official questions A, B and C.
 
-The six requested publications cannot presently be verified even from abstracts.
-The [prior-art matrix](PRIOR_ART_MATRIX.md) distinguishes that missing evidence
-from three verified additional full texts and pinned library sources. Citations
-R/D/I and S1–S7 below refer to its linked reference register. Equations explicitly
-called “audit derivations” are our reasoning, not newly discovered paper equations
-or claims that an inaccessible paper contains them. No experiments were run.
+The six requested publications are now full-text accessible, with page-level
+method citations in the [matrix](PRIOR_ART_MATRIX.md). U/L/H/G/B/T, R/D/I and
+S1–S7 resolve to its verified register. The inaccessible reported 13-paper ZIP
+still leaves direct-search gaps. Equations called “audit derivations” are our
+reasoning, not reconstructed author equations or claimed new theorems. No
+predictive experiment was run; real-file parser checks are software verification.
 
 The operational question is: **for a fixed learner, generator, fitting set and
 evaluation distribution, which proposed local augmentation improves confirmed
@@ -138,7 +138,7 @@ never make its labels available to the proposed procedure.
 
 ## 4. High uncertainty and sparse regions have multiple explanations
 
-The supplied/local MMA is 1-2P_hat(true|x); its implementation and unverified
+The verified binary MMA [U p6 §3.2] is 1-2P_hat(true|x); implementation and remaining ambiguous
 paper alignment are recorded in [the Stage 3 document](../ugo_reproduction.md).
 Large values can be consistent with miscalibration, class-prior bias, model
 misspecification, noisy labels, underrepresentation or genuine overlap. A low
@@ -160,8 +160,7 @@ predicted positives raises recall and FPR together. Oversampling cannot lower
 this true optimum; apparent improvement on a reused selection set can be noise.
 An overlapping learner's finite observed failure does not prove Bayes ambiguity:
 the model itself may be wrong. The formula is a reference for known synthetic
-generating distributions, not an estimator or a claimed theorem from the six
-inaccessible papers.
+generating distributions, not an estimator or a theorem attributed to the six papers.
 
 Intra-class imbalance therefore needs **both representation measurement and
 confirmed intervention benefit**. Counts, minority-subregion recall and model
@@ -247,7 +246,8 @@ no U, same-distribution U, increasingly larger U, shifted U, feature-destroyed U
 and a supervised/structural control. Artificially hide labels only inside the
 fitting allocation and forbid all methods access to those hidden truths. Use
 known true labels only in a clearly marked diagnostic arm. Compare graph-only
-semi-supervised learning and verified SSHR when its source is obtained. A
+semi-supervised learning and SSHR [H pp4–6,11–12], resolving its metric and
+experimental U-mask conventions before a faithful numeric comparison. A
 feature-only mechanism should be invariant to permuting unavailable U labels;
 otherwise labels have leaked. Report both rejected helpful candidates and accepted
 harmful ones, not only support scores that look plausible [S3; D, §4].
@@ -261,10 +261,10 @@ These are proposed evaluation requirements, not executed experimental findings.
 | No resampling, default threshold | Anchors the ordinary learner's starting point | S1 |
 | No resampling, tuned threshold | Separates action-threshold errors from ranking errors | S1; derivation §1 |
 | Class weighting, tuned threshold | Tests cheap prior/cost reweighting explanations | R; derivation §2 |
-| Original UGO | Separates proposed selection from classifier-guided baseline | Source verification still required; preserve current code unchanged |
+| Original UGO | Separates proposed selection from classifier-guided baseline | U pp5–8; explicit repaired batch/cap conventions in UGO_PAPER_CODE_AUDIT, frozen for comparisons |
 | Standard SMOTE | Tests whether uncertainty/region machinery beats ordinary interpolation | S5 |
-| Validation-tuned sample count | Tests generic search over amount, with matched search budget | S4; R |
-| SSHR and other relevant SSL baselines | Tests whether U adds more than existing SSL | SSHR method unverified; S3 supports self-training/graph comparators |
+| Validation-tuned sample count | Tests generic search over amount, with matched search budget | T p22 Algorithm 1; S4 |
+| SSHR and other relevant SSL baselines | Tests whether U adds more than existing SSL | H Algorithms 1–2 and no-U ablation; S3 self-training/graph comparators |
 | Unlabelled-data ablations | Tests whether U contributes beyond anchors/compute | S3; non-identification construction §6 |
 | Known-overlap controlled distributions | Distinguishes rare clean modes, noisy islands, bridges and irreducible overlap | Audit Bayes reference §4 |
 | Minority-subregion recall | Detects global averages hiding neglected small regions | D's group valuation; predeclared measurement |
@@ -310,37 +310,48 @@ practical effect margins; wide intervals produce “inconclusive,” not a favou
 safe/beneficial designation. [D, §4] separates valuation from final reporting;
 [R]'s validation-objective convergence is not a substitute for this separation.
 
-## 9. Direct novelty threats and exact three-question interpretation
+## 9. Direct novelty threats and verified mathematical gap
 
-The user identifies remedy decomposition (threshold-recoverable, data-reducible,
-irreducible) and augmentation risk/generator mismatch/VTSS as particularly close
-competitors. Their full text and even abstracts remain unavailable. Accordingly,
-no partition criterion, risk equation, sample-size rule, statistical condition or
-local-benefit claim is attributed to either paper. The audit's equations above
-are independently derived, not reconstructions of those authors' equations.
-[REFERENCE_STATUS.md](REFERENCE_STATUS.md) specifies the missing source sections.
+The proposed threshold / data-reducible / irreducible framing is **already
+explicit** in [B p5 §3.3]. Category-matched finite augmentation, no-generation,
+threshold/weight remedies and ranking/threshold parity are already tested
+[B pp6,8–9 §§3.5,5.4–5.5]. The local representation score is operational; B
+explicitly distinguishes estimated real-data irreducibility from Bayes truth.
+A claim that our contribution discovers these three possibilities is untenable.
+Our prospective fine-region conditional contrasts are not an exact reproduction
+of B's categories, but neither finer partitions nor uncertainty intervals alone
+establish methodological novelty.
 
-The gap to investigate is not simply “UGO does not use our scores”. It is whether
-an independently confirmed regional response has useful predictive value beyond
-published valuation/reweighting/influence and remedy/count-selection mechanisms
-[R, D, I; six requested methods unverified]. If the inaccessible papers already
-specify the same estimand, controls and decision rule, the supposed gap closes.
-No novelty follows from choosing AP, FPR, a subgroup or a confidence interval.
+Augmentation can harm because the generator changes the objective: [T p10
+Eqs.2–4] exactly decomposes augmented balanced risk into prior imbalance plus
+generator mismatch. Its asymptotic theorems require smoothness/curvature and
+mismatch assumptions [T pp10–12,19]. VTSS already compares global synthetic
+amounts through class-balanced validation loss [T p22 Algorithm 1]. Therefore
+“validation-guided generation amount” and generic bias/variance stories are not
+new mechanisms. Our empirical 0–1/AP targets must not inherit those surrogate /
+asymptotic guarantees without checking assumptions.
 
-For **A**, a beneficial near-boundary candidate must improve discrimination or
-the declared decision objective beyond tuned controls without unacceptable harm;
-uncertainty and geometric proximity alone are insufficient. For **B**, region
-counts identify representation, not benefit: demonstrate rare-region effects and
-coverage independently of global gains. For **C**, identify a matched U increment
-under explicit structural assumptions rather than treating density as minority
-truth. The proposed controlled distributions and metrics are in
-[DATASET_PLAN.md](DATASET_PLAN.md), not completed experiments.
+For **A**, an independently beneficial boundary intervention would need ranking
+or declared risk improvement beyond tuned controls without excessive FPR; G's
+literal gradient update has no universal no-crossing guarantee, and L's printed
+sign/stopping issues need clarification [matrix]. For **B**, L/H already model
+minority subclusters [L pp4–7; H pp4–6]; rarity is not usefulness. For **C**, H
+already uses actual U with a no-U ablation [H pp11–12]; L's method does not take
+a distinct U pool [L p7]. A new name combining these ideas is not new mathematics.
+
+The remaining prospective question is whether **fine-region finite response
+estimates predict independent useful interventions at realistic label budgets**,
+including generator/learner dependence, interactions and inconclusive cases.
+This is close to B, group valuation [D], validation weighting [R] and influence
+[I]. No intrinsic data-limitation estimator or novel gap has been established.
+The inaccessible related collection prevents an exhaustive originality decision.
 
 ## Conclusion
 
-There is a defensible **question** about conditional synthetic utility beyond
-threshold/weight/count controls. There is not yet a defensible claim that local
-data value, validation-guided reweighting, graph support, or their combination is
-novel. The verified prior art already addresses much of that conceptual space
-[R, D, I, S3, S5–S7]. The six missing publications and original-UGO fidelity must
-be resolved before a publishable-gap claim or implementation decision.
+The source evidence strengthens the rejection of a broad DRA-UGO novelty claim.
+Candidate 1 is an empirical diagnostic question; Candidate 2 is at most an
+assumption-sensitivity/U ablation. Neither is a defensible novel oversampler.
+Independent usefulness, informative minority audit power, label/compute parity
+and a precise distinction from B/T/D/R/I must be demonstrated before any new
+implementation. Actual data support and repaired UGO source alignment are
+scientific infrastructure, not performance or novelty results.

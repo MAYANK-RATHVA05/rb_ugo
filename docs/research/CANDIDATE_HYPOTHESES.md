@@ -1,14 +1,15 @@
-# Stage 4A: two falsifiable candidate mechanisms
+# Stage 4A-R: two falsifiable candidate mechanisms
 
 These are mathematical proposals for review, not implemented algorithms or
 established novel contributions. Citations [R], [D], [I], [S1]–[S7] refer to the
 [verified reference register](PRIOR_ART_MATRIX.md#verified-reference-register-and-audit-limits).
-The six requested papers remain UNVERIFIED; either may already cover an apparent
-difference. No new method name or combined heuristic product is proposed.
+Six core full texts are now verified in the stated method scope, and B/T are
+direct novelty threats. The related 13-paper archive remains inaccessible. No new method name or combined heuristic product is proposed.
 
 DRA-UGO is the provisional project name, not a new name for either mechanism.
 Both candidates must answer A/B/C separately; neither provides an intrinsic
-remedy decomposition. That specific competing literature remains unverified.
+remedy decomposition. B p5 §3.3 already proposes the threshold/data/irreducible
+framing and B p8 §5.4 tests category-targeted interventions.
 
 ## Candidate 1: control-adjusted local augmentation contrasts
 
@@ -125,8 +126,8 @@ To make the intervention family concrete, one **ordinary proposal generator**
 can use a clone of a probability learner fitted on F. For a labelled minority
 anchor i, define $u_i=1-2s_F(1\mid x_i)$; the local repository implements the
 other-minus-true form in [src/uncertainty.py](../../src/uncertainty.py). This is
-signed disagreement, not verified author UGO fidelity or epistemic/aleatoric
-uncertainty. Its in-fitting optimism is a limitation; a fitting-only cross-fit
+the verified binary author MMA [U p6 §3.2], not a complete UGO-fidelity
+claim or epistemic/aleatoric decomposition. Its in-fitting optimism is a limitation; a fitting-only cross-fit
 score is a separately prespecified variant, never an audit-label estimate.
 
 Let E_{r,k} be the min(k,n_1r) highest-u original minority anchors in a frozen G_r, with
@@ -138,7 +139,7 @@ Do not use synthetic rows or U pseudo-labels as observed minority anchors.
 Insufficient anchors/neighbors make that arm infeasible; do not silently switch
 to copying. A separate copying/point-weight arm is an explicit matched control.
 This is an existing interpolation ingredient [S5], not the contribution.
-Original UGO runs unchanged as a comparator and may choose the majority class;
+The source-audited UGO revision runs frozen with disclosed conventions as a comparator and may choose the majority class;
 this proposed minority-region arm does not redefine its selection rule.
 
 Uncertainty thus proposes a finite family, while independent risk/ranking/harm
@@ -183,11 +184,24 @@ ranking benefit beyond threshold/point-weight/count controls and explicit
 inconclusive outputs. Ren's validation objective already learns which examples
 help; influence functions already estimate impact; Data Shapley already values
 groups and suggests acquisition [R §§3.1–3.4; I §§2,7; D §§3.2,4.1,4.5].
-Closest published competitor: **group Data Shapley**, with validation reweighting
-as the closest training-policy comparator. This is not proven disjoint from
-SLEO/SSHR/GDEO or the other inaccessible papers. Do not claim novelty from local
+Closest published competitor for the research question: **Hamilton’s remedy
+decomposition and matched category interventions** [B pp5,8–9]. Group Data
+Shapley [D] is closest to regional marginal valuation; T Algorithm 1 already
+searches global augmentation size. Our fine-region response/ranking/harm contrasts
+are a prospective diagnostic difference, not demonstrated new methodology.
+Precedence in the inaccessible related collection is unverified. Do not claim novelty from local
 scope, confidence intervals, a FPR constraint, or the three-way interpretation
 without a focused additional literature audit.
+
+### Power limit of the stated gate
+
+For J=100, delta=.05 and n_1r=20, the displayed bound gives
+b(20)=sqrt[2 log(4000)/20]≈.91. Even modest true regional ranking gains cannot
+pass such a gate. To make b<=.1 requires at least ceil[2 log(4000)/.01]=1659
+independent pairs, impossible for the supplied small-minority full files. These
+are analytic calculations, not experimental findings. A transparent conservative
+bound is valid but may be practically useless. A sharper, justified statistical
+procedure and power budget are research prerequisites, not assumed advantages.
 
 ### Counterexample, falsification and complexity
 
@@ -225,7 +239,7 @@ predictions is O(K(C+1)n_A), or less if processed sequentially.
 Realistic in scikit-learn: **yes for a small, predeclared study**, using cloned
 estimators, sample_weight where supported, threshold tuning, probability/decision
 scores and independent splits. This is a future external research harness; it
-must not modify the unchanged UGO baseline. This stage grants no implementation
+must preserve the frozen, documented source-audited UGO comparator. This stage grants no implementation
 approval.
 
 **Decision:** retain only as an empirical diagnostic hypothesis. Reject a present
@@ -333,8 +347,9 @@ not author theorem statements. Harmonic/graph propagation is already implemented
 this proposed interval changes the question from one confident label to sensitivity
 over compatible fields. That distinction does not prove novelty: robust graph
 learning, harmonic-extension uncertainty and effective-resistance literature
-still need direct source review. It also does not defeat a verified SLEO/SSHR
-comparison, which remains unavailable.
+still need direct source review. SSHR already uses U for confidence-ranked resampling [H pp4–6]. Our fields
+retain observed anchors and sensitivity sets rather than assigning every confident
+U point a true label, but that difference does not establish novel graph machinery.
 
 ### Counterexample, falsification and feasibility
 
@@ -379,10 +394,10 @@ No third candidate is proposed. UGO plus clustering, pseudo-labels, entropy,
 boundary distances, count tuning, or multiplied uncertainty/need/support scores
 is rejected as the present novelty justification. Relevant ingredients are already
 documented [S1, S3, S5, S6], and benefit-driven weighting/data valuation is verified
-from full text [R, D, I]. Exact precedence in the six requested papers is still
-unknown; this is not an exhaustive proof that every variant is published.
+from full text [R, D, I]. Core methods now provide direct competing precedents [B,H,L,T]; exact
+precedence in the inaccessible related collection remains unknown; this is not an exhaustive proof that every variant is published.
 
 Neither candidate is approved for implementation. First obtain the missing
 sources, reconcile original UGO, investigate the named closest literatures, and
 pre-register a feasible labelled-validation budget and matched-control study.
-Stage 4A ends with a research decision, not a new oversampler.
+Stage 4A-R ends with a research decision, not a new oversampler.

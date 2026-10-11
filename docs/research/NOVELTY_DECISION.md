@@ -1,235 +1,137 @@
-# Stage 4A novelty decision
+# Stage 4A-R novelty decision
 
-**Decision: no defensible methodological novelty established. Do not implement
-a new oversampler or claim a DRA-UGO contribution yet.** This decision is supported
-by verified related prior art and substantial missing source evidence; it is not
-an exhaustive proof that no useful future contribution exists.
-
-The deliverables are [the prior-art matrix](PRIOR_ART_MATRIX.md),
-[mathematical gap analysis](MATHEMATICAL_GAP_ANALYSIS.md), and
-[two candidate definitions](CANDIDATE_HYPOTHESES.md). DRA-UGO is a provisional research identity; the earlier RB-UGO title is historical.
-Reference identifiers below
-resolve to the matrix's linked, access-labelled source register. No source or test
-code, original-UGO behavior, data, metrics implementation, or dependency was changed.
+**No defensible methodological novelty established.** The six full papers
+strengthen that conclusion: B already provides the remedy framing and matched
+category interventions; T provides augmentation mismatch theory and size tuning.
+No new DRA-UGO algorithm, pseudo-labelling or benchmark was implemented.
+Identifiers resolve to [the matrix](PRIOR_ART_MATRIX.md); access limits are in
+[REFERENCE_STATUS.md](REFERENCE_STATUS.md). DRA-UGO remains a working title.
 
 ## A. What is already solved?
 
-Several **ingredients and formulations** are established; the complete requested
-problem is not thereby proved solved:
+Existing **ingredients and formulations**, rather than the complete general
+problem, include:
 
-- Threshold selection can change decisions while leaving ranking curves intact
-  [S1]. A recall improvement over a default 0.5 cutoff is inadequate evidence of
-  better discrimination or the need for synthetic samples.
-- Validation-guided learning of example importance, including class-imbalance
-  settings, is explicit in Ren et al.'s bilevel objective [R, §3.1 Eqs. (1)–(2)].
-- Model-dependent marginal training-data value, **group** value, and guidance for
-  acquiring valuable new data are explicit in Data Shapley [D, §§2,3.2,4.1,4.5].
-- Curvature-adjusted effects of infinitesimal training-example changes on another
-  example's loss are explicit in influence functions [I, §2.1 Eqs. (1)–(2)].
-- Difficult-point emphasis, boundary variants, clustering and cluster-sparsity
-  allocation already exist in verified oversampling implementations [S5, S6].
-- Self-training and graph propagation/spreading already accept genuinely separate
-  unlabelled features, under distributional assumptions [S3, S7]. They do not
-  make their model-assigned labels observed ground truth.
-
-These verified precedents defeat a broad claim that combining uncertainty,
-subgroup need, validation benefit and unlabelled support is sufficient novelty.
-They do not prove that any particular combination is identical to one of the
-six requested papers, whose methods remain unavailable.
-
-## Incremental ingredients and genuinely unresolved questions
-
-Validation-based weighting/data valuation, graph propagation, subgroup partitioning
-and threshold/count tuning are known ingredients [R, D, I, S1, S3, S5, S6].
-Their composition, new title or classifier-specific use does not establish novelty.
-The remaining **research questions**, not proven literature gaps, are whether a
-finite regional intervention diagnostic is predictive at realistic label budgets,
-whether discrimination gains survive the required controls, and whether U adds
-useful structure without label assumptions causing harm. No intrinsic or
-irreducible-region oracle is established. The absent core sources prevent claiming
-that these questions are new. See [PROJECT_SCOPE.md](PROJECT_SCOPE.md).
+- Classifier-specific uncertainty generation, noise handling and Welch stopping
+  [U pp5–8]; this is the original comparator, not our contribution.
+- Minority subcluster allocation / majority overlap cleaning [L pp4–7] and actual
+  U confidence acquisition with no-U ablation [H pp4–6,11–12]. L has no separate
+  U input; H does. Neither establishes true membership from density alone.
+- Threshold-recoverable / estimated data-reducible / estimated irreducible
+  diagnosis, targeted matched-budget augmentation, ranking and threshold parity
+  [B pp5,8–9]. Claiming this basic distinction as new is contradicted.
+- Balanced-risk generator-mismatch bias, conditional augmentation regimes and
+  validation-tuned synthetic size [T pp9–12,19,22]. Count tuning is not novelty.
+- Validation-guided weighting [R §3.1], group marginal data value/acquisition
+  [D §§3.2,4.1,4.5], local influence [I §2.1], and ordinary cluster/graph SSL
+  machinery [S3,S6,S7]. No theorem here solves all A/B/C for arbitrary distributions.
 
 ## B. What remains unverified?
 
-1. **All six requested publications**, including their title/DOI metadata,
-   abstracts, exact equations, seed pools, pseudo-label use, overlap/intra-class
-   treatment, marginal-benefit evaluation, threshold comparisons and guarantees.
-   The exact supplied DOI/arXiv URLs returned proxy `403 Forbidden`, not paper text.
-2. **Faithful original UGO reproduction.** The existing baseline is unchanged but
-   explicitly provisional. Section 3.3's cap versus Table 4, noise reference sets,
-   rounding, uncertainty pools and resampling settings still require the original
-   source. Preserving code does not validate it as a faithful published baseline.
-   See [the prior record](../ugo_reproduction.md).
-3. Precedence for robust harmonic-extension intervals, anchor-compatible label
-   sets, local augmentation influence, bilevel synthetic-data selection, and
-   control-adjusted regional data valuation beyond the three verified papers.
-4. Whether local synthetic-utility comparisons are identifiable with affordable
-   minority audit counts, stable across seeds/learners, and replicable on new data.
-5. Whether U contributes beyond its anchors, sample volume, graph construction
-   and extra computation; density alone does not establish class membership
-   ([gap analysis §6](MATHEMATICAL_GAP_ANALYSIS.md)).
-6. Any empirical advantage, novelty, robust safety, or benchmark result. None was
-   measured in Stage 4A. R's optimization and D's valuation guarantees do not
-   establish an outer-test safety guarantee for our hypothetical generator.
-   The audit also finds a concrete objection to the sufficiency of D's displayed
-   uniqueness axioms; see the counterexample in the prior-art matrix. The
-   published marginal/group-valuation mechanism remains relevant prior art.
+1. The contents/bibliography of the reported 13-paper collection: attachment
+   exceeds 32 MiB. CFS-SMOTE, BFCH-SMOTE, EC-EBO and other listed families remain
+   FULL TEXT UNAVAILABLE, not inferred from names.
+2. Unique UGO fidelity: cap conflict (§3.3 versus Table 4), exact pools/counts,
+   ties/rounding/overshoot and author implementation. Demonstrated batch mismatch
+   is repaired, but full experiment reproduction is pending [UGO_PAPER_CODE_AUDIT.md](UGO_PAPER_CODE_AUDIT.md).
+3. L's entropy sign/finite stopping, H's printed metrics and U-mask protocol,
+   G's distance inconsistency and mismatch between literal descent and verbal
+   safety. Source equations are verified; intended author code is not.
+4. Full supplementary proof verification, exhaustive direct-competitor/robust-graph
+   search, and any finite-data extension of T's asymptotic theory.
+5. Official folds, authenticated dataset license/provider semantics and record
+   IDs. All eight full files parse, but no official training-fold smoke ran.
+6. Practical power and generalization of either proposed diagnostic mechanism.
+   No predictive gains, subgroup benefit, U benefit, formal synthetic safety or
+   methodological novelty have been measured/established.
 
 ## C. Which candidates should be rejected?
 
-Reject **as present novelty arguments**:
+Reject UGO plus ordinary clustering, pseudo-labels, entropy weighting, distance
+filters, global count tuning or multiplied heuristic scores as present novelty
+arguments [L,H,B,T,S3,S5,S6]. Reject high uncertainty/sparse density as an intrinsic
+data-limitation estimator; reject non-significant benefit as proof of irreducibility
+[gap counterexamples; B p5 explicitly qualifies real-data labels].
 
-- UGO + clustering or count/sparsity-based subgroup weights [S5, S6].
-- UGO + pseudo-labelling, entropy or confidence-weighted U [S3].
-- UGO + ordinary boundary-distance rejection [S5; exact relevance of the supplied
-  boundary paper remains unverified].
-- UGO + validation-tuned amount, or a renamed product of established scores
-  [S4; R's validation-guided objective].
-- “Data-limited region detection” inferred solely from high uncertainty, sparse
-  density, no observed gain, or graph support. Counterexamples are derived in the
-  [gap analysis](MATHEMATICAL_GAP_ANALYSIS.md).
-- Candidate 2, anchor-compatible graph sensitivity intervals, as a standalone
-  novel oversampler. Its core harmonic extension is established graph machinery
-  [S3, S7]; an interval does not remove the unknown label-smoothness assumption.
-- Candidate 1, control-adjusted regional intervention contrasts, **as an already
-  novel algorithm**. It remains close to group data valuation, influence analysis
-  and validation-guided optimization [D, R, I]. A standard statistical gate and
-  matched controls are good evaluation practice, not sufficient novelty.
-
-These rejections concern the current justification, not a ban on using established
-components in a properly attributed study. Do not market engineering composition
-as a novel mathematical principle.
+Candidate 1 (finite control-adjusted regional contrasts) is rejected **as an
+already novel algorithm**: it closely resembles B's intervention question, group
+valuation and ordinary nested model selection. Candidate 2 (anchor-compatible
+graph sensitivity intervals) is rejected as a standalone novel oversampler:
+ordinary harmonic structure and an unjustified smoothness radius do not certify
+membership [S3,S7; candidates' overlap counterexample].
 
 ## D. Which candidate, if any, is defensible?
 
-**No candidate is presently defensible as a novel oversampling method.** Candidate
-1 is defensible only as a limited, prospective **empirical diagnostic question**:
-do training-region intervention estimates predict independent discrimination gain
-beyond threshold, point-weight and sample-count controls?
-
-Its output must remain conditional on the learner/generator/data allocation and
-include inconclusive outcomes. The candidate's bounded-comparison analysis applies
-only to a fixed finite family independent of its audit set; it is not a theorem
-about intrinsic data limitation, synthetic correctness or outer-test superiority.
-Its distinction from group Data Shapley and ordinary nested validation must be
-demonstrated, not asserted. The six missing publications could eliminate the gap.
-
-Candidate 2 may serve as an assumption-sensitivity/unlabelled-data ablation only
-after source review. It should not be presented as a second novel component to
-rescue an otherwise ordinary validation-selection method.
+Neither is defensible as a novel oversampling contribution. Candidate 1 can be
+retained as a **prospective empirical diagnostic**: do fine-region finite response
+estimates predict fresh discrimination gains beyond matched controls at realistic
+label budgets? Its conservative bound is often uninformative (candidate power
+calculation); it must allow inconclusive outcomes. Candidate 2 is at most a
+separate structural-assumption/U ablation after source review. Adding it does not
+rescue Candidate 1's novelty. No implementation is approved by this decision.
 
 ## E. Single strongest reviewer objection
 
-> This is established model/data selection relabelled as detection of genuinely
-> data-limited minority regions. Group data valuation and validation-guided
-> reweighting already estimate conditional usefulness; the apparent effect may
-> be threshold/weight changes or extra labelled selection budget, not a new
-> mathematical mechanism or new minority information.
+> Hamilton already decomposes threshold recovery, data-reducible scarcity and
+> estimated irreducible overlap, and tests matched category-specific augmentation
+> with ranking and threshold controls. Your fine-region validation search may be
+> that diagnostic plus ordinary data/model selection, with more labelled audit
+> data and computation, rather than a new mathematical mechanism.
 
-The direct prior-art basis is [D, §§3.2,4.1,4.5], [R, §3.1], [I, §2] and [S1].
-No number of heuristic scores or a new acronym answers this objection. A fair
-study must offer controls the same label/tuning/compute opportunities and preserve
-the distinction between synthetic training locations and new observed labels.
+Direct basis: [B pp5,8–9], with [T p22 Algorithm 1] and [D §3.2] reinforcing the
+size-selection/group-value precedents. Finer resolution, intervals, FPR constraints
+or a new acronym alone do not answer this objection.
 
-## F. What result would falsify the proposed contribution?
+## F. What would falsify the proposed contribution?
 
-There is no established contribution to defend; the testable usefulness hypothesis
-is Candidate 1's prospective diagnostic/selection benefit. Predeclare target
-distributions, learners, practical margins, label budget, seeds and comparison
-rules. Evidence against that hypothesis would include:
+There is no established contribution; preregister a diagnostic **usefulness**
+hypothesis, practical margins and power before testing. Evidence against it:
 
-1. Local utility estimates fail to predict fresh confirmed intervention gains
-   better than count/uncertainty/sparsity or group-valuation controls.
-2. With adequate power, an equivalence interval places outer discrimination/risk
-   advantage within a predeclared negligible margin relative to tuned thresholds,
-   weighting, point-weight ROS or validation-count search. Merely failing to reject
-   equality in a small study is **inconclusive**, not a falsification.
-3. Confirmed majority FPR harm exceeds the preregistered tolerance, or claimed
-   subgroup benefits come from sacrificing other minority regions.
-4. Matching the total labelled-data/compute budget removes the advantage.
-5. The claimed unlabelled component has no replicated gain over no-U and ordinary
-   graph/SSL controls, or overlap/shift systematically makes its accepted points
-   harmful. This falsifies the claimed U benefit, not necessarily every part of
-   the separate local-utility diagnostic.
-6. The novelty audit finds the same target, intervention and estimation procedure
-   already published. This defeats novelty even if the procedure works.
+- Adequately powered fresh-region confirmation finds negligible predictive value
+  for utility estimates beyond counts/uncertainty or category/group-value controls.
+- Equivalence intervals place selected-procedure risk/ranking gain within a
+  predeclared negligible margin versus tuned thresholds, class/point weighting
+  and count search. A small study's non-rejection alone is inconclusive.
+- Confirmed majority FPR harm exceeds tolerance, or rare-region gain sacrifices
+  another minority subgroup.
+- Matching all visible-label, U and fit budgets removes the advantage.
+- Claimed U increment fails no-U/ordinary SSL/shift controls; this falsifies the
+  U component independently, rather than all possible A/B improvements.
+- A direct competitor specifies the same estimand/intervention/selection rule:
+  novelty is defeated even if empirical utility exists.
 
-These are proposed outcomes, not observations. Known class-conditional synthetic
-distributions can test overlap assumptions; their true latent classes are reserved
-for a diagnostic oracle and never supplied to the proposed method. Confirmatory
-measurement must execute the entire selected procedure on untouched outer data
-[S4; D, §4].
+These are planned tests, not observed results. Evaluate the frozen complete
+procedure on untouched O, including all selection/refitting [S4; B §5.5].
 
-## G. What evidence is required before implementation?
+## G. Evidence required before implementation
 
-The following review gates must be met **before any new oversampler code**:
+1. Supply the collection as individual PDFs/smaller archives, identify exact
+   competitors and compare to B/T/D/R/I in a precise difference table.
+2. Obtain official folds/provenance and resolve author UGO conventions; finish
+   blocked real-fold software smoke checks. Keep every fidelity change versioned.
+3. Resolve L/H/G reproduction issues before calling an approximation faithful.
+   Do not inherit T's guarantees without its exact learner/loss assumptions.
+4. Specify one genuine mechanism or abandon the novelty claim. A standard
+   validation loop with a new metric is insufficient.
+5. Declare F/H/A/O/U, masks, total visible-label budget, class/group/time rules,
+   generator/learner/regularization, cap interpretation, tuning and compute parity.
+6. Demonstrate feasible anchor/audit counts and statistical power; justify AP /
+   all-pairs AUC uncertainty separately. Adaptive reuse of A needs fresh independent
+   confirmation or an explicit justified protocol, not a fixed-family bound.
+7. Preregister controls, known-overlap and unequal-subgroup simulations, U ablations,
+   practical margins, infeasible/inconclusive outcomes and untouched outer tests
+   [DATASET_PLAN.md; PROBLEM_STATEMENT_COVERAGE.md].
+8. Obtain user review before another stage. Recommended next work is source/fold
+   completion and Stage 4B mathematical/design review, not DRA-UGO implementation.
 
-1. Obtain lawful copies or verified abstracts/previews for all six supplied
-   publications. Validate identifiers/titles and fill the matrix with section/page
-   citations. An abstract may support a broad objective, not an exact negative
-   claim about absent controls or a full algorithm equation.
-2. Reconcile the original UGO source against the preserved provisional baseline.
-   Any subsequent fidelity corrections belong in a separate approved task and
-   separate baseline version; never silently alter the comparison baseline.
-3. Review the direct competing literature, including group Data Shapley, Ren's
-   validation reweighting, influence-based acquisition/synthetic selection,
-   KMeansSMOTE/ADASYN, robust graph SSL, and the supplied SSHR/SLEO/GDEO papers.
-   The current source set is targeted, not an exhaustive search. Suggested
-   queries are a future search plan, not searches claimed to have been executed:
-   “validation-guided synthetic data selection”, “group data valuation minority
-   subpopulations”, “influence functions synthetic augmentation”, and “harmonic
-   extension uncertainty effective resistance”.
-4. Write a precise proposed difference from the closest verified competitor.
-   If the difference is only a validation loop, confidence threshold, new metric
-   or new name, abandon the novelty claim.
-5. Specify F/H/A/O and U provenance; group/time constraints; training-only
-   preprocessing/regions; independent threshold calibration; a finite candidate
-   family or fresh-block adaptive selection schedule; and total label/fit budgets.
-   Fresh-block error spending such as delta_t=delta/[t(t+1)] has total at most
-   delta, but each block must really be independent of the previous selections.
-6. Justify minority audit counts and statistical power. The elementary bounds in
-   Candidate 1 will often be wide for small disjuncts; do not promise a practical
-   safety guarantee without showing a feasible budget. Resolve AP/all-pairs AUC
-   inference separately rather than counting correlated pairs as independent.
-7. Pre-register the controls listed in [gap analysis §7](MATHEMATICAL_GAP_ANALYSIS.md),
-   U ablations, known-overlap regimes, minority-subregion recall, harm margins,
-   reportable inconclusive outcomes, and untouched outer evaluation.
-8. Obtain user review and explicit approval for the next stage. Stage 4A proposes
-   definitions only and does not authorize a pilot experiment or implementation.
+## Exact publication-access report and stopping point
 
-## Exact publication-access report
+Newly inspected supplied **full texts**: UGO, SLEO, SSHR, GDEO, *Don't oversample
+the boundary*, and *Synthetic Augmentation in Imbalanced Learning* v3.
+Previously verified additional full texts: Ren et al. 2018, Ghorbani & Zou 2019,
+Koh & Liang 2017. **Abstract-only verified publications: none.** The inaccessible
+13-paper collection is not counted as read; no exhaustive proof audit is claimed.
 
-**Full-text verified from lawful publisher-repository PDFs:**
-
-- Ren, Zeng, Yang & Urtasun (2018), *Learning to Reweight Examples for Robust Deep
-  Learning*, ICML/PMLR. Methods, objective equations and stated convergence
-  assumptions checked; supplementary proof audit remains outstanding.
-- Ghorbani & Zou (2019), *Data Shapley: Equitable Valuation of Data for Machine
-  Learning*, ICML/PMLR. Valuation equation, group extension, acquisition and
-  evaluation separation checked; supplemental approximation details not read.
-- Koh & Liang (2017), *Understanding Black-box Predictions via Influence
-  Functions*, ICML/PMLR. Influence equations and convex/local assumptions checked;
-  original supplemental proofs not read.
-
-**Verified from abstracts only:** none. Publisher abstracts of the three above
-were also verified, but they are classified at their stronger full-text level.
-
-**Neither full text nor abstract verified:** UGO, SLEO, SSHR, GDEO, Don't Oversample
-the Boundary, and Synthetic Augmentation in Imbalanced Learning at the supplied
-identifiers. Their missing evidence is an explicit blocker, not a completed
-six-paper verification claim. Pinned scikit-learn/imbalanced-learn source files
-were checked as documentation/implementation evidence, not classified as papers.
-
-## Review and synchronization
-
-The expanded Stage 4A PR updates README.md, AGENTS.md, DATASETS.md and research
-planning/evidence documents, and adds a current-status note to the historical UGO
-reproduction record. Source, tests, entry points and dependencies remain unchanged.
-The canonical research filenames use uppercase, with no parallel lowercase copies.
-The [roadmap](RESEARCH_ROADMAP.md) stops at Stage 4A and requires Stage 4B review.
-Review the evidence limitations first, then the derivations/controls, then whether
-either conditional question merits further source work. If the conclusion remains
-“no defensible novelty established,” that is the research result of this audit,
-not a reason to rename an ordinary method.
-
-Stop after Stage 4A and wait for user review.
+Stage 4A-R creates offline infrastructure, verified manifests, explicit UGO
+repairs/tests and source-grounded documentation. It does not run benchmarks or
+implement the proposed method. Review this stage and stop for user approval.

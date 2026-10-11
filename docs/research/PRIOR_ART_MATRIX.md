@@ -1,94 +1,223 @@
-# Stage 4A: prior-art evidence and mathematical comparison
+# Stage 4A-R: full-text prior-art comparison
 
-Initial audit: 2026-10-10; DRA-UGO documentation/source-access update: 2026-10-11. This is an evidence-limited research audit, not an
-implementation or a benchmark report. All links below are citations, not evidence
-that every linked page was accessible. Claim scope and access status are explicit.
+Audit date: 2026-10-11. Sources U/L/H/G/B/T below are the six supplied PDFs,
+opened and text-extracted in this workspace. Citations give **PDF pages**, sections
+and equation/table identifiers. This is a targeted method audit, not an exhaustive
+literature search or an independent reproduction of reported experiments.
+[REFERENCE_STATUS.md](REFERENCE_STATUS.md) gives exact filenames, metadata and
+read scope; [resource inventory](../../data/manifests/resource_inventory.csv)
+gives accessible paths, size, SHA-256 and parse status. PDFs stay ignored by Git.
+Earlier six-paper UNVERIFIED cells are superseded by the evidence below.
 
-## Verification ledger
+## Core sources and verified scope
 
-| Requested publication identifier | User-supplied citation | Full text read? | Abstract verified? | Equation/method status |
-| --- | --- | --- | --- | --- |
-| UGO | [10.1016/j.knosys.2026.115886](https://doi.org/10.1016/j.knosys.2026.115886) | No | No | **UNVERIFIED**; previous prompt and local code are not the paper |
-| SLEO | [10.1016/j.knosys.2025.115009](https://doi.org/10.1016/j.knosys.2025.115009) | No | No | **UNVERIFIED**, including acronym expansion and bibliographic metadata |
-| SSHR | [10.1016/j.eswa.2023.119733](https://doi.org/10.1016/j.eswa.2023.119733) | No | No | **UNVERIFIED**, including the precise semi-supervised protocol |
-| GDEO | [10.1016/j.neucom.2026.134121](https://doi.org/10.1016/j.neucom.2026.134121) | No | No | **UNVERIFIED** |
-| Don't Oversample the Boundary | [10.1016/j.neucom.2026.134831](https://doi.org/10.1016/j.neucom.2026.134831) | No | No | **UNVERIFIED**; title-to-DOI match not independently checked |
-| Synthetic Augmentation in Imbalanced Learning | [arXiv:2601.16120](https://arxiv.org/abs/2601.16120) | No | No | **UNVERIFIED**; title-to-identifier match not independently checked |
+| ID | Verified printed bibliography / citation | Full-text sections used |
+| --- | --- | --- |
+| U | Sağlam & Cengiz, *Uncertainty guided oversampling: A classifier-specific approach for effective handling of class imbalance in machine learning*. KBS 342 (2026) 115886. [DOI](https://doi.org/10.1016/j.knosys.2026.115886) | pp5–8 §§3.1–3.4, Tables 2–4; setup pp8–10 |
+| L | Tao, Wang & Wang, *Semi-supervised local entropy-decayed oversampling for imbalanced data*. KBS 333 (2026) 115009. [DOI](https://doi.org/10.1016/j.knosys.2025.115009) | pp4–7 method, Eqs.1–8 and Algorithm 1; printed year 2026, despite DOI 2025 |
+| H | Jiang, Zhao, Lu, Zhan & Mao, *A semi-supervised resampling method for class-imbalanced learning*. ESWA 221 (2023) 119733. [DOI](https://doi.org/10.1016/j.eswa.2023.119733) | pp4–6 SSHC/SSHR algorithms, equations; p7 setup; pp11–12 U ablation |
+| G | Jiang, Zhu & Liu, *GDEO: Gini-guided discriminative equilibrium oversampling for imbalanced classification*. Neurocomputing 696 (2026) 134121. [DOI](https://doi.org/10.1016/j.neucom.2026.134121) | pp4–6 Eqs.1–9, Algorithm 1, complexity/setup |
+| B | Hamilton, *Don't oversample the boundary: A remedy decomposition of the minority deficit in imbalanced learning*. Neurocomputing 704 (2026) 134831. [DOI](https://doi.org/10.1016/j.neucom.2026.134831) | pp4–6 §§3.1–3.5, Proposition 1; pp8–9 §§5.4–5.5; OOF qualification/Appendix B |
+| T | Ma & Zhang, *Synthetic Augmentation in Imbalanced Learning: When It Helps, When It Hurts, and How Much to Add*. [arXiv:2601.16120v3](https://arxiv.org/abs/2601.16120v3), 7 March 2026 | Main text pp9–12 Eqs.1–4, Theorems 1–2 / Assumption 1; pp15–19 mismatch/rate claims; pp21–22 VTSS Algorithm 1. Not all 90 pages/supplement proofs audited |
 
-All six exact supplied landing URLs returned proxy tunnel `403 Forbidden`.
-The arXiv PDF and export API also returned that error. Crossref and OpenAlex
-lookups for UGO were blocked. These are **network-access failures**, not evidence
-that a paper is nonexistent, paywalled, invalid, or methodologically deficient.
-No verified abstracts or section previews for these six were available. Inferring
-algorithms from their titles would fabricate evidence, so the comparison cells
-below deliberately remain unknown. No negative novelty claim about any of the six
-is licensed by missing access.
+Metadata are verified from the supplied documents, not a new publisher authenticity
+check. Negative entries mean **not present/identified in the inspected algorithms
+and protocol**, not proof of absence in every related work or supplement.
 
-At the initial audit, merged `main` contained only `docs/ugo_reproduction.md`,
-not a related-paper audit. The current documents preserve and extend that audit. The available Stage 2 branch had no research audit either.
-The earlier pasted Stage 1–3 instructions contained no identifiable related-paper
-collection; no core-paper PDFs were attached. The existing UGO document explicitly records
-provisional pools, cap, rounding, and neighbor conventions. Its code was preserved
-unchanged in this stage; “original UGO” is still an **unverified reproduction
-baseline**, not a source-validated original algorithm. See
-[the existing reproduction record](../ugo_reproduction.md).
+## Required mathematical comparison
 
-A new access check on 2026-10-11 returned the same proxy error for the six
-landing pages, the augmentation PDF and Crossref's UGO record. The three PMLR
-PDFs below remained accessible, with the same SHA-256 hashes. This confirms
-availability, not additional theorem verification. Exact user-supplied titles,
-missing metadata and the expanded related-paper checklist are recorded in
-[REFERENCE_STATUS.md](REFERENCE_STATUS.md).
-
-## Required comparison: six requested sources
-
-**U = UNVERIFIED from a primary source.** U never means “absent.”
-
-| Source | Optimized/estimated quantity | Synthetic seed choice | Minority-region difficulty | Inter-class overlap | Intra-class imbalance |
+| Source | Quantity optimized/estimated | Seeds / generation | Minority difficulty | Overlap | Intra-class imbalance |
 | --- | --- | --- | --- | --- | --- |
-| UGO | U | U | U | U | U |
-| SLEO | U | U | U | U | U |
-| SSHR | U | U | U | U | U |
-| GDEO | U | U | U | U | U |
-| Don't Oversample the Boundary | U | U | U | U | U |
-| Synthetic Augmentation in Imbalanced Learning | U | U | U | U | U |
+| U | Signed MMA and class-mean equality stop [p6 §§3.2–3.3] | Highest mean-uncertainty class; top uncertain clean seeds, ROS/SMOTE [pp7–8] | Class-conditional classifier disagreement | kNN pre-noise exclusion and final relocation | Point emphasis, but no explicit subgroup allocation guarantee [§3.4] |
+| L | Local entropy and radius-decayed cluster quantity [pp5–6 Eqs.3–5] | Minority cluster hyperspheres; entropy-based allocation and radial generation [Eqs.7–8] | Local mixed-neighbor entropy | Label-constrained merging and translating majority points out of hyperspheres [Eqs.1,6] | Explicit minority clustering and cluster budget [Eq.7] |
+| H | SSHC labelled accuracy/F-measure objective; confidence for U [pp5–6 Eqs.3,7] | Select confident U in minority clusters; fallback within-cluster SMOTE [p5 Algorithm 2] | Cluster/subclass representation and purity | Split impure clusters; remove majority rows in minority clusters; hybrid undersampling | Class decomposition into clusters; minority U acquisition [Algorithms 1–2] |
+| G | Gini uncertainty; kernel difference L minimized by gradient descent [p4 Eqs.1–7] | Gini-weighted minority seed, nearby majority partner, Gaussian start, descent [pp5–6] | Gini-weighted ambiguous anchors | Author claims equilibrium/no excessive overlap; no hard minority-posterior constraint in displayed update | Difficult seed weights, not an explicit small-disjunct coverage constraint |
+| B | OOB/OOF error triage and threshold-recoverable / estimated data-reducible / estimated irreducible decomposition [pp4–5] | Category-targeted SMOTE-style matched-budget interventions [p8 §5.4]; paper evaluates a remedy menu | Low same-class local representation, classifier errors and threshold response | Estimated boundary errors; posterior interpolation analysis [p5 Proposition 1] | Local ratio normalized by global class prevalence; category 2 scarcity proxy |
+| T | Balanced population loss, augmented risk bias/variance; CV balanced validation loss [pp9–12,22] | Abstract synthetic distribution P_syn / supplied generator; size grid | Statistical generator mismatch, curvature and bias, not a region detector | Mismatch can harm; no geometric no-crossing promise | Binary class-size theory; not a local disjunct allocation algorithm |
 
-| Source | Separate unlabelled input X? | Pseudo-labels? | Downstream classifier affects generation? | Marginal benefit of additions? | Threshold-only comparator? | Claimed guarantees and assumptions |
+| Source | Separate U features? | Pseudo-labels? | Downstream influence | Marginal augmentation benefit | Tuned threshold control | Guarantees / limitations |
 | --- | --- | --- | --- | --- | --- | --- |
-| UGO | U | U | U | U | U | U |
-| SLEO | U | U | U | U | U | U |
-| SSHR | U | U | U | U | U | U |
-| GDEO | U | U | U | U | U | U |
-| Don't Oversample the Boundary | U | U | U | U | U | U |
-| Synthetic Augmentation in Imbalanced Learning | U | U | U | U | U | U |
+| U | No: original labelled pool, oracle/U pool explicitly removed [p5 §3.1] | No separate-U pseudo-label stage | Yes, internal selected learner retrained/scored [§3.1]; not independent downstream validation | No finite independent benefit contrast; Welch equality heuristic | Not identified in inspected setup pp8–10 | No risk/no-overlap theorem in inspected method. Neighbor filtering only heuristically reduces aleatoric effects [pp6–7] |
+| L | **No separate X_U input** in Algorithm 1 [p7]; semi-supervision means labelled class constraints on clustering | No selected U pseudo-label input | Probabilities determine entropy; no finite learner-response selection [pp5–7] | Not identified | Not identified in inspected method | Complexity estimate [p7], not a synthetic-class correctness guarantee; entropy/stopping signs require clarification |
+| H | **Yes**, D_L,D_U in Algorithms 1–2 [pp4–5] | **Yes**, selected confident U assigned minority labels [pp5–6] | Cluster objective uses its own prediction/purity; no downstream SVM validation feedback in generation | No independent local finite-batch test; U ablation exists [pp11–12 §4.3.4] | Not identified; p7 uses SVM and resampling comparators | Cluster-smoothness heuristic, complexity argument [p6]; no posterior-membership guarantee; printed metrics and U-split provenance require resolution |
+| G | No X_U input [p6 Algorithm 1] | No U pseudo-label stage | LR probability estimate by default; evaluation uses KNN/CART/NB/SVM [pp4,6], so not the downstream learner's finite benefit | Not identified | None identified; defaults used [p6] | Complexity [p6]; no theorem establishes no crossing for literal descent. Own counterexample below |
+| B | No distinct X_U in inspected triage/intervention protocol | No separate-U acquisition | RF ensemble drives triage; classifier remedies evaluated [pp4–6] | **Yes at category level:** matched-budget category 2/3/all/random interventions [p8 §5.4]; not an oracle for a new region's causal benefit | **Yes**, cross-fitted BA threshold and all-method threshold parity; ranking controls [pp5,9] | Proposition 1 is posterior/geometric reasoning under continuity or affine/quasiconvex conditions; real-data “irreducible” is an estimate, not known Bayes truth |
+| T | No distinct U-set requirement in main theory / VTSS inputs | Not a main-theory pseudo-label mechanism | Risk/loss/learner-specific; classifier fitted in each CV candidate [p22] | **Yes globally:** augmentation-size risk comparisons and CV search | No explicit threshold-tuned no-resampling arm in Algorithm 1; it targets balanced surrogate loss | Theorems require curvature, differentiability, boundedness, covariance and asymptotic/mismatch assumptions; not universal RF/SMOTE safety |
 
-| Source | Synthetic-point generation | Verifiable complexity | Closest relationship to DRA-UGO |
-| --- | --- | --- | --- |
-| UGO | U | U | Candidate classifier-specific baseline; exact method correspondence U |
-| SLEO | U | U | Requested small-disjunct/entropy comparator; actual correspondence U |
-| SSHR | U | U | Requested semi-supervised comparator; actual separate-U protocol U |
-| GDEO | U | U | Requested discriminative/overlap comparator; exact constraints U |
-| Don't Oversample the Boundary | U | U | User identifies remedy decomposition as a major novelty threat; its actual mathematical criteria U |
-| Synthetic Augmentation in Imbalanced Learning | U | U | User identifies risk/mismatch/VTSS as competing explanations; exact theory/VTSS rule U |
+## Author equations and critical source issues
 
-These relationships describe **questions to verify from the user's research
-brief**, not method findings inferred from titles. The earlier tables plus this
-one cover all requested quantities, mechanisms, uncertainty, overlap, subgroup,
-U/pseudo-label, marginal-benefit, threshold, guarantee and complexity dimensions.
+### U: classifier disagreement and stopping, not benefit identification
 
-For each source, the author equations are **not verified**. Before replacing a U,
-record the exact page/section/equation and whether it came from full text, an
-abstract, or a section preview. Abstract-only evidence cannot establish an absent
-threshold baseline, a specific eligible-neighbor set, or an unmentioned theorem.
-When a source becomes available, distinguish using genuinely separate unlabelled
-observations from temporarily hiding known labels, labelling synthetic points, or
-running unsupervised clustering on already-labelled fitting features.
+[U p6 §3.2] $U(x,y)=\max_{k\ne y}P(k\mid x)-P(y\mid x)$.
+[U p7 §3.4] chooses $c=\arg\max_l\bar U_l$, then $n_{select}=n^{(c)}\lambda_{select}$,
+with $n_{step}=n\lambda_{step}$ fixed before the loop [p8 Table 4].
+Welch non-rejection [p6 §3.3] is not proof of equal risks or useful synthetic
+information. Source cap conflict and implementation conventions are documented
+operation by operation in [UGO_PAPER_CODE_AUDIT.md](UGO_PAPER_CODE_AUDIT.md).
+No claim of a calibrated epistemic/aleatoric decomposition is justified: the
+paper itself qualifies that interpretation [pp6–7].
 
-The prompt-derived local UGO implementation computes signed MMA, selects a class
-by its mean MMA, uses kNN noise filtering/relocation, and applies Welch stopping.
-Those are verified **repository behaviors**, not verified claims about [UGO].
-No exact original cap equation is available. Do not use this audit to relabel
-the local provisional formula as a published equation.
+### L: genuine subgroup mechanism, but no separate U pool
+
+As printed [L p5 Eqs.3–5]:
+
+$$E(x)=p\log p+(1-p)\log(1-p),\quad E(C)=\sum_{x\in C}E(x),\quad
+\psi_j=E(C_j)\exp[-\alpha(r_j-r_0)].$$
+
+Here p is a local minority-membership estimate: kNN, KDE or a classifier-based
+estimate are explicitly allowed [L p5 §3.2]. Algorithm 1
+[p7] takes X_maj,X_min,alpha,prob_type, not an extra unlabelled feature set.
+Equation 1 [p4] limits minority cluster merges using nearest-majority distances.
+Majority points inside a minority sphere are translated [p6 Eq.6]:
+
+$$x'_{maj}=c+r\frac{x_{maj}-c}{\|x_{maj}-c\|}.$$
+
+Equations 7–8 [p6] allocate $(n_{maj}-n_{min})E(C_j)/\sum_kE(C_k)$ and generate
+$z=c+\xi r\mu/\|\mu\|$. **Critical audit interpretation:** Eq.3 lacks the usual
+entropy minus sign (confirmed visually in the PDF); E<=0 conflicts with
+Algorithm 1's positive-psi branch. Even positive E times an exponential never
+reaches zero at a finite radius without tolerance. Uniform radius with a uniform
+direction is not uniform volume in d>1 (ball volume within radius t scales t^d).
+Do not silently insert a sign, tolerance or radial transform to claim reproduction.
+The p7 approximate O(n log n m) claim treats cluster/overlap iterations as bounded
+and does not include arbitrary probability-model fitting cost. It is not a
+worst-case guarantee for every learner.
+
+### H: real U selection, with unresolved protocol/metric details
+
+[H p5 Eq.3] $J=\mu Acc+(1-\mu)F_1$ scores labelled SSHC predictions. Equation 4
+prints $F_1=2TP\,TN/[TP(TP+FP)+TN(TP+FN)]$, which is not ordinary binary F1.
+[H p6 Eq.7] ranks U in minority clusters:
+
+$$C(y_i\mid x;\Theta)=\frac{n_+}{n}
+\left(1-\frac{\|x-m_j\|}{\sum_k\|x-m_k\|}\right).$$
+
+Here n_+/n is labelled cluster purity and m_j the associated centroid. Algorithms
+1–2 [pp4–5] use real D_U; minority-labelled selected U is not newly observed truth.
+The hybrid amounts are $n_U=\lambda(N_--N_+)$ (undersampling, p5 Eq.6) and
+$n_O=(1-\lambda)(N_--N_+)$ (U additions, p6 Eq.8). SMOTE fills shortages.
+An explicit no-U ablation is reported [pp11–12 §4.3.4], so “nobody tests U value”
+is contradicted. These are author-reported experiments, not replicated here.
+
+**Critical audit interpretation:** p6's printed specificity FP/(TN+FP) and
+sensitivity FN/(TP+FN) are FPR/FNR; its displayed AUC formula is not ordinary
+integrated ROC-AUC. The same page separately describes standard F-measure.
+Resolve author code/metric conventions before a faithful implementation or
+numeric comparison. The p7 setup delegates to CDBH and does not establish the
+exact labelled/U masking and outer exclusion needed for our protocol; do not
+invent a fraction or assume absence of leakage. The stated clustering cost is
+$O(m(l+u)(t_1K_1|Y|+t_2K_2))$ [p6]; claimed resampling simplification neglects
+potential l*n_U/u*n_O terms unless additional bounds apply. K_2 is a cluster
+count subscript, not a square. No class-membership/no-overlap theorem follows.
+
+### G: literal descent needs scrutiny
+
+[G p4 Eqs.1–7; p5 Eqs.8–9]:
+
+$$G(x)=2p(x)(1-p(x)),\quad
+L(z)=G(x_+)e^{-\alpha\|z-x_+\|^2}-G(x_-)e^{-\alpha\|z-x_-\|^2},$$
+$$\nabla L(z)=2\alpha G(x_-)e^{-\alpha\|z-x_-\|^2}(z-x_-)
+-2\alpha G(x_+)e^{-\alpha\|z-x_+\|^2}(z-x_+),\qquad
+z_{t+1}=z_t-\eta\nabla L(z_t).$$
+
+Seed weight is G(x_i)/sum G(x_j); the start is x_+ plus Gaussian noise, a nearby
+majority partner is selected and Algorithm 1 breaks at L<=0 [pp5–6].
+**Our analytic counterexample, not a paper experiment:** take x_+=0,x_-=1,
+alpha=1, equal G=.375, start 0 and eta=1. A compatible fitted score is
+p_1(x)=sigmoid(log(3)(1-2x)), whose boundary is .5. The derivative at 0 is
+-.75/e; descent moves toward the majority. Iterates are approximately .2759
+and .789, crossing that classifier boundary; stopping at L<=0 can return the
+crossed point. A small Gaussian perturbation retains this behavior by continuity.
+Thus the literal update does not guarantee the claimed minority attraction or
+no crossing. This challenges a general guarantee, not every reported experiment.
+
+Equation 2 uses squared Euclidean distance; p6's complexity prose refers to
+Mahalanobis distance. Treat as an unresolved inconsistency, not a license to
+change the metric. The stated loop cost before simplification is roughly
+O(n_++n_-+n_+(n_-d+n_-log n_-)+(n_--n_+)Td); LR fitting and distance-metric
+estimation must be added. No published implementation was run here.
+
+### B: direct novelty threat already covers the proposed framing
+
+[B p4 §3.1 Eq.1] decomposes entropy of mean predictions into mean entropy plus
+the residual disagreement. The gating protocol instead uses OOB/OOF predictions
+[p4 §3.2]: noisy category if true-class probability <.12; then sparse category
+if same-class kNN fraction/global class prevalence <.4; remaining errors are
+boundary category. These thresholds are operational, not identified Bayes labels.
+
+[B p5 §3.3] **first tests threshold recoverability**, using five-fold cross-fitted
+balanced-accuracy thresholds. Remaining category 2 errors are estimated
+data-reducible; remaining category 3 errors estimated irreducible. The paper
+explicitly avoids claiming known Bayes irreducibility on real data. [B p8 §5.4]
+then matches synthetic budget across category 2/category 3/all-error/random arms;
+[B p9 §5.5] checks ROC/PR ranking and threshold parity. These are substantial
+precedents for our proposed framing and intervention controls. Fine regional
+contrasts are not automatically the same algorithm, but changing resolution or
+adding a confidence gate is insufficient demonstrated novelty.
+
+Proposition 1 [pp5–6] uses eta<.5 anchors: continuity ensures sufficiently short local
+steps stay majority; whole-segment claims require quasiconvex/affine structure.
+For affine eta with endpoints eta_i>.5>eta_j, crossing probability under uniform
+interpolation is $(.5-\eta_j)/(\eta_i-\eta_j)$. This is posterior geometry,
+not a general guarantee that all oversampling harms. Clause (iii) asserts a
+nondecreasing harmful fraction as overlap/seed support shifts; the proof sketch
+does not formalize an ordering across arbitrary changing distributions. Do not
+promote that claim to a universal monotonicity theorem. Natural-prior eta=.5 and
+a balanced Bayes boundary differ under unequal priors: p8's controlled Gaussian
+balanced-boundary description must not be conflated with the natural posterior
+criterion. Strict OOF robustness is qualified, not universal causal identification.
+
+### T: mismatch theory and size tuning are already published
+
+[T p9 Eq.1] uses balanced loss
+$R(\theta)=\frac12E_{P_0}\ell_0+\frac12E_{P_1}\ell_1$.
+For N=n_0+n_1+n_tilde, pi_0=n_0/N, pi_tilde=n_tilde/N, Eqs.2–4 [p10] give:
+
+$$\widetilde R=R+(\pi_0-\tfrac12)\varphi+\widetilde\pi\psi,\quad
+\varphi=E_{P_0}\ell_0-E_{P_1}\ell_1,\quad
+\psi=E_{P_{syn}}\ell_1-E_{P_1}\ell_1,$$
+$$b(\theta^*)=(\pi_0-\tfrac12)\nabla\varphi(\theta^*)+
+\widetilde\pi\nabla\psi(\theta^*).$$
+
+Theorem 1 [pp10–11] lower-bounds excess balanced risk by
+$\mu\|b(\theta^*)\|^2/(2M^2)+o_P(1)$ under its boundedness, unique augmented
+minimizer, gradient-Lipschitz and balanced quadratic-growth conditions.
+Theorem 2 / Assumption 1 [pp11–12] give a local asymptotic bias/variance expansion
+under smoothness, bounded support/moments, strong curvature and positive-definite
+covariances. These do not imply finite-sample safe graph labels or universal
+oversampling benefit. Supplemental proof completeness is not claimed.
+
+[T p19 Eq.5/Theorem 6] local symmetry means **gradient condition**
+$\nabla\varphi(\theta^*)=0$, not sparse feature density. Under Theorem 2's conditions
+and $n_0^{-1/2}\ll\|\nabla\psi\|\ll1$, a diminishing size
+$\widetilde n=O(\sqrt{n_0}/\|\nabla\psi\|)\ll n_0$ has balanced excess risk $O_P(n_0^{-1})$;
+nonvanishing size $\widetilde n\gtrsim n_0$ has balanced excess-risk lower order
+$\Omega_P(\|\nabla\psi\|^2)\gg n_0^{-1}$. The conditions must accompany these rates.
+
+VTSS [p22 Algorithm 1] searches gamma in a positive grid centered on 1, sets
+$\widetilde n=round[\gamma(n_0-n_1)]$, augments only each CV **training** subset,
+fits the learner and minimizes mean class-balanced validation loss. The target
+minority count is computed at the input dataset level, so fold-relative scaling
+must be declared in a reproduction. Gamma=0 is not explicit in the displayed
+grid; automatic avoidance of all augmentation harm is not guaranteed. This
+already covers global validation-tuned sample amounts and learner-loss feedback.
+It does not alone establish a new region-level intervention or genuine-U mechanism.
+
+## Corrections to earlier research documentation
+
+- Six inaccessible-source cells and prompt-only equations are replaced with full
+  source evidence. Older Git versions preserve the access history.
+- SLEO's title is not evidence of a separate U pool: Algorithm 1 has none.
+- SSHR does use separate U and tests a no-U ablation; pseudo-label confidence is
+  not verified membership. Its printed metric/protocol issues remain open.
+- The threshold/data/irreducible framing and category-matched interventions are
+  **already explicit in B**, not an unverified novelty opportunity.
+- T already formalizes mismatch-dependent augmentation harm and validation size
+  search. Ordinary count tuning is rejected as novelty.
+- UGO's current class-count batch was a demonstrated deviation, now fixed; cap
+  conflict is real, not merely an earlier prompt conjecture. See the code audit.
+- G's verbal equilibrium/no-overlap account and L's printed entropy/stop signs
+  cannot be promoted to verified guarantees without the qualifications above.
 
 ## Additional publications verified from full text
 
@@ -96,8 +225,7 @@ Three complete 10-page PDFs were obtained with HTTP 200 from **PMLR's public
 GitHub repositories**. Their titles/authors match the official repository's
 publication metadata. Relevant mathematical and experimental sections were read;
 supplementary appendices/proofs were not comprehensively audited. PDF hashes are recorded below.
-These sources do not fill the six requested evidence gaps, but they materially
-limit possible novelty claims.
+They provide additional direct limits on possible novelty claims.
 
 ### [R] Ren et al. (2018), Learning to Reweight Examples for Robust Deep Learning
 
@@ -270,7 +398,7 @@ original papers**:
 | D | Ghorbani & Zou. ICML 2019, PMLR 97:2242–2251. Links above. | Full primary PDF and publisher abstract/metadata |
 | I | Koh & Liang. ICML 2017, PMLR 70:1885–1894. Links above. | Full primary PDF and publisher abstract/metadata |
 | S1–S7 | Pinned library documents/source linked above. | Complete source pages/files relevant to stated implementation claims |
-| Six requested identifiers | Exact supplied links in the first table. | Neither full text nor abstracts verified |
+| U/L/H/G/B/T | Supplied full PDFs, DOI/arXiv links and page citations above. | Full text accessible and key method sections inspected; proofs not exhaustively audited |
 
 PDF SHA-256 values:
 
@@ -284,10 +412,3 @@ Downloaded PDFs/text were kept outside the project under `/tmp`, not committed.
 No paywall circumvention or private-data access was used. This is a targeted
 counterexample search, not an exhaustive systematic literature review. All
 novelty conclusions must reflect that limitation.
-
-To unblock the six-paper audit, supply legitimate PDFs/abstracts or allow the
-required public destinations in environment settings: `doi.org`, `arxiv.org`,
-`export.arxiv.org`, `api.crossref.org`, `api.openalex.org`, and publisher redirect
-hosts such as `www.sciencedirect.com` and `linkinghub.elsevier.com`. Reachability
-alone does not supply subscription rights or full-text access. No network settings
-were changed as part of this documentation-only task.
