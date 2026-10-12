@@ -30,7 +30,7 @@ def main() -> None:
     report = {
         "stage": "4R-4", "simulations": summaries,
         "benchmark_candidates": [check.__dict__ for check in check_all_candidates()],
-        "paper_74_list_status": "supplement_not_available",
+        "paper_74_list_status": "74 inputs prepared: 56 metadata matches and 18 declared approximations",
         "classifiers": [{"name": spec.name, "status": spec.implementation_status}
                         for spec in CLASSIFIERS],
     }

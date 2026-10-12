@@ -48,10 +48,10 @@ def test_csv_requires_explicit_original_positive_label_and_respects_it(tmp_path)
         assert record["metrics"]["labels"] == [1, 0]
 
 
-def test_unavailable_classifier_produces_nonzero_exit_and_records(tmp_path):
+def test_new_neural_classifier_runs_through_cli(tmp_path):
     result = command("--software-check", "--output", tmp_path,
                      "--classifiers", "NNET", "--methods", "nores")
-    assert result.returncode == 1
-    assert '"unavailable": 10' in result.stdout
+    assert result.returncode == 0, result.stderr
+    assert '"success": 10' in result.stdout
     records = [json.loads(p.read_text())["record"] for p in tmp_path.glob("job-*.json")]
-    assert len(records) == 10 and all(r["metrics"] is None for r in records)
+    assert len(records) == 10 and all(r["metrics"] is not None for r in records)

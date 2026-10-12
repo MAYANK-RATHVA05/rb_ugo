@@ -119,7 +119,13 @@ def test_training_only_inputs_and_fresh_final_fit(tmp_path, data, monkeypatch):
         np.testing.assert_array_equal(final[1][-1], [88., 88.])
 
 
-def test_failure_and_unavailable_are_preserved_with_no_scores(tmp_path, data):
+def test_failure_and_unavailable_are_preserved_with_no_scores(tmp_path, data, monkeypatch):
+    real_constructor = evaluation.make_classifier
+    def constructor(name, **kwargs):
+        if name == "NNET":
+            raise evaluation.UnavailableClassifierError("simulated optional backend absence")
+        return real_constructor(name, **kwargs)
+    monkeypatch.setattr(evaluation, "make_classifier", constructor)
     config = EvaluationConfig(classifiers=("LogReg", "NNET"), methods=("nores", "smote"),
                               method_parameters={"smote": {"k_neighbors": 100}})
     result = run(tmp_path, data, config=config)

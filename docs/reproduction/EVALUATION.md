@@ -34,8 +34,9 @@ substitution. SVC's existing probability calibration uses its training input.
 
 The split seed is the configuration seed; job seed is `(seed + fold) % 2**32`,
 identical across methods/classifiers in that fold. Configurations are fixed
-before running. No Bayesian calibration/posterior averaging is implemented for
-the five unavailable classifiers.
+before running. BART and BNNET probabilities average 100 retained posterior
+draws, as stated by the paper; their unstated prior and inference choices are
+recorded as implementation approximations.
 
 ## Declared preprocessing choices
 
@@ -138,13 +139,13 @@ fitting on added rows. Other checks cover interruption/resume, identity changes,
 corruption, infeasible folds, failure/unavailability, invalid probabilities,
 categorical/missing CSV input and an explicitly majority-positive outcome.
 
-On Python 3.11, the full suite passed **313 tests** with no failures or skips.
-The documented software command completed all 20 jobs; repeating it reused
-all 20 saved records. The CLI tests also verify nonzero exit status and ten
-empty-score records for an unavailable classifier.
+The documented software command completes and resumes saved records, while
+tests preserve explicit empty-score behavior for a simulated missing optional
+backend. Current verification counts are recorded in the classifier completion
+report after the full suite is run.
 
-The supplement's 74 dataset identities/folds and five classifier implementations
-remain unavailable. The subsequently authorized **4R-6** simulation pilot is
+The 74 prepared inputs include 18 declared approximations; author folds remain
+unavailable. The subsequently authorized **4R-6** simulation pilot is
 documented in [SIMULATION_PILOT.md](SIMULATION_PILOT.md), including cap stops
 and the unresolved paper F1 averaging discrepancy.
 Stages **4R-7** and **4R-8** cover the full declared matrix/additional analyses

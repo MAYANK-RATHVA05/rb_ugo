@@ -45,10 +45,10 @@ for source equations, numerical scope and unresolved conventions.
 
 Stage 4R-4 prepares the two paper simulations, a provenance-guarded registry
 of eight **unverified** dataset candidates, and all fourteen paper classifier
-identities. Nine local classifier substitutes pass fitting-only probability
-checks; five require external or custom implementations. See the
+identities. The classifier-completion stage now gives all fourteen declared
+Python interfaces, including pinned BART and native C5.0 backends. See the
 [experiment setup report](docs/reproduction/EXPERIMENT_SETUP.md). The 74-dataset
-supplement remains necessary for exact benchmark membership and comparison.
+collection has 56 metadata matches and 18 explicitly accepted approximations.
 
 Stage 4R-5 supplies the [evaluation runner](docs/reproduction/EVALUATION.md)
 with all eleven conditions and mandatory NORES. Its manifest records source
@@ -131,6 +131,8 @@ rb_ugo/                     # Repository root, not a second nested directory
 ├── docs/ugo_reproduction.md # Equations, assumptions, evidence, unresolved fidelity
 ├── requirements.txt       # Pinned research dependencies
 ├── requirements-dev.txt   # Runtime dependencies plus pytest
+├── requirements-classifiers.txt # Pinned optional classifier backend
+├── native/                # C5.0 process adapter (compiled output stays ignored)
 ├── README.md
 ├── DATASETS.md             # Benchmark provenance and manual data handling
 ├── AGENTS.md               # Permanent research rules
@@ -176,15 +178,15 @@ With Python 3.11 available, from the repository root:
 
 ```bash
 python3.11 -m venv .venv
-.venv/bin/python -m pip install -r requirements-dev.txt
+.venv/bin/python -m pip install -r requirements-dev.txt -r requirements-classifiers.txt
+.venv/bin/python scripts/setup_c50.py
 .venv/bin/python main_stage1.py
 .venv/bin/python -m pytest -q
 ```
 
-No credentials or external services are needed for Stage 1 beyond package
-installation. The initialization script prints the Python version and configured
-paths, then reports success only if all required directories exist. Tests cover
-path configuration, successful initialization, and missing or invalid directories.
+The C5.0 build needs Git and a C compiler. It verifies a pinned CRAN C50 source
+commit and checksum before compiling into the ignored `.runtime/c50` directory.
+No credentials or external services are needed beyond dependency/source download.
 
 ## Stage 2: inspect a dataset
 

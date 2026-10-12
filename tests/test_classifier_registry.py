@@ -15,9 +15,7 @@ def test_all_fourteen_paper_identities_and_eight_groups_are_recorded():
         "general", "linear", "nonlinear", "neural", "tree", "density",
         "neighborhood", "bayesian",
     }
-    assert {spec.name for spec in CLASSIFIERS if spec.implementation_status == "unavailable"} == {
-        "BART", "BNNET", "C5.0", "GKNB", "NNET",
-    }
+    assert not {spec.name for spec in CLASSIFIERS if spec.implementation_status == "unavailable"}
     assert get_classifier_spec("RF").paper_settings.startswith("500 trees")
 
 
@@ -33,12 +31,6 @@ def test_available_classifier_probability_contract_on_fitting_only(name):
     np.testing.assert_array_equal(simulation.X, before[0])
     np.testing.assert_array_equal(simulation.y, before[1])
     assert clone(make_classifier(name)) is not None
-
-
-@pytest.mark.parametrize("name", ["BART", "BNNET", "C5.0", "GKNB", "NNET"])
-def test_unavailable_methods_are_never_silently_replaced(name):
-    with pytest.raises(UnavailableClassifierError, match=name):
-        make_classifier(name)
 
 
 def test_classifier_seed_and_unknown_name_fail():

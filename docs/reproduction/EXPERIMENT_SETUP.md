@@ -54,21 +54,21 @@ stand-in paper datasets or successful benchmark results.
 ## Fourteen classifier identities
 
 `src.classifier_registry` records every classifier and group in UGO Tables 7–8,
-including paper settings and current implementation status. Nine methods have
-local sklearn constructors for **training-only probability smoke checks**:
-CART, GNB, KNN, LDA, LogReg, QDA, RF, SVMLinear and SVMRadial. All are marked
+including paper settings and current implementation status. All fourteen have
+local constructors for **training-only probability smoke checks** and are marked
 `python_approximation`. This matters for CART's `cp` versus sklearn
 `ccp_alpha`, SVM radial `sigma` versus `gamma`, default penalties, calibration
 and unknown author package versions. These models must not be reported as
 verified paper configurations.
 
-BART, BNNET, C5.0, GKNB and NNET have explicit `unavailable` status. The stated
-dropout/RMSprop architecture, Bayesian posterior sampling, C5.0 behavior and
-unbiased-CV kernel bandwidth cannot be replaced by similarly named sklearn
-models without changing the method. These five names fail clearly if requested.
-The paper's 100-posterior-sample averaging for Bayesian methods is not yet
-available. Within-class zero-variance filtering, train-only imputation/encoding
-and scaling belong to the preprocessing runner in Stage 4R-5.
+BART uses pinned stochtree probit BART and averages 100 posterior probability
+draws. BNNET is a mean-field Gaussian variational network; NNET uses the same
+two-hidden-layer shape, dropout and RMSprop. C5.0 runs pinned CRAN C50 0.2.0
+learner code in an isolated native process. GKNB selects Gaussian-kernel
+bandwidths with binned unbiased least-squares cross-validation. Unstated priors,
+activation, optimizer scalars, validation split, kernel, package versions and
+other defaults are recorded choices. Within-class zero-variance filtering,
+train-only imputation/encoding and scaling belong to Stage 4R-5 preprocessing.
 
 `smoke_classifier_on_fitting_data` clones each supported constructor, fits it
 on supplied fitting rows and checks two-class finite normalized probabilities
@@ -84,9 +84,8 @@ From the repository root:
     .venv/bin/python -m pytest -q
 
 The command prints counts and source status, with no sample records or scores.
-On Python 3.11, `pytest -q` passed **268** checks. Both command forms ran; the
-smoke form reported nine supported probability interfaces without test rows or
-predictive-performance values. The eight-entry registry was independently
+Both command forms report fourteen supported probability interfaces without
+test rows or predictive-performance values. The eight-entry registry was independently
 compared field by field with the historical committed manifest; hashes, labels,
 counts and feature types matched. The linear default reports 985/65 observed
 labels, and the nonlinear seed-42 default reports 925/75.

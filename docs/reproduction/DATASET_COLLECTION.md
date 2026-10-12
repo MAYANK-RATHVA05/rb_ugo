@@ -107,7 +107,7 @@ stratified ten-fold partitions must be recorded, rather than called author folds
 Original Landsat source partitions and row lineage remain preserved in its audit.
 
 The simulation pilot is already complete, but the full real-data benchmark and
-final statistical reports remain subsequent work. Five paper classifier
-implementations are still unavailable; the nine existing Python classifiers are
-declared approximations. Dataset readiness does not close those implementation
-or metric-fidelity gaps.
+final statistical reports remain subsequent work. All fourteen classifier
+interfaces now exist and remain declared approximations wherever author package
+details are unknown. Dataset readiness does not close the remaining metric,
+fold, and exact-source fidelity gaps.

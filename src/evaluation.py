@@ -3,7 +3,8 @@ from __future__ import annotations
 
 from dataclasses import asdict, dataclass, field
 import hashlib
-from importlib.metadata import version
+import json
+from importlib.metadata import PackageNotFoundError, version
 from numbers import Integral
 from pathlib import Path
 import platform
@@ -59,7 +60,6 @@ def _validate_config(config: EvaluationConfig) -> None:
         if name == "nores" and parameters:
             raise ValueError("nores takes no method parameters.")
     # Reject nonfinite configuration values rather than silently normalizing them.
-    import json
     json.dumps(asdict(config), allow_nan=False)
 
 
@@ -118,12 +118,25 @@ def _input_hash(X: pd.DataFrame, y: np.ndarray) -> str:
 def _software_identity() -> dict[str, Any]:
     root = Path(__file__).resolve().parents[1]
     digest = hashlib.sha256()
-    for path in sorted((root / "src").glob("*.py")) + [root / "requirements.txt"]:
-        digest.update(path.name.encode())
-        digest.update(path.read_bytes())
+    inputs = (sorted((root / "src").glob("*.py"))
+              + sorted((root / "native").glob("*"))
+              + [root / "requirements.txt", root / "requirements-classifiers.txt",
+                 root / "scripts" / "setup_c50.py"])
+    for path in inputs:
+        if path.is_file():
+            digest.update(str(path.relative_to(root)).encode())
+            digest.update(path.read_bytes())
+    packages = {}
+    for name in ("numpy", "pandas", "scipy", "scikit-learn", "imbalanced-learn", "stochtree"):
+        try:
+            packages[name] = version(name)
+        except PackageNotFoundError:
+            packages[name] = "unavailable"
+    c50_manifest = root / ".runtime" / "c50" / "backend.json"
     return {"python": platform.python_version(), "source_sha256": digest.hexdigest(),
-            "packages": {name: version(name) for name in
-                         ("numpy", "pandas", "scipy", "scikit-learn", "imbalanced-learn")}}
+            "packages": packages,
+            "c50_backend": (json.loads(c50_manifest.read_text())
+                              if c50_manifest.is_file() else "unavailable")}
 
 
 def _counts(y: np.ndarray, labels: np.ndarray) -> list[dict[str, Any]]:

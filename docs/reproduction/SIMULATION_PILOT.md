@@ -137,12 +137,10 @@ memory status, preserved measurements on resume and missing reference handling.
 
 ## Remaining work
 
-This completes the authorized simulation pilot. A real-data pilot still requires
-source-confirmed inputs; all eight historical candidates are currently absent
-and their paper membership is unverified. Before Stage 4R-7's full matrix,
-obtain the exact 74 variants/supplement and choose a declared achievable
-classifier matrix. Five paper classifier implementations remain unavailable,
-the nine existing constructors are approximations, and author preprocessing,
-F1 averaging, folds and cap conventions remain unresolved for exact claims.
+This completes the authorized simulation pilot. The later dataset collection
+prepared all 74 inputs, with 56 metadata matches and 18 explicitly accepted
+approximations, and the classifier-completion stage added all fourteen
+interfaces. Author preprocessing, F1 averaging, folds, several exact package
+choices, and cap conventions remain unresolved for exact claims.
 Stage 4R-7's additional analyses and Stage 4R-8's final report require separate
 authorization under AGENTS.md.
