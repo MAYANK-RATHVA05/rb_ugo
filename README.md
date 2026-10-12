@@ -66,6 +66,10 @@ is unresolved; no exact-result or general superiority claim is made.
 
     .venv/bin/python main_stage4r6.py --report-dir docs/reproduction/pilot_stage4r6
 
+Stage 4R-7 uses the [manual benchmark runner](docs/reproduction/BENCHMARK_EXECUTION.md)
+to validate and resume the complete 113,960-job matrix across the prepared 74
+inputs. Raw inputs and detailed results remain local and ignored by Git.
+
 ## Research motivation
 
 In imbalanced classification, a minority class has fewer observations than the
