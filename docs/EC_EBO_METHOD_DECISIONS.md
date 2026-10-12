@@ -7,6 +7,12 @@ DOI: 10.1016/j.knosys.2026.115544. This document audits the full 14-page
 article. It specifies a planned implementation; **no EC-EBO sampler has been
 implemented or evaluated in this repository yet**.
 
+Part 1 is now implemented in `src/ec_ebo_clustering.py`: it fits externally
+constrained minority clusters and exposes member row indices, centroids,
+nearest-majority distances, and merge history. Its synthetic, hand-calculated
+tests are in `tests/test_ec_ebo_clustering.py`. Entropy weighting, synthetic
+generation, evaluation integration, and real-data results remain pending.
+
 The method targets intra-class imbalance: the minority class contains
 subclusters with different sizes and learning difficulty. The paper proposes
 externally constrained minority clustering (Section 3.1), logistic-probability

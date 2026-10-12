@@ -30,7 +30,9 @@ limitations and saved aggregate scores.
 
 The [EC-EBO method decisions](docs/EC_EBO_METHOD_DECISIONS.md) audit the
 paper's intra-class imbalance method and fix its documented ambiguities
-before implementation. EC-EBO code and results are not yet present.
+before sample generation. Part 1 adds externally constrained minority
+clustering and synthetic tests in `src/ec_ebo_clustering.py`; EC-EBO
+oversampling and results are not yet present.
 
 ## Original UGO reproduction specification
 
