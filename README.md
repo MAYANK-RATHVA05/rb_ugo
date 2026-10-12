@@ -28,6 +28,10 @@ table from saved jobs; see the method notes for commands and limits. A
 first local BFCH, UGO, SMOTE, and no-resampling results with their source
 limitations and saved aggregate scores.
 
+The [EC-EBO method decisions](docs/EC_EBO_METHOD_DECISIONS.md) audit the
+paper's intra-class imbalance method and fix its documented ambiguities
+before implementation. EC-EBO code and results are not yet present.
+
 ## Original UGO reproduction specification
 
 Stage 4R-1 records the full-paper requirements in
