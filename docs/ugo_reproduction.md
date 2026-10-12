@@ -1,27 +1,23 @@
-# Original UGO reproduction: paper-checked core with unresolved assumptions
+# Original UGO reproduction: provisional Stage 3 implementation
 
 ## Evidence and status
 
-**The supplied full UGO PDF has now been inspected. Exact reproduction remains
-unresolved because its stopping-limit expressions conflict and several execution
-conventions are unspecified.** Runtime use therefore still requires
-`allow_provisional=True`, emits a warning, and records
-`paper_checked_assumptions_unresolved` in diagnostics.
+**This is a prompt-based provisional implementation, not a verified faithful
+reproduction.** No paper PDF was available in the workspace. Requests to the
+supplied DOI and Crossref metadata endpoint returned proxy `403 Forbidden`.
+Consequently, the paper's equations, pseudocode, references, and experimental
+settings have not been independently inspected. Runtime use requires
+`allow_provisional=True`, emits a warning, and records this status in diagnostics.
 
-Source: Fatih Sağlam and Mehmet Ali Cengiz, “Uncertainty guided oversampling:
-A classifier-specific approach for effective handling of class imbalance in
-machine learning,” *Knowledge-Based Systems* 342 (2026), 115886,
-[DOI: 10.1016/j.knosys.2026.115886](https://doi.org/10.1016/j.knosys.2026.115886).
-The supplied full text verifies Section 3.2's MMA equation, Section 3.3's stopping
-criteria, Section 3.4's fixed original-total generation batch, and Tables 2–4's
-noise-detection and iteration descriptions. Author code and the supplementary
-benchmark collection have not been obtained. No exact published-results
-reproduction or methodological extension is claimed.
+User-supplied bibliographic information (not independently verified): Fatih
+Sağlam and Mehmet Ali Cengiz, “Uncertainty guided oversampling: A classifier-specific
+approach for effective handling of class imbalance in machine learning,”
+Knowledge-Based Systems, 2026, DOI `10.1016/j.knosys.2026.115886`.
 
-The Stage 3 prototype used a current-selected-class batch denominator. That has
-been corrected to the original input total. This is a correction against the
-paper, not a proposed improvement. The original reference/noise pool conventions
-are retained below and remain explicit assumptions.
+The section/table references below identify the intended source locations given
+by the user. They do not imply those pages were read. No author implementation or
+paper benchmark was obtained. This stage does not implement Risk-Budgeted UGO,
+held-out batch acceptance, FPR constraints, or any claimed improvement.
 
 ## What the implementation does
 
@@ -37,10 +33,10 @@ retained at the start of the output, in the original order; labels are preserved
 The caller's inputs and estimator are not fitted or modified in place. Features
 must already be a finite, dense, real numerical matrix. Do not pass category
 codes as meaningful distances. Typed pandas categorical columns are rejected;
-already-converted integer codes cannot be recognized automatically. Evaluation
-must fit any preprocessing on fitting partitions only.
+already-converted integer codes cannot be recognized automatically. A future
+evaluation stage must fit any preprocessing on fitting partitions only.
 
-## MMA: verified Section 3.2 equation
+## MMA: supplied Section 3.2 equation
 
 For a known label y and classifier probabilities:
 
@@ -65,7 +61,7 @@ columns and string labels. It checks two columns, row alignment, distinct classe
 label membership, finite probabilities, [0,1] bounds, and row sums (absolute
 tolerance 1e-8). It computes other-minus-true, without silently renormalizing.
 
-## Noise detection: Tables 2 and 3, with explicit conventions
+## Noise detection: supplied Tables 2 and 3
 
 Pre-detection uses Euclidean k-nearest neighbors on original fitting data. It
 excludes a sample by its **row index**, not every zero-distance neighbor. Thus
@@ -77,9 +73,7 @@ point whose neighbor majority opposes its assigned label is replaced by the
 nearest original, pre-clean, same-class row. Relocation copies that row's actual
 coordinates; it does not discard the point or invent a different movement rule.
 
-The tables establish neighbor-label checks and nearest clean same-class
-relocation. The following implementation conventions are not uniquely settled
-by their pseudocode:
+Provisional conventions pending inspection of the tables:
 
 - A tied binary vote retains the assigned/true label.
 - Equal-distance neighbors use ascending reference row index.
@@ -91,11 +85,9 @@ by their pseudocode:
   uncertainty-pool members, or relocation destinations.
 - No eligible relocation destination is an explicit error; no silent dropping.
 
-Table 3 and the Section 3.4 prose do not settle all reference-pool updates across
-iterations. Voting against all original rows and using a fixed clean-original
-relocation pool remain declared choices. Pairwise distances use a full distance
-matrix with quadratic memory use; this core targets small initial experiments,
-not an efficient large benchmark implementation.
+Reference eligibility and voting against noisy originals have not been verified
+against Table 3. Pairwise distances use a full distance matrix with quadratic
+memory use; this stage targets small software checks, not large benchmarks.
 
 ## Uncertainty and seed selection: Sections 3.1 and 3.4 / Table 4
 
@@ -122,20 +114,15 @@ Within c, select the largest MMA scores, with original row index resolving ties:
 n_{select}=\max(1,\lceil\lambda_{select}|E_c|\rceil).
 \]
 
-Section 3.4 defines `n_step = n * lambda_step`, and Table 4 initializes it before
-the generation loop. Here `n` is the original input total, not the selected-class
-size and not the growing augmented size. The implementation fixes:
+The provisional batch size is:
 
 \[
-n_{step}=\lceil\lambda_{step}N_{original}\rceil,
-\qquad n_{batch}=\min(B_{remaining},n_{step}).
+n_{batch}=\min(B_{remaining},
+\max(1,\lceil\lambda_{step}N_{c,current}\rceil)).
 \]
 
-The original-total denominator and initialization before the loop are verified
-paper rules. Ceil rounding, last-batch clipping, and applying the selection
-fraction to the eligible original class count remain conventions. The paper's
-`n_select = n^(c) * lambda_select` does not specify integer rounding or completely
-resolve whether `n^(c)` is measured before noise exclusion.
+The paper's selection pool, rounding rules, and batch-size denominator were not
+available. These formulas are declared assumptions, not verified paper equations.
 
 ## ROS and SMOTE generation
 
@@ -151,17 +138,16 @@ x_{new}=(1-r)x_{seed}+r x_{neighbor}.
 \]
 
 This is interpolation anchored at an informative seed, not ordinary SMOTE run on
-the entire dataset. Neighborhood size defaults to k_smote=5 (Section 4.2) and is
+the entire dataset. Neighborhood size defaults provisionally to k_smote=5 and is
 clamped to eligible same-class count minus one. Distinct identical points are
 valid neighbors; interpolation can legitimately produce duplicate coordinates.
 Fewer than two eligible same-class rows terminates with an explicit reason and
 does not switch algorithms. In practice, a too-small Welch group can stop earlier.
 
-Section 3.4 defines a pluggable generator R rather than complete ROS/SMOTE code.
-Uniform seed draws, original-clean interpolation partners, and tie/clamping
-behavior are this implementation's explicit generator conventions.
+ROS draws, interpolation neighborhood eligibility, and step distribution need
+comparison against Section 3.4 and Section 4.2's resampling settings.
 
-## Welch stopping: Section 3.3 rule
+## Welch stopping: supplied Section 3.3 rule
 
 For the two eligible class uncertainty groups, let n_j, mean_j, and s_j² denote
 sample counts, means, and sample variances. The unequal-variance statistic is:
@@ -190,53 +176,42 @@ fabricated 1.0. Handling of degenerate groups is not claimed as a paper rule.
 
 ## Generation cap: unresolved Section 3.3 versus Table 4
 
-The supplied full text contains two different generated-sample limits. Section
-3.3 stops when `phi * max_l n^(l) * K - n <= n_syn`; Table 4 instead loops while
-`phi * max_l n^(l) > n_syn`. This implementation exposes the conflict through
-`cap_policy`, rather than silently treating either expression as authoritative.
-The default `section_3_3` policy gives:
+The prompt reports differing presentations, but supplies neither full expression.
+The pages could not be inspected, so the discrepancy cannot be resolved here.
+The current implementation uses this **provisional total-size interpretation**:
 
 \[
-B_{section}=\max(0,\lfloor\phi C N_{max,original}-N_{original}\rfloor).
-\]
-
-The alternative `table_4` policy gives:
-
-\[
-B_{table}=\max(0,\lfloor\phi N_{max,original}\rfloor).
+B=\max(0,\lfloor\phi C N_{max,original}-N_{original}\rfloor).
 \]
 
 Here C=2, phi defaults to 2.5, and all size quantities are fixed from original
-fitting data. For original counts [90,10], the policies give 350 and 225 generated
-rows respectively. The expressions are verified from the paper; choosing which
-one governed the authors' experiments remains unresolved. Both freezing the
-counts and flooring the limits are stated implementation choices.
+fitting data. The assumed total augmented budget is phi*C*N_max; subtracting the
+original count gives the generated-only budget. This choice uses the quantities
+mentioned in the prompt, but is not established as the published expression.
 
 Every batch is clipped to the remaining B. `provisional_generation_cap` records
 this reason. `max_iter=100` independently bounds scoring/fit iterations and is
 an engineering safeguard. Reaching it records `max_iterations_safeguard`, not
 paper convergence. The implementation has no unbounded while loop.
 
-The literal Table 4 loop can overshoot its limit by a full batch. This code
-clips the last batch and never overshoots the selected integer budget, which is
-a conservative execution convention, not verified author behavior. Exact
-reproduction requires clarification or authoritative source code to establish
-which cap, rounding, comparison, frozen counts, and overshoot rules were used.
+Before claiming faithful reproduction, provide Section 3.3's full cap equation
+and Table 4's loop condition, determine whether the cap counts generated or
+augmented samples, resolve rounding/comparison/overshoot rules, and replace or
+confirm this provisional interpretation with tests against the source.
 
 ## Parameters and diagnostics
 
 | Parameter | Default | Meaning/status |
 | --- | --- | --- |
-| lambda_select | 0.5 | Paper default; ceil eligible-class selection is a convention |
-| lambda_step | 0.1 | Paper default; fixed original-total batch, ceil convention |
-| phi | 2.5 | Paper default; two conflicting published cap expressions |
-| cap_policy | section_3_3 | section_3_3 or table_4; records the selected expression |
+| lambda_select | 0.5 | Supplied default; provisional ceil selection fraction |
+| lambda_step | 0.1 | Supplied default; provisional ceil current-class batch fraction |
+| phi | 2.5 | Supplied default; cap expression unverified |
 | k_pre | 5 | Initial neighbors, effective size recorded |
 | k_after | 1 | Generated-point voting neighbors |
 | alpha | 0.05 | Defined Welch failure-to-reject threshold |
 | random_state | 42 | Generator seed; fills unset estimator random_state parameters |
 | variant | ros | ros or smote; no automatic variant fallback |
-| k_smote | 5 | Paper SMOTE setting; partner-pool convention unresolved |
+| k_smote | 5 | Provisional same-class interpolation neighborhood |
 | max_iter | 100 | Engineering bound |
 | allow_provisional | False | Must explicitly opt into unresolved reproduction |
 
@@ -247,9 +222,8 @@ still depends on estimator behavior and the pinned execution environment; an
 arbitrary estimator that ignores its seed cannot be made deterministic here.
 
 `diagnostics_` includes original/final label-count records, synthetic and scoring
-iteration counts, pre-noise and relocated-generated counts, the selected cap
-policy/expression, fixed batch size, effective parameters, warnings, and stopping
-reason. Each history record includes
+iteration counts, pre-noise and relocated-generated counts, the provisional cap,
+effective parameters, warnings, and stopping reason. Each history record includes
 class means, Welch t/p/df/status, selected class (None if stopping preceded
 selection), seeds, drawn seeds, interpolation partners/steps when applicable,
 relocation destinations, and generated counts. It contains no performance metrics.
@@ -277,10 +251,8 @@ SMOTE interpolation reconstruction, labels/shapes, input preservation, repeated
 seed results, cloned growing fitting sets, original-only reference data,
 categorical/nonfinite rejection, missing probability support, no-ops, balanced
 data, iteration termination, and both real-estimator variants. Previous stage
-tests remain in the same suite. Cap tests verify both published expressions and
-declared rounding/truncation conventions. Fixed-batch tests check that changing
-class counts cannot change the initialized original-total batch. Controlled test
-estimators are software fixtures, not models
+tests remain in the same suite. Cap tests verify this declared formula, not the
+inaccessible paper. Controlled test estimators are software fixtures, not models
 used to claim performance.
 
 The demo uses make_classification with 120 rows, four numerical features,
@@ -292,14 +264,12 @@ effective parameters, first-iteration details, and stopping reasons.
 
 ## Still required for research reproduction
 
-Obtain supplementary materials and, if available, authoritative code. Clarify
-the cap conflict and the remaining pool/rounding conventions. Reproducing all
-published results also needs the exact dataset variants, missing UGO generators,
-all compared methods and classifiers, splits, repeated seeds, and the evaluation
-protocol. This core documentation establishes no empirical superiority or novelty
-claim. Evaluation must keep outer-test
+Obtain the complete paper and, if available, its authoritative code; reconcile
+Tables 2–4 and Sections 3.1–3.4 and 4.2 against every provisional choice above.
+The internal classifier, its settings, reference pools, preprocessing, dataset
+variants, splits, repeated seeds, and evaluation protocol still require source
+verification. No benchmark evaluation, baseline comparison, empirical superiority,
+or novelty claim has been established. Future evaluation must keep outer-test
 data outside all fitting, synthesis, uncertainty, stopping, and selection steps.
 
-The user has authorized a working original-UGO training pipeline beyond Stage 3.
-This does not authorize extensions or imply that the full paper benchmark is
-complete.
+Stop after Stage 3; further stages require user approval.

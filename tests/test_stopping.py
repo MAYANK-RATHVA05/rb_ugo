@@ -70,24 +70,11 @@ def test_invalid_welch_input(a, b, alpha) -> None:
         welch_stopping(a, b, alpha)
 
 
-def test_section_cap_arithmetic_and_rounding() -> None:
-    # Published Section 3.3 expression; floor/clamp are declared conventions.
+def test_provisional_cap_arithmetic_and_rounding() -> None:
+    # These validate the DECLARED interpretation, not the inaccessible paper.
     assert generation_cap([90, 10], 2.5) == 350
     assert generation_cap([3, 2], 1.1) == 1
     assert generation_cap([3, 2], 0.1) == 0
-
-
-def test_table_cap_arithmetic_and_rounding() -> None:
-    # Table 4's limit omits both the class multiplier and original-total offset.
-    assert generation_cap([90, 10], 2.5, "table_4") == 225
-    assert generation_cap([3, 2], 1.1, "table_4") == 3
-    assert generation_cap([3, 2], 0.1, "table_4") == 0
-
-
-@pytest.mark.parametrize("cap_policy", ["unknown", None, 1, ["section_3_3"]])
-def test_invalid_cap_policy(cap_policy) -> None:
-    with pytest.raises(ValueError, match="cap_policy"):
-        generation_cap([90, 10], 2.5, cap_policy)
 
 
 @pytest.mark.parametrize("counts,phi", [([1, 0], 2.5), ([1.5, 2], 2.5),
