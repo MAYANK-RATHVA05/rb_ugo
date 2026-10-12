@@ -29,11 +29,12 @@ first local BFCH, UGO, SMOTE, and no-resampling results with their source
 limitations and saved aggregate scores.
 
 The [EC-EBO method decisions](docs/EC_EBO_METHOD_DECISIONS.md) audit the
-paper's intra-class imbalance method and fix its documented ambiguities
-before sample generation. Part 1 adds externally constrained minority
-clustering in `src/ec_ebo_clustering.py`; Part 2 adds training-data entropy
-and per-cluster allocation in `src/ec_ebo_entropy.py`. EC-EBO oversampling
-and results are not yet present.
+paper's intra-class imbalance method and record its documented ambiguities.
+Part 1 adds externally constrained minority clustering in
+`src/ec_ebo_clustering.py`; Part 2 adds training-data entropy and per-cluster
+allocation in `src/ec_ebo_entropy.py`; Part 3 adds a standalone, audited
+minority-sample generator in `src/ec_ebo.py`. Evaluation integration and
+real-data EC-EBO results are still pending.
 
 ## Original UGO reproduction specification
 

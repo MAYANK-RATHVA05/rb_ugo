@@ -4,8 +4,8 @@ Source: L. Tao, F. Yu, F. Wang, and Q. Wang, “EC-EBO: Entropy-balanced
 oversampling via externally constrained clustering for imbalanced data,”
 *Knowledge-Based Systems* 338 (2026) 115544,
 DOI: 10.1016/j.knosys.2026.115544. This document audits the full 14-page
-article. It specifies a planned implementation; **no EC-EBO sampler has been
-implemented or evaluated in this repository yet**.
+article. It specifies the implementation choices; **the standalone sampler
+has not yet been integrated into evaluation or tested on real datasets**.
 
 Part 1 is now implemented in `src/ec_ebo_clustering.py`: it fits externally
 constrained minority clusters and exposes member row indices, centroids,
@@ -13,8 +13,12 @@ nearest-majority distances, and merge history. Its synthetic, hand-calculated
 tests are in `tests/test_ec_ebo_clustering.py`. Part 2 is implemented in
 `src/ec_ebo_entropy.py`: unweighted logistic-regression probabilities give
 binary sample entropy, cluster weights use the **mean** member entropy, and
-largest-remainder allocation returns an exact integer quota. Synthetic
-generation, evaluation integration, and real-data results remain pending.
+largest-remainder allocation returns an exact integer quota. Part 3 is
+implemented in `src/ec_ebo.py`: it uses the allocated quotas,
+seeded majority references and coordinate proposals, accepts only positive
+decreasing Eq. 8 scores, and reports unmet quotas without copying seeds.
+Its synthetic generation tests are in `tests/test_ec_ebo.py`. Evaluation
+integration and real-data results remain pending.
 
 The method targets intra-class imbalance: the minority class contains
 subclusters with different sizes and learning difficulty. The paper proposes
@@ -33,7 +37,7 @@ rule” identifies a directly stated equation or operation; “declared
 interpretation” identifies our resolution of
 missing or conflicting details.
 
-| Issue | Evidence in paper | Decision for the planned default |
+| Issue | Evidence in paper | Decision for the implemented default |
 | --- | --- | --- |
 | Cluster entropy | Section 3.2 calls it the **average**, and Eq. 8 writes mean entropy, but Eq. 7 and Algorithm 1 print a **sum**. | Use the arithmetic **mean** of member entropies. Keep the printed-sum rule as a separately labeled sensitivity variant if needed. |
 | Balanced-region sign | Eq. 8 subtracts the majority influence from minority influence. Algorithm 1 accepts a move when `psi < 0`, although that can select the majority side. The prose says move toward `psi = 0` while avoiding majority regions. | Start from a minority-side seed (`psi > 0`). Accept a proposed point only when `0 < psi(proposal) < psi(current)`. The positive side and movement toward zero are an interpretation, not a guarantee of no overlap. |
@@ -54,9 +58,9 @@ The sum/mean conflict also matters for intra-class imbalance. If clusters of
 allocates synthetic samples in a 10:1 ratio to the *larger* cluster. The
 prose's mean allocates equally before considering other difficulty factors,
 giving the small cluster more augmentation per original point. This is why
-the mean is the planned default.
+the mean is the implemented default.
 
-## Remaining operational rules, fixed in advance
+## Operational rules, fixed in advance
 
 - **Input and leakage:** Accept finite numerical binary fitting data. Use the
   existing fold-local preprocessing; clustering, logistic regression, entropy,
@@ -95,7 +99,7 @@ the mean is the planned default.
   Random seeds, accepted steps, duplicate counts, and generation shortfalls
   must be exposed in diagnostics.
 
-The resulting sampler should be described as an **audited EC-EBO
+The resulting sampler must be described as an **audited EC-EBO
 interpretation**, not an exact reproduction. The paper's Eq. 4 limits
 cluster merges; it does not ensure the space between cluster members is free
 of majority samples. Likewise, the entropy score is a local proxy, not a
@@ -103,11 +107,11 @@ theorem that synthetic samples cannot overlap the majority distribution.
 
 ## Implementation gate and evaluation
 
-Before using real data, tests must cover hand-calculated merge decisions,
-the mean-vs-sum allocation example, the one-dimensional sign example,
-exact integer allocation, deterministic randomness, generation shortfall,
-and unchanged original rows. A two-dimensional synthetic case should
-visualize unequal minority subclusters separated by majority points.
+Synthetic tests cover hand-calculated merge decisions, the mean-vs-sum
+allocation example, the one-dimensional sign example, exact integer
+allocation, deterministic randomness, generation shortfall, unchanged
+original rows, and two-dimensional coordinate generation. Visualizing an
+unequal-subcluster synthetic case remains part of the evaluation work.
 
 For a small real-data comparison, start with shared numerical inputs and
 use identical outer folds for NORES, SMOTE, UGO-SMOTE, BFCH-SMOTE, and
