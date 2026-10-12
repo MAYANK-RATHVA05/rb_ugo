@@ -1,11 +1,28 @@
-# EC-EBO method decisions before implementation
+# EC-EBO method decisions and implementation status
 
 Source: L. Tao, F. Yu, F. Wang, and Q. Wang, “EC-EBO: Entropy-balanced
 oversampling via externally constrained clustering for imbalanced data,”
 *Knowledge-Based Systems* 338 (2026) 115544,
 DOI: 10.1016/j.knosys.2026.115544. This document audits the full 14-page
-article. It specifies a planned implementation; **no EC-EBO sampler has been
-implemented or evaluated in this repository yet**.
+article. It specifies the implementation choices; the resulting code is an
+**audited interpretation**, not a verified copy of the authors' implementation.
+
+Part 1 is now implemented in `src/ec_ebo_clustering.py`: it fits externally
+constrained minority clusters and exposes member row indices, centroids,
+nearest-majority distances, and merge history. Its synthetic, hand-calculated
+tests are in `tests/test_ec_ebo_clustering.py`. Part 2 is implemented in
+`src/ec_ebo_entropy.py`: unweighted logistic-regression probabilities give
+binary sample entropy, cluster weights use the **mean** member entropy, and
+largest-remainder allocation returns an exact integer quota. Part 3 is
+implemented in `src/ec_ebo.py`: it uses the allocated quotas,
+seeded majority references and coordinate proposals, accepts only positive
+decreasing Eq. 8 scores, and reports unmet quotas without copying seeds.
+Its synthetic generation tests are in `tests/test_ec_ebo.py`. Part 4 registers
+`ec_ebo` as an opt-in method in the existing paired evaluation runner;
+fold-local preprocessing, entropy fitting, generation, and final classifier
+fitting use only training rows. Part 5 is a two-dataset, same-fold descriptive
+comparison in [EC_EBO_SMALL_STUDY.md](EC_EBO_SMALL_STUDY.md); it does not
+establish general superiority or exact paper fidelity.
 
 The method targets intra-class imbalance: the minority class contains
 subclusters with different sizes and learning difficulty. The paper proposes
@@ -24,7 +41,7 @@ rule” identifies a directly stated equation or operation; “declared
 interpretation” identifies our resolution of
 missing or conflicting details.
 
-| Issue | Evidence in paper | Decision for the planned default |
+| Issue | Evidence in paper | Decision for the implemented default |
 | --- | --- | --- |
 | Cluster entropy | Section 3.2 calls it the **average**, and Eq. 8 writes mean entropy, but Eq. 7 and Algorithm 1 print a **sum**. | Use the arithmetic **mean** of member entropies. Keep the printed-sum rule as a separately labeled sensitivity variant if needed. |
 | Balanced-region sign | Eq. 8 subtracts the majority influence from minority influence. Algorithm 1 accepts a move when `psi < 0`, although that can select the majority side. The prose says move toward `psi = 0` while avoiding majority regions. | Start from a minority-side seed (`psi > 0`). Accept a proposed point only when `0 < psi(proposal) < psi(current)`. The positive side and movement toward zero are an interpretation, not a guarantee of no overlap. |
@@ -45,9 +62,9 @@ The sum/mean conflict also matters for intra-class imbalance. If clusters of
 allocates synthetic samples in a 10:1 ratio to the *larger* cluster. The
 prose's mean allocates equally before considering other difficulty factors,
 giving the small cluster more augmentation per original point. This is why
-the mean is the planned default.
+the mean is the implemented default.
 
-## Remaining operational rules, fixed in advance
+## Operational rules, fixed in advance
 
 - **Input and leakage:** Accept finite numerical binary fitting data. Use the
   existing fold-local preprocessing; clustering, logistic regression, entropy,
@@ -86,7 +103,7 @@ the mean is the planned default.
   Random seeds, accepted steps, duplicate counts, and generation shortfalls
   must be exposed in diagnostics.
 
-The resulting sampler should be described as an **audited EC-EBO
+The resulting sampler must be described as an **audited EC-EBO
 interpretation**, not an exact reproduction. The paper's Eq. 4 limits
 cluster merges; it does not ensure the space between cluster members is free
 of majority samples. Likewise, the entropy score is a local proxy, not a
@@ -94,21 +111,38 @@ theorem that synthetic samples cannot overlap the majority distribution.
 
 ## Implementation gate and evaluation
 
-Before using real data, tests must cover hand-calculated merge decisions,
-the mean-vs-sum allocation example, the one-dimensional sign example,
-exact integer allocation, deterministic randomness, generation shortfall,
-and unchanged original rows. A two-dimensional synthetic case should
-visualize unequal minority subclusters separated by majority points.
+Synthetic tests cover hand-calculated merge decisions, the mean-vs-sum
+allocation example, the one-dimensional sign example, exact integer
+allocation, deterministic randomness, generation shortfall, unchanged
+original rows, and two-dimensional coordinate generation. Visualizing an
+unequal-subcluster synthetic case remains part of the evaluation work.
 
-For a small real-data comparison, start with shared numerical inputs and
-use identical outer folds for NORES, SMOTE, UGO-SMOTE, BFCH-SMOTE, and
-EC-EBO. Vowel must retain the declared acoustic-feature and speaker-group
-protocol if compared to our existing BFCH study; that is not the paper's
-13-feature protocol. Report per-cluster original and generated counts,
-entropy, unmet quotas, and a training-only majority-neighbor intrusion
-proxy, alongside held-out F1, G-mean, MCC, AUC, and false-positive rate.
-One or two initial datasets can verify the pipeline; several datasets with
-different minority-subcluster structures are needed for an empirical claim.
+The runner accepts `ec_ebo` through `--methods`. It keeps the original
+default methods unchanged and stores per-job generation diagnostics and
+shortfalls in `resampler_diagnostics`. It requires original numerical features
+and fold-local scaling; categorical or boolean source columns and `--no-scale`
+are rejected before jobs start. A local binary input with an explicit
+source-domain positive label can be checked against the baselines on identical
+outer folds, for example:
+
+```powershell
+.\.venv\Scripts\python.exe main_stage4r5.py --dataset data\raw\my_binary.csv --target class --positive-label positive --output results\ec-ebo-my-binary --classifiers LogReg --methods nores smote ugo_smote bfch_smote ec_ebo
+```
+
+The command is a template, not a completed experiment. Use a new output
+directory for each input or configuration. The generator is an audited
+interpretation of the paper, and the runner's ten-fold protocol is a declared
+approximation unless compliant folds are supplied with provenance.
+
+The [small study](EC_EBO_SMALL_STUDY.md) uses shared numerical inputs and
+identical outer folds for NORES, SMOTE, UGO-SMOTE, BFCH-SMOTE, and EC-EBO.
+Vowel retains the declared acoustic-feature and speaker-group protocol, which
+differs from the paper's 13-feature input. Saved diagnostics include per-cluster
+original and generated counts, entropy, unmet quotas, and a training-only
+majority-neighbor intrusion proxy, alongside held-out F1, G-mean, MCC, AUC,
+and false-positive rate. These two datasets verify the pipeline; several
+datasets with different minority-subcluster structures would be needed for a
+broader empirical claim.
 
 The article gives no code link, numeric step size, preprocessing recipe, or
 exact folds; its data-availability statement says data are available on

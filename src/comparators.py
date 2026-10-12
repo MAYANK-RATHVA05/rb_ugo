@@ -12,6 +12,7 @@ from src.generators import RandomWalkOversampler
 from src.leao import LEAOOversampler
 from src.mcsmote import MCSMOTEOversampler
 from src.bfch_smote import BFCHSMOTE
+from src.ec_ebo import ECEBO
 
 
 class NoResampling(BaseEstimator):
@@ -48,4 +49,6 @@ def make_comparator(name: str, *, random_state: int = 42, **kwargs: Any):
                                allow_provisional=True, **kwargs)
     if name == "bfch_smote":
         return BFCHSMOTE(random_state=random_state, **kwargs)
-    raise ValueError("Unknown comparator. Choose nores, rus, ros, smote, rwo, mcsmote, leao or bfch_smote.")
+    if name == "ec_ebo":
+        return ECEBO(random_state=random_state, **kwargs)
+    raise ValueError("Unknown comparator. Choose nores, rus, ros, smote, rwo, mcsmote, leao, bfch_smote or ec_ebo.")
