@@ -92,8 +92,10 @@ class BFCHSMOTE(BaseEstimator):
                 raise ValueError(f"{name} must lie in [0, 1].")
 
     def fit_resample(self, X: Any, y: Any) -> tuple[np.ndarray, np.ndarray]:
-        if hasattr(self, "diagnostics_"):
-            del self.diagnostics_
+        # A failed later fit must not expose the previous fit's geometry.
+        for attr in ("diagnostics_", "retained_indices_", "boundary_indices_", "hulls_"):
+            if hasattr(self, attr):
+                delattr(self, attr)
         self._validate_parameters()
         points = numeric_matrix(X)
         labels, classes = binary_labels(y, len(points))
@@ -133,6 +135,7 @@ class BFCHSMOTE(BaseEstimator):
                                                         np.flatnonzero(forest.classes_ == minority)[0]] >= self.theta_min]
         retained_maj = majority_indices[probabilities[majority_indices,
                                                         np.flatnonzero(forest.classes_ == majority)[0]] >= self.theta_maj]
+        self.retained_indices_ = {"minority": retained_min.copy(), "majority": retained_maj.copy()}
         self.diagnostics_["retained_counts"] = {"minority": len(retained_min),
                                                  "majority": len(retained_maj)}
         if len(retained_min) < 2 or len(retained_maj) < 2:
@@ -142,12 +145,15 @@ class BFCHSMOTE(BaseEstimator):
         first = _nearest(points[retained_min], points[retained_maj], self.k_neighbors)
         majority_votes = np.bincount(first.ravel(), minlength=len(retained_maj))
         boundary_maj = retained_maj[majority_votes >= 2]
+        self.boundary_indices_ = {"minority": np.empty(0, dtype=int),
+                                  "majority": boundary_maj.copy()}
         if len(boundary_maj) < 2:
             self.diagnostics_["status"] = "insufficient_majority_boundary"
             return points, labels
         second = _nearest(points[boundary_maj], points[retained_min], self.k_neighbors)
         minority_votes = np.bincount(second.ravel(), minlength=len(retained_min))
         boundary_min = retained_min[minority_votes >= 2]
+        self.boundary_indices_["minority"] = boundary_min.copy()
         self.diagnostics_["boundary_counts"] = {"minority": len(boundary_min),
                                                  "majority": len(boundary_maj)}
         if len(boundary_min) < 2:
@@ -157,7 +163,7 @@ class BFCHSMOTE(BaseEstimator):
         # Paper describes a set of hulls; deduplicate reciprocal nearest pairs.
         min_neighbors = _nearest(points[boundary_min], points[boundary_min], 2)
         maj_neighbors = NearestNeighbors(n_neighbors=1).fit(points[boundary_maj])
-        valid, areas, seen = [], [], set()
+        valid, areas, hulls, seen = [], [], [], set()
         rejected_degenerate = rejected_occupied = 0
         for i, neighbors in enumerate(min_neighbors):
             j = next((int(candidate) for candidate in neighbors if candidate != i), None)
@@ -182,6 +188,10 @@ class BFCHSMOTE(BaseEstimator):
                 continue
             valid.append(vertices)
             areas.append(area)
+            hulls.append({"minority_pair_indices": pair, "majority_index": int(majority_index),
+                          "midpoint": midpoint.copy(), "fusion_point": fused.copy(),
+                          "vertices": vertices.copy(), "area": area})
+        self.hulls_ = hulls
         self.diagnostics_.update(candidate_hulls=len(seen), valid_hulls=len(valid),
                                  rejected_degenerate=rejected_degenerate,
                                  rejected_occupied=rejected_occupied)
@@ -190,6 +200,8 @@ class BFCHSMOTE(BaseEstimator):
             return points, labels
 
         allocation = _allocate_areas(np.asarray(areas), target)
+        for hull, count in zip(self.hulls_, allocation):
+            hull["allocated_count"] = int(count)
         rng = np.random.default_rng(self.random_state)
         generated = np.vstack([rng.dirichlet(np.ones(3), size=int(n)) @ vertices
                                for vertices, n in zip(valid, allocation) if n])

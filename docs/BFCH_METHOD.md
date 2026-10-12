@@ -10,6 +10,9 @@ between original majority and minority counts; `n_samples` can override it.
 The sampler never receives held-out rows. It returns the original rows first,
 followed by generated minority rows. A diagnosed no-op is returned if its
 geometric criteria yield no valid hulls; it does not substitute SMOTE.
+After fitting, `retained_indices_`, `boundary_indices_`, and `hulls_` expose
+the original-row anchor indices and accepted triangle geometry for inspection.
+These are fitting-data artifacts; they are not performance evidence.
 
 The stages follow the paper's method:
 
