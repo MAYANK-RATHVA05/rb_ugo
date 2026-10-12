@@ -1,0 +1,62 @@
+{
+  "schema_version": 1,
+  "stage": 0,
+  "implementation_status": "not_implemented",
+  "audit_date": "2026-10-12",
+  "user_timezone": "Asia/Calcutta",
+  "repository": "MAYANK-RATHVA05/rb_ugo",
+  "branch": "sshr-implementation",
+  "base_branch": "ec-ebo-implementation",
+  "base_commit": "45852025df115eb66491a2ea36c4d5a8745fd45d",
+  "paper": {
+    "title": "A semi-supervised resampling method for class-imbalanced learning",
+    "authors": ["Zhen Jiang", "Lingyun Zhao", "Yu Lu", "Yongzhao Zhan", "Qirong Mao"],
+    "year": 2023,
+    "doi": "10.1016/j.eswa.2023.119733",
+    "source": "user_supplied_full_pdf",
+    "filename": "1-s2.0-S0957417423002348-main.pdf",
+    "bytes": 1648882,
+    "sha256": "89076411fe1dafad46efb1c5dc4fd3cfaa8ee720ed3a91c29210970370318910",
+    "pages": 13,
+    "full_text_read": true,
+    "critical_equations_visually_checked": true
+  },
+  "author_code": {
+    "paper_verified_url": "https://codeocean.com/capsule/5051082/tree/v1",
+    "paper_locations": ["page 1", "page 2", "Data availability, page 12"],
+    "status": "UNVERIFIED",
+    "page_retrieved": false,
+    "code_inspected": false,
+    "verified_behavior": [],
+    "source_revision": null,
+    "archive_sha256": null,
+    "license": null,
+    "access_attempts": [
+      {"route": "normal", "time_utc": "2026-10-12T18:15:35Z", "curl_exit": 56, "origin_http_status": "000", "proxy_connect_status": 403},
+      {"route": "escalated_retry", "time_utc": "2026-10-12T18:15:55Z", "curl_exit": 56, "origin_http_status": "000", "proxy_connect_status": 403}
+    ],
+    "limitation": "Environment proxy rejected CONNECT; this does not verify an origin access denial or author code behavior."
+  },
+  "paper_verified_defaults": {"mu": 0.5, "delta": 0.1, "lambda": 0.3, "smote_neighbors": 5},
+  "paper_verified_evaluation": {
+    "datasets": 44,
+    "source": "KEEL",
+    "outer_folds": 5,
+    "repeats": 5,
+    "classifier": "RBF SVM",
+    "sigma": 0.01,
+    "C": 100,
+    "unlabeled_pool_construction": "UNVERIFIED",
+    "reported_auc_computation": "UNVERIFIED"
+  },
+  "baseline_pytest": {
+    "command": ".venv/bin/python -m pytest -q",
+    "passed": 387,
+    "failed": 5,
+    "seconds": 15.21,
+    "failure_causes": ["BART backend absent: two failures", "C5.0 native backend absent: two failures", "Historical dataset test assumes local raw files absent: one failure"],
+    "source_or_tests_modified": false
+  },
+  "decisions_document": "SSHR_METHOD_DECISIONS.md",
+  "next_stage_requires_user_next": true
+}

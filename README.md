@@ -368,3 +368,15 @@ outside UGO. Already-converted numeric category codes cannot be detected by
 dtype alone; callers must ensure numerical distance is meaningful. Stage 1/2
 entry points continue to work unchanged. Stop after the requested reproduction
 stage; subsequent stages require separate authorization under AGENTS.md.
+
+## SSHR reproduction: Stage 0 audit
+
+[SSHR method decisions](docs/SSHR_METHOD_DECISIONS.md) audit the full Jiang et al.
+(2023) paper and record explicit interpretations for later implementation.
+SSHR primarily adds existing unlabelled observations with minority pseudo-labels;
+only its SMOTE fallback generates new feature vectors. The paper's objective,
+pruning and metric conflicts remain documented, and author-code behavior is
+unverified because the linked Code Ocean page could not be retrieved here.
+The [source audit](docs/SSHR_SOURCE_AUDIT.json) records access evidence and
+baseline test limitations. No SSHC/SSHR implementation or default-method change
+is included in Stage 0. Wait for the user's “next” before Stage 1.
