@@ -9,12 +9,14 @@ from src.data_loader import load_dataset
 from src.dataset_registry import check_all_candidates, load_candidate_registry
 
 
-def test_eight_historical_candidates_are_unverified_and_absent_here():
+def test_eight_historical_candidates_are_unverified_and_absent_here(tmp_path):
     registry = load_candidate_registry()
     assert len(registry["candidates"]) == 8
     assert {entry["ugo_paper_membership"] for entry in registry["candidates"]} == {"unverified"}
     assert all(entry["official_fold_pairs"] == 0 for entry in registry["candidates"])
-    assert {check.status for check in check_all_candidates()} == {"raw_file_absent"}
+    # Absence is a property of this empty fixture, not of a user's checkout.
+    # Real raw data may legitimately be present during development.
+    assert {check.status for check in check_all_candidates(raw_dir=tmp_path)} == {"raw_file_absent"}
 
 
 def _fixture_registry(tmp_path: Path) -> tuple[Path, Path]:

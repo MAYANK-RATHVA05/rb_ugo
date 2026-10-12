@@ -1,9 +1,11 @@
-# SSHR method decisions — Stage 0 paper and source audit
+# SSHR method decisions — source audit and staged reproduction
 
-**Stage 0 only. SSHC, SSHR, runner integration, and a real-data SSHR study have
-not been implemented.** This document records the source evidence and proposed
-operational choices for the next stages. Existing UGO, BFCH-SMOTE, EC-EBO,
-evaluation code, tests, and default method lists are unchanged.
+**Stage 1 implements SSHC clustering only. SSHR resampling, runner integration,
+and a real-data SSHR study have not been implemented.** This document preserves
+the Stage 0 source evidence and distinguishes implemented clustering decisions
+from proposed choices for later stages. See [the SSHC implementation record](SSHC_IMPLEMENTATION.md)
+for the API, checks and limits. Existing UGO, BFCH-SMOTE, EC-EBO, evaluation
+code and default method lists are unchanged.
 
 **SSHR mainly selects EXISTING unlabelled observations and assigns minority
 pseudo-labels to them. These are added real observations, not synthetic feature
@@ -39,7 +41,8 @@ source revision are **UNVERIFIED**. The proxy failure does not establish whether
 the public capsule itself requires authentication. `v1` is the published URL
 suffix, not a source revision inspected here. **Declared interpretations** below
 are our proposed choices, not recovered author behavior or novel contributions.
-The machine-readable [source audit](SSHR_SOURCE_AUDIT.json) records these facts.
+The machine-readable [source audit](SSHR_SOURCE_AUDIT.json) is the historical
+Stage 0 record; its `not_implemented` status describes that audit's commit.
 
 The cloud checkout is `/workspace/rb_ugo`; the user's separate Windows checkout
 is `C:\ugo\ugo_base`. Origin was fetched before branching. No existing local or
@@ -148,12 +151,12 @@ Author code or clarification is required to identify the executed objective.
 | Distance and ties | Algorithm 1 says closest centroid; tie rules absent. | Euclidean distances; persistent cluster IDs break exact distance ties. |
 | Labels | Sections 3.2–3.3 say dominant observed label; pseudocode assigns birth labels without relabelling timing. | Recompute dominant observed labels after assignment. Vote ties prefer the birth label if it is tied, otherwise the fixed input class order. Record `label_policy`. |
 | Split parent centroid | Children are initialized from labelled rows; no parent recentering is printed during splitting. | Retain the parent's prior centroid while initializing children; all-member mean updates occur in final refinement. |
-| Split rollback | Step 2 restores a lower-objective proposal, but may propose it again indefinitely. | Snapshot centroids, labels, row assignments and objective. Restore and stop on rejection or an identical/no-progress partition. Record the reason. |
+| Split rollback | Step 2 restores a lower-objective proposal, but may propose it again indefinitely. | Snapshot centroids, labels, birth labels, IDs, row assignments and objective. Restore and stop on rejection. Also stop if both row groups and assigned row labels are unchanged, ignoring ID renaming. Identical groups with changed labels can improve Eq.3 and must not be rejected by this guard. Record the reason. |
 | Pruning scope | Algorithm 1 step 3 says **any** cluster; Section 3.2, p.5 says **majority clusters**. | Default `majority_only`, following the prose; expose literal `all` separately. This is a deliberate resolution of a conflict. |
 | Cluster accuracy | `Acc(p)` / `Avg_acc(P)` weighting not defined. | Accuracy on observed labelled members; unweighted average of defined cluster accuracies, computed once before simultaneous pruning. |
 | Empty / unlabelled-only cluster | No rule provided. | Remove empty clusters. Keep a nonempty unlabelled-only cluster's birth label as an inferred label, exclude it from labelled-accuracy averaging and from pseudo-label candidates, and report it. Do not invent observed labels. |
 | Refinement decline | Step 4 stops when objective decreases; rollback not stated. | Restore the last accepted complete model and stop; this is a conservative interpretation. |
-| Floating-point stopping | Paper says unchanged centroids; no tolerance given. | Proposed `tol=1e-8`, `max_split_rounds=100`, `max_refine_iter=100` as exposed engineering safeguards. Hitting a guard is not paper convergence. |
+| Floating-point stopping | Paper says unchanged centroids; no tolerance given. | Implemented `tol=1e-8`, `max_split_rounds=100`, `max_refine_iter=100` as exposed engineering safeguards. Tolerance applies only to centroid movement with unchanged memberships and labels, never to objective decline. Hitting a guard is not paper convergence. |
 | Impurity / all models pruned | Impure final clusters explicitly allowed; no all-pruned handling. | Report impurity. Reject a pruning proposal that erases the entire model, restore its predecessor, and diagnose the safeguard. |
 
 No proof of global optimality, safe class separation, or correct pseudo-labels
@@ -363,13 +366,14 @@ have identical coordinates; lineage distinguishes observation provenance from
 coordinate uniqueness. Inputs remain intact, and every original/output row must
 be traceable. Shortfalls do not imply successful class balancing.
 
-## 9. Later tests and small-study gate
+## 9. Stage status and small-study gate
 
-Only after the user says **“next”**:
+Stage 1 was authorized by the user's **“next”**. Later stages require a further
+**“next”**; they are not part of the clustering implementation:
 
 | Stage | Planned deliverable and validation |
 | --- | --- |
-| 1 | Separate SSHC module; hand-calculated initialization, assignments, splits, literal/standard objective examples, pruning conflict modes, rollback, convergence guards, ties, pure/impure/small/unlabelled-only clusters and invalid-input tests. Focused plus full pytest, reviewed diff, commit and push. |
+| 1 — implemented | Separate SSHC module and hand-calculated initialization, assignments, splits, literal/standard objectives, pruning conflict modes, rollback, convergence guards, ties, pure/impure/small/unlabelled-only clusters and invalid-input tests. Validation is recorded in [SSHC_IMPLEMENTATION.md](SSHC_IMPLEMENTATION.md). |
 | 2 | SSHR cleaning, ranked confidence selection and within-cluster fallback; exact row conservation/lineage, nonmutation, class labels, empty `U`, zero distances, singleton cases, erased classes, reproducibility and unmet-quota tests. Focused plus full pytest, commit and push. |
 | 3 | Full estimator and opt-in runner; train-only feature provenance, hidden-label isolation, identical reduced baselines, categorical rejection, fixed outer folds, persistence/cache identities and final-fit tests. Focused plus full pytest, commit and push. |
 | 4 | At most two local numerical datasets, hash and metadata checked first. Same folds/classifiers for the six requested methods; save held-out F1/G-mean/MCC/probability AUC/FPR, pseudo-label accuracy, lineage counts, cluster sizes, shortfalls and training-only overlap proxy. Commit a descriptive report. No 44/74-dataset benchmark. |
@@ -389,7 +393,7 @@ Report all methods, not only the best one. Do not tune from outer-test scores or
 retrospective pseudo-label accuracy. A two-dataset comparison cannot establish
 general superiority, paper-result fidelity, novelty, or a class-overlap guarantee.
 
-## 10. Stage 0 validation and stop
+## 10. Historical Stage 0 validation
 
 The pre-existing full test suite was executed at the branch's unchanged base:
 **387 passed, 5 failed** in 15.21 seconds. Four failures are missing optional
@@ -400,9 +404,12 @@ These are baseline findings, not SSHR test results. Stage 0 does not delete data
 disable tests, change source/tests, or claim a green full suite. Later stages
 must account for these baseline prerequisites and the environment-dependent test.
 
-Documentation validation checks source metadata/hash, relative links, equation
-counterexample arithmetic, stage status, no-author-code claims, and a
-documentation-only diff. No SSHR implementation or real-data training study was run.
-After this audit is committed and pushed, **stop at Stage 0 and wait for the
-user's “next” before implementing Stage 1**. Source-code access/clarification
-remains required for any claim of exact author-implementation fidelity.
+Stage 0 documentation validation checked source metadata/hash, relative links,
+equation counterexample arithmetic, stage status, no-author-code claims, and a
+documentation-only diff. No SSHR implementation or real-data training study ran
+in that stage. Its audit was committed as
+`2b05f0b8d975ccc3e94755f28b960468eb4de0bc`; the user then authorized Stage 1.
+Stage 1 resolves the test prerequisites without deleting supplied data; its
+validation record is separate. **Stop after Stage 1 and wait for the user's
+“next” before implementing Stage 2.** Source-code access/clarification remains
+required for any claim of exact author-implementation fidelity.

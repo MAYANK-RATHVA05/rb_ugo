@@ -369,14 +369,20 @@ dtype alone; callers must ensure numerical distance is meaningful. Stage 1/2
 entry points continue to work unchanged. Stop after the requested reproduction
 stage; subsequent stages require separate authorization under AGENTS.md.
 
-## SSHR reproduction: Stage 0 audit
+## SSHR reproduction: Stage 1 clustering
 
 [SSHR method decisions](docs/SSHR_METHOD_DECISIONS.md) audit the full Jiang et al.
-(2023) paper and record explicit interpretations for later implementation.
+(2023) paper and record explicit interpretations for the staged implementation.
 SSHR primarily adds existing unlabelled observations with minority pseudo-labels;
 only its SMOTE fallback generates new feature vectors. The paper's objective,
 pruning and metric conflicts remain documented, and author-code behavior is
 unverified because the linked Code Ocean page could not be retrieved here.
-The [source audit](docs/SSHR_SOURCE_AUDIT.json) records access evidence and
-baseline test limitations. No SSHC/SSHR implementation or default-method change
-is included in Stage 0. Wait for the user's “next” before Stage 1.
+The historical [source audit](docs/SSHR_SOURCE_AUDIT.json) records Stage 0
+access evidence and baseline test limitations. Stage 1 adds the separate
+`SSHC` clustering module in `src/sshr_clustering.py`; its
+[implementation record](docs/SSHC_IMPLEMENTATION.md) gives the API, objective
+modes, numerical checks and limitations. It accepts observed training labels
+plus a separate unlabelled training feature pool, and returns clusters and
+diagnostics. SSHR resampling and runner integration remain for later stages;
+existing methods and their defaults are unchanged. Wait for the user's “next”
+before Stage 2.
