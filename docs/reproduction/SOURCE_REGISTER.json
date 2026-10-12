@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
-  "reviewed_on": "2026-10-11",
-  "scope": "Original binary UGO reproduction; source inventory through Stage 4R-4 experiment setup",
+  "reviewed_on": "2026-10-12",
+  "scope": "Original binary UGO reproduction with simulation pilot and user-accepted approximate benchmark dataset collection; prior stage snapshots retained",
   "baseline_commit": "c2fa7f333689df14c5ab4bb542500bf2676ac897",
   "historical_audit_commit": "0866dc936f231feef9df5e1538b8df206741735d",
   "historical_resource_branch_commit": "0d78c2d9db22f92cee912c94671705d4cd5ef8b9",
@@ -41,19 +41,24 @@
       "id": "UGO-SUPPLEMENT",
       "kind": "supplement",
       "doi": "10.1016/j.knosys.2026.115886",
-      "status": "missing",
+      "status": "available_and_audited",
+      "received_filename": "1-s2.0-S095070512600612X-mmc1.zip",
+      "bytes": 1397167,
       "expected_from_article": [
         "Complete 74-dataset list and variants",
         "Dataset/classifier-level results",
         "Generation counts"
       ],
-      "unverified_possible_contents": [
-        "Author fold definitions",
-        "Random seeds",
-        "Package versions",
-        "Source code"
+      "confirmed_contents": [
+        "Final 74-dataset names and metadata",
+        "Published detailed results for 84 datasets, including the final 74",
+        "Group summaries consistent with filtered final-74 detailed results",
+        "Simulation reference workbooks",
+        "Generation and uncertainty summaries with missing entries and unconfirmed V-code mapping"
       ],
-      "sha256": null
+      "confirmed_absent": ["Raw datasets", "Author fold files", "Author source code"],
+      "tracked_archive": false,
+      "sha256": "878819a2bc352764be4f347b0e90a9c0de8e335d5f0f2dddb18f4aadc8afe372"
     },
     {
       "id": "UGO-AUTHOR-CODE",
@@ -189,6 +194,7 @@
     }
   ],
   "experiment_setup_status": {
+    "snapshot_note": "Historical Stage 4R-4 snapshot; current source and data availability is recorded in dataset_collection_status.",
     "stage": "4R-4",
     "paper_benchmark_count": 74,
     "paper_benchmarks_confirmed": 0,
@@ -215,7 +221,23 @@
     "pilot_fidelity": "Stage 4R-6 declared simulation reconstructions; not author exact rows",
     "paper_benchmark_executed": false,
     "missing_classifier_implementations": 5,
-    "paper_supplement_status": "missing"
+    "paper_supplement_status": "available_and_audited"
+  },
+  "dataset_collection_status": {
+    "reviewed_on": "2026-10-12",
+    "manifest": "data/manifests/ugo_74_approximate.json",
+    "report": "docs/reproduction/DATASET_COLLECTION.md",
+    "final_supplement_entries": 74,
+    "local_inputs_prepared_and_loaded": 74,
+    "source_name_alias_and_class_count_matches": 56,
+    "user_accepted_approximate_variants": 18,
+    "raw_feature_count_differences": 16,
+    "all_sample_and_class_counts_match_supplement": true,
+    "raw_data_tracked": false,
+    "author_preprocessing_confirmed": false,
+    "author_fold_files_available": false,
+    "benchmark_training_executed": false,
+    "exact_author_dataset_reproduction_claim": false
   },
   "simulation_pilot_execution_status": {
     "stage": "4R-6",

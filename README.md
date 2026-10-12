@@ -22,7 +22,7 @@ for later authorized stages. Risk-Budgeted UGO is not implemented.
 Stage 4R-1 records the full-paper requirements in
 [the reproduction specification](docs/reproduction/SPECIFICATION.md) and
 [source register](docs/reproduction/SOURCE_REGISTER.json). It inventories the
-available article, missing supplementary materials, fourteen classifiers,
+available article and supplementary results, fourteen classifiers,
 comparison methods, experiment outputs and unresolved paper choices. It also
 identifies reusable batch/cap corrections on the historical verification branch.
 Stage 4R-2 selectively recovers those corrections, with conformance tests and
@@ -30,6 +30,13 @@ Stage 4R-2 selectively recovers those corrections, with conformance tests and
 the fixed original total; `cap_interpretation` exposes both conflicting published
 thresholds. Neither stage runs benchmark experiments. Original UGO reproduction
 is separate from the RB-UGO research motivation below.
+
+The [dataset collection report](docs/reproduction/DATASET_COLLECTION.md) records
+the final 74-entry benchmark input collection. It includes 56 source metadata
+matches and 18 explicitly accepted approximate variants. All inputs are local
+and ignored by Git; the portable manifest retains their hashes and preparation
+choices. Real benchmark training has not been executed, and this collection
+does not establish exact author preprocessing or evaluation folds.
 
 Stage 4R-3 adds `variant="rwo"`, `variant="mcsmote"`, their standalone
 baselines, the LEAO comparator, and constructors for NORES/RUS/ROS/SMOTE.
