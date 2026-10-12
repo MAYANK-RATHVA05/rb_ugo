@@ -13,8 +13,6 @@ htmlcov/
 # Keep data and experiment artifacts local; retain directory markers.
 data/raw/*
 !data/raw/.gitkeep
-data/incoming/
-papers/
 data/processed/*
 !data/processed/.gitkeep
 results/*
