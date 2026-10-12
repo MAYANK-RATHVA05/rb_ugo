@@ -23,7 +23,10 @@ paired-run example are in [docs/BFCH_METHOD.md](docs/BFCH_METHOD.md).
 Existing UGO evaluation defaults remain unchanged; select `bfch_smote`
 explicitly to compare it on the same fitting folds. The BFCH comparison
 workflow also records G-mean and probability AUC and exports a same-fold
-table from saved jobs; see the method notes for commands and limits.
+table from saved jobs; see the method notes for commands and limits. A
+[two-dataset descriptive comparison](docs/BFCH_SMALL_STUDY.md) records the
+first local BFCH, UGO, SMOTE, and no-resampling results with their source
+limitations and saved aggregate scores.
 
 ## Original UGO reproduction specification
 

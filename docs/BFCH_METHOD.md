@@ -104,3 +104,8 @@ probability of the explicitly chosen positive class. Saved jobs created before
 these metrics were added cannot be mixed with new jobs. Use a **new output
 directory** for the next run. The older stage-4 simulation summaries still
 cover their original IAM/MCC/F1 scope.
+
+A completed two-dataset descriptive run, including source hashes, paired
+scores, and the UGO zero-generation outcome on Winequality, is recorded in
+[BFCH_SMALL_STUDY.md](BFCH_SMALL_STUDY.md). It is not an author-paper benchmark
+reproduction.
