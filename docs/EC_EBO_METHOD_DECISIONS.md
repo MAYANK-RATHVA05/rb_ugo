@@ -1,4 +1,4 @@
-# EC-EBO method decisions before implementation
+# EC-EBO method decisions and implementation status
 
 Source: L. Tao, F. Yu, F. Wang, and Q. Wang, “EC-EBO: Entropy-balanced
 oversampling via externally constrained clustering for imbalanced data,”
@@ -17,8 +17,10 @@ largest-remainder allocation returns an exact integer quota. Part 3 is
 implemented in `src/ec_ebo.py`: it uses the allocated quotas,
 seeded majority references and coordinate proposals, accepts only positive
 decreasing Eq. 8 scores, and reports unmet quotas without copying seeds.
-Its synthetic generation tests are in `tests/test_ec_ebo.py`. Evaluation
-integration and real-data results remain pending.
+Its synthetic generation tests are in `tests/test_ec_ebo.py`. Part 4 registers
+`ec_ebo` as an opt-in method in the existing paired evaluation runner;
+fold-local preprocessing, entropy fitting, generation, and final classifier
+fitting use only training rows. Real-data results remain pending.
 
 The method targets intra-class imbalance: the minority class contains
 subclusters with different sizes and learning difficulty. The paper proposes
@@ -112,6 +114,23 @@ allocation example, the one-dimensional sign example, exact integer
 allocation, deterministic randomness, generation shortfall, unchanged
 original rows, and two-dimensional coordinate generation. Visualizing an
 unequal-subcluster synthetic case remains part of the evaluation work.
+
+The runner accepts `ec_ebo` through `--methods`. It keeps the original
+default methods unchanged and stores per-job generation diagnostics and
+shortfalls in `resampler_diagnostics`. It requires original numerical features
+and fold-local scaling; categorical or boolean source columns and `--no-scale`
+are rejected before jobs start. A local binary input with an explicit
+source-domain positive label can be checked against the baselines on identical
+outer folds, for example:
+
+```powershell
+.\.venv\Scripts\python.exe main_stage4r5.py --dataset data\raw\my_binary.csv --target class --positive-label positive --output results\ec-ebo-my-binary --classifiers LogReg --methods nores smote ugo_smote bfch_smote ec_ebo
+```
+
+The command is a template, not a completed experiment. Use a new output
+directory for each input or configuration. The generator is an audited
+interpretation of the paper, and the runner's ten-fold protocol is a declared
+approximation unless compliant folds are supplied with provenance.
 
 For a small real-data comparison, start with shared numerical inputs and
 use identical outer folds for NORES, SMOTE, UGO-SMOTE, BFCH-SMOTE, and

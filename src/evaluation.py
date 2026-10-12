@@ -28,7 +28,7 @@ from src.ugo import UGO
 
 METHODS = ("nores", "rus", "ros", "smote", "rwo", "mcsmote", "leao",
            "ugo_ros", "ugo_smote", "ugo_rwo", "ugo_mcsmote")
-AVAILABLE_METHODS = METHODS + ("bfch_smote",)
+AVAILABLE_METHODS = METHODS + ("bfch_smote", "ec_ebo")
 PROTOCOL = "declared stratified ten-fold approximation; not author folds"
 
 
@@ -46,6 +46,8 @@ def _validate_config(config: EvaluationConfig) -> None:
         raise ValueError("seed must be an integer in [0, 2**32).")
     if not isinstance(config.scale, bool):
         raise ValueError("scale must be boolean.")
+    if "ec_ebo" in config.methods and not config.scale:
+        raise ValueError("ec_ebo requires fold-local scaling; omit --no-scale.")
     if (not config.methods or len(set(config.methods)) != len(config.methods)
             or "nores" not in config.methods or any(m not in AVAILABLE_METHODS for m in config.methods)):
         raise ValueError("Methods must be unique known names and include nores.")
@@ -240,6 +242,13 @@ def evaluate_ten_fold(X: Any, y: Any, *, dataset_id: str, positive_label: Any,
     if not isinstance(retry_failures, bool):
         raise ValueError("retry_failures must be boolean.")
     frame = feature_frame(X)
+    if "ec_ebo" in config.methods:
+        categorical = [column for column in frame if
+                       not pd.api.types.is_numeric_dtype(frame[column]) or
+                       pd.api.types.is_bool_dtype(frame[column])]
+        if categorical:
+            raise ValueError("ec_ebo requires original numerical features; categorical or "
+                             f"boolean columns are unsupported: {categorical}.")
     labels_y, labels = binary_labels(y, len(frame))
     if positive_label not in labels:
         raise ValueError("positive_label must be an explicit source/domain class label.")

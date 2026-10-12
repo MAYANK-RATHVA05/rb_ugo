@@ -32,9 +32,9 @@ The [EC-EBO method decisions](docs/EC_EBO_METHOD_DECISIONS.md) audit the
 paper's intra-class imbalance method and record its documented ambiguities.
 Part 1 adds externally constrained minority clustering in
 `src/ec_ebo_clustering.py`; Part 2 adds training-data entropy and per-cluster
-allocation in `src/ec_ebo_entropy.py`; Part 3 adds a standalone, audited
-minority-sample generator in `src/ec_ebo.py`. Evaluation integration and
-real-data EC-EBO results are still pending.
+allocation in `src/ec_ebo_entropy.py`; Part 3 adds an audited minority-sample
+generator in `src/ec_ebo.py`. Part 4 makes `ec_ebo` an opt-in method in the
+same-fold evaluation runner. Real-data EC-EBO results are still pending.
 
 ## Original UGO reproduction specification
 
