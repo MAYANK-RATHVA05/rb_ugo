@@ -64,7 +64,7 @@ def test_informative_seed_order_and_noise_exclusion() -> None:
     assert seeds.tolist() == [2, 3]  # ceil(0.5 * 3), stable equal-score order.
 
 
-@pytest.mark.parametrize("variant", ["ros", "smote"])
+@pytest.mark.parametrize("variant", ["ros", "smote", "rwo", "mcsmote"])
 def test_majority_class_can_be_selected_and_outputs_preserved(toy, variant) -> None:
     X, y = toy
     X_before, y_before = X.copy(), y.copy()
@@ -80,11 +80,11 @@ def test_majority_class_can_be_selected_and_outputs_preserved(toy, variant) -> N
     np.testing.assert_array_equal(X, X_before)
     np.testing.assert_array_equal(y, y_before)
     assert sampler.diagnostics_["stopping_reason"] == "max_iterations_safeguard"
-    assert sampler.diagnostics_["reproduction_status"] == "provisional_prompt_based"
+    assert sampler.diagnostics_["reproduction_status"] == "source_audited_with_ambiguities"
     assert sampler.diagnostics_["final_class_counts"][0]["count"] > 4
 
 
-@pytest.mark.parametrize("variant", ["ros", "smote"])
+@pytest.mark.parametrize("variant", ["ros", "smote", "rwo", "mcsmote"])
 def test_seed_reproducibility(toy, variant) -> None:
     first, X1, y1 = run(*toy, variant=variant)
     second, X2, y2 = run(*toy, variant=variant)
@@ -116,7 +116,7 @@ def test_ros_only_copies_selected_seeds(toy) -> None:
 
 def test_cap_truncates_last_batch(toy) -> None:
     sampler, X_new, _ = run(*toy, phi=1.0, lambda_step=1.0, max_iter=20)
-    # Original counts [4,2]: floor(1*2*4-6)=2 synthetic rows.
+    # Section 3.3 threshold for original counts [4,2]: 1*2*4-6=2.
     assert sampler.diagnostics_["generation_cap"] == 2
     assert sampler.diagnostics_["number_of_synthetic_samples"] == 2
     assert len(X_new) == 8
@@ -207,12 +207,12 @@ def test_insufficient_smote_neighbors_is_diagnosed(toy, monkeypatch) -> None:
     assert len(X_new) == 6
 
 
-def test_real_estimator_both_variants_and_string_labels() -> None:
+def test_real_estimator_all_supported_variants_and_string_labels() -> None:
     from sklearn.datasets import make_classification
     X, y = make_classification(n_samples=80, n_features=4, n_informative=3,
                                 n_redundant=0, weights=[0.75, 0.25], random_state=42)
     labels = np.where(y == 0, "normal", "rare")
-    for variant in ["ros", "smote"]:
+    for variant in ["ros", "smote", "rwo", "mcsmote"]:
         sampler, X_new, y_new = run(X, labels, variant=variant, k_pre=3,
                                     estimator=LogisticRegression(max_iter=1000))
         assert X_new.shape[0] == len(y_new)
@@ -232,8 +232,7 @@ def test_demo_executes_generation_for_both_variants() -> None:
     assert "UGO-ROS (provisional)" in result.stdout
     assert "UGO-SMOTE (provisional)" in result.stdout
     assert result.stdout.count("stopping_reason: welch_fail_to_reject") == 2
-    assert "number_of_synthetic_samples: 3" in result.stdout
-    assert "number_of_synthetic_samples: 6" in result.stdout
+    assert result.stdout.count("number_of_synthetic_samples: 12") == 2  # Fixed n*lambda_step batch.
 
 
 @pytest.mark.parametrize("features", [np.array([["red"], ["blue"]]),
@@ -293,3 +292,74 @@ def test_nullable_numeric_dataframe_without_missing_values(toy) -> None:
 def test_invalid_parameters(toy, kwargs) -> None:
     with pytest.raises(ValueError):
         UGO(ToyEstimator(), allow_provisional=True, **kwargs).fit_resample(*toy)
+
+
+@pytest.mark.parametrize("variant", ["ros", "smote", "rwo", "mcsmote"])
+@pytest.mark.parametrize("region,selected", [("low", 0), ("high", 1)])
+def test_paper_batch_uses_fixed_original_total_not_class_count(toy, variant, region, selected) -> None:
+    ToyEstimator.fits = []
+    sampler, X_new, y_new = run(*toy, variant=variant, estimator=ToyEstimator(region),
+                                lambda_step=0.5, max_iter=2)
+    assert sampler.diagnostics_["nominal_batch_size"] == 3  # n=6, not selected-class n=4.
+    assert [r["generated_count"] for r in sampler.diagnostics_["history"]] == [3, 3]
+    assert [r["selected_class"] for r in sampler.diagnostics_["history"]] == [selected, selected]
+    assert [len(X) for X, _ in ToyEstimator.fits] == [6, 9]
+    assert len(X_new) == len(y_new) == 12
+    assert (y_new[6:] == selected).all()
+    assert sampler.diagnostics_["cap_interpretation"] == "section_3_3"
+
+
+def test_table4_cap_is_available_without_silent_default_switch(toy) -> None:
+    sampler, _, _ = run(*toy, cap_interpretation="table4")
+    assert sampler.diagnostics_["generation_cap"] == 10
+    assert sampler.diagnostics_["effective_parameters"]["cap_interpretation"] == "table4"
+
+
+@pytest.mark.parametrize("variant", ["ros", "smote", "rwo", "mcsmote"])
+@pytest.mark.parametrize("policy,phi", [("section_3_3", 1.3), ("table4", 1.1)])
+def test_fractional_cap_clips_only_last_fixed_batch(toy, variant, policy, phi) -> None:
+    # Each source expression gives a real threshold 4.4: five generated rows
+    # meet it, whereas four do not. A nominal batch of three must end with two.
+    sampler, X_new, y_new = run(*toy, variant=variant, cap_interpretation=policy,
+                                phi=phi, lambda_step=0.5, max_iter=20)
+    assert sampler.diagnostics_["generation_cap"] == 5
+    assert sampler.diagnostics_["nominal_batch_size"] == 3
+    assert [r["generated_count"] for r in sampler.diagnostics_["history"]] == [3, 2]
+    assert sampler.diagnostics_["number_of_synthetic_samples"] == 5
+    assert sampler.diagnostics_["stopping_reason"] == "provisional_generation_cap"
+    assert sampler.diagnostics_["cap_interpretation"] == policy
+    assert len(X_new) == len(y_new) == 11
+    np.testing.assert_array_equal(X_new[:6], toy[0])
+    np.testing.assert_array_equal(y_new[:6], toy[1])
+
+
+def test_invalid_cap_policy_clears_previous_state_before_fitting(toy) -> None:
+    sampler, _, _ = run(*toy)
+    ToyEstimator.fits = []
+    sampler.set_params(cap_interpretation="invented")
+    with pytest.raises(ValueError, match="interpretation"):
+        sampler.fit_resample(*toy)
+    assert not ToyEstimator.fits
+    assert not hasattr(sampler, "diagnostics_")
+    assert not hasattr(sampler, "estimator_")
+
+
+def test_rwo_has_separate_source_status_and_preserves_original_reference_pools(toy):
+    sampler, _, _ = run(*toy, variant="rwo", lambda_step=0.5, max_iter=2)
+    assert sampler.diagnostics_["generator"]["status"] == "original_source_numeric_with_ugo_pool_conventions"
+    assert [r["generation"]["spread_reference_indices"]
+            for r in sampler.diagnostics_["history"]] == [[0, 1, 2, 3], [0, 1, 2, 3]]
+
+
+def test_mcsmote_invalid_quantile_rejected_before_classifier_fitting(toy):
+    ToyEstimator.fits = []
+    with pytest.raises(ValueError, match="q"):
+        UGO(ToyEstimator(), variant="mcsmote", q_mcsmote=0,
+            allow_provisional=True).fit_resample(*toy)
+    assert not ToyEstimator.fits
+
+
+def test_ugo_mcsmote_uses_original_clean_transition_pool(toy):
+    sampler, _, _ = run(*toy, variant="mcsmote", lambda_step=0.5, max_iter=2)
+    assert [r["generation"]["transition_reference_indices"]
+            for r in sampler.diagnostics_["history"]] == [[0, 1, 2, 3], [0, 1, 2, 3]]

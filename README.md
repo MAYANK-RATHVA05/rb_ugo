@@ -1,14 +1,74 @@
 # Risk-Budgeted Uncertainty-Guided Oversampling (RB-UGO)
 
-## Scope: Stages 1–3
+## Scope: foundation and original UGO reproduction
 
 This portable Python 3.11 research repository provides configuration and directory
 validation (Stage 1), plus binary CSV/KEEL loading and descriptive imbalance
-analysis (Stage 2). Stage 3 adds provisional, prompt-based UGO-ROS/UGO-SMOTE and
-an artificial-data sanity check. The full paper was inaccessible; this is not a
-verified faithful reproduction. Only the internal UGO classifier is fitted. No
-automatic preprocessing, evaluation splits, final model scoring, benchmark
-experiments, or Risk-Budgeted UGO are implemented. Further stages require approval.
+analysis (Stage 2). Stage 3 added provisional UGO-ROS/UGO-SMOTE and an artificial
+sanity check. Stage 4R-2 applies reviewed fixed-batch and explicit-cap corrections
+after reading the full paper; unresolved source choices still prevent a verified
+faithful reproduction claim. Stage 4R-3 uses the three uploaded original method
+papers for numerical RWO, MCSMOTE, LEAO, and all four UGO generator variants.
+Their source conflicts and remaining implementation conventions are recorded.
+Stage 4R-4 prepares simulations, dataset candidates and classifier identities.
+Stage 4R-5 adds training-only preprocessing, paired ten-fold evaluation,
+fresh final model fitting, IAM/MCC/F1 and atomic resumable results. Validation
+includes artificial software fixtures. Stage 4R-6 executes a measured pilot of
+both declared paper simulation reconstructions. Real benchmark experiments remain
+for later authorized stages. Risk-Budgeted UGO is not implemented.
+
+## Original UGO reproduction specification
+
+Stage 4R-1 records the full-paper requirements in
+[the reproduction specification](docs/reproduction/SPECIFICATION.md) and
+[source register](docs/reproduction/SOURCE_REGISTER.json). It inventories the
+available article and supplementary results, fourteen classifiers,
+comparison methods, experiment outputs and unresolved paper choices. It also
+identifies reusable batch/cap corrections on the historical verification branch.
+Stage 4R-2 selectively recovers those corrections, with conformance tests and
+[a core alignment report](docs/reproduction/CORE_ALIGNMENT.md). Batches now use
+the fixed original total; `cap_interpretation` exposes both conflicting published
+thresholds. Neither stage runs benchmark experiments. Original UGO reproduction
+is separate from the RB-UGO research motivation below.
+
+The [dataset collection report](docs/reproduction/DATASET_COLLECTION.md) records
+the final 74-entry benchmark input collection. It includes 56 source metadata
+matches and 18 explicitly accepted approximate variants. All inputs are local
+and ignored by Git; the portable manifest retains their hashes and preparation
+choices. Real benchmark training has not been executed, and this collection
+does not establish exact author preprocessing or evaluation folds.
+
+Stage 4R-3 adds `variant="rwo"`, `variant="mcsmote"`, their standalone
+baselines, the LEAO comparator, and constructors for NORES/RUS/ROS/SMOTE.
+See the [generator alignment report](docs/reproduction/GENERATOR_ALIGNMENT.md)
+for source equations, numerical scope and unresolved conventions.
+
+Stage 4R-4 prepares the two paper simulations, a provenance-guarded registry
+of eight **unverified** dataset candidates, and all fourteen paper classifier
+identities. The classifier-completion stage now gives all fourteen declared
+Python interfaces, including pinned BART and native C5.0 backends. See the
+[experiment setup report](docs/reproduction/EXPERIMENT_SETUP.md). The 74-dataset
+collection has 56 metadata matches and 18 explicitly accepted approximations.
+
+Stage 4R-5 supplies the [evaluation runner](docs/reproduction/EVALUATION.md)
+with all eleven conditions and mandatory NORES. Its manifest records source
+ambiguities, classifier approximations, exact folds, configuration and hashes;
+failures and unavailable classifiers retain empty scores and explicit coverage.
+Verify the software fixture and resume by repeating:
+
+    .venv/bin/python main_stage4r5.py --software-check --output results/stage4r5-software-check
+
+Stage 4R-6 completes 300 simulation fold jobs with LogReg/GNB/KNN and five
+methods. The [pilot report](docs/reproduction/SIMULATION_PILOT.md) records
+mixed scores, 19 UGO cap stops, a 25.11-second invocation, 168.44 MiB process
+peak, complete resume, and differences from Tables 9–10. The paper's F1 averaging
+is unresolved; no exact-result or general superiority claim is made.
+
+    .venv/bin/python main_stage4r6.py --report-dir docs/reproduction/pilot_stage4r6
+
+Stage 4R-7 uses the [manual benchmark runner](docs/reproduction/BENCHMARK_EXECUTION.md)
+to validate and resume the complete 113,960-job matrix across the prepared 74
+inputs. Raw inputs and detailed results remain local and ignored by Git.
 
 ## Research motivation
 
@@ -23,9 +83,9 @@ necessarily improve generalization, and false positives can increase.
 The base paper, **“Uncertainty guided oversampling: A classifier-specific approach
 for effective handling of class imbalance in machine learning,”** motivates using
 classifier uncertainty to guide oversampling for a particular classifier. A
-faithful implementation requires examining the original algorithm and protocol;
-this scaffold does not claim to reproduce it yet. Bibliographic metadata and
-algorithm details must be verified before adding citations or implementation.
+faithful implementation requires resolving the source conflicts and completing
+its experimental protocol. The available article has been audited; this project
+does not yet claim unique author-code equivalence or reproduced paper results.
 
 Our proposed research question is whether accepting or rejecting uncertainty-guided
 synthetic minority batches according to held-out balanced risk and majority-class
@@ -50,6 +110,18 @@ rb_ugo/                     # Repository root, not a second nested directory
 │   ├── uncertainty.py     # Signed MMA
 │   ├── noise_detection.py # Neighbor votes and relocation
 │   ├── stopping.py        # Welch decision and provisional cap
+│   ├── generators.py      # Shared batches and numerical RWO baseline
+│   ├── mcsmote.py        # Gaussian transition and Sinkhorn MCSMOTE
+│   ├── leao.py           # LEAO comparator
+│   ├── comparators.py    # NORES and standalone comparator constructors
+│   ├── simulations.py    # Declared linear/nonlinear paper reconstructions
+│   ├── dataset_registry.py # Historical candidate file/hash checks
+│   ├── classifier_registry.py # Fourteen names and available local approximations
+│   ├── preprocessing.py   # Fold-local imputation, encoding, filtering and scaling
+│   ├── metrics.py         # IAM/MCC/F1 with fixed source labels
+│   ├── evaluation.py      # Paired ten-fold runner and fresh final fits
+│   ├── results.py         # Atomic records and strict resume identity
+│   ├── pilot.py           # Fixed simulations, paired summaries and resources
 │   └── ugo.py             # Provisional UGO variants and diagnostics
 ├── notebooks/.gitkeep      # Future exploratory notebooks
 ├── results/.gitkeep        # Future generated research outputs
@@ -57,9 +129,14 @@ rb_ugo/                     # Repository root, not a second nested directory
 ├── main_stage1.py          # Directory checks and environment display
 ├── main_stage2.py          # Dataset inspection CLI
 ├── main_stage3.py          # Provisional UGO software sanity check
+├── main_stage4r4.py        # Experiment-input and capability inspection
+├── main_stage4r5.py        # Evaluation CLI and artificial integration check
+├── main_stage4r6.py        # Measured simulation pilot and descriptive export
 ├── docs/ugo_reproduction.md # Equations, assumptions, evidence, unresolved fidelity
 ├── requirements.txt       # Pinned research dependencies
 ├── requirements-dev.txt   # Runtime dependencies plus pytest
+├── requirements-classifiers.txt # Pinned optional classifier backend
+├── native/                # C5.0 process adapter (compiled output stays ignored)
 ├── README.md
 ├── DATASETS.md             # Benchmark provenance and manual data handling
 ├── AGENTS.md               # Permanent research rules
@@ -105,15 +182,15 @@ With Python 3.11 available, from the repository root:
 
 ```bash
 python3.11 -m venv .venv
-.venv/bin/python -m pip install -r requirements-dev.txt
+.venv/bin/python -m pip install -r requirements-dev.txt -r requirements-classifiers.txt
+.venv/bin/python scripts/setup_c50.py
 .venv/bin/python main_stage1.py
 .venv/bin/python -m pytest -q
 ```
 
-No credentials or external services are needed for Stage 1 beyond package
-installation. The initialization script prints the Python version and configured
-paths, then reports success only if all required directories exist. Tests cover
-path configuration, successful initialization, and missing or invalid directories.
+The C5.0 build needs Git and a C compiler. It verifies a pinned CRAN C50 source
+commit and checksum before compiling into the ignored `.runtime/c50` directory.
+No credentials or external services are needed beyond dependency/source download.
 
 ## Stage 2: inspect a dataset
 
@@ -231,14 +308,15 @@ above before these commands. Open this repository root in Antigravity and select
 `.venv\Scripts\python.exe`. Linux cloud validation does not establish that the
 Windows environment has already been tested or synchronized.
 
-## Stage 3: provisional original-UGO implementation
+## Original UGO software: Stage 3 and Stage 4R-2 corrections
 
 Read [docs/ugo_reproduction.md](docs/ugo_reproduction.md) first. The implementation
-follows the supplied signed MMA equation and highest-mean-uncertainty class rule,
+follows the paper's signed MMA equation and highest-mean-uncertainty class rule,
 with kNN noise detection, relocation, and Welch stopping. It does not silently
 force minority-only generation or replace uncertainty selection with ordinary
-SMOTE. The cap formula, selection pools, rounding, and neighborhood rules are
-explicitly provisional because the full paper could not be read.
+SMOTE. It uses fixed original-total batches and names the two conflicting cap
+expressions. Selection pools, rounding, neighborhood details and batch clipping
+remain explicit reproduction conventions where the paper is ambiguous.
 
 ```python
 from sklearn.linear_model import LogisticRegression
@@ -246,7 +324,8 @@ from src.ugo import UGO
 
 # X_fit/y_fit must be fitting data only: finite numerical features, two classes.
 sampler = UGO(LogisticRegression(max_iter=1000, random_state=42),
-              variant="smote", allow_provisional=True)
+              variant="smote", cap_interpretation="section_3_3",
+              allow_provisional=True)
 # X_augmented, y_augmented = sampler.fit_resample(X_fit, y_fit)
 # print(sampler.diagnostics_)
 ```
@@ -255,7 +334,7 @@ Run the included artificial-data sanity check on Windows after synchronizing:
 
 ```powershell
 git fetch origin
-git switch stage3-ugo-reproduction
+git switch ugo-paper-reproduction
 git pull --ff-only
 .\.venv\Scripts\python.exe main_stage1.py
 .\.venv\Scripts\python.exe main_stage3.py
@@ -267,4 +346,5 @@ diagnostics are software evidence only; it reports no accuracy or benchmark
 results. Categorical/missing features require future training-only preprocessing
 outside UGO. Already-converted numeric category codes cannot be detected by
 dtype alone; callers must ensure numerical distance is meaningful. Stage 1/2
-entry points continue to work unchanged. Stop after Stage 3.
+entry points continue to work unchanged. Stop after the requested reproduction
+stage; subsequent stages require separate authorization under AGENTS.md.

@@ -1,0 +1,322 @@
+{
+  "schema_version": 1,
+  "reviewed_on": "2026-10-12",
+  "scope": "Original binary UGO reproduction with simulation pilot and user-accepted approximate benchmark dataset collection; prior stage snapshots retained",
+  "baseline_commit": "c2fa7f333689df14c5ab4bb542500bf2676ac897",
+  "historical_audit_commit": "0866dc936f231feef9df5e1538b8df206741735d",
+  "historical_resource_branch_commit": "0d78c2d9db22f92cee912c94671705d4cd5ef8b9",
+  "sources": [
+    {
+      "id": "UGO-PDF",
+      "kind": "article",
+      "title": "Uncertainty guided oversampling: A classifier-specific approach for effective handling of class imbalance in machine learning",
+      "authors": [
+        "Fatih Sağlam",
+        "Mehmet Ali Cengiz"
+      ],
+      "journal": "Knowledge-Based Systems",
+      "volume": 342,
+      "year": 2026,
+      "article_number": "115886",
+      "doi": "10.1016/j.knosys.2026.115886",
+      "received_filename": "ml paper.pdf",
+      "bytes": 6672332,
+      "pages": 20,
+      "sha256": "42a26a8997efc28bc50ef2e58ddf28eae10d3a9bcec19fe31a91756560e30f6f",
+      "status": "available_and_read",
+      "retrieval": "User-supplied attachment; text extracted and important tables/equations visually inspected",
+      "tracked_pdf": false
+    },
+    {
+      "id": "UGO-PDF-HISTORICAL",
+      "kind": "historical_inventory",
+      "received_filename": "1-s2.0-S095070512600612X-main.pdf",
+      "bytes": 6671987,
+      "sha256": "87cbd8f4237a19fd68e34cd8d57e664d6bc47adc0cb8e8ce9eedc1da5c10bc8b",
+      "status": "recorded_in_git_inventory_original_not_available_here",
+      "evidence": "0d78c2d9db22f92cee912c94671705d4cd5ef8b9:data/manifests/resource_inventory.csv",
+      "note": "Different bytes/hash from current upload; bibliographic identity agrees, byte or full-text equivalence has not been established."
+    },
+    {
+      "id": "UGO-SUPPLEMENT",
+      "kind": "supplement",
+      "doi": "10.1016/j.knosys.2026.115886",
+      "status": "available_and_audited",
+      "received_filename": "1-s2.0-S095070512600612X-mmc1.zip",
+      "bytes": 1397167,
+      "expected_from_article": [
+        "Complete 74-dataset list and variants",
+        "Dataset/classifier-level results",
+        "Generation counts"
+      ],
+      "confirmed_contents": [
+        "Final 74-dataset names and metadata",
+        "Published detailed results for 84 datasets, including the final 74",
+        "Group summaries consistent with filtered final-74 detailed results",
+        "Simulation reference workbooks",
+        "Generation and uncertainty summaries with missing entries and unconfirmed V-code mapping"
+      ],
+      "confirmed_absent": ["Raw datasets", "Author fold files", "Author source code"],
+      "tracked_archive": false,
+      "sha256": "878819a2bc352764be4f347b0e90a9c0de8e335d5f0f2dddb18f4aadc8afe372"
+    },
+    {
+      "id": "UGO-AUTHOR-CODE",
+      "kind": "author_implementation",
+      "status": "not_located",
+      "verified_url": null,
+      "sha256": null,
+      "note": "No author-code repository is identified in the uploaded article; do not treat our GitHub implementation as author code."
+    },
+    {
+      "id": "RWO-PDF",
+      "kind": "generator_reference",
+      "title": "RWO-sampling: A random walk over-sampling approach to imbalanced data classification",
+      "doi": "10.1016/j.inffus.2013.12.003",
+      "article_reference": 50,
+      "status": "user_supplied_full_text_available_algorithm_inspected_numerical_equation_implemented",
+      "received_filename": "rwo paper.pdf",
+      "bytes": 1138274,
+      "pages": 18,
+      "sha256": "01c97213a4713aaa04cdbad577a275f9c26981d7bc1cbbb4caf3062f7327be46",
+      "tracked_pdf": false,
+      "note": "Section 3, Eq. 4 and Algorithm 1 inspected; numerical rule implemented, categorical roulette remains unsupported."
+    },
+    {
+      "id": "MCSMOTE-PDF",
+      "kind": "generator_reference",
+      "title": "MCSMOTE: a transition matrix-driven oversampling technique for class imbalance",
+      "doi": "10.1016/j.asoc.2025.113906",
+      "article_reference": 37,
+      "status": "user_supplied_full_text_available_algorithm_inspected_with_pseudocode_conflicts",
+      "received_filename": "mcsmote.pdf",
+      "bytes": 7930516,
+      "pages": 20,
+      "sha256": "d5ddad5569e6207da55f6e62eceb9e6b8383e9758c7f999004c7b3b59e4e1053",
+      "tracked_pdf": false,
+      "note": "Section 3, Eqs. 1–4 and Algorithms 1–2 inspected. Algorithm 2's interpolation sign and loop condition conflict with its equation/prose; numerical conventions documented."
+    },
+    {
+      "id": "LEAO-PDF",
+      "kind": "comparator_reference",
+      "title": "Local entropy-adversarial oversampling for imbalanced datasets",
+      "doi": "10.1016/j.neucom.2025.131959",
+      "article_reference": 38,
+      "status": "user_supplied_full_text_available_algorithm_inspected_with_entropy_and_execution_ambiguities",
+      "received_filename": "lco paper.pdf",
+      "bytes": 8669831,
+      "pages": 12,
+      "sha256": "a01a7f26b0df6397eefbc8a2cad5b02ee39b9ef084bbf2ab188f46266175e0aa",
+      "tracked_pdf": false,
+      "note": "Filename says lco but title and DOI identify LEAO. Equation 1 entropy sign and Algorithm 1 execution gaps require documented conventions."
+    },
+    {
+      "id": "RWO-SMOTE-VARIANTS-1.0.1",
+      "kind": "third_party_numeric_implementation",
+      "package": "smote-variants",
+      "version": "1.0.1",
+      "url": "https://files.pythonhosted.org/packages/7b/4c/85c7fbe56abeceaea6aa8e74401ebeda28aae8b296fb5b2e5166cd537422/smote_variants-1.0.1.tar.gz",
+      "sha256": "2c14ad98cf6b9a3150c2217742a6f49686c9c4085dde887f1088e88108b7c206",
+      "files": [
+        {
+          "path": "smote_variants/oversampling/_rwo_sampling.py",
+          "sha256": "121b0914e73740917012e07e4b6a9eff213ab78af8dfee1eb53b3987ab77d23d"
+        },
+        {
+          "path": "smote_variants/base/_simplexsampling.py",
+          "sha256": "c3579642e68ebf36803ae088d9d8ed61666c465c6d7536f51c441d0da8819acf"
+        }
+      ],
+      "license": "MIT",
+      "status": "download_checksum_verified_source_inspected_now_secondary_reference",
+      "retrieved_on": "2026-10-11",
+      "installed": false,
+      "tracked_archive": false,
+      "note": "Evidence for numerical Gaussian population-std/sqrt(n) perturbation only. UGO pools and NumPy RNG are explicit adaptations; no author-code equivalence or discrete-rule coverage claim."
+    }
+  ],
+  "historical_dataset_candidates": [
+    {
+      "name": "ecoli2",
+      "status": "historical_file_inspection_record_only",
+      "paper_74_membership": "unverified",
+      "raw_archive_available_in_current_workspace": false,
+      "official_folds_in_historical_upload": 0
+    },
+    {
+      "name": "glass6",
+      "status": "historical_file_inspection_record_only",
+      "paper_74_membership": "unverified",
+      "raw_archive_available_in_current_workspace": false,
+      "official_folds_in_historical_upload": 0
+    },
+    {
+      "name": "yeast3",
+      "status": "historical_file_inspection_record_only",
+      "paper_74_membership": "unverified",
+      "raw_archive_available_in_current_workspace": false,
+      "official_folds_in_historical_upload": 0
+    },
+    {
+      "name": "page-blocks0",
+      "status": "historical_file_inspection_record_only",
+      "paper_74_membership": "unverified",
+      "raw_archive_available_in_current_workspace": false,
+      "official_folds_in_historical_upload": 0
+    },
+    {
+      "name": "ecoli4",
+      "status": "historical_file_inspection_record_only",
+      "paper_74_membership": "unverified",
+      "raw_archive_available_in_current_workspace": false,
+      "official_folds_in_historical_upload": 0
+    },
+    {
+      "name": "yeast4",
+      "status": "historical_file_inspection_record_only",
+      "paper_74_membership": "unverified",
+      "raw_archive_available_in_current_workspace": false,
+      "official_folds_in_historical_upload": 0
+    },
+    {
+      "name": "segment0",
+      "status": "historical_file_inspection_record_only",
+      "paper_74_membership": "unverified",
+      "raw_archive_available_in_current_workspace": false,
+      "official_folds_in_historical_upload": 0
+    },
+    {
+      "name": "abalone19",
+      "status": "historical_file_inspection_record_only",
+      "paper_74_membership": "unverified",
+      "raw_archive_available_in_current_workspace": false,
+      "official_folds_in_historical_upload": 0
+    }
+  ],
+  "experiment_setup_status": {
+    "snapshot_note": "Historical Stage 4R-4 snapshot; current source and data availability is recorded in dataset_collection_status.",
+    "stage": "4R-4",
+    "paper_benchmark_count": 74,
+    "paper_benchmarks_confirmed": 0,
+    "historical_candidates": 8,
+    "candidate_raw_files_currently_available": 0,
+    "official_fold_pairs_currently_available": 0,
+    "paper_supplement_status": "missing",
+    "paper_simulations_declared": 2,
+    "paper_classifier_identities": 14,
+    "python_approximations_smoke_checked": 9,
+    "classifiers_without_implementation": 5
+  },
+  "evaluation_implementation_status": {
+    "stage": "4R-5",
+    "preprocessing": "training-only with declared author-unknown conventions",
+    "metrics": ["IAM", "MCC", "F1"],
+    "outer_folds": 10,
+    "default_folds": "recorded deterministic stratified approximation; not author folds",
+    "conditions_supported": 11,
+    "fresh_final_fit": true,
+    "atomic_resumable_records": true,
+    "validation_population": "artificial software fixtures only",
+    "paper_pilot_executed": true,
+    "pilot_fidelity": "Stage 4R-6 declared simulation reconstructions; not author exact rows",
+    "paper_benchmark_executed": false,
+    "missing_classifier_implementations": 5,
+    "paper_supplement_status": "available_and_audited"
+  },
+  "dataset_collection_status": {
+    "reviewed_on": "2026-10-12",
+    "manifest": "data/manifests/ugo_74_approximate.json",
+    "report": "docs/reproduction/DATASET_COLLECTION.md",
+    "final_supplement_entries": 74,
+    "local_inputs_prepared_and_loaded": 74,
+    "source_name_alias_and_class_count_matches": 56,
+    "user_accepted_approximate_variants": 18,
+    "raw_feature_count_differences": 16,
+    "all_sample_and_class_counts_match_supplement": true,
+    "raw_data_tracked": false,
+    "author_preprocessing_confirmed": false,
+    "author_fold_files_available": false,
+    "benchmark_training_executed": false,
+    "exact_author_dataset_reproduction_claim": false
+  },
+  "simulation_pilot_execution_status": {
+    "stage": "4R-6",
+    "configuration": "configs/stage4r6_pilot.json",
+    "report": "docs/reproduction/SIMULATION_PILOT.md",
+    "simulation_reconstructions_executed": 2,
+    "selected_classifier_approximations": ["LogReg", "GNB", "KNN"],
+    "selected_methods": ["nores", "ros", "smote", "ugo_ros", "ugo_smote"],
+    "expected_fold_jobs": 300,
+    "successful_fold_jobs": 300,
+    "failed_fold_jobs": 0,
+    "unavailable_fold_jobs_in_selected_matrix": 0,
+    "ugo_generation_cap_terminations": 19,
+    "all_cached_jobs_replayed": 300,
+    "measured_wall_seconds": 25.110306950999984,
+    "measured_process_peak_rss_bytes": 176619520,
+    "paper_reference_cells_audited": 90,
+    "paper_f1_averaging": "unresolved formula/table discrepancy",
+    "real_benchmark_datasets_executed": 0,
+    "exact_published_results_reproduced_claim": false
+  },
+  "source_access_checks": [
+    {
+      "url": "https://doi.org/10.1016/j.knosys.2026.115886",
+      "result": "proxy_connect_denied",
+      "proxy_status": 403,
+      "endpoint_http_status": null,
+      "curl_exit_code": 56
+    },
+    {
+      "url": "https://www.sciencedirect.com/science/article/pii/S095070512600612X",
+      "result": "proxy_connect_denied",
+      "proxy_status": 403,
+      "endpoint_http_status": null,
+      "curl_exit_code": 56
+    },
+    {
+      "url": "https://api.crossref.org/works/10.1016/j.knosys.2026.115886",
+      "result": "proxy_connect_denied",
+      "proxy_status": 403,
+      "endpoint_http_status": null,
+      "curl_exit_code": 56
+    },
+    {
+      "url": "https://doi.org/10.1016/j.inffus.2013.12.003",
+      "checked_on": "2026-10-11",
+      "result": "http_error_reported_by_curl",
+      "observed_http_status": 403,
+      "curl_exit_code": 22,
+      "response_body_available": false,
+      "note": "No inference about source existence or origin of the denial."
+    },
+    {
+      "url": "https://doi.org/10.1016/j.asoc.2025.113906",
+      "checked_on": "2026-10-11",
+      "result": "http_error_reported_by_curl",
+      "observed_http_status": 403,
+      "curl_exit_code": 22,
+      "response_body_available": false,
+      "note": "No inference about source existence or origin of the denial."
+    },
+    {
+      "url": "https://api.github.com/search/repositories?q=MCSMOTE",
+      "checked_on": "2026-10-11",
+      "result": "http_error_reported_by_curl",
+      "observed_http_status": 403,
+      "curl_exit_code": 22,
+      "response_body_available": false,
+      "note": "No inference about source existence or origin of the denial."
+    },
+    {
+      "url": "https://pypi.org/pypi/mcsmote/json",
+      "checked_on": "2026-10-11",
+      "result": "http_error_reported_by_curl",
+      "observed_http_status": 404,
+      "curl_exit_code": 22,
+      "response_body_available": false,
+      "note": "No inference about source existence or origin of the denial."
+    }
+  ],
+  "missing_evidence_policy": "Continue independent implementation after separately authorized stages; mark affected fidelity as unresolved. Do not fabricate supplementary filenames, author links, datasets, splits or results."
+}

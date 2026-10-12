@@ -1,0 +1,2 @@
+# Optional native BART backend; compatible with scikit-learn 1.5.2.
+stochtree==0.2.1

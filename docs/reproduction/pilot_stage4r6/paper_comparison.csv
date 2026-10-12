@@ -1,0 +1,91 @@
+dataset,table,page,classifier,method,metric,paper_value,pilot_mean,pilot_minus_paper,paired_count,classifier_fidelity,comparison_status
+linear,9,13,LogReg,nores,f1,0.653,0.5398629148629148,-0.1131370851370852,10,python_approximation,F1 averaging unresolved; descriptive only
+linear,9,13,LogReg,nores,iam,0.162,0.4097529839966363,0.24775298399663628,10,python_approximation,Different reconstruction/protocol; descriptive only
+linear,9,13,LogReg,nores,mcc,0.395,0.5444908322278588,0.14949083222785875,10,python_approximation,Different reconstruction/protocol; descriptive only
+linear,9,13,LogReg,ros,f1,0.683,0.38131920023224375,-0.3016807997677563,10,python_approximation,F1 averaging unresolved; descriptive only
+linear,9,13,LogReg,ros,iam,0.181,0.09704764372178877,-0.08395235627821122,10,python_approximation,Different reconstruction/protocol; descriptive only
+linear,9,13,LogReg,ros,mcc,0.437,0.38601818327166204,-0.05098181672833796,10,python_approximation,Different reconstruction/protocol; descriptive only
+linear,9,13,LogReg,smote,f1,0.678,0.3859623760658243,-0.29203762393417576,10,python_approximation,F1 averaging unresolved; descriptive only
+linear,9,13,LogReg,smote,iam,0.172,0.10536208810284178,-0.0666379118971582,10,python_approximation,Different reconstruction/protocol; descriptive only
+linear,9,13,LogReg,smote,mcc,0.431,0.3906820668466108,-0.04031793315338922,10,python_approximation,Different reconstruction/protocol; descriptive only
+linear,9,13,LogReg,ugo_ros,f1,0.786,0.6599983349983349,-0.1260016650016651,10,python_approximation,F1 averaging unresolved; descriptive only
+linear,9,13,LogReg,ugo_ros,iam,0.541,0.5795725623582766,0.03857256235827655,10,python_approximation,Different reconstruction/protocol; descriptive only
+linear,9,13,LogReg,ugo_ros,mcc,0.574,0.6401809051604755,0.06618090516047559,10,python_approximation,Different reconstruction/protocol; descriptive only
+linear,9,13,LogReg,ugo_smote,f1,0.786,0.6545038295038295,-0.13149617049617057,10,python_approximation,F1 averaging unresolved; descriptive only
+linear,9,13,LogReg,ugo_smote,iam,0.541,0.5696338899196042,0.02863388991960414,10,python_approximation,Different reconstruction/protocol; descriptive only
+linear,9,13,LogReg,ugo_smote,mcc,0.574,0.6347742197031039,0.06077421970310393,10,python_approximation,Different reconstruction/protocol; descriptive only
+linear,9,13,GNB,nores,f1,0.748,0.6508913308913308,-0.09710866910866922,10,python_approximation,F1 averaging unresolved; descriptive only
+linear,9,13,GNB,nores,iam,0.329,0.5388407007567503,0.20984070075675026,10,python_approximation,Different reconstruction/protocol; descriptive only
+linear,9,13,GNB,nores,mcc,0.552,0.6478067141312059,0.0958067141312059,10,python_approximation,Different reconstruction/protocol; descriptive only
+linear,9,13,GNB,ros,f1,0.656,0.40867649064216566,-0.24732350935783437,10,python_approximation,F1 averaging unresolved; descriptive only
+linear,9,13,GNB,ros,iam,0.121,0.14258337784874717,0.02158337784874717,10,python_approximation,Different reconstruction/protocol; descriptive only
+linear,9,13,GNB,ros,mcc,0.4,0.41252514526019085,0.012525145260190829,10,python_approximation,Different reconstruction/protocol; descriptive only
+linear,9,13,GNB,smote,f1,0.683,0.41695634505979334,-0.2660436549402067,10,python_approximation,F1 averaging unresolved; descriptive only
+linear,9,13,GNB,smote,iam,0.181,0.15544371996076706,-0.025556280039232937,10,python_approximation,Different reconstruction/protocol; descriptive only
+linear,9,13,GNB,smote,mcc,0.437,0.42016756348374046,-0.01683243651625954,10,python_approximation,Different reconstruction/protocol; descriptive only
+linear,9,13,GNB,ugo_ros,f1,0.821,0.6452283011106541,-0.17577169888934585,10,python_approximation,F1 averaging unresolved; descriptive only
+linear,9,13,GNB,ugo_ros,iam,0.578,0.522542156256442,-0.055457843743558,10,python_approximation,Different reconstruction/protocol; descriptive only
+linear,9,13,GNB,ugo_ros,mcc,0.646,0.630008365330516,-0.015991634669484056,10,python_approximation,Different reconstruction/protocol; descriptive only
+linear,9,13,GNB,ugo_smote,f1,0.821,0.6486758339699517,-0.1723241660300483,10,python_approximation,F1 averaging unresolved; descriptive only
+linear,9,13,GNB,ugo_smote,iam,0.578,0.5265104102246959,-0.051489589775304045,10,python_approximation,Different reconstruction/protocol; descriptive only
+linear,9,13,GNB,ugo_smote,mcc,0.646,0.6327633133125656,-0.013236686687434385,10,python_approximation,Different reconstruction/protocol; descriptive only
+linear,9,13,KNN,nores,f1,0.746,0.6473015873015873,-0.09869841269841273,10,python_approximation,F1 averaging unresolved; descriptive only
+linear,9,13,KNN,nores,iam,0.385,0.5399715410916841,0.1549715410916841,10,python_approximation,Different reconstruction/protocol; descriptive only
+linear,9,13,KNN,nores,mcc,0.507,0.6412323403875815,0.13423234038758147,10,python_approximation,Different reconstruction/protocol; descriptive only
+linear,9,13,KNN,ros,f1,0.687,0.4858917243746966,-0.20110827562530348,10,python_approximation,F1 averaging unresolved; descriptive only
+linear,9,13,KNN,ros,iam,0.206,0.32000103071531644,0.11400103071531645,10,python_approximation,Different reconstruction/protocol; descriptive only
+linear,9,13,KNN,ros,mcc,0.43,0.46240115679630867,0.03240115679630867,10,python_approximation,Different reconstruction/protocol; descriptive only
+linear,9,13,KNN,smote,f1,0.606,0.4241862574242437,-0.18181374257575628,10,python_approximation,F1 averaging unresolved; descriptive only
+linear,9,13,KNN,smote,iam,0.023,0.1941015413035537,0.1711015413035537,10,python_approximation,Different reconstruction/protocol; descriptive only
+linear,9,13,KNN,smote,mcc,0.321,0.410512945362523,0.08951294536252297,10,python_approximation,Different reconstruction/protocol; descriptive only
+linear,9,13,KNN,ugo_ros,f1,0.76,0.6440692640692641,-0.11593073593073588,10,python_approximation,F1 averaging unresolved; descriptive only
+linear,9,13,KNN,ugo_ros,iam,0.44,0.5575102714353067,0.11751027143530673,10,python_approximation,Different reconstruction/protocol; descriptive only
+linear,9,13,KNN,ugo_ros,mcc,0.528,0.6304946669824589,0.1024946669824589,10,python_approximation,Different reconstruction/protocol; descriptive only
+linear,9,13,KNN,ugo_smote,f1,0.746,0.6586147186147187,-0.08738528138528134,10,python_approximation,F1 averaging unresolved; descriptive only
+linear,9,13,KNN,ugo_smote,iam,0.385,0.5751373341415774,0.1901373341415774,10,python_approximation,Different reconstruction/protocol; descriptive only
+linear,9,13,KNN,ugo_smote,mcc,0.507,0.6448214563158826,0.1378214563158826,10,python_approximation,Different reconstruction/protocol; descriptive only
+nonlinear,10,14,LogReg,nores,f1,0.478,0.0,-0.478,10,python_approximation,F1 averaging unresolved; descriptive only
+nonlinear,10,14,LogReg,nores,iam,-0.084,-0.07500000000000002,0.00899999999999998,10,python_approximation,Different reconstruction/protocol; descriptive only
+nonlinear,10,14,LogReg,nores,mcc,0.0,0.0,0.0,10,python_approximation,Different reconstruction/protocol; descriptive only
+nonlinear,10,14,LogReg,ros,f1,0.428,0.18503028913992367,-0.24296971086007632,10,python_approximation,F1 averaging unresolved; descriptive only
+nonlinear,10,14,LogReg,ros,iam,-0.343,-0.2799978851542417,0.06300211484575835,10,python_approximation,Different reconstruction/protocol; descriptive only
+nonlinear,10,14,LogReg,ros,mcc,0.025,0.10743434931621106,0.08243434931621105,10,python_approximation,Different reconstruction/protocol; descriptive only
+nonlinear,10,14,LogReg,smote,f1,0.428,0.180290718248053,-0.24770928175194698,10,python_approximation,F1 averaging unresolved; descriptive only
+nonlinear,10,14,LogReg,smote,iam,-0.343,-0.2864780202338961,0.0565219797661039,10,python_approximation,Different reconstruction/protocol; descriptive only
+nonlinear,10,14,LogReg,smote,mcc,0.025,0.09878716576251997,0.07378716576251998,10,python_approximation,Different reconstruction/protocol; descriptive only
+nonlinear,10,14,LogReg,ugo_ros,f1,0.427,0.0821099190664408,-0.3448900809335592,10,python_approximation,F1 averaging unresolved; descriptive only
+nonlinear,10,14,LogReg,ugo_ros,iam,-0.337,-0.10925614481487553,0.2277438551851245,10,python_approximation,Different reconstruction/protocol; descriptive only
+nonlinear,10,14,LogReg,ugo_ros,mcc,0.009,0.0004369202264813847,-0.008563079773518615,10,python_approximation,Different reconstruction/protocol; descriptive only
+nonlinear,10,14,LogReg,ugo_smote,f1,0.423,0.1155228378198911,-0.3074771621801089,10,python_approximation,F1 averaging unresolved; descriptive only
+nonlinear,10,14,LogReg,ugo_smote,iam,-0.335,-0.12215737331261312,0.2128426266873869,10,python_approximation,Different reconstruction/protocol; descriptive only
+nonlinear,10,14,LogReg,ugo_smote,mcc,-0.009,0.06016814270530345,0.06916814270530344,10,python_approximation,Different reconstruction/protocol; descriptive only
+nonlinear,10,14,GNB,nores,f1,0.588,0.23444444444444446,-0.3535555555555555,10,python_approximation,F1 averaging unresolved; descriptive only
+nonlinear,10,14,GNB,nores,iam,0.046,0.08179733586655528,0.035797335866555285,10,python_approximation,Different reconstruction/protocol; descriptive only
+nonlinear,10,14,GNB,nores,mcc,0.333,0.30242316508724015,-0.030576834912759865,10,python_approximation,Different reconstruction/protocol; descriptive only
+nonlinear,10,14,GNB,ros,f1,0.638,0.39334028492270035,-0.24465971507729967,10,python_approximation,F1 averaging unresolved; descriptive only
+nonlinear,10,14,GNB,ros,iam,0.042,0.08248800937934139,0.04048800937934139,10,python_approximation,Different reconstruction/protocol; descriptive only
+nonlinear,10,14,GNB,ros,mcc,0.406,0.38728202887072527,-0.018717971129274757,10,python_approximation,Different reconstruction/protocol; descriptive only
+nonlinear,10,14,GNB,smote,f1,0.596,0.3863144101806893,-0.20968558981931068,10,python_approximation,F1 averaging unresolved; descriptive only
+nonlinear,10,14,GNB,smote,iam,-0.043,0.07460420628763469,0.11760420628763468,10,python_approximation,Different reconstruction/protocol; descriptive only
+nonlinear,10,14,GNB,smote,mcc,0.342,0.37738164011893643,0.03538164011893641,10,python_approximation,Different reconstruction/protocol; descriptive only
+nonlinear,10,14,GNB,ugo_ros,f1,0.861,0.6095774976657329,-0.2514225023342671,10,python_approximation,F1 averaging unresolved; descriptive only
+nonlinear,10,14,GNB,ugo_ros,iam,0.705,0.4943988538343377,-0.21060114616566228,10,python_approximation,Different reconstruction/protocol; descriptive only
+nonlinear,10,14,GNB,ugo_ros,mcc,0.722,0.5854054164070626,-0.1365945835929374,10,python_approximation,Different reconstruction/protocol; descriptive only
+nonlinear,10,14,GNB,ugo_smote,f1,0.853,0.6226935475944764,-0.2303064524055236,10,python_approximation,F1 averaging unresolved; descriptive only
+nonlinear,10,14,GNB,ugo_smote,iam,0.675,0.508311624024849,-0.16668837597515107,10,python_approximation,Different reconstruction/protocol; descriptive only
+nonlinear,10,14,GNB,ugo_smote,mcc,0.706,0.5991660624088804,-0.10683393759111959,10,python_approximation,Different reconstruction/protocol; descriptive only
+nonlinear,10,14,KNN,nores,f1,0.887,0.7289665889665891,-0.15803341103341095,10,python_approximation,F1 averaging unresolved; descriptive only
+nonlinear,10,14,KNN,nores,iam,0.652,0.6147490686318344,-0.037250931368165596,10,python_approximation,Different reconstruction/protocol; descriptive only
+nonlinear,10,14,KNN,nores,mcc,0.787,0.7284595996167887,-0.05854040038321129,10,python_approximation,Different reconstruction/protocol; descriptive only
+nonlinear,10,14,KNN,ros,f1,0.695,0.6081986231289637,-0.08680137687103628,10,python_approximation,F1 averaging unresolved; descriptive only
+nonlinear,10,14,KNN,ros,iam,0.173,0.44434491487104016,0.2713449148710402,10,python_approximation,Different reconstruction/protocol; descriptive only
+nonlinear,10,14,KNN,ros,mcc,0.48,0.5930311320440772,0.11303113204407722,10,python_approximation,Different reconstruction/protocol; descriptive only
+nonlinear,10,14,KNN,smote,f1,0.732,0.49590896882201224,-0.23609103117798774,10,python_approximation,F1 averaging unresolved; descriptive only
+nonlinear,10,14,KNN,smote,iam,0.302,0.26399533758884797,-0.038004662411152024,10,python_approximation,Different reconstruction/protocol; descriptive only
+nonlinear,10,14,KNN,smote,mcc,0.5,0.48028438398063483,-0.019715616019365167,10,python_approximation,Different reconstruction/protocol; descriptive only
+nonlinear,10,14,KNN,ugo_ros,f1,0.887,0.7204761904761904,-0.16652380952380963,10,python_approximation,F1 averaging unresolved; descriptive only
+nonlinear,10,14,KNN,ugo_ros,iam,0.738,0.6512206521385809,-0.08677934786141905,10,python_approximation,Different reconstruction/protocol; descriptive only
+nonlinear,10,14,KNN,ugo_ros,mcc,0.774,0.7072340135247231,-0.06676598647527687,10,python_approximation,Different reconstruction/protocol; descriptive only
+nonlinear,10,14,KNN,ugo_smote,f1,0.896,0.7228768453768455,-0.17312315462315453,10,python_approximation,F1 averaging unresolved; descriptive only
+nonlinear,10,14,KNN,ugo_smote,iam,0.738,0.6298742492834679,-0.10812575071653208,10,python_approximation,Different reconstruction/protocol; descriptive only
+nonlinear,10,14,KNN,ugo_smote,mcc,0.794,0.7131563642836115,-0.08084363571638853,10,python_approximation,Different reconstruction/protocol; descriptive only

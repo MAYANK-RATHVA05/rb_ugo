@@ -1,0 +1,21 @@
+{
+  "source_id": "UGO-PDF",
+  "doi": "10.1016/j.knosys.2026.115886",
+  "pdf_sha256": "42a26a8997efc28bc50ef2e58ddf28eae10d3a9bcec19fe31a91756560e30f6f",
+  "source_tables": {"linear": {"table": 9, "page": 13}, "nonlinear": {"table": 10, "page": 14}},
+  "methods_in_value_order": ["nores", "ros", "smote", "ugo_ros", "ugo_smote"],
+  "precision": "published values rounded to three decimal places",
+  "comparison_limits": "Author seeds, rows, folds, packages and aggregation are not fully known. F1 averaging is unresolved: positive-class formula does not explain the Table 10 LogReg NORES value. These values are references, not acceptance targets for tuning.",
+  "datasets": {
+    "linear": {
+      "LogReg": {"iam": [0.162, 0.181, 0.172, 0.541, 0.541], "mcc": [0.395, 0.437, 0.431, 0.574, 0.574], "f1": [0.653, 0.683, 0.678, 0.786, 0.786]},
+      "GNB": {"iam": [0.329, 0.121, 0.181, 0.578, 0.578], "mcc": [0.552, 0.400, 0.437, 0.646, 0.646], "f1": [0.748, 0.656, 0.683, 0.821, 0.821]},
+      "KNN": {"iam": [0.385, 0.206, 0.023, 0.440, 0.385], "mcc": [0.507, 0.430, 0.321, 0.528, 0.507], "f1": [0.746, 0.687, 0.606, 0.760, 0.746]}
+    },
+    "nonlinear": {
+      "LogReg": {"iam": [-0.084, -0.343, -0.343, -0.337, -0.335], "mcc": [0.000, 0.025, 0.025, 0.009, -0.009], "f1": [0.478, 0.428, 0.428, 0.427, 0.423]},
+      "GNB": {"iam": [0.046, 0.042, -0.043, 0.705, 0.675], "mcc": [0.333, 0.406, 0.342, 0.722, 0.706], "f1": [0.588, 0.638, 0.596, 0.861, 0.853]},
+      "KNN": {"iam": [0.652, 0.173, 0.302, 0.738, 0.738], "mcc": [0.787, 0.480, 0.500, 0.774, 0.794], "f1": [0.887, 0.695, 0.732, 0.887, 0.896]}
+    }
+  }
+}

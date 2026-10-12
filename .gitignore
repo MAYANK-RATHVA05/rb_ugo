@@ -10,6 +10,7 @@ htmlcov/
 .env
 .env.*
 !.env.example
+.runtime/
 # Keep data and experiment artifacts local; retain directory markers.
 data/raw/*
 !data/raw/.gitkeep
