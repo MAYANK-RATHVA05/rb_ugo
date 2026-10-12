@@ -4,8 +4,8 @@ Source: L. Tao, F. Yu, F. Wang, and Q. Wang, “EC-EBO: Entropy-balanced
 oversampling via externally constrained clustering for imbalanced data,”
 *Knowledge-Based Systems* 338 (2026) 115544,
 DOI: 10.1016/j.knosys.2026.115544. This document audits the full 14-page
-article. It specifies the implementation choices; **the standalone sampler
-has not yet been integrated into evaluation or tested on real datasets**.
+article. It specifies the implementation choices; the resulting code is an
+**audited interpretation**, not a verified copy of the authors' implementation.
 
 Part 1 is now implemented in `src/ec_ebo_clustering.py`: it fits externally
 constrained minority clusters and exposes member row indices, centroids,
@@ -20,7 +20,9 @@ decreasing Eq. 8 scores, and reports unmet quotas without copying seeds.
 Its synthetic generation tests are in `tests/test_ec_ebo.py`. Part 4 registers
 `ec_ebo` as an opt-in method in the existing paired evaluation runner;
 fold-local preprocessing, entropy fitting, generation, and final classifier
-fitting use only training rows. Real-data results remain pending.
+fitting use only training rows. Part 5 is a two-dataset, same-fold descriptive
+comparison in [EC_EBO_SMALL_STUDY.md](EC_EBO_SMALL_STUDY.md); it does not
+establish general superiority or exact paper fidelity.
 
 The method targets intra-class imbalance: the minority class contains
 subclusters with different sizes and learning difficulty. The paper proposes
@@ -132,15 +134,15 @@ directory for each input or configuration. The generator is an audited
 interpretation of the paper, and the runner's ten-fold protocol is a declared
 approximation unless compliant folds are supplied with provenance.
 
-For a small real-data comparison, start with shared numerical inputs and
-use identical outer folds for NORES, SMOTE, UGO-SMOTE, BFCH-SMOTE, and
-EC-EBO. Vowel must retain the declared acoustic-feature and speaker-group
-protocol if compared to our existing BFCH study; that is not the paper's
-13-feature protocol. Report per-cluster original and generated counts,
-entropy, unmet quotas, and a training-only majority-neighbor intrusion
-proxy, alongside held-out F1, G-mean, MCC, AUC, and false-positive rate.
-One or two initial datasets can verify the pipeline; several datasets with
-different minority-subcluster structures are needed for an empirical claim.
+The [small study](EC_EBO_SMALL_STUDY.md) uses shared numerical inputs and
+identical outer folds for NORES, SMOTE, UGO-SMOTE, BFCH-SMOTE, and EC-EBO.
+Vowel retains the declared acoustic-feature and speaker-group protocol, which
+differs from the paper's 13-feature input. Saved diagnostics include per-cluster
+original and generated counts, entropy, unmet quotas, and a training-only
+majority-neighbor intrusion proxy, alongside held-out F1, G-mean, MCC, AUC,
+and false-positive rate. These two datasets verify the pipeline; several
+datasets with different minority-subcluster structures would be needed for a
+broader empirical claim.
 
 The article gives no code link, numeric step size, preprocessing recipe, or
 exact folds; its data-availability statement says data are available on

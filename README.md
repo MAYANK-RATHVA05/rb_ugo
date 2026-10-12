@@ -34,7 +34,8 @@ Part 1 adds externally constrained minority clustering in
 `src/ec_ebo_clustering.py`; Part 2 adds training-data entropy and per-cluster
 allocation in `src/ec_ebo_entropy.py`; Part 3 adds an audited minority-sample
 generator in `src/ec_ebo.py`. Part 4 makes `ec_ebo` an opt-in method in the
-same-fold evaluation runner. Real-data EC-EBO results are still pending.
+same-fold evaluation runner. A [two-dataset descriptive comparison](docs/EC_EBO_SMALL_STUDY.md)
+records Part 5 results and their limits; it is not an author-paper benchmark.
 
 ## Original UGO reproduction specification
 

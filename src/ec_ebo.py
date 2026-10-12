@@ -184,6 +184,15 @@ class ECEBO(BaseEstimator):
             duplicate_count += key in seen
             seen.add(key)
         count = len(generated_array)
+        if count:
+            minority_distances = NearestNeighbors(n_neighbors=1).fit(
+                points[minority]).kneighbors(generated_array, return_distance=True)[0][:, 0]
+            majority_distances = NearestNeighbors(n_neighbors=1).fit(
+                points[majority]).kneighbors(generated_array, return_distance=True)[0][:, 0]
+            intrusion_count = int(np.sum(majority_distances < minority_distances))
+            tie_count = int(np.sum(majority_distances == minority_distances))
+        else:
+            intrusion_count = tie_count = 0
         status = ("generated" if count == requested else
                   "partial_generation" if count else
                   "no_positive_step" if step == 0 else "no_valid_generation")
@@ -201,6 +210,11 @@ class ECEBO(BaseEstimator):
             "cluster_generated_counts": generated_per_cluster,
             "cluster_shortfall_reasons": shortfall_reasons,
             "duplicate_generated_count": duplicate_count,
+            "nearest_original_majority_proxy": {
+                "definition": "Synthetic row's nearest original majority is strictly closer "
+                              "than its nearest original minority; fitting rows only",
+                "count": intrusion_count, "tie_count": tie_count,
+                "rate": intrusion_count / count if count else None},
             "step": step, "step_fraction": float(self.step_fraction),
             "alpha": float(self.alpha), "k_majority": int(self.k_majority),
             "n_iterations": int(self.n_iterations),

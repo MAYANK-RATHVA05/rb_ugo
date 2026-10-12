@@ -3,6 +3,7 @@
 import numpy as np
 import pytest
 from sklearn.base import clone
+from sklearn.neighbors import NearestNeighbors
 
 from src.ec_ebo import ECEBO, _minority_step, entropy_balance_score
 
@@ -43,6 +44,13 @@ def test_generated_rows_follow_positive_decreasing_score_and_are_reproducible():
     assert first.diagnostics_["shortfall_count"] == 0
     assert first.diagnostics_["cluster_generated_counts"] == first.diagnostics_["cluster_allocations"]
     assert first.diagnostics_["duplicate_generated_count"] == 0
+    minority_near = NearestNeighbors(n_neighbors=1).fit(X[y == 1]).kneighbors(
+        first.generated_samples_, return_distance=True)[0][:, 0]
+    majority_near = NearestNeighbors(n_neighbors=1).fit(X[y == 0]).kneighbors(
+        first.generated_samples_, return_distance=True)[0][:, 0]
+    proxy = first.diagnostics_["nearest_original_majority_proxy"]
+    assert proxy["count"] == int(np.sum(majority_near < minority_near))
+    assert proxy["rate"] == pytest.approx(proxy["count"] / 4)
     for item, point in zip(first.generated_info_, first.generated_samples_):
         assert item["accepted_steps"] >= 1
         assert 0 < item["final_score"] < item["initial_score"]
@@ -65,6 +73,7 @@ def test_zero_step_reports_full_shortfall_without_copying_seed():
     assert fitted.diagnostics_["status"] == "no_positive_step"
     assert fitted.diagnostics_["shortfall_count"] == 1
     assert fitted.diagnostics_["cluster_shortfall_reasons"] == [{"no_positive_step": 1}]
+    assert fitted.diagnostics_["nearest_original_majority_proxy"]["rate"] is None
 
 
 def test_no_positive_seed_reports_shortfall_without_quota_transfer():
