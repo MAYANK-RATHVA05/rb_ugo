@@ -203,8 +203,10 @@ def _evaluate_job(X: pd.DataFrame, y: np.ndarray, labels: np.ndarray, positive_l
                     or not np.array_equal(final_model.classes_, labels)):
                 raise ValueError("Final classifier violated the probability contract.")
             negative_label = labels[labels != positive_label][0]
+            positive_column = int(np.flatnonzero(labels == positive_label)[0])
             metrics = binary_metrics(y[test], predicted, negative_label=negative_label,
-                                     positive_label=positive_label)
+                                     positive_label=positive_label,
+                                     positive_probabilities=probabilities[:, positive_column])
             record.update(status="success", metrics=metrics, predictions=predicted,
                           probabilities=probabilities, probability_labels=labels, true_labels=y[test])
             record["timings_seconds"][stage] = perf_counter() - stage_start

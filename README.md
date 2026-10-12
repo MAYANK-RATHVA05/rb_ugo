@@ -21,7 +21,9 @@ The `bfch-smote-implementation` branch adds a separate BFCH-SMOTE sampler in
 `src/bfch_smote.py`. Its paper steps, geometric correction, limits, and
 paired-run example are in [docs/BFCH_METHOD.md](docs/BFCH_METHOD.md).
 Existing UGO evaluation defaults remain unchanged; select `bfch_smote`
-explicitly to compare it on the same fitting folds.
+explicitly to compare it on the same fitting folds. The BFCH comparison
+workflow also records G-mean and probability AUC and exports a same-fold
+table from saved jobs; see the method notes for commands and limits.
 
 ## Original UGO reproduction specification
 

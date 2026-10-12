@@ -83,3 +83,24 @@ explicit source-domain positive label. For example, with a suitable CSV:
 Use the **same input file, preprocessing, folds, classifier, and seed** for
 all methods in one run. Results under `results/` are local and ignored by Git.
 The example is a command template, not a completed benchmark result.
+
+Export a readable table from the saved run:
+
+```powershell
+.\.venv\Scripts\python.exe -m scripts.report_bfch_comparison --run results\bfch-my-binary
+```
+
+This writes `comparison.csv` and `comparison.json` within the run directory.
+The table gives each method's mean and sample standard deviation, the mean
+paired difference from no resampling, exact shared fold IDs, and failed or
+missing job counts. For each metric, every method uses the **same folds** where
+all selected methods have a finite score. Declared zero-denominator MCC/F1
+zeros remain included and are counted. The JSON also retains sampler status
+counts, including BFCH no-hull outcomes. A partial run is labeled `partial`;
+it is not silently presented as a complete comparison.
+
+G-mean needs both true classes in the test fold, and AUC uses the held-out
+probability of the explicitly chosen positive class. Saved jobs created before
+these metrics were added cannot be mixed with new jobs. Use a **new output
+directory** for the next run. The older stage-4 simulation summaries still
+cover their original IAM/MCC/F1 scope.
