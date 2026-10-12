@@ -10,7 +10,10 @@ implemented or evaluated in this repository yet**.
 Part 1 is now implemented in `src/ec_ebo_clustering.py`: it fits externally
 constrained minority clusters and exposes member row indices, centroids,
 nearest-majority distances, and merge history. Its synthetic, hand-calculated
-tests are in `tests/test_ec_ebo_clustering.py`. Entropy weighting, synthetic
+tests are in `tests/test_ec_ebo_clustering.py`. Part 2 is implemented in
+`src/ec_ebo_entropy.py`: unweighted logistic-regression probabilities give
+binary sample entropy, cluster weights use the **mean** member entropy, and
+largest-remainder allocation returns an exact integer quota. Synthetic
 generation, evaluation integration, and real-data results remain pending.
 
 The method targets intra-class imbalance: the minority class contains
