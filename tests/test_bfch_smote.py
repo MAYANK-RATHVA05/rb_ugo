@@ -71,6 +71,7 @@ def test_hand_calculated_filter_votes_fusion_area_and_allocation(monkeypatch):
     assert hull["allocated_count"] == 3
     assert sampler.diagnostics_["candidate_hulls"] == 1
     assert sampler.diagnostics_["valid_hulls"] == 1
+    assert sampler.candidate_hulls_[0]["status"] == "accepted"
     assert len(augmented) == len(labels) == len(X) + 3
 
 
@@ -83,6 +84,7 @@ def test_filtered_majority_point_inside_hull_still_rejects_it(monkeypatch):
     assert sampler.diagnostics_["candidate_hulls"] == 1
     assert sampler.diagnostics_["rejected_occupied"] == 1
     assert sampler.diagnostics_["status"] == "no_valid_hulls"
+    assert sampler.candidate_hulls_[0]["status"] == "occupied"
     assert sampler.hulls_ == []
     np.testing.assert_array_equal(augmented, X)
     np.testing.assert_array_equal(labels, y)
@@ -108,6 +110,7 @@ def test_failed_refit_clears_previous_geometry(monkeypatch):
     with pytest.raises(ValueError, match="two numerical features"):
         sampler.fit_resample(X[:, :1], y)
     assert not hasattr(sampler, "hulls_")
+    assert not hasattr(sampler, "candidate_hulls_")
     assert not hasattr(sampler, "boundary_indices_")
 
 
@@ -123,12 +126,14 @@ def test_generated_count_labels_geometry_and_reproducibility():
     np.testing.assert_array_equal(augmented[:len(X)], X)
     np.testing.assert_array_equal(labels[:len(y)], y)
     np.testing.assert_array_equal(labels[len(y):], np.ones(11))
-    # All synthetic rows lie inside the one fused triangle.
-    assert augmented[len(X):, 0].min() >= 0
-    assert np.all(augmented[len(X):, 0] < 2.01)
+    # Independently recover barycentric coordinates for every generated row.
     synthetic = augmented[len(X):]
-    assert np.all(synthetic[:, 1] >= 0.25 * synthetic[:, 0])
-    assert np.all(synthetic[:, 1] <= 2 - 0.25 * synthetic[:, 0])
+    vertices = sampler.hulls_[0]["vertices"]
+    coefficients = np.linalg.lstsq((vertices[1:] - vertices[0]).T,
+                                    (synthetic - vertices[0]).T, rcond=None)[0]
+    weights = np.vstack((1 - coefficients.sum(axis=0), coefficients))
+    assert np.all(weights >= -1e-10)
+    np.testing.assert_allclose((vertices.T @ weights).T, synthetic, atol=1e-10)
     again, _ = clone(sampler).fit_resample(X, y)
     np.testing.assert_allclose(again, augmented)
 
@@ -149,6 +154,18 @@ def test_zero_fusion_has_no_area_and_never_falls_back_to_smote():
     np.testing.assert_array_equal(labels, y)
     assert sampler.diagnostics_["status"] == "no_valid_hulls"
     assert sampler.diagnostics_["rejected_degenerate"] >= 1
+
+
+def test_fusion_at_majority_vertex_rejects_hull_and_adds_nothing():
+    X, y = two_class_geometry()
+    sampler = BFCHSMOTE(k_neighbors=2, theta_min=0, theta_maj=0, fusion=1)
+    augmented, labels = sampler.fit_resample(X, y)
+    assert sampler.diagnostics_["status"] == "no_valid_hulls"
+    assert sampler.diagnostics_["rejected_occupied"] == 1
+    assert sampler.candidate_hulls_[0]["status"] == "occupied"
+    assert sampler.hulls_ == []
+    np.testing.assert_array_equal(augmented, X)
+    np.testing.assert_array_equal(labels, y)
 
 
 def test_largest_remainder_allocation_is_exact_and_stable():

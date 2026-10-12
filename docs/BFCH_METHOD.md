@@ -10,9 +10,10 @@ between original majority and minority counts; `n_samples` can override it.
 The sampler never receives held-out rows. It returns the original rows first,
 followed by generated minority rows. A diagnosed no-op is returned if its
 geometric criteria yield no valid hulls; it does not substitute SMOTE.
-After fitting, `retained_indices_`, `boundary_indices_`, and `hulls_` expose
-the original-row anchor indices and accepted triangle geometry for inspection.
-These are fitting-data artifacts; they are not performance evidence.
+After fitting, `retained_indices_`, `boundary_indices_`, `candidate_hulls_`,
+and `hulls_` expose original-row anchor indices, every candidate's rejection
+status, and accepted triangle geometry for inspection. These are fitting-data
+artifacts; they are not performance evidence.
 
 The stages follow the paper's method:
 
@@ -56,7 +57,20 @@ Explicit implementation choices and limits:
   numerical datasets first, and interpret encoded-categorical comparisons
   cautiously.
 
-## Run a small paired comparison
+## Visual software check
+
+For a deterministic visual software check, run from the repository root:
+
+```powershell
+.\.venv\Scripts\python.exe -m scripts.plot_bfch_geometry --output results\bfch-geometry-check.png
+```
+
+The left panel shows an accepted triangle and generated points. The right
+panel shows the `L=1` triangle rejected because its fusion point coincides
+with an observed majority point. The figure uses artificial numerical rows
+and thresholds of zero to isolate the geometry; it is not a benchmark result.
+
+## Paired comparison
 
 The existing ten-fold runner accepts `bfch_smote` through `--methods` and
 retains its old default method set. Supply a local binary dataset and an

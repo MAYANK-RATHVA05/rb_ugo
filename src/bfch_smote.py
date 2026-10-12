@@ -93,7 +93,8 @@ class BFCHSMOTE(BaseEstimator):
 
     def fit_resample(self, X: Any, y: Any) -> tuple[np.ndarray, np.ndarray]:
         # A failed later fit must not expose the previous fit's geometry.
-        for attr in ("diagnostics_", "retained_indices_", "boundary_indices_", "hulls_"):
+        for attr in ("diagnostics_", "retained_indices_", "boundary_indices_",
+                     "candidate_hulls_", "hulls_"):
             if hasattr(self, attr):
                 delattr(self, attr)
         self._validate_parameters()
@@ -163,7 +164,7 @@ class BFCHSMOTE(BaseEstimator):
         # Paper describes a set of hulls; deduplicate reciprocal nearest pairs.
         min_neighbors = _nearest(points[boundary_min], points[boundary_min], 2)
         maj_neighbors = NearestNeighbors(n_neighbors=1).fit(points[boundary_maj])
-        valid, areas, hulls, seen = [], [], [], set()
+        valid, areas, candidates, hulls, seen = [], [], [], [], set()
         rejected_degenerate = rejected_occupied = 0
         for i, neighbors in enumerate(min_neighbors):
             j = next((int(candidate) for candidate in neighbors if candidate != i), None)
@@ -180,17 +181,23 @@ class BFCHSMOTE(BaseEstimator):
             fused = (1 - self.fusion) * midpoint + self.fusion * points[majority_index]
             vertices = np.vstack((base, fused))
             area = _triangle_area(vertices)
+            candidate = {"minority_pair_indices": pair, "majority_index": int(majority_index),
+                         "midpoint": midpoint.copy(), "fusion_point": fused.copy(),
+                         "vertices": vertices.copy(), "area": area}
+            candidates.append(candidate)
             if area <= 1e-12 * max(1.0, float(np.linalg.norm(base[1] - base[0]) ** 2)):
+                candidate["status"] = "degenerate"
                 rejected_degenerate += 1
                 continue
             if _contains_majority(vertices, points[majority_indices]):
+                candidate["status"] = "occupied"
                 rejected_occupied += 1
                 continue
+            candidate["status"] = "accepted"
             valid.append(vertices)
             areas.append(area)
-            hulls.append({"minority_pair_indices": pair, "majority_index": int(majority_index),
-                          "midpoint": midpoint.copy(), "fusion_point": fused.copy(),
-                          "vertices": vertices.copy(), "area": area})
+            hulls.append(candidate)
+        self.candidate_hulls_ = candidates
         self.hulls_ = hulls
         self.diagnostics_.update(candidate_hulls=len(seen), valid_hulls=len(valid),
                                  rejected_degenerate=rejected_degenerate,
