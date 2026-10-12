@@ -296,8 +296,3 @@ The command reports IAM, MCC, F1 and minority recall for all three methods. It
 saves prediction pipelines, metrics, holdout predictions, split indices and UGO
 diagnostics in a new ignored directory under `results/ugo_training/`. See
 [the training guide](docs/ugo_training.md) for reproducibility and inference.
-
-The first [Ecoli2 pilot report](docs/experiments/ecoli2_pilot.md) records actual
-training results. On its fixed holdout UGO increased minority recall while
-increasing false positives and reducing F1, MCC and IAM. These are pilot results,
-not a claim of overall superiority or a complete paper reproduction.
