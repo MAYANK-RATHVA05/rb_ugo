@@ -17,6 +17,21 @@ includes artificial software fixtures. Stage 4R-6 executes a measured pilot of
 both declared paper simulation reconstructions. Real benchmark experiments remain
 for later authorized stages. Risk-Budgeted UGO is not implemented.
 
+The `bfch-smote-implementation` branch adds a separate BFCH-SMOTE sampler in
+`src/bfch_smote.py`. Its paper steps, geometric correction, limits, and
+paired-run example are in [docs/BFCH_METHOD.md](docs/BFCH_METHOD.md).
+Existing UGO evaluation defaults remain unchanged; select `bfch_smote`
+explicitly to compare it on the same fitting folds. The BFCH comparison
+workflow also records G-mean and probability AUC and exports a same-fold
+table from saved jobs; see the method notes for commands and limits. A
+[two-dataset descriptive comparison](docs/BFCH_SMALL_STUDY.md) records the
+first local BFCH, UGO, SMOTE, and no-resampling results with their source
+limitations and saved aggregate scores.
+
+The [EC-EBO method decisions](docs/EC_EBO_METHOD_DECISIONS.md) audit the
+paper's intra-class imbalance method and fix its documented ambiguities
+before implementation. EC-EBO code and results are not yet present.
+
 ## Original UGO reproduction specification
 
 Stage 4R-1 records the full-paper requirements in

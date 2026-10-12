@@ -1,4 +1,4 @@
-"""Paper IAM and standard binary MCC/F1 with fixed label meanings."""
+"""Binary IAM, MCC, F1, G-mean and probability AUC with fixed label meanings."""
 from __future__ import annotations
 
 from typing import Any
@@ -6,6 +6,7 @@ import math
 
 import numpy as np
 import pandas as pd
+from sklearn.metrics import roc_auc_score
 
 
 METRIC_POLICY = {
@@ -14,6 +15,8 @@ METRIC_POLICY = {
     "f1_zero_denominator": "0 with an undefined flag",
     "mcc_zero_denominator": "0 with an undefined flag",
     "iam_absent_class": "undefined (null) if a class has zero row and column totals",
+    "gmean": "sqrt(positive recall * negative recall); null if either true class is absent",
+    "auc": "ROC AUC of the explicit positive class's held-out probability; null if either true class is absent",
 }
 
 
@@ -34,19 +37,21 @@ def metrics_from_confusion(matrix: Any) -> dict[str, Any]:
     iam = sum(iam_terms) / 2 if all(v is not None for v in iam_terms) else None
     f1_denominator = 2 * tp + fp + fn
     mcc_denominator = math.sqrt((tp + fp) * (tp + fn) * (tn + fp) * (tn + fn))
+    gmean = math.sqrt((tp / rows[1]) * (tn / rows[0])) if all(rows) else None
     return {
         "iam": iam,
         "mcc": (tp * tn - fp * fn) / mcc_denominator if mcc_denominator else 0.0,
         "f1": 2 * tp / f1_denominator if f1_denominator else 0.0,
+        "gmean": gmean,
         "undefined": {"iam": iam is None, "mcc": not bool(mcc_denominator),
-                      "f1": not bool(f1_denominator)},
+                      "f1": not bool(f1_denominator), "gmean": gmean is None},
         "confusion_matrix": counts.tolist(),
         "counts": {"tn": tn, "fp": fp, "fn": fn, "tp": tp},
     }
 
 
 def binary_metrics(y_true: Any, y_pred: Any, *, negative_label: Any,
-                   positive_label: Any) -> dict[str, Any]:
+                   positive_label: Any, positive_probabilities: Any = None) -> dict[str, Any]:
     """The caller supplies source/domain labels; test frequencies never choose them."""
     truth, prediction = np.asarray(y_true), np.asarray(y_pred)
     if (truth.ndim != 1 or truth.shape != prediction.shape or not len(truth)
@@ -58,4 +63,18 @@ def binary_metrics(y_true: Any, y_pred: Any, *, negative_label: Any,
     matrix = [[int(np.sum((truth == actual) & (prediction == predicted)))
                for predicted in (negative_label, positive_label)]
               for actual in (negative_label, positive_label)]
-    return {**metrics_from_confusion(matrix), "labels": [negative_label, positive_label]}
+    auc = None
+    if positive_probabilities is not None:
+        try:
+            scores = np.asarray(positive_probabilities, dtype=float)
+        except (TypeError, ValueError) as exc:
+            raise ValueError("Positive-class probabilities must be finite numbers in [0, 1].") from exc
+        if (scores.shape != truth.shape or not np.isfinite(scores).all()
+                or (scores < 0).any() or (scores > 1).any()):
+            raise ValueError("Positive-class probabilities must be aligned and lie in [0, 1].")
+        if np.unique(truth).size == 2:
+            auc = float(roc_auc_score(truth == positive_label, scores))
+    result = metrics_from_confusion(matrix)
+    result["auc"] = auc
+    result["undefined"]["auc"] = auc is None
+    return {**result, "labels": [negative_label, positive_label]}

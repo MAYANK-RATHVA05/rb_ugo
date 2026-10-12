@@ -199,6 +199,11 @@ def test_ten_fold_validation_reproducibility_and_supplied_provenance(tmp_path, d
                                output_dir=tmp_path, config=EvaluationConfig(methods=("nores",)),
                                supplied_folds=supplied)
     assert all(r["metrics"]["labels"] == [1, 0] for r in result["records"])
+    from sklearn.metrics import roc_auc_score
+    for record in result["records"]:
+        probabilities = np.asarray(record["probabilities"])
+        assert record["metrics"]["auc"] == pytest.approx(
+            roc_auc_score(np.asarray(record["true_labels"]) == 0, probabilities[:, 0]))
     supplied[0] = (supplied[0][0], supplied[1][1])
     with pytest.raises(ValueError, match="complement"):
         ten_fold_assignments(y, supplied_folds=supplied)
