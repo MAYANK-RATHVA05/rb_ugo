@@ -11,7 +11,7 @@ import pandas as pd
 
 from src.classifier_registry import CLASSIFIERS
 from src.data_loader import load_dataset
-from src.evaluation import EvaluationConfig, METHODS, evaluate_ten_fold
+from src.evaluation import AVAILABLE_METHODS, EvaluationConfig, evaluate_ten_fold
 
 
 def main() -> None:
@@ -24,7 +24,7 @@ def main() -> None:
     parser.add_argument("--positive-label", help="Explicit original source/domain label for F1.")
     parser.add_argument("--output", type=Path, required=True, help="Dedicated run directory; identities must match to resume.")
     parser.add_argument("--classifiers", nargs="+", choices=[c.name for c in CLASSIFIERS], default=["LogReg"])
-    parser.add_argument("--methods", nargs="+", choices=METHODS, default=["nores", "ros"])
+    parser.add_argument("--methods", nargs="+", choices=AVAILABLE_METHODS, default=["nores", "ros"])
     parser.add_argument("--seed", type=int, default=42)
     parser.add_argument("--no-scale", action="store_true")
     parser.add_argument("--method-parameters", type=Path, help="JSON mapping method names to fixed parameters.")

@@ -17,6 +17,12 @@ includes artificial software fixtures. Stage 4R-6 executes a measured pilot of
 both declared paper simulation reconstructions. Real benchmark experiments remain
 for later authorized stages. Risk-Budgeted UGO is not implemented.
 
+The `bfch-smote-implementation` branch adds a separate BFCH-SMOTE sampler in
+`src/bfch_smote.py`. Its paper steps, geometric correction, limits, and
+paired-run example are in [docs/BFCH_METHOD.md](docs/BFCH_METHOD.md).
+Existing UGO evaluation defaults remain unchanged; select `bfch_smote`
+explicitly to compare it on the same fitting folds.
+
 ## Original UGO reproduction specification
 
 Stage 4R-1 records the full-paper requirements in

@@ -11,6 +11,7 @@ from src._validation import binary_labels, numeric_matrix
 from src.generators import RandomWalkOversampler
 from src.leao import LEAOOversampler
 from src.mcsmote import MCSMOTEOversampler
+from src.bfch_smote import BFCHSMOTE
 
 
 class NoResampling(BaseEstimator):
@@ -45,4 +46,6 @@ def make_comparator(name: str, *, random_state: int = 42, **kwargs: Any):
     if name == "leao":
         return LEAOOversampler(random_state=random_state,
                                allow_provisional=True, **kwargs)
-    raise ValueError("Unknown comparator. Choose nores, rus, ros, smote, rwo, mcsmote or leao.")
+    if name == "bfch_smote":
+        return BFCHSMOTE(random_state=random_state, **kwargs)
+    raise ValueError("Unknown comparator. Choose nores, rus, ros, smote, rwo, mcsmote, leao or bfch_smote.")

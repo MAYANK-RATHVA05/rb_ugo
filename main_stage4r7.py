@@ -8,7 +8,7 @@ from pathlib import Path
 from src.benchmark import (DEFAULT_MANIFEST, benchmark_status,
                            load_benchmark_manifest, run_benchmark)
 from src.classifier_registry import CLASSIFIERS
-from src.evaluation import EvaluationConfig, METHODS
+from src.evaluation import AVAILABLE_METHODS, EvaluationConfig, METHODS
 
 
 def main() -> None:
@@ -21,7 +21,7 @@ def main() -> None:
                         help="Execute only these shards while retaining the fixed full identity.")
     parser.add_argument("--classifiers", nargs="+", choices=[item.name for item in CLASSIFIERS],
                         default=[item.name for item in CLASSIFIERS])
-    parser.add_argument("--methods", nargs="+", choices=METHODS, default=list(METHODS))
+    parser.add_argument("--methods", nargs="+", choices=AVAILABLE_METHODS, default=list(METHODS))
     parser.add_argument("--workers", type=int, default=1)
     parser.add_argument("--seed", type=int, default=42)
     parser.add_argument("--no-scale", action="store_true")

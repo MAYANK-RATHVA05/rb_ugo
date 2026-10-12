@@ -28,6 +28,7 @@ from src.ugo import UGO
 
 METHODS = ("nores", "rus", "ros", "smote", "rwo", "mcsmote", "leao",
            "ugo_ros", "ugo_smote", "ugo_rwo", "ugo_mcsmote")
+AVAILABLE_METHODS = METHODS + ("bfch_smote",)
 PROTOCOL = "declared stratified ten-fold approximation; not author folds"
 
 
@@ -46,7 +47,7 @@ def _validate_config(config: EvaluationConfig) -> None:
     if not isinstance(config.scale, bool):
         raise ValueError("scale must be boolean.")
     if (not config.methods or len(set(config.methods)) != len(config.methods)
-            or "nores" not in config.methods or any(m not in METHODS for m in config.methods)):
+            or "nores" not in config.methods or any(m not in AVAILABLE_METHODS for m in config.methods)):
         raise ValueError("Methods must be unique known names and include nores.")
     if not config.classifiers or len(set(config.classifiers)) != len(config.classifiers):
         raise ValueError("At least one unique classifier is required.")
