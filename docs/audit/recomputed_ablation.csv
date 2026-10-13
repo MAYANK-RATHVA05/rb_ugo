@@ -1,0 +1,21 @@
+dataset,classifier,metric,delta,sample_sd_delta,n,evidence
+ecoli4,LogReg,f1,-0.07773474272545482,0.08571900434338378,25,docs/sshr_pilot/ecoli4/ablation.csv row 2
+ecoli4,LogReg,gmean,-0.01598233194684211,0.0170991472583088,25,docs/sshr_pilot/ecoli4/ablation.csv row 3
+ecoli4,LogReg,mcc,-0.06782397837300719,0.0749297525772028,25,docs/sshr_pilot/ecoli4/ablation.csv row 4
+ecoli4,LogReg,probability_auc,-0.0027977470558115903,0.005891156760486561,25,docs/sshr_pilot/ecoli4/ablation.csv row 5
+ecoli4,LogReg,fpr,0.030268177163338454,0.032374673276689095,25,docs/sshr_pilot/ecoli4/ablation.csv row 6
+ecoli4,GNB,f1,-0.09224684465860937,0.1393089544642928,25,docs/sshr_pilot/ecoli4/ablation.csv row 7
+ecoli4,GNB,gmean,-0.005435550758967185,0.09022379315723522,25,docs/sshr_pilot/ecoli4/ablation.csv row 8
+ecoli4,GNB,mcc,-0.08102901407204001,0.13008466289609524,25,docs/sshr_pilot/ecoli4/ablation.csv row 9
+ecoli4,GNB,probability_auc,-0.007807987711213506,0.01070690718354157,25,docs/sshr_pilot/ecoli4/ablation.csv row 10
+ecoli4,GNB,fpr,0.03608358934971838,0.03994043232415519,25,docs/sshr_pilot/ecoli4/ablation.csv row 11
+yeast4,LogReg,f1,-0.009633837956244133,0.029362575084152583,25,docs/sshr_pilot/yeast4/ablation.csv row 2
+yeast4,LogReg,gmean,0.017215239627617084,0.045558045540021644,25,docs/sshr_pilot/yeast4/ablation.csv row 3
+yeast4,LogReg,mcc,-0.0018025399285494547,0.03185036124132955,25,docs/sshr_pilot/yeast4/ablation.csv row 4
+yeast4,LogReg,probability_auc,-0.007084995725232068,0.01359806343430474,25,docs/sshr_pilot/yeast4/ablation.csv row 5
+yeast4,LogReg,fpr,0.014532215348223463,0.021556810804543528,25,docs/sshr_pilot/yeast4/ablation.csv row 6
+yeast4,GNB,f1,-0.005395304754155427,0.10994713600881086,25,docs/sshr_pilot/yeast4/ablation.csv row 7
+yeast4,GNB,gmean,0.08103138041455467,0.22325568446023608,25,docs/sshr_pilot/yeast4/ablation.csv row 8
+yeast4,GNB,mcc,0.0016684478972248773,0.12662022271919737,25,docs/sshr_pilot/yeast4/ablation.csv row 9
+yeast4,GNB,probability_auc,0.029623971034376136,0.05057413260728688,25,docs/sshr_pilot/yeast4/ablation.csv row 10
+yeast4,GNB,fpr,0.03325637064113215,0.056756421706875254,25,docs/sshr_pilot/yeast4/ablation.csv row 11

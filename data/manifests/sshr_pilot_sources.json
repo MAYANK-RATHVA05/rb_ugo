@@ -1,0 +1,65 @@
+{
+  "schema_version": 1,
+  "prepared_on": "2026-10-13",
+  "scope": "Two preselected local numeric KEEL binary variants for a descriptive controlled SSHR pilot; not exact author-score reproduction.",
+  "path_root": "repository root",
+  "raw_datasets_committed": false,
+  "source_fidelity": "User-provided local archives and extracted files; author rows, folds, preprocessing and unlabelled-pool construction unverified.",
+  "duplicate_policy": "Preserve every raw row. Group identical raw feature-coordinate vectors before outer splitting and label hiding; reject groups containing conflicting gold labels at experimental-design time.",
+  "selection_policy": "Selected before any held-out score: numerical declarations, existing locally verified files, no missing or nonfinite values, sufficient minority rows for five outer folds and training-only label hiding.",
+  "datasets": [
+    {
+      "dataset_id": "ecoli4",
+      "relative_path": "data/raw/ecoli4.dat",
+      "sha256": "1890c32ba2550cfe106d0524ebf6a42c2b50730f6521bd4f22eb58e7bda86bcb",
+      "bytes": 17838,
+      "rows": 336,
+      "input_features": 7,
+      "feature_names": ["Mcg", "Gvh", "Lip", "Chg", "Aac", "Alm1", "Alm2"],
+      "feature_declarations": "All input attributes are declared real in the original KEEL header.",
+      "target_name": "Class",
+      "label_mapping": {"negative": 0, "positive": 1},
+      "majority_count": 316,
+      "minority_count": 20,
+      "missing_feature_cells": 0,
+      "nonfinite_feature_cells": 0,
+      "duplicate_coordinate_groups": 0,
+      "duplicate_coordinate_pairs": 0,
+      "duplicate_excess_rows": 0,
+      "conflicting_coordinate_groups": 0,
+      "archive": {
+        "relative_path": "data/incoming/ecoli4.zip",
+        "sha256": "75f3a62a1d23b0081976131f6c18331219e29b07ea616620a650b68a27c831d7",
+        "member": "ecoli4.dat",
+        "required_for_execution": false
+      }
+    },
+    {
+      "dataset_id": "yeast4",
+      "relative_path": "data/raw/yeast4.dat",
+      "sha256": "2e50d1b43c97875d2071859428d718487086e695a1a6ec559336ccadb40c1ff0",
+      "bytes": 81201,
+      "rows": 1484,
+      "input_features": 8,
+      "feature_names": ["Mcg", "Gvh", "Alm", "Mit", "Erl", "Pox", "Vac", "Nuc"],
+      "feature_declarations": "All input attributes are declared real in the original KEEL header.",
+      "target_name": "Class",
+      "label_mapping": {"negative": 0, "positive": 1},
+      "majority_count": 1433,
+      "minority_count": 51,
+      "missing_feature_cells": 0,
+      "nonfinite_feature_cells": 0,
+      "duplicate_coordinate_groups": 31,
+      "duplicate_coordinate_pairs": 31,
+      "duplicate_excess_rows": 31,
+      "conflicting_coordinate_groups": 0,
+      "duplicate_label_audit": "All 31 duplicate pairs have majority gold labels; no duplicate coordinate group has conflicting labels. This is experimental-design metadata only.",
+      "archive": {
+        "relative_path": "data/incoming/yeast4.zip",
+        "sha256": "dda966d6e09c665bab0325e3481dc0045e7f2fb9a4ddabdf47607ef4031b88b5",
+        "member": "yeast4.dat",
+        "required_for_execution": false
+      }
+    }
+  ]
+}
