@@ -507,3 +507,145 @@ def test_explicit_null_provenance_is_preserved(tmp_path, data):
 def test_global_lineage_cannot_map_unknown_or_out_of_pool_origins(lineage):
     with pytest.raises(ValueError):
         evaluation._global_lineage(lineage, np.array([4, 8]), np.array([12]))
+
+
+def grouped_coordinate_fixture():
+    """Twelve distinct coordinates, each observed twice; preserve all 24 rows."""
+    groups = np.repeat(np.arange(12), 2)
+    X = pd.DataFrame({"a": groups.astype(float), "b": 0.1 * groups + 2.0})
+    y = (groups % 6 >= 3).astype(int)
+    folds = [
+        {"repeat": 0, "fold": 0, "train_indices": list(range(12, 24)), "test_indices": list(range(12))},
+        {"repeat": 0, "fold": 1, "train_indices": list(range(12)), "test_indices": list(range(12, 24))},
+    ]
+    masks = [
+        {"repeat": 0, "fold": 0, "labeled_indices": [12, 13, 14, 15, 18, 19, 20, 21], "unlabeled_indices": [16, 17, 22, 23]},
+        {"repeat": 0, "fold": 1, "labeled_indices": [0, 1, 2, 3, 6, 7, 8, 9], "unlabeled_indices": [4, 5, 10, 11]},
+    ]
+    metadata = provenance(X, coordinate_groups=groups.tolist(),
+                          fold_source="fixed whole-coordinate software groups",
+                          mask_source="fixed whole-coordinate software masks")
+    return (X, y), folds, masks, metadata
+
+
+def test_explicit_coordinate_groups_preserve_every_original_row_without_leakage(tmp_path):
+    data, folds, masks, metadata = grouped_coordinate_fixture()
+    result = run(tmp_path, data, config=config(methods=("nores",)),
+                 supplied_folds=folds, supplied_masks=masks, provenance=metadata)
+    assert all(record["status"] == "success" for record in result["records"]), result["records"]
+    manifest = json.loads((tmp_path / "manifest.json").read_text())["manifest"]
+    assert manifest["rows"] == 24  # Twelve distinct coordinates never become twelve source rows.
+    assert len(manifest["coordinate_groups_sha256"]) == 64
+    groups = np.asarray(metadata["coordinate_groups"])
+    for record in result["records"]:
+        assert len(record["train_indices"]) == len(record["test_indices"]) == 12
+        assert len(record["labeled_indices"]) == 8 and len(record["unlabeled_indices"]) == 4
+        assert not set(groups[record["train_indices"]]) & set(groups[record["test_indices"]])
+        assert not set(groups[record["labeled_indices"]]) & set(groups[record["unlabeled_indices"]])
+        assert record["sample_counts"]["labeled_training"] == record["sample_counts"]["resampled_training"] == 8
+    assert sorted(index for record in result["records"] for index in record["test_indices"]) == list(range(24))
+
+
+@pytest.mark.parametrize("kind", ["outer", "mask", "missing", "string", "float", "bool", "short", "coordinate_mismatch",
+                                  "missing_folds", "missing_masks", "missing_fold_authority", "missing_mask_authority"])
+def test_coordinate_group_provenance_and_partition_errors_fail_before_writing(tmp_path, kind):
+    data, folds, masks, metadata = grouped_coordinate_fixture()
+    if kind == "outer":
+        # Ordinary complements and class counts remain valid; only group isolation fails.
+        folds[0]["train_indices"][0], folds[0]["test_indices"][0] = 0, 12
+        folds[1]["train_indices"][0], folds[1]["test_indices"][0] = 12, 0
+        masks[0]["labeled_indices"][0] = 0
+        masks[1]["labeled_indices"][0] = 12
+    elif kind == "mask":
+        masks[0]["labeled_indices"][1], masks[0]["unlabeled_indices"][0] = 16, 13
+    elif kind == "missing":
+        del metadata["coordinate_groups"]
+    elif kind == "string":
+        metadata["coordinate_groups"] = [str(group) for group in metadata["coordinate_groups"]]
+    elif kind == "float":
+        metadata["coordinate_groups"] = [float(group) for group in metadata["coordinate_groups"]]
+    elif kind == "bool":
+        metadata["coordinate_groups"][0] = False
+    elif kind == "short":
+        metadata["coordinate_groups"].pop()
+    elif kind == "coordinate_mismatch":
+        metadata["coordinate_groups"][1] = 99
+    elif kind == "missing_folds":
+        folds = None
+    elif kind == "missing_masks":
+        masks = None
+    elif kind == "missing_fold_authority":
+        del metadata["fold_source"]
+    else:
+        del metadata["mask_source"]
+    with pytest.raises(ValueError):
+        run(tmp_path, data, config=config(methods=("nores",)),
+            supplied_folds=folds, supplied_masks=masks, provenance=metadata)
+    assert not list(tmp_path.iterdir())
+
+
+def test_ugo_appended_majority_rows_are_not_reported_as_synthetic_minority(tmp_path, data, monkeypatch):
+    real_factory = evaluation.make_controlled_resampler
+
+    class MajorityAppendingSampler(BaseEstimator):
+        def fit_resample(self, X, y):
+            self.diagnostics_ = {"software_fixture": "append one majority row"}
+            original_majority = X[np.flatnonzero(y == 0)[0]]
+            return np.vstack([X, original_majority]), np.r_[y, 0]
+
+    def sampler(method, estimator, **kwargs):
+        return MajorityAppendingSampler() if method == "ugo_smote" else real_factory(method, estimator, **kwargs)
+
+    monkeypatch.setattr(evaluation, "make_controlled_resampler", sampler)
+    result = run(tmp_path, data, config=config(methods=("nores", "ugo_smote")))
+    assert all(record["status"] == "success" for record in result["records"]), result["records"]
+    for record in result["records"]:
+        counts = record["sample_counts"]
+        assert counts["selected_pseudo_labeled"] == 0
+        assert counts["retained_labeled"] == len(record["labeled_indices"])
+        assert counts["removed_majority"] == counts["removed_minority"] == 0
+        if record["job"]["method"] == "ugo_smote":
+            assert counts["generated_synthetic"] == counts["generated_majority"] == 1
+            assert counts["generated_minority"] == 0
+            proxy = record["training_overlap_proxy"]
+            assert proxy["synthetic_all"]["rows"] == proxy["synthetic_majority"]["rows"] == 1
+            assert proxy["synthetic_all"]["nearest_majority_rate"] == proxy["synthetic_majority"]["nearest_majority_rate"] == 1
+            assert proxy["synthetic_minority"]["rows"] == 0
+            assert proxy["synthetic_minority"]["nearest_majority_rate"] is None
+        else:
+            assert counts["generated_synthetic"] == counts["generated_minority"] == counts["generated_majority"] == 0
+
+
+@pytest.mark.parametrize("alteration", ["features", "labels", "reorder", "remove"])
+def test_baseline_changed_original_prefix_is_a_diagnosed_failure(tmp_path, data, monkeypatch, alteration):
+    real_factory = evaluation.make_controlled_resampler
+    evidence = {"software_fixture": "deliberately invalid append-only baseline"}
+
+    class InvalidPrefixSampler(BaseEstimator):
+        def fit_resample(self, X, y):
+            self.diagnostics_ = evidence.copy()
+            X, y = X.copy(), y.copy()
+            if alteration == "features":
+                X[0, 0] += 1.0
+            elif alteration == "labels":
+                y[0] = 1 - y[0]
+            elif alteration == "reorder":
+                X[[0, 1]] = X[[1, 0]]
+                y[[0, 1]] = y[[1, 0]]
+            else:
+                X, y = X[1:], y[1:]
+            return X, y
+
+    def sampler(method, estimator, **kwargs):
+        return InvalidPrefixSampler() if method == "ugo_smote" else real_factory(method, estimator, **kwargs)
+
+    monkeypatch.setattr(evaluation, "make_controlled_resampler", sampler)
+    result = run(tmp_path, data, config=config(methods=("nores", "ugo_smote")))
+    for record in result["records"]:
+        if record["job"]["method"] == "ugo_smote":
+            assert record["status"] == "failed"
+            assert record["error"]["stage"] == "resampling"
+            assert record["metrics"] is record["predictions"] is record["probabilities"] is None
+            assert record["resampler_diagnostics"] == evidence
+        else:
+            assert record["status"] == "success"

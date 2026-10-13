@@ -271,7 +271,7 @@ def make_controlled_resampler(method: str, estimator: Any, *, seed: int,
     return make_evaluation_resampler(method, estimator, seed=seed, parameters=parameters)
 
 
-def _validate_source(frame: pd.DataFrame, provenance: dict[str, Any]) -> None:
+def _validate_source(frame: pd.DataFrame, provenance: dict[str, Any]) -> np.ndarray | None:
     metadata = provenance.get("feature_types")
     if (not isinstance(metadata, dict) or set(metadata) != set(frame.columns)
             or any(not isinstance(value, str) or value not in {"numeric", "continuous"}
@@ -284,8 +284,41 @@ def _validate_source(frame: pd.DataFrame, provenance: dict[str, Any]) -> None:
         raise ValueError(f"Original numerical features are required; unsupported columns: {invalid}.")
     if np.isinf(frame.to_numpy(dtype=float, na_value=np.nan)).any():
         raise ValueError("Infinite numerical features are unsupported.")
+    if "coordinate_groups" in provenance:
+        supplied = provenance["coordinate_groups"]
+        if (not isinstance(supplied, list) or len(supplied) != len(frame)
+                or any(isinstance(value, bool) or not isinstance(value, Integral) for value in supplied)):
+            raise ValueError("coordinate_groups must provide one integer group ID per original row.")
+        groups = np.asarray(supplied)
+        if (groups.ndim != 1 or groups.dtype.kind not in "iu"
+                or np.any(groups > np.iinfo(np.int64).max)):
+            raise ValueError("coordinate_groups must contain integer IDs representable as int64.")
+        groups = np.array(groups, dtype=np.int64, copy=True)
+        # Compare coordinate identities only. Hidden class labels play no role
+        # in determining or validating these source row groups.
+        coordinate_codes = frame.groupby(list(frame.columns), dropna=False, sort=False).ngroup().to_numpy()
+        coordinate_memberships = pd.DataFrame({"coordinate": coordinate_codes, "declared_group": groups})
+        if (coordinate_memberships.groupby("coordinate")["declared_group"].nunique() > 1).any():
+            raise ValueError("Every identical feature-coordinate row must belong to the same declared coordinate group.")
+        return groups
     if frame.duplicated().any():
         raise ValueError("Duplicate feature-coordinate rows are unsupported in this controlled path; resolve group-aware provenance before evaluation.")
+    return None
+
+
+def _validate_group_partitions(groups: np.ndarray, folds: list[dict[str, Any]],
+                               masks: list[dict[str, Any]]) -> None:
+    """Keep every declared group together across outer folds and L/U pools."""
+    for fold in folds:
+        training = groups[np.asarray(fold["train_indices"], dtype=np.int64)]
+        testing = groups[np.asarray(fold["test_indices"], dtype=np.int64)]
+        if np.intersect1d(training, testing).size:
+            raise ValueError("Coordinate groups must remain disjoint across outer training and test partitions.")
+    for mask in masks:
+        labeled = groups[np.asarray(mask["labeled_indices"], dtype=np.int64)]
+        unlabeled = groups[np.asarray(mask["unlabeled_indices"], dtype=np.int64)]
+        if np.intersect1d(labeled, unlabeled).size:
+            raise ValueError("Coordinate groups must remain together in either the labeled or unlabelled training pool.")
 
 
 def _overlap_proxy(points: np.ndarray, fitting: np.ndarray, y_labeled: np.ndarray,
@@ -414,12 +447,37 @@ def _evaluate_job(X: pd.DataFrame, y: np.ndarray, labels: np.ndarray, positive_l
                     raise ValueError("SSHR row lineage does not conserve retained, pseudo-labelled and synthetic output counts.")
                 record["sample_counts"].update({"selected_pseudo_labeled": len(selected),
                                                  "generated_smote": len(sampler.synthetic_samples_),
+                                                 "generated_synthetic": len(sampler.synthetic_samples_),
+                                                 "generated_minority": len(sampler.synthetic_samples_),
+                                                 "generated_majority": 0,
+                                                 "retained_labeled": len(retained),
                                                  "removed_majority": sampler.diagnostics_["counts"]["removed_majority"],
                                                  "removed_minority": sampler.diagnostics_["counts"]["removed_minority"]})
                 record["training_overlap_proxy"] = {
                     "definition": "nearest original observed majority distance < nearest original observed minority distance; strict ties separate; not true class overlap",
                     "pseudo_labeled": _overlap_proxy(unlabelled_features[selected], fitting, y[labeled], positive_label),
                     "smote": _overlap_proxy(sampler.synthetic_samples_, fitting, y[labeled], positive_label)}
+            else:
+                # These named supervised comparators append generated rows.
+                # Verify that contract rather than infer removals from net size.
+                if (len(augmented) < len(fitting)
+                        or not np.array_equal(augmented[:len(fitting)], fitting)
+                        or not np.array_equal(augmented_y[:len(fitting)], y[labeled])):
+                    raise ValueError("Controlled supervised baseline violated its append-only original labeled-row prefix contract.")
+                generated = augmented[len(fitting):]
+                generated_y = augmented_y[len(fitting):]
+                minority_generated = generated_y == positive_label
+                record["sample_counts"].update({"retained_labeled": len(labeled),
+                                                 "selected_pseudo_labeled": 0,
+                                                 "generated_synthetic": len(generated),
+                                                 "generated_minority": int(np.sum(minority_generated)),
+                                                 "generated_majority": int(np.sum(~minority_generated)),
+                                                 "removed_majority": 0, "removed_minority": 0})
+                record["training_overlap_proxy"] = {
+                    "definition": "nearest original observed majority distance < nearest original observed minority distance; strict ties separate; not true class overlap",
+                    "synthetic_all": _overlap_proxy(generated, fitting, y[labeled], positive_label),
+                    "synthetic_minority": _overlap_proxy(generated[minority_generated], fitting, y[labeled], positive_label),
+                    "synthetic_majority": _overlap_proxy(generated[~minority_generated], fitting, y[labeled], positive_label)}
             record["timings_seconds"][stage] = perf_counter() - stage_start
             stage, stage_start = "final_fit", perf_counter()
             final_model = clone(template)
@@ -486,7 +544,7 @@ def evaluate_controlled(X: Any, y: Any, *, dataset_id: str, positive_label: Any,
     except (ValueError, TypeError) as exc:
         raise ValueError("Provenance must contain finite JSON-compatible values.") from exc
     frame = feature_frame(X)
-    _validate_source(frame, provenance)
+    coordinate_groups = _validate_source(frame, provenance)
     labels_y, labels = binary_labels(y, len(frame))
     _check_label_scalars(labels)
     candidate = np.asarray(positive_label)
@@ -497,6 +555,8 @@ def evaluate_controlled(X: Any, y: Any, *, dataset_id: str, positive_label: Any,
         raise ValueError("Supplied folds require fold_source provenance.")
     if supplied_masks is not None and not provenance.get("mask_source"):
         raise ValueError("Supplied masks require mask_source provenance.")
+    if coordinate_groups is not None and (supplied_folds is None or supplied_masks is None):
+        raise ValueError("Coordinate-group inputs require supplied outer folds and supplied label masks with recorded provenance.")
     if supplied_folds is None and provenance.get("requires_group_or_time_split"):
         raise ValueError("Group/time constraints require caller-supplied compliant outer folds.")
     folds, fold_protocol = controlled_fold_assignments(labels_y, seed=config.seed,
@@ -506,6 +566,8 @@ def evaluate_controlled(X: Any, y: Any, *, dataset_id: str, positive_label: Any,
                                                   labeled_fraction=config.labeled_fraction,
                                                   min_labeled_per_class=config.min_labeled_per_class,
                                                   supplied_masks=supplied_masks)
+    if coordinate_groups is not None:
+        _validate_group_partitions(coordinate_groups, folds, masks)
     software = _software_identity()
     script_path = Path(__file__).resolve().parents[1] / "scripts" / "run_sshr_study.py"
     software["sshr_runner_script_sha256"] = hashlib.sha256(script_path.read_bytes()).hexdigest()
@@ -516,6 +578,9 @@ def evaluate_controlled(X: Any, y: Any, *, dataset_id: str, positive_label: Any,
                 "folds": folds, "masks": masks, "folds_sha256": content_hash(folds),
                 "masks_sha256": content_hash(masks), "fold_protocol": fold_protocol,
                 "mask_protocol": mask_protocol,
+                "coordinate_group_policy": ("preserve all original rows; every declared group remains together across outer train/test and labeled/unlabelled training pools"
+                                            if coordinate_groups is not None else "duplicate feature-coordinate rows rejected"),
+                "coordinate_groups_sha256": content_hash(coordinate_groups) if coordinate_groups is not None else None,
                 "preprocessing_policy": {**PREPROCESSING_POLICY, "fit_pool": "observed L only; original numeric features only"},
                 "metric_policy": {**METRIC_POLICY, "probability_auc": "explicit alias of probability ROC AUC; not SSHR printed AUC",
                                   "fpr": "held-out FP/(TN+FP)"},
