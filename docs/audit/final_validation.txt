@@ -1,0 +1,10 @@
+Saved jobs audited: 800
+Passing independent assertions: 271321
+Assertion families: 84
+Markdown mean/SD cells match exact recomputation: 120
+Presentation-number mismatches: 0
+Original aggregate files remain hash-identical: 12
+All four requested documents: local links and line bounds checked; balanced fences.
+Slide plan: 300 seconds.
+Tracked Git changes: none.
+No refits, commits or pushes during the read-only audit.

@@ -1,0 +1,1525 @@
+{
+  "scope": "No refits; aggregate CSV/JSON compared with independently recomputed original saved job scores and original hidden gold labels.",
+  "aggregate_folder_raw_fold_values_available": false,
+  "counts": {
+    "jobs": 800,
+    "recomputed_score_cells": 120,
+    "recomputed_ablation_cells": 20,
+    "identical_nores_pairs": 100
+  },
+  "comparisons": [
+    {
+      "claim": "ecoli4 LogReg ugo_smote f1",
+      "reported": 0.889,
+      "recomputed": 0.889047619047619,
+      "matches_4dp": true,
+      "evidence": "docs/sshr_pilot/ecoli4/scores.csv row 22"
+    },
+    {
+      "claim": "ecoli4 LogReg nores f1",
+      "reported": 0.872,
+      "recomputed": 0.872,
+      "matches_4dp": true,
+      "evidence": "docs/sshr_pilot/ecoli4/scores.csv row 2"
+    },
+    {
+      "claim": "ecoli4 LogReg sshr f1",
+      "reported": 0.5838,
+      "recomputed": 0.5837646838885229,
+      "matches_4dp": true,
+      "evidence": "docs/sshr_pilot/ecoli4/scores.csv row 52"
+    },
+    {
+      "claim": "yeast4 LogReg ec_ebo f1",
+      "reported": 0.3189,
+      "recomputed": 0.3188758061752635,
+      "matches_4dp": true,
+      "evidence": "docs/sshr_pilot/yeast4/scores.csv row 42"
+    },
+    {
+      "claim": "yeast4 LogReg nores f1",
+      "reported": 0.2018,
+      "recomputed": 0.20181968977015416,
+      "matches_4dp": true,
+      "evidence": "docs/sshr_pilot/yeast4/scores.csv row 2"
+    },
+    {
+      "claim": "yeast4 LogReg sshr f1",
+      "reported": 0.2962,
+      "recomputed": 0.2961680120698989,
+      "matches_4dp": true,
+      "evidence": "docs/sshr_pilot/yeast4/scores.csv row 52"
+    },
+    {
+      "claim": "yeast4 LogReg nores fpr",
+      "reported": 0.0046,
+      "recomputed": 0.004595442511247734,
+      "matches_4dp": true,
+      "evidence": "docs/sshr_pilot/yeast4/scores.csv row 6"
+    },
+    {
+      "claim": "yeast4 LogReg ec_ebo fpr",
+      "reported": 0.0923,
+      "recomputed": 0.09234912689041357,
+      "matches_4dp": true,
+      "evidence": "docs/sshr_pilot/yeast4/scores.csv row 46"
+    },
+    {
+      "claim": "ecoli4 LogReg SSHR delta f1",
+      "reported": -0.0777,
+      "recomputed": -0.07773474272545482,
+      "matches_4dp": true,
+      "evidence": "docs/sshr_pilot/ecoli4/ablation.csv row 2"
+    },
+    {
+      "claim": "ecoli4 GNB SSHR delta f1",
+      "reported": -0.0922,
+      "recomputed": -0.09224684465860937,
+      "matches_4dp": true,
+      "evidence": "docs/sshr_pilot/ecoli4/ablation.csv row 7"
+    },
+    {
+      "claim": "yeast4 LogReg SSHR delta f1",
+      "reported": -0.0096,
+      "recomputed": -0.009633837956244133,
+      "matches_4dp": true,
+      "evidence": "docs/sshr_pilot/yeast4/ablation.csv row 2"
+    },
+    {
+      "claim": "yeast4 GNB SSHR delta f1",
+      "reported": -0.0054,
+      "recomputed": -0.005395304754155427,
+      "matches_4dp": true,
+      "evidence": "docs/sshr_pilot/yeast4/ablation.csv row 7"
+    }
+  ],
+  "scores": [
+    {
+      "dataset": "ecoli4",
+      "classifier": "LogReg",
+      "method": "nores",
+      "metric": "f1",
+      "mean": 0.872,
+      "sample_sd": 0.10849662093747478,
+      "n": 25,
+      "evidence": "docs/sshr_pilot/ecoli4/scores.csv row 2"
+    },
+    {
+      "dataset": "ecoli4",
+      "classifier": "LogReg",
+      "method": "nores",
+      "metric": "gmean",
+      "mean": 0.9009339760013421,
+      "sample_sd": 0.09290578143265184,
+      "n": 25,
+      "evidence": "docs/sshr_pilot/ecoli4/scores.csv row 3"
+    },
+    {
+      "dataset": "ecoli4",
+      "classifier": "LogReg",
+      "method": "nores",
+      "metric": "mcc",
+      "mean": 0.8737598934853604,
+      "sample_sd": 0.10558243508239945,
+      "n": 25,
+      "evidence": "docs/sshr_pilot/ecoli4/scores.csv row 4"
+    },
+    {
+      "dataset": "ecoli4",
+      "classifier": "LogReg",
+      "method": "nores",
+      "metric": "probability_auc",
+      "mean": 0.9954562211981567,
+      "sample_sd": 0.007101667634563422,
+      "n": 25,
+      "evidence": "docs/sshr_pilot/ecoli4/scores.csv row 5"
+    },
+    {
+      "dataset": "ecoli4",
+      "classifier": "LogReg",
+      "method": "nores",
+      "metric": "fpr",
+      "mean": 0.0031746031746031746,
+      "sample_sd": 0.006480131594664492,
+      "n": 25,
+      "evidence": "docs/sshr_pilot/ecoli4/scores.csv row 6"
+    },
+    {
+      "dataset": "ecoli4",
+      "classifier": "LogReg",
+      "method": "smote",
+      "metric": "f1",
+      "mean": 0.8194083694083694,
+      "sample_sd": 0.13498535672445813,
+      "n": 25,
+      "evidence": "docs/sshr_pilot/ecoli4/scores.csv row 12"
+    },
+    {
+      "dataset": "ecoli4",
+      "classifier": "LogReg",
+      "method": "smote",
+      "metric": "gmean",
+      "mean": 0.9381125739946719,
+      "sample_sd": 0.07319866833569348,
+      "n": 25,
+      "evidence": "docs/sshr_pilot/ecoli4/scores.csv row 13"
+    },
+    {
+      "dataset": "ecoli4",
+      "classifier": "LogReg",
+      "method": "smote",
+      "metric": "mcc",
+      "mean": 0.8157582333683236,
+      "sample_sd": 0.13973268748557216,
+      "n": 25,
+      "evidence": "docs/sshr_pilot/ecoli4/scores.csv row 14"
+    },
+    {
+      "dataset": "ecoli4",
+      "classifier": "LogReg",
+      "method": "smote",
+      "metric": "probability_auc",
+      "mean": 0.9950891577060932,
+      "sample_sd": 0.006971731660733051,
+      "n": 25,
+      "evidence": "docs/sshr_pilot/ecoli4/scores.csv row 15"
+    },
+    {
+      "dataset": "ecoli4",
+      "classifier": "LogReg",
+      "method": "smote",
+      "metric": "fpr",
+      "mean": 0.02096390168970814,
+      "sample_sd": 0.019909633026487628,
+      "n": 25,
+      "evidence": "docs/sshr_pilot/ecoli4/scores.csv row 16"
+    },
+    {
+      "dataset": "ecoli4",
+      "classifier": "LogReg",
+      "method": "ugo_smote",
+      "metric": "f1",
+      "mean": 0.889047619047619,
+      "sample_sd": 0.10710904816372273,
+      "n": 25,
+      "evidence": "docs/sshr_pilot/ecoli4/scores.csv row 22"
+    },
+    {
+      "dataset": "ecoli4",
+      "classifier": "LogReg",
+      "method": "ugo_smote",
+      "metric": "gmean",
+      "mean": 0.928668248625326,
+      "sample_sd": 0.08630542193139809,
+      "n": 25,
+      "evidence": "docs/sshr_pilot/ecoli4/scores.csv row 23"
+    },
+    {
+      "dataset": "ecoli4",
+      "classifier": "LogReg",
+      "method": "ugo_smote",
+      "metric": "mcc",
+      "mean": 0.8885025422936683,
+      "sample_sd": 0.10756526534617336,
+      "n": 25,
+      "evidence": "docs/sshr_pilot/ecoli4/scores.csv row 24"
+    },
+    {
+      "dataset": "ecoli4",
+      "classifier": "LogReg",
+      "method": "ugo_smote",
+      "metric": "probability_auc",
+      "mean": 0.9950891577060932,
+      "sample_sd": 0.007248572427616947,
+      "n": 25,
+      "evidence": "docs/sshr_pilot/ecoli4/scores.csv row 25"
+    },
+    {
+      "dataset": "ecoli4",
+      "classifier": "LogReg",
+      "method": "ugo_smote",
+      "metric": "fpr",
+      "mean": 0.005059523809523809,
+      "sample_sd": 0.00752780268391676,
+      "n": 25,
+      "evidence": "docs/sshr_pilot/ecoli4/scores.csv row 26"
+    },
+    {
+      "dataset": "ecoli4",
+      "classifier": "LogReg",
+      "method": "bfch_smote",
+      "metric": "f1",
+      "mean": 0.7948729048729049,
+      "sample_sd": 0.13977776274034348,
+      "n": 25,
+      "evidence": "docs/sshr_pilot/ecoli4/scores.csv row 32"
+    },
+    {
+      "dataset": "ecoli4",
+      "classifier": "LogReg",
+      "method": "bfch_smote",
+      "metric": "gmean",
+      "mean": 0.949215779609586,
+      "sample_sd": 0.057912384240810404,
+      "n": 25,
+      "evidence": "docs/sshr_pilot/ecoli4/scores.csv row 33"
+    },
+    {
+      "dataset": "ecoli4",
+      "classifier": "LogReg",
+      "method": "bfch_smote",
+      "metric": "mcc",
+      "mean": 0.7970912395011629,
+      "sample_sd": 0.13686855220540237,
+      "n": 25,
+      "evidence": "docs/sshr_pilot/ecoli4/scores.csv row 34"
+    },
+    {
+      "dataset": "ecoli4",
+      "classifier": "LogReg",
+      "method": "bfch_smote",
+      "metric": "probability_auc",
+      "mean": 0.9960415386584741,
+      "sample_sd": 0.005812348522857298,
+      "n": 25,
+      "evidence": "docs/sshr_pilot/ecoli4/scores.csv row 35"
+    },
+    {
+      "dataset": "ecoli4",
+      "classifier": "LogReg",
+      "method": "bfch_smote",
+      "metric": "fpr",
+      "mean": 0.02916858678955453,
+      "sample_sd": 0.027022234000549462,
+      "n": 25,
+      "evidence": "docs/sshr_pilot/ecoli4/scores.csv row 36"
+    },
+    {
+      "dataset": "ecoli4",
+      "classifier": "LogReg",
+      "method": "ec_ebo",
+      "metric": "f1",
+      "mean": 0.724680704915999,
+      "sample_sd": 0.1218085587086794,
+      "n": 25,
+      "evidence": "docs/sshr_pilot/ecoli4/scores.csv row 42"
+    },
+    {
+      "dataset": "ecoli4",
+      "classifier": "LogReg",
+      "method": "ec_ebo",
+      "metric": "gmean",
+      "mean": 0.9373496019018743,
+      "sample_sd": 0.05856995936410021,
+      "n": 25,
+      "evidence": "docs/sshr_pilot/ecoli4/scores.csv row 43"
+    },
+    {
+      "dataset": "ecoli4",
+      "classifier": "LogReg",
+      "method": "ec_ebo",
+      "metric": "mcc",
+      "mean": 0.7278831150607336,
+      "sample_sd": 0.11820847887654533,
+      "n": 25,
+      "evidence": "docs/sshr_pilot/ecoli4/scores.csv row 44"
+    },
+    {
+      "dataset": "ecoli4",
+      "classifier": "LogReg",
+      "method": "ec_ebo",
+      "metric": "probability_auc",
+      "mean": 0.9940276497695852,
+      "sample_sd": 0.0099870526095806,
+      "n": 25,
+      "evidence": "docs/sshr_pilot/ecoli4/scores.csv row 45"
+    },
+    {
+      "dataset": "ecoli4",
+      "classifier": "LogReg",
+      "method": "ec_ebo",
+      "metric": "fpr",
+      "mean": 0.04243375576036866,
+      "sample_sd": 0.02821382547025725,
+      "n": 25,
+      "evidence": "docs/sshr_pilot/ecoli4/scores.csv row 46"
+    },
+    {
+      "dataset": "ecoli4",
+      "classifier": "LogReg",
+      "method": "sshr",
+      "metric": "f1",
+      "mean": 0.5837646838885229,
+      "sample_sd": 0.16401138079177616,
+      "n": 25,
+      "evidence": "docs/sshr_pilot/ecoli4/scores.csv row 52"
+    },
+    {
+      "dataset": "ecoli4",
+      "classifier": "LogReg",
+      "method": "sshr",
+      "metric": "gmean",
+      "mean": 0.9330787281032565,
+      "sample_sd": 0.034172717061360595,
+      "n": 25,
+      "evidence": "docs/sshr_pilot/ecoli4/scores.csv row 53"
+    },
+    {
+      "dataset": "ecoli4",
+      "classifier": "LogReg",
+      "method": "sshr",
+      "metric": "mcc",
+      "mean": 0.6129685541045855,
+      "sample_sd": 0.1463807127219456,
+      "n": 25,
+      "evidence": "docs/sshr_pilot/ecoli4/scores.csv row 54"
+    },
+    {
+      "dataset": "ecoli4",
+      "classifier": "LogReg",
+      "method": "sshr",
+      "metric": "probability_auc",
+      "mean": 0.9916067588325653,
+      "sample_sd": 0.01296162370954375,
+      "n": 25,
+      "evidence": "docs/sshr_pilot/ecoli4/scores.csv row 55"
+    },
+    {
+      "dataset": "ecoli4",
+      "classifier": "LogReg",
+      "method": "sshr",
+      "metric": "fpr",
+      "mean": 0.10063012032770097,
+      "sample_sd": 0.05602910516622899,
+      "n": 25,
+      "evidence": "docs/sshr_pilot/ecoli4/scores.csv row 56"
+    },
+    {
+      "dataset": "ecoli4",
+      "classifier": "GNB",
+      "method": "nores",
+      "metric": "f1",
+      "mean": 0.7693650793650794,
+      "sample_sd": 0.16630361693034587,
+      "n": 25,
+      "evidence": "docs/sshr_pilot/ecoli4/scores.csv row 62"
+    },
+    {
+      "dataset": "ecoli4",
+      "classifier": "GNB",
+      "method": "nores",
+      "metric": "gmean",
+      "mean": 0.8661216606595034,
+      "sample_sd": 0.12143260130741537,
+      "n": 25,
+      "evidence": "docs/sshr_pilot/ecoli4/scores.csv row 63"
+    },
+    {
+      "dataset": "ecoli4",
+      "classifier": "GNB",
+      "method": "nores",
+      "metric": "mcc",
+      "mean": 0.7670010208969184,
+      "sample_sd": 0.17127593002189342,
+      "n": 25,
+      "evidence": "docs/sshr_pilot/ecoli4/scores.csv row 64"
+    },
+    {
+      "dataset": "ecoli4",
+      "classifier": "GNB",
+      "method": "nores",
+      "metric": "probability_auc",
+      "mean": 0.9870855574756784,
+      "sample_sd": 0.01604663175644813,
+      "n": 25,
+      "evidence": "docs/sshr_pilot/ecoli4/scores.csv row 65"
+    },
+    {
+      "dataset": "ecoli4",
+      "classifier": "GNB",
+      "method": "nores",
+      "metric": "fpr",
+      "mean": 0.01521889400921659,
+      "sample_sd": 0.016824044575315764,
+      "n": 25,
+      "evidence": "docs/sshr_pilot/ecoli4/scores.csv row 66"
+    },
+    {
+      "dataset": "ecoli4",
+      "classifier": "GNB",
+      "method": "smote",
+      "metric": "f1",
+      "mean": 0.7362537462537463,
+      "sample_sd": 0.15111057382843476,
+      "n": 25,
+      "evidence": "docs/sshr_pilot/ecoli4/scores.csv row 72"
+    },
+    {
+      "dataset": "ecoli4",
+      "classifier": "GNB",
+      "method": "smote",
+      "metric": "gmean",
+      "mean": 0.8788225283396492,
+      "sample_sd": 0.11043417178169974,
+      "n": 25,
+      "evidence": "docs/sshr_pilot/ecoli4/scores.csv row 73"
+    },
+    {
+      "dataset": "ecoli4",
+      "classifier": "GNB",
+      "method": "smote",
+      "metric": "mcc",
+      "mean": 0.7348342646835521,
+      "sample_sd": 0.15430100733384539,
+      "n": 25,
+      "evidence": "docs/sshr_pilot/ecoli4/scores.csv row 74"
+    },
+    {
+      "dataset": "ecoli4",
+      "classifier": "GNB",
+      "method": "smote",
+      "metric": "probability_auc",
+      "mean": 0.9888216685867895,
+      "sample_sd": 0.013398553179162356,
+      "n": 25,
+      "evidence": "docs/sshr_pilot/ecoli4/scores.csv row 75"
+    },
+    {
+      "dataset": "ecoli4",
+      "classifier": "GNB",
+      "method": "smote",
+      "metric": "fpr",
+      "mean": 0.025973502304147463,
+      "sample_sd": 0.02506326529958265,
+      "n": 25,
+      "evidence": "docs/sshr_pilot/ecoli4/scores.csv row 76"
+    },
+    {
+      "dataset": "ecoli4",
+      "classifier": "GNB",
+      "method": "ugo_smote",
+      "metric": "f1",
+      "mean": 0.7729206349206349,
+      "sample_sd": 0.1679281623935298,
+      "n": 25,
+      "evidence": "docs/sshr_pilot/ecoli4/scores.csv row 82"
+    },
+    {
+      "dataset": "ecoli4",
+      "classifier": "GNB",
+      "method": "ugo_smote",
+      "metric": "gmean",
+      "mean": 0.8664429717761277,
+      "sample_sd": 0.12176766620684429,
+      "n": 25,
+      "evidence": "docs/sshr_pilot/ecoli4/scores.csv row 83"
+    },
+    {
+      "dataset": "ecoli4",
+      "classifier": "GNB",
+      "method": "ugo_smote",
+      "metric": "mcc",
+      "mean": 0.7703557558906423,
+      "sample_sd": 0.17283349264206288,
+      "n": 25,
+      "evidence": "docs/sshr_pilot/ecoli4/scores.csv row 84"
+    },
+    {
+      "dataset": "ecoli4",
+      "classifier": "GNB",
+      "method": "ugo_smote",
+      "metric": "probability_auc",
+      "mean": 0.9870855574756784,
+      "sample_sd": 0.01604663175644813,
+      "n": 25,
+      "evidence": "docs/sshr_pilot/ecoli4/scores.csv row 85"
+    },
+    {
+      "dataset": "ecoli4",
+      "classifier": "GNB",
+      "method": "ugo_smote",
+      "metric": "fpr",
+      "mean": 0.014583973374295954,
+      "sample_sd": 0.01647013320789321,
+      "n": 25,
+      "evidence": "docs/sshr_pilot/ecoli4/scores.csv row 86"
+    },
+    {
+      "dataset": "ecoli4",
+      "classifier": "GNB",
+      "method": "bfch_smote",
+      "metric": "f1",
+      "mean": 0.720075702075702,
+      "sample_sd": 0.14712266383750927,
+      "n": 25,
+      "evidence": "docs/sshr_pilot/ecoli4/scores.csv row 92"
+    },
+    {
+      "dataset": "ecoli4",
+      "classifier": "GNB",
+      "method": "bfch_smote",
+      "metric": "gmean",
+      "mean": 0.8520684285083913,
+      "sample_sd": 0.11649823099423917,
+      "n": 25,
+      "evidence": "docs/sshr_pilot/ecoli4/scores.csv row 93"
+    },
+    {
+      "dataset": "ecoli4",
+      "classifier": "GNB",
+      "method": "bfch_smote",
+      "metric": "mcc",
+      "mean": 0.7141097593709899,
+      "sample_sd": 0.15169148066394056,
+      "n": 25,
+      "evidence": "docs/sshr_pilot/ecoli4/scores.csv row 94"
+    },
+    {
+      "dataset": "ecoli4",
+      "classifier": "GNB",
+      "method": "bfch_smote",
+      "metric": "probability_auc",
+      "mean": 0.985028801843318,
+      "sample_sd": 0.014471660980822842,
+      "n": 25,
+      "evidence": "docs/sshr_pilot/ecoli4/scores.csv row 95"
+    },
+    {
+      "dataset": "ecoli4",
+      "classifier": "GNB",
+      "method": "bfch_smote",
+      "metric": "fpr",
+      "mean": 0.02152905785970302,
+      "sample_sd": 0.018830401691498518,
+      "n": 25,
+      "evidence": "docs/sshr_pilot/ecoli4/scores.csv row 96"
+    },
+    {
+      "dataset": "ecoli4",
+      "classifier": "GNB",
+      "method": "ec_ebo",
+      "metric": "f1",
+      "mean": 0.5870635638870932,
+      "sample_sd": 0.13917972339250612,
+      "n": 25,
+      "evidence": "docs/sshr_pilot/ecoli4/scores.csv row 102"
+    },
+    {
+      "dataset": "ecoli4",
+      "classifier": "GNB",
+      "method": "ec_ebo",
+      "metric": "gmean",
+      "mean": 0.9092910607098306,
+      "sample_sd": 0.07476241662488023,
+      "n": 25,
+      "evidence": "docs/sshr_pilot/ecoli4/scores.csv row 103"
+    },
+    {
+      "dataset": "ecoli4",
+      "classifier": "GNB",
+      "method": "ec_ebo",
+      "metric": "mcc",
+      "mean": 0.6015997365338397,
+      "sample_sd": 0.1355244836502076,
+      "n": 25,
+      "evidence": "docs/sshr_pilot/ecoli4/scores.csv row 104"
+    },
+    {
+      "dataset": "ecoli4",
+      "classifier": "GNB",
+      "method": "ec_ebo",
+      "metric": "probability_auc",
+      "mean": 0.9838169002816181,
+      "sample_sd": 0.025426406680136963,
+      "n": 25,
+      "evidence": "docs/sshr_pilot/ecoli4/scores.csv row 105"
+    },
+    {
+      "dataset": "ecoli4",
+      "classifier": "GNB",
+      "method": "ec_ebo",
+      "metric": "fpr",
+      "mean": 0.08222478238607271,
+      "sample_sd": 0.0445900323723704,
+      "n": 25,
+      "evidence": "docs/sshr_pilot/ecoli4/scores.csv row 106"
+    },
+    {
+      "dataset": "ecoli4",
+      "classifier": "GNB",
+      "method": "sshr",
+      "metric": "f1",
+      "mean": 0.5713916279798633,
+      "sample_sd": 0.21032309651447564,
+      "n": 25,
+      "evidence": "docs/sshr_pilot/ecoli4/scores.csv row 112"
+    },
+    {
+      "dataset": "ecoli4",
+      "classifier": "GNB",
+      "method": "sshr",
+      "metric": "gmean",
+      "mean": 0.857982521202105,
+      "sample_sd": 0.15892561710002975,
+      "n": 25,
+      "evidence": "docs/sshr_pilot/ecoli4/scores.csv row 113"
+    },
+    {
+      "dataset": "ecoli4",
+      "classifier": "GNB",
+      "method": "sshr",
+      "metric": "mcc",
+      "mean": 0.5824047822311963,
+      "sample_sd": 0.21032876509682003,
+      "n": 25,
+      "evidence": "docs/sshr_pilot/ecoli4/scores.csv row 114"
+    },
+    {
+      "dataset": "ecoli4",
+      "classifier": "GNB",
+      "method": "sshr",
+      "metric": "probability_auc",
+      "mean": 0.9756813396057348,
+      "sample_sd": 0.0264109728817616,
+      "n": 25,
+      "evidence": "docs/sshr_pilot/ecoli4/scores.csv row 115"
+    },
+    {
+      "dataset": "ecoli4",
+      "classifier": "GNB",
+      "method": "sshr",
+      "metric": "fpr",
+      "mean": 0.07790130568356375,
+      "sample_sd": 0.0612459590490312,
+      "n": 25,
+      "evidence": "docs/sshr_pilot/ecoli4/scores.csv row 116"
+    },
+    {
+      "dataset": "yeast4",
+      "classifier": "LogReg",
+      "method": "nores",
+      "metric": "f1",
+      "mean": 0.20181968977015416,
+      "sample_sd": 0.17589590874005048,
+      "n": 25,
+      "evidence": "docs/sshr_pilot/yeast4/scores.csv row 2"
+    },
+    {
+      "dataset": "yeast4",
+      "classifier": "LogReg",
+      "method": "nores",
+      "metric": "gmean",
+      "mean": 0.3049980693677516,
+      "sample_sd": 0.22421987622189218,
+      "n": 25,
+      "evidence": "docs/sshr_pilot/yeast4/scores.csv row 3"
+    },
+    {
+      "dataset": "yeast4",
+      "classifier": "LogReg",
+      "method": "nores",
+      "metric": "mcc",
+      "mean": 0.23308812533282286,
+      "sample_sd": 0.18886156941309,
+      "n": 25,
+      "evidence": "docs/sshr_pilot/yeast4/scores.csv row 4"
+    },
+    {
+      "dataset": "yeast4",
+      "classifier": "LogReg",
+      "method": "nores",
+      "metric": "probability_auc",
+      "mean": 0.8717651784656861,
+      "sample_sd": 0.06522704875080647,
+      "n": 25,
+      "evidence": "docs/sshr_pilot/yeast4/scores.csv row 5"
+    },
+    {
+      "dataset": "yeast4",
+      "classifier": "LogReg",
+      "method": "nores",
+      "metric": "fpr",
+      "mean": 0.004595442511247734,
+      "sample_sd": 0.004671428627959407,
+      "n": 25,
+      "evidence": "docs/sshr_pilot/yeast4/scores.csv row 6"
+    },
+    {
+      "dataset": "yeast4",
+      "classifier": "LogReg",
+      "method": "smote",
+      "metric": "f1",
+      "mean": 0.27573713120801013,
+      "sample_sd": 0.08106326402577764,
+      "n": 25,
+      "evidence": "docs/sshr_pilot/yeast4/scores.csv row 12"
+    },
+    {
+      "dataset": "yeast4",
+      "classifier": "LogReg",
+      "method": "smote",
+      "metric": "gmean",
+      "mean": 0.7897718237995036,
+      "sample_sd": 0.07574408551511204,
+      "n": 25,
+      "evidence": "docs/sshr_pilot/yeast4/scores.csv row 13"
+    },
+    {
+      "dataset": "yeast4",
+      "classifier": "LogReg",
+      "method": "smote",
+      "metric": "mcc",
+      "mean": 0.3083404836863848,
+      "sample_sd": 0.07978416500589386,
+      "n": 25,
+      "evidence": "docs/sshr_pilot/yeast4/scores.csv row 14"
+    },
+    {
+      "dataset": "yeast4",
+      "classifier": "LogReg",
+      "method": "smote",
+      "metric": "probability_auc",
+      "mean": 0.8697780849606779,
+      "sample_sd": 0.05743224562658952,
+      "n": 25,
+      "evidence": "docs/sshr_pilot/yeast4/scores.csv row 15"
+    },
+    {
+      "dataset": "yeast4",
+      "classifier": "LogReg",
+      "method": "smote",
+      "metric": "fpr",
+      "mean": 0.12581605692211645,
+      "sample_sd": 0.02901667550607495,
+      "n": 25,
+      "evidence": "docs/sshr_pilot/yeast4/scores.csv row 16"
+    },
+    {
+      "dataset": "yeast4",
+      "classifier": "LogReg",
+      "method": "ugo_smote",
+      "metric": "f1",
+      "mean": 0.25186956504108204,
+      "sample_sd": 0.18080849385480172,
+      "n": 25,
+      "evidence": "docs/sshr_pilot/yeast4/scores.csv row 22"
+    },
+    {
+      "dataset": "yeast4",
+      "classifier": "LogReg",
+      "method": "ugo_smote",
+      "metric": "gmean",
+      "mean": 0.3961026285500348,
+      "sample_sd": 0.27169983478621423,
+      "n": 25,
+      "evidence": "docs/sshr_pilot/yeast4/scores.csv row 23"
+    },
+    {
+      "dataset": "yeast4",
+      "classifier": "LogReg",
+      "method": "ugo_smote",
+      "metric": "mcc",
+      "mean": 0.2717255199539974,
+      "sample_sd": 0.17964716619089438,
+      "n": 25,
+      "evidence": "docs/sshr_pilot/yeast4/scores.csv row 24"
+    },
+    {
+      "dataset": "yeast4",
+      "classifier": "LogReg",
+      "method": "ugo_smote",
+      "metric": "probability_auc",
+      "mean": 0.8736729521092976,
+      "sample_sd": 0.06153725075553766,
+      "n": 25,
+      "evidence": "docs/sshr_pilot/yeast4/scores.csv row 25"
+    },
+    {
+      "dataset": "yeast4",
+      "classifier": "LogReg",
+      "method": "ugo_smote",
+      "metric": "fpr",
+      "mean": 0.010585156071543412,
+      "sample_sd": 0.010404087495322642,
+      "n": 25,
+      "evidence": "docs/sshr_pilot/yeast4/scores.csv row 26"
+    },
+    {
+      "dataset": "yeast4",
+      "classifier": "LogReg",
+      "method": "bfch_smote",
+      "metric": "f1",
+      "mean": 0.30248765789744964,
+      "sample_sd": 0.08753101539562766,
+      "n": 25,
+      "evidence": "docs/sshr_pilot/yeast4/scores.csv row 32"
+    },
+    {
+      "dataset": "yeast4",
+      "classifier": "LogReg",
+      "method": "bfch_smote",
+      "metric": "gmean",
+      "mean": 0.7738588772373644,
+      "sample_sd": 0.08065714602489181,
+      "n": 25,
+      "evidence": "docs/sshr_pilot/yeast4/scores.csv row 33"
+    },
+    {
+      "dataset": "yeast4",
+      "classifier": "LogReg",
+      "method": "bfch_smote",
+      "metric": "mcc",
+      "mean": 0.3234363753076908,
+      "sample_sd": 0.08920045170265097,
+      "n": 25,
+      "evidence": "docs/sshr_pilot/yeast4/scores.csv row 34"
+    },
+    {
+      "dataset": "yeast4",
+      "classifier": "LogReg",
+      "method": "bfch_smote",
+      "metric": "probability_auc",
+      "mean": 0.8544623326327453,
+      "sample_sd": 0.06821177701283873,
+      "n": 25,
+      "evidence": "docs/sshr_pilot/yeast4/scores.csv row 35"
+    },
+    {
+      "dataset": "yeast4",
+      "classifier": "LogReg",
+      "method": "bfch_smote",
+      "metric": "fpr",
+      "mean": 0.09953254875357531,
+      "sample_sd": 0.025337671110433266,
+      "n": 25,
+      "evidence": "docs/sshr_pilot/yeast4/scores.csv row 36"
+    },
+    {
+      "dataset": "yeast4",
+      "classifier": "LogReg",
+      "method": "ec_ebo",
+      "metric": "f1",
+      "mean": 0.3188758061752635,
+      "sample_sd": 0.08522714194339637,
+      "n": 25,
+      "evidence": "docs/sshr_pilot/yeast4/scores.csv row 42"
+    },
+    {
+      "dataset": "yeast4",
+      "classifier": "LogReg",
+      "method": "ec_ebo",
+      "metric": "gmean",
+      "mean": 0.7854232260787009,
+      "sample_sd": 0.07462053890388572,
+      "n": 25,
+      "evidence": "docs/sshr_pilot/yeast4/scores.csv row 43"
+    },
+    {
+      "dataset": "yeast4",
+      "classifier": "LogReg",
+      "method": "ec_ebo",
+      "metric": "mcc",
+      "mean": 0.3413792790768213,
+      "sample_sd": 0.08252728913035348,
+      "n": 25,
+      "evidence": "docs/sshr_pilot/yeast4/scores.csv row 44"
+    },
+    {
+      "dataset": "yeast4",
+      "classifier": "LogReg",
+      "method": "ec_ebo",
+      "metric": "probability_auc",
+      "mean": 0.8704786128792806,
+      "sample_sd": 0.06674054255695992,
+      "n": 25,
+      "evidence": "docs/sshr_pilot/yeast4/scores.csv row 45"
+    },
+    {
+      "dataset": "yeast4",
+      "classifier": "LogReg",
+      "method": "ec_ebo",
+      "metric": "fpr",
+      "mean": 0.09234912689041357,
+      "sample_sd": 0.01858491577815678,
+      "n": 25,
+      "evidence": "docs/sshr_pilot/yeast4/scores.csv row 46"
+    },
+    {
+      "dataset": "yeast4",
+      "classifier": "LogReg",
+      "method": "sshr",
+      "metric": "f1",
+      "mean": 0.2961680120698989,
+      "sample_sd": 0.09083706567945184,
+      "n": 25,
+      "evidence": "docs/sshr_pilot/yeast4/scores.csv row 52"
+    },
+    {
+      "dataset": "yeast4",
+      "classifier": "LogReg",
+      "method": "sshr",
+      "metric": "gmean",
+      "mean": 0.7934730575619637,
+      "sample_sd": 0.12839253705450437,
+      "n": 25,
+      "evidence": "docs/sshr_pilot/yeast4/scores.csv row 53"
+    },
+    {
+      "dataset": "yeast4",
+      "classifier": "LogReg",
+      "method": "sshr",
+      "metric": "mcc",
+      "mean": 0.33629739072301307,
+      "sample_sd": 0.08805497934672007,
+      "n": 25,
+      "evidence": "docs/sshr_pilot/yeast4/scores.csv row 54"
+    },
+    {
+      "dataset": "yeast4",
+      "classifier": "LogReg",
+      "method": "sshr",
+      "metric": "probability_auc",
+      "mean": 0.8780621633883643,
+      "sample_sd": 0.07289097645304134,
+      "n": 25,
+      "evidence": "docs/sshr_pilot/yeast4/scores.csv row 55"
+    },
+    {
+      "dataset": "yeast4",
+      "classifier": "LogReg",
+      "method": "sshr",
+      "metric": "fpr",
+      "mean": 0.11065946966431241,
+      "sample_sd": 0.03508975605596323,
+      "n": 25,
+      "evidence": "docs/sshr_pilot/yeast4/scores.csv row 56"
+    },
+    {
+      "dataset": "yeast4",
+      "classifier": "GNB",
+      "method": "nores",
+      "metric": "f1",
+      "mean": 0.27684327285712396,
+      "sample_sd": 0.12432689641555215,
+      "n": 25,
+      "evidence": "docs/sshr_pilot/yeast4/scores.csv row 62"
+    },
+    {
+      "dataset": "yeast4",
+      "classifier": "GNB",
+      "method": "nores",
+      "metric": "gmean",
+      "mean": 0.5895090013572026,
+      "sample_sd": 0.12551187688983126,
+      "n": 25,
+      "evidence": "docs/sshr_pilot/yeast4/scores.csv row 63"
+    },
+    {
+      "dataset": "yeast4",
+      "classifier": "GNB",
+      "method": "nores",
+      "metric": "mcc",
+      "mean": 0.257950710247415,
+      "sample_sd": 0.126754886646835,
+      "n": 25,
+      "evidence": "docs/sshr_pilot/yeast4/scores.csv row 64"
+    },
+    {
+      "dataset": "yeast4",
+      "classifier": "GNB",
+      "method": "nores",
+      "metric": "probability_auc",
+      "mean": 0.8356786919236825,
+      "sample_sd": 0.08542904732412017,
+      "n": 25,
+      "evidence": "docs/sshr_pilot/yeast4/scores.csv row 65"
+    },
+    {
+      "dataset": "yeast4",
+      "classifier": "GNB",
+      "method": "nores",
+      "metric": "fpr",
+      "mean": 0.048790198130817586,
+      "sample_sd": 0.017066182112557185,
+      "n": 25,
+      "evidence": "docs/sshr_pilot/yeast4/scores.csv row 66"
+    },
+    {
+      "dataset": "yeast4",
+      "classifier": "GNB",
+      "method": "smote",
+      "metric": "f1",
+      "mean": 0.23006573041081538,
+      "sample_sd": 0.06419863199292246,
+      "n": 25,
+      "evidence": "docs/sshr_pilot/yeast4/scores.csv row 72"
+    },
+    {
+      "dataset": "yeast4",
+      "classifier": "GNB",
+      "method": "smote",
+      "metric": "gmean",
+      "mean": 0.7597643747393182,
+      "sample_sd": 0.08571111997318594,
+      "n": 25,
+      "evidence": "docs/sshr_pilot/yeast4/scores.csv row 73"
+    },
+    {
+      "dataset": "yeast4",
+      "classifier": "GNB",
+      "method": "smote",
+      "metric": "mcc",
+      "mean": 0.2599491057029476,
+      "sample_sd": 0.07106414322462279,
+      "n": 25,
+      "evidence": "docs/sshr_pilot/yeast4/scores.csv row 74"
+    },
+    {
+      "dataset": "yeast4",
+      "classifier": "GNB",
+      "method": "smote",
+      "metric": "probability_auc",
+      "mean": 0.8186993264325446,
+      "sample_sd": 0.08474621246550097,
+      "n": 25,
+      "evidence": "docs/sshr_pilot/yeast4/scores.csv row 75"
+    },
+    {
+      "dataset": "yeast4",
+      "classifier": "GNB",
+      "method": "smote",
+      "metric": "fpr",
+      "mean": 0.15345916001322701,
+      "sample_sd": 0.03819445594566033,
+      "n": 25,
+      "evidence": "docs/sshr_pilot/yeast4/scores.csv row 76"
+    },
+    {
+      "dataset": "yeast4",
+      "classifier": "GNB",
+      "method": "ugo_smote",
+      "metric": "f1",
+      "mean": 0.26392537466336374,
+      "sample_sd": 0.12200517213388087,
+      "n": 25,
+      "evidence": "docs/sshr_pilot/yeast4/scores.csv row 82"
+    },
+    {
+      "dataset": "yeast4",
+      "classifier": "GNB",
+      "method": "ugo_smote",
+      "metric": "gmean",
+      "mean": 0.5680330837374197,
+      "sample_sd": 0.1313208510773227,
+      "n": 25,
+      "evidence": "docs/sshr_pilot/yeast4/scores.csv row 83"
+    },
+    {
+      "dataset": "yeast4",
+      "classifier": "GNB",
+      "method": "ugo_smote",
+      "metric": "mcc",
+      "mean": 0.24377196734489642,
+      "sample_sd": 0.12536984244394636,
+      "n": 25,
+      "evidence": "docs/sshr_pilot/yeast4/scores.csv row 84"
+    },
+    {
+      "dataset": "yeast4",
+      "classifier": "GNB",
+      "method": "ugo_smote",
+      "metric": "probability_auc",
+      "mean": 0.8325862701475928,
+      "sample_sd": 0.08363946418410204,
+      "n": 25,
+      "evidence": "docs/sshr_pilot/yeast4/scores.csv row 85"
+    },
+    {
+      "dataset": "yeast4",
+      "classifier": "GNB",
+      "method": "ugo_smote",
+      "metric": "fpr",
+      "mean": 0.04699746888502269,
+      "sample_sd": 0.017728511150784262,
+      "n": 25,
+      "evidence": "docs/sshr_pilot/yeast4/scores.csv row 86"
+    },
+    {
+      "dataset": "yeast4",
+      "classifier": "GNB",
+      "method": "bfch_smote",
+      "metric": "f1",
+      "mean": 0.22387921139836875,
+      "sample_sd": 0.07792540085805172,
+      "n": 25,
+      "evidence": "docs/sshr_pilot/yeast4/scores.csv row 92"
+    },
+    {
+      "dataset": "yeast4",
+      "classifier": "GNB",
+      "method": "bfch_smote",
+      "metric": "gmean",
+      "mean": 0.6872335405048481,
+      "sample_sd": 0.11789189393762203,
+      "n": 25,
+      "evidence": "docs/sshr_pilot/yeast4/scores.csv row 93"
+    },
+    {
+      "dataset": "yeast4",
+      "classifier": "GNB",
+      "method": "bfch_smote",
+      "metric": "mcc",
+      "mean": 0.2311631492265604,
+      "sample_sd": 0.09172265245071684,
+      "n": 25,
+      "evidence": "docs/sshr_pilot/yeast4/scores.csv row 94"
+    },
+    {
+      "dataset": "yeast4",
+      "classifier": "GNB",
+      "method": "bfch_smote",
+      "metric": "probability_auc",
+      "mean": 0.7782312183773673,
+      "sample_sd": 0.08474483197229389,
+      "n": 25,
+      "evidence": "docs/sshr_pilot/yeast4/scores.csv row 95"
+    },
+    {
+      "dataset": "yeast4",
+      "classifier": "GNB",
+      "method": "bfch_smote",
+      "metric": "fpr",
+      "mean": 0.124578757940579,
+      "sample_sd": 0.04694276278783493,
+      "n": 25,
+      "evidence": "docs/sshr_pilot/yeast4/scores.csv row 96"
+    },
+    {
+      "dataset": "yeast4",
+      "classifier": "GNB",
+      "method": "ec_ebo",
+      "metric": "f1",
+      "mean": 0.27889425947088725,
+      "sample_sd": 0.0806941589145951,
+      "n": 25,
+      "evidence": "docs/sshr_pilot/yeast4/scores.csv row 102"
+    },
+    {
+      "dataset": "yeast4",
+      "classifier": "GNB",
+      "method": "ec_ebo",
+      "metric": "gmean",
+      "mean": 0.7782418691345427,
+      "sample_sd": 0.09181335222165478,
+      "n": 25,
+      "evidence": "docs/sshr_pilot/yeast4/scores.csv row 103"
+    },
+    {
+      "dataset": "yeast4",
+      "classifier": "GNB",
+      "method": "ec_ebo",
+      "metric": "mcc",
+      "mean": 0.30648219837776136,
+      "sample_sd": 0.08807458351584449,
+      "n": 25,
+      "evidence": "docs/sshr_pilot/yeast4/scores.csv row 104"
+    },
+    {
+      "dataset": "yeast4",
+      "classifier": "GNB",
+      "method": "ec_ebo",
+      "metric": "probability_auc",
+      "mean": 0.8360148192284664,
+      "sample_sd": 0.09689935285188464,
+      "n": 25,
+      "evidence": "docs/sshr_pilot/yeast4/scores.csv row 105"
+    },
+    {
+      "dataset": "yeast4",
+      "classifier": "GNB",
+      "method": "ec_ebo",
+      "metric": "fpr",
+      "mean": 0.11500481435400169,
+      "sample_sd": 0.024639480960214774,
+      "n": 25,
+      "evidence": "docs/sshr_pilot/yeast4/scores.csv row 106"
+    },
+    {
+      "dataset": "yeast4",
+      "classifier": "GNB",
+      "method": "sshr",
+      "metric": "f1",
+      "mean": 0.2722018125869942,
+      "sample_sd": 0.08095241782078612,
+      "n": 25,
+      "evidence": "docs/sshr_pilot/yeast4/scores.csv row 112"
+    },
+    {
+      "dataset": "yeast4",
+      "classifier": "GNB",
+      "method": "sshr",
+      "metric": "gmean",
+      "mean": 0.7032271495194273,
+      "sample_sd": 0.1294070015660885,
+      "n": 25,
+      "evidence": "docs/sshr_pilot/yeast4/scores.csv row 113"
+    },
+    {
+      "dataset": "yeast4",
+      "classifier": "GNB",
+      "method": "sshr",
+      "metric": "mcc",
+      "mean": 0.28252769436321573,
+      "sample_sd": 0.08210851871382768,
+      "n": 25,
+      "evidence": "docs/sshr_pilot/yeast4/scores.csv row 114"
+    },
+    {
+      "dataset": "yeast4",
+      "classifier": "GNB",
+      "method": "sshr",
+      "metric": "probability_auc",
+      "mean": 0.8356065023483905,
+      "sample_sd": 0.08724443013356109,
+      "n": 25,
+      "evidence": "docs/sshr_pilot/yeast4/scores.csv row 115"
+    },
+    {
+      "dataset": "yeast4",
+      "classifier": "GNB",
+      "method": "sshr",
+      "metric": "fpr",
+      "mean": 0.09325853012821925,
+      "sample_sd": 0.047692701105929616,
+      "n": 25,
+      "evidence": "docs/sshr_pilot/yeast4/scores.csv row 116"
+    }
+  ],
+  "ablation": [
+    {
+      "dataset": "ecoli4",
+      "classifier": "LogReg",
+      "metric": "f1",
+      "delta": -0.07773474272545482,
+      "sample_sd_delta": 0.08571900434338378,
+      "n": 25,
+      "evidence": "docs/sshr_pilot/ecoli4/ablation.csv row 2"
+    },
+    {
+      "dataset": "ecoli4",
+      "classifier": "LogReg",
+      "metric": "gmean",
+      "delta": -0.01598233194684211,
+      "sample_sd_delta": 0.0170991472583088,
+      "n": 25,
+      "evidence": "docs/sshr_pilot/ecoli4/ablation.csv row 3"
+    },
+    {
+      "dataset": "ecoli4",
+      "classifier": "LogReg",
+      "metric": "mcc",
+      "delta": -0.06782397837300719,
+      "sample_sd_delta": 0.0749297525772028,
+      "n": 25,
+      "evidence": "docs/sshr_pilot/ecoli4/ablation.csv row 4"
+    },
+    {
+      "dataset": "ecoli4",
+      "classifier": "LogReg",
+      "metric": "probability_auc",
+      "delta": -0.0027977470558115903,
+      "sample_sd_delta": 0.005891156760486561,
+      "n": 25,
+      "evidence": "docs/sshr_pilot/ecoli4/ablation.csv row 5"
+    },
+    {
+      "dataset": "ecoli4",
+      "classifier": "LogReg",
+      "metric": "fpr",
+      "delta": 0.030268177163338454,
+      "sample_sd_delta": 0.032374673276689095,
+      "n": 25,
+      "evidence": "docs/sshr_pilot/ecoli4/ablation.csv row 6"
+    },
+    {
+      "dataset": "ecoli4",
+      "classifier": "GNB",
+      "metric": "f1",
+      "delta": -0.09224684465860937,
+      "sample_sd_delta": 0.1393089544642928,
+      "n": 25,
+      "evidence": "docs/sshr_pilot/ecoli4/ablation.csv row 7"
+    },
+    {
+      "dataset": "ecoli4",
+      "classifier": "GNB",
+      "metric": "gmean",
+      "delta": -0.005435550758967185,
+      "sample_sd_delta": 0.09022379315723522,
+      "n": 25,
+      "evidence": "docs/sshr_pilot/ecoli4/ablation.csv row 8"
+    },
+    {
+      "dataset": "ecoli4",
+      "classifier": "GNB",
+      "metric": "mcc",
+      "delta": -0.08102901407204001,
+      "sample_sd_delta": 0.13008466289609524,
+      "n": 25,
+      "evidence": "docs/sshr_pilot/ecoli4/ablation.csv row 9"
+    },
+    {
+      "dataset": "ecoli4",
+      "classifier": "GNB",
+      "metric": "probability_auc",
+      "delta": -0.007807987711213506,
+      "sample_sd_delta": 0.01070690718354157,
+      "n": 25,
+      "evidence": "docs/sshr_pilot/ecoli4/ablation.csv row 10"
+    },
+    {
+      "dataset": "ecoli4",
+      "classifier": "GNB",
+      "metric": "fpr",
+      "delta": 0.03608358934971838,
+      "sample_sd_delta": 0.03994043232415519,
+      "n": 25,
+      "evidence": "docs/sshr_pilot/ecoli4/ablation.csv row 11"
+    },
+    {
+      "dataset": "yeast4",
+      "classifier": "LogReg",
+      "metric": "f1",
+      "delta": -0.009633837956244133,
+      "sample_sd_delta": 0.029362575084152583,
+      "n": 25,
+      "evidence": "docs/sshr_pilot/yeast4/ablation.csv row 2"
+    },
+    {
+      "dataset": "yeast4",
+      "classifier": "LogReg",
+      "metric": "gmean",
+      "delta": 0.017215239627617084,
+      "sample_sd_delta": 0.045558045540021644,
+      "n": 25,
+      "evidence": "docs/sshr_pilot/yeast4/ablation.csv row 3"
+    },
+    {
+      "dataset": "yeast4",
+      "classifier": "LogReg",
+      "metric": "mcc",
+      "delta": -0.0018025399285494547,
+      "sample_sd_delta": 0.03185036124132955,
+      "n": 25,
+      "evidence": "docs/sshr_pilot/yeast4/ablation.csv row 4"
+    },
+    {
+      "dataset": "yeast4",
+      "classifier": "LogReg",
+      "metric": "probability_auc",
+      "delta": -0.007084995725232068,
+      "sample_sd_delta": 0.01359806343430474,
+      "n": 25,
+      "evidence": "docs/sshr_pilot/yeast4/ablation.csv row 5"
+    },
+    {
+      "dataset": "yeast4",
+      "classifier": "LogReg",
+      "metric": "fpr",
+      "delta": 0.014532215348223463,
+      "sample_sd_delta": 0.021556810804543528,
+      "n": 25,
+      "evidence": "docs/sshr_pilot/yeast4/ablation.csv row 6"
+    },
+    {
+      "dataset": "yeast4",
+      "classifier": "GNB",
+      "metric": "f1",
+      "delta": -0.005395304754155427,
+      "sample_sd_delta": 0.10994713600881086,
+      "n": 25,
+      "evidence": "docs/sshr_pilot/yeast4/ablation.csv row 7"
+    },
+    {
+      "dataset": "yeast4",
+      "classifier": "GNB",
+      "metric": "gmean",
+      "delta": 0.08103138041455467,
+      "sample_sd_delta": 0.22325568446023608,
+      "n": 25,
+      "evidence": "docs/sshr_pilot/yeast4/ablation.csv row 8"
+    },
+    {
+      "dataset": "yeast4",
+      "classifier": "GNB",
+      "metric": "mcc",
+      "delta": 0.0016684478972248773,
+      "sample_sd_delta": 0.12662022271919737,
+      "n": 25,
+      "evidence": "docs/sshr_pilot/yeast4/ablation.csv row 9"
+    },
+    {
+      "dataset": "yeast4",
+      "classifier": "GNB",
+      "metric": "probability_auc",
+      "delta": 0.029623971034376136,
+      "sample_sd_delta": 0.05057413260728688,
+      "n": 25,
+      "evidence": "docs/sshr_pilot/yeast4/ablation.csv row 10"
+    },
+    {
+      "dataset": "yeast4",
+      "classifier": "GNB",
+      "metric": "fpr",
+      "delta": 0.03325637064113215,
+      "sample_sd_delta": 0.056756421706875254,
+      "n": 25,
+      "evidence": "docs/sshr_pilot/yeast4/ablation.csv row 11"
+    }
+  ],
+  "pseudo": [
+    {
+      "dataset": "ecoli4",
+      "classifier": "LogReg",
+      "correct": 170,
+      "selected": 313,
+      "precision": 0.5431309904153354
+    },
+    {
+      "dataset": "ecoli4",
+      "classifier": "GNB",
+      "correct": 170,
+      "selected": 313,
+      "precision": 0.5431309904153354
+    },
+    {
+      "dataset": "yeast4",
+      "classifier": "LogReg",
+      "correct": 96,
+      "selected": 273,
+      "precision": 0.3516483516483517
+    },
+    {
+      "dataset": "yeast4",
+      "classifier": "GNB",
+      "correct": 96,
+      "selected": 273,
+      "precision": 0.3516483516483517
+    }
+  ],
+  "preexisting_artifact_sha256": {
+    "docs/sshr_pilot/ecoli4/ablation.csv": "741a7b2c2c56294fe786e60b645935714c38be030ac1fe5ed47a1adddab674b0",
+    "docs/sshr_pilot/ecoli4/clusters.csv": "353b3fb05dc874cae8032868e751afd044b803f9b5a49dc06d61bc3f9fdffffc",
+    "docs/sshr_pilot/ecoli4/coverage.csv": "7a718af8c44558987e50f18e12a0a913ca056ec0d193d791fb99f98245e61b54",
+    "docs/sshr_pilot/ecoli4/diagnostics.csv": "f9c23d2ee6ccdad28d88dcb1348d8a795bbc4945806233d8c9d1fb447508252b",
+    "docs/sshr_pilot/ecoli4/scores.csv": "a3fa7ea7152e0d1ca50369017033c36db9def61b3592d6eda4719356114574a1",
+    "docs/sshr_pilot/ecoli4/summary.json": "3b0e99bfcf0cf1033f8e6fadf9d3018fc7716dc03c0e0956ddd9510d9f81df53",
+    "docs/sshr_pilot/yeast4/ablation.csv": "2c456fbe97a8fcf12276d60971510cc261285112584f90cd753be9b248dcf1e9",
+    "docs/sshr_pilot/yeast4/clusters.csv": "a67e396dc32241ce948ee817f6dc621a975558d4fa6ec925defd3374aca7c494",
+    "docs/sshr_pilot/yeast4/coverage.csv": "306cd3959853b4f89079473df58c55bcd90730970a7834afb4ac1c04fc8ae796",
+    "docs/sshr_pilot/yeast4/diagnostics.csv": "26576e7613f3496692bdd7889155f2845305b8d8054ee19e7951f383280fdcf7",
+    "docs/sshr_pilot/yeast4/scores.csv": "116e2b8990cad7481de1a6da67076fd9b26bcb127df21648960708842a0df546",
+    "docs/sshr_pilot/yeast4/summary.json": "9229efc339d8360f7394cba14bf8ca0aac28dc8ba06ad61b6064ac13a4697773"
+  },
+  "mismatches": []
+}

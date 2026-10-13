@@ -1,0 +1,571 @@
+{
+  "all_assertions_passed": true,
+  "all_job_artifact_tree_sha256": "98f60e5d1c186882154401dfc6fa4f2d7031c0cf845abfa7067c9e0350bc7ee1",
+  "assertion_counts": {
+    "ablation_source_design_and_software_identical": 10,
+    "aggregate_ablation_difference_sd_recomputed": 20,
+    "aggregate_ablation_empty_u_mean_recomputed": 20,
+    "aggregate_ablation_exact_25_paired_fold_ids": 20,
+    "aggregate_ablation_paired_difference_recomputed": 20,
+    "aggregate_ablation_with_u_mean_recomputed": 20,
+    "aggregate_cluster_size_and_observed_counts": 1024,
+    "aggregate_diagnostic_coverage": 24,
+    "aggregate_metric_mean_recomputed": 240,
+    "aggregate_metric_sd_recomputed": 240,
+    "aggregate_nores_mean_recomputed": 240,
+    "aggregate_paired_difference_recomputed": 240,
+    "aggregate_pseudo_accuracy_recomputed": 4,
+    "aggregate_pseudo_correct_total": 4,
+    "aggregate_sample_diagnostic_totals": 264,
+    "aggregate_sampler_status_counts": 4,
+    "aggregate_scores_exact_25_paired_fold_ids": 240,
+    "aggregate_six_method_coverage": 24,
+    "aggregate_training_proxy_event_counts": 204,
+    "aggregate_training_proxy_rate": 68,
+    "all_800_actual_jobs_audited": 1,
+    "archive_member_matches_raw_source": 2,
+    "class_count_conservation": 800,
+    "coordinate_group_labels_nonconflicting": 2,
+    "csv_nested_field_matches_summary_json": 544,
+    "csv_null_field_matches_summary_json": 3424,
+    "csv_scalar_field_matches_summary_json": 21712,
+    "csv_summary_column_set": 1332,
+    "csv_summary_row_count": 10,
+    "every_raw_row_tested_once_per_repeat": 20,
+    "exact_25_unique_fold_and_mask_ids": 4,
+    "exact_saved_job_count": 4,
+    "fixed_protocol_and_methods": 4,
+    "frozen_design_reproduced_from_documented_seeds": 4,
+    "frozen_quota_accounting": 200,
+    "heldout_confusion_counts_recomputed": 800,
+    "heldout_f1_recomputed": 800,
+    "heldout_fpr_recomputed": 800,
+    "heldout_gmean_recomputed": 800,
+    "heldout_mcc_recomputed": 800,
+    "heldout_probability_auc_recomputed": 800,
+    "heldout_probability_contract": 800,
+    "independent_job_seed": 800,
+    "job_hash_envelope_and_filename": 800,
+    "job_success_unique_and_expected": 800,
+    "labeled_hidden_exact_training_partition": 100,
+    "labeled_lineage_index_identity": 52986,
+    "lineage_kind_row_conservation": 200,
+    "literal_paper_eq4_objective_f1_recomputed": 200,
+    "literal_paper_objective_J_recomputed": 200,
+    "literal_paper_objective_accuracy_recomputed": 200,
+    "manifest_content_hash": 4,
+    "manifest_frozen_source_fingerprint": 4,
+    "normalized_design_indices_match_frozen_design": 100,
+    "normalized_fold_and_mask_hashes": 4,
+    "only_declared_ugo_warning": 100,
+    "only_sshr_uses_outer_training_unlabeled_pool": 800,
+    "original_numeric_source_metadata": 2,
+    "original_source_dimensions_and_class_counts": 2,
+    "outer_training_test_exact_complements": 100,
+    "printed_objective_cluster_confusion_counts": 200,
+    "printed_objective_f1_anomaly_flags_exact": 200,
+    "probability_auc_alias": 800,
+    "pseudo_accuracy_fraction_recomputed": 200,
+    "pseudo_accuracy_recomputed_from_hidden_gold_only": 200,
+    "pseudo_lineage_index_identity": 1172,
+    "pseudo_lineage_order_matches_selection_audit": 200,
+    "pseudo_selected_from_training_u_only": 200,
+    "raw_coordinate_groups_outer_and_mask_disjoint": 100,
+    "raw_input_fingerprint": 4,
+    "registered_archive_exists": 2,
+    "registered_archive_hash": 2,
+    "registered_source_hash_and_bytes": 2,
+    "retained_original_rows_unique": 200,
+    "same_fold_and_reduced_labels_for_each_method": 800,
+    "sample_row_conservation": 800,
+    "saved_nores_ablation_equivalence": 100,
+    "saved_test_truth_matches_original_source": 800,
+    "smote_coefficient_and_label": 42610,
+    "smote_distinct_observation_endpoints": 42610,
+    "smote_endpoint_provenance_and_observed_or_selected_minority": 85220,
+    "source_and_raw_coordinate_group_provenance": 4,
+    "sshr_augmentation_classifier_independent": 100,
+    "standard_heldout_f1_bounded": 800
+  },
+  "assertions_total": 271321,
+  "audit_script_sha256": "8c42f6b0930c9ab89f72548c0a9400967b6ef018b550491134fe8e67e2b0033e",
+  "controlled_runner_file_sha256": "93509fcb6bb5fa0991a194b30f2aa5912f7c1807be2ed1b044048e2d2a034eec",
+  "coordinate_group_scope": "Groups independently reconstructed from ORIGINAL raw X tuples only; not preprocessed or generated coordinates.",
+  "datasets": {
+    "ecoli4": {
+      "aggregate_artifact_file_sha256": {
+        "docs/sshr_pilot/ecoli4/ablation.csv": "741a7b2c2c56294fe786e60b645935714c38be030ac1fe5ed47a1adddab674b0",
+        "docs/sshr_pilot/ecoli4/clusters.csv": "353b3fb05dc874cae8032868e751afd044b803f9b5a49dc06d61bc3f9fdffffc",
+        "docs/sshr_pilot/ecoli4/coverage.csv": "7a718af8c44558987e50f18e12a0a913ca056ec0d193d791fb99f98245e61b54",
+        "docs/sshr_pilot/ecoli4/diagnostics.csv": "f9c23d2ee6ccdad28d88dcb1348d8a795bbc4945806233d8c9d1fb447508252b",
+        "docs/sshr_pilot/ecoli4/scores.csv": "a3fa7ea7152e0d1ca50369017033c36db9def61b3592d6eda4719356114574a1",
+        "docs/sshr_pilot/ecoli4/summary.json": "3b0e99bfcf0cf1033f8e6fadf9d3018fc7716dc03c0e0956ddd9510d9f81df53"
+      },
+      "archive_sha256": "75f3a62a1d23b0081976131f6c18331219e29b07ea616620a650b68a27c831d7",
+      "duplicate_audit": {
+        "coordinate_group_count": 336,
+        "duplicate_coordinate_groups": 0,
+        "duplicate_coordinate_pairs": 0,
+        "duplicate_excess_rows": 0,
+        "rows_in_duplicate_groups": 0
+      },
+      "frozen_full_folds_sha256": "4c1ffbb19f6ee36e1e27bc1a7fe9916aae5daadf7f1ed907488990ae669fac13",
+      "frozen_full_masks_sha256": "c2db00b993f14809e0c9d1028c72049510672d5a0859bb6f784674c08fbd60d8",
+      "original_coordinate_groups_sha256": "354d1fe3fa4056a797772da1c89b25f3f57ae802d093e59eccba8afcd3344a16",
+      "original_input_features": 7,
+      "raw_source_sha256": "1890c32ba2550cfe106d0524ebf6a42c2b50730f6521bd4f22eb58e7bda86bcb",
+      "rows": 336,
+      "runs": {
+        "with-u": {
+          "guard_counts": {
+            "sshr_sshc": 0,
+            "ugo_max_iter": 0
+          },
+          "job_artifact_tree_sha256": "f02b661d6307290fdfc632b9f3bcd3795320a71da27aca9a7d516ce07acd2e6d",
+          "jobs": 300,
+          "manifest_file_sha256": "17aef501e0e086b10d06b3047f88d9cf1b000d321696d26cd3daa7c34e215b4b",
+          "run_id": "cab13b06468d7cc1d828f74de3bcb56d66a3930a28877380f9fb009c4a34433b",
+          "sshc_stop_reason_counts": {
+            "prune:clusters_pruned": 6,
+            "prune:no_clusters_below_average": 44,
+            "refine:centroids_converged": 6,
+            "refine:objective_declined": 44,
+            "split:no_impure_clusters": 6,
+            "split:no_progress_partition": 6,
+            "split:objective_declined": 38
+          },
+          "sshr_fold_event_totals_by_classifier": {
+            "GNB": {
+              "correct": 170,
+              "generated_smote": 1436,
+              "pseudo_accuracy": 0.5431309904153354,
+              "removed_majority": 853,
+              "removed_minority": 0,
+              "selected": 313
+            },
+            "LogReg": {
+              "correct": 170,
+              "generated_smote": 1436,
+              "pseudo_accuracy": 0.5431309904153354,
+              "removed_majority": 853,
+              "removed_minority": 0,
+              "selected": 313
+            }
+          },
+          "sshr_printed_final_objective_f1_anomalies_by_classifier": {
+            "GNB": 22,
+            "LogReg": 22
+          },
+          "sshr_printed_final_objective_f1_range_by_classifier": {
+            "GNB": [
+              0.0,
+              1.8955223880597014
+            ],
+            "LogReg": [
+              0.0,
+              1.8955223880597014
+            ]
+          },
+          "sshr_quota_shortfall_folds_by_classifier": {
+            "GNB": [
+              {
+                "additions_unmet": 83,
+                "causes": [
+                  "no_surviving_minority_centroid"
+                ],
+                "fold": 1,
+                "repeat": 4,
+                "weighted_unmet": 35
+              },
+              {
+                "additions_unmet": 83,
+                "causes": [
+                  "no_surviving_minority_centroid"
+                ],
+                "fold": 0,
+                "repeat": 2,
+                "weighted_unmet": 35
+              },
+              {
+                "additions_unmet": 83,
+                "causes": [
+                  "no_surviving_minority_centroid"
+                ],
+                "fold": 2,
+                "repeat": 0,
+                "weighted_unmet": 35
+              }
+            ],
+            "LogReg": [
+              {
+                "additions_unmet": 83,
+                "causes": [
+                  "no_surviving_minority_centroid"
+                ],
+                "fold": 1,
+                "repeat": 4,
+                "weighted_unmet": 35
+              },
+              {
+                "additions_unmet": 83,
+                "causes": [
+                  "no_surviving_minority_centroid"
+                ],
+                "fold": 2,
+                "repeat": 0,
+                "weighted_unmet": 35
+              },
+              {
+                "additions_unmet": 83,
+                "causes": [
+                  "no_surviving_minority_centroid"
+                ],
+                "fold": 0,
+                "repeat": 2,
+                "weighted_unmet": 35
+              }
+            ]
+          },
+          "warning_events": {
+            "UserWarning": 50
+          }
+        },
+        "without-u": {
+          "guard_counts": {
+            "sshr_sshc": 0
+          },
+          "job_artifact_tree_sha256": "eb44ffde9ef8a05aecbdb9eed4105f8e46bb79f1904a3d8db88bd2c9b85a5c4b",
+          "jobs": 100,
+          "manifest_file_sha256": "9dbd16d36486bd9cadaf0bd4cd8b047cf27dbc9727683ea30ddd1edc896aefad",
+          "run_id": "fab1b663e4676c6ce97e37d57bdf3ef91d489505b508349898ccdaf10d0e842b",
+          "sshc_stop_reason_counts": {
+            "prune:clusters_pruned": 6,
+            "prune:no_clusters_below_average": 44,
+            "refine:centroids_converged": 8,
+            "refine:objective_declined": 42,
+            "split:no_impure_clusters": 6,
+            "split:no_progress_partition": 6,
+            "split:objective_declined": 38
+          },
+          "sshr_fold_event_totals_by_classifier": {
+            "GNB": {
+              "correct": 0,
+              "generated_smote": 1746,
+              "pseudo_accuracy": null,
+              "removed_majority": 856,
+              "removed_minority": 0,
+              "selected": 0
+            },
+            "LogReg": {
+              "correct": 0,
+              "generated_smote": 1746,
+              "pseudo_accuracy": null,
+              "removed_majority": 856,
+              "removed_minority": 0,
+              "selected": 0
+            }
+          },
+          "sshr_printed_final_objective_f1_anomalies_by_classifier": {
+            "GNB": 22,
+            "LogReg": 22
+          },
+          "sshr_printed_final_objective_f1_range_by_classifier": {
+            "GNB": [
+              0.0,
+              1.8955223880597014
+            ],
+            "LogReg": [
+              0.0,
+              1.8955223880597014
+            ]
+          },
+          "sshr_quota_shortfall_folds_by_classifier": {
+            "GNB": [
+              {
+                "additions_unmet": 83,
+                "causes": [
+                  "no_surviving_minority_centroid"
+                ],
+                "fold": 1,
+                "repeat": 4,
+                "weighted_unmet": 35
+              },
+              {
+                "additions_unmet": 83,
+                "causes": [
+                  "no_surviving_minority_centroid"
+                ],
+                "fold": 0,
+                "repeat": 2,
+                "weighted_unmet": 35
+              },
+              {
+                "additions_unmet": 83,
+                "causes": [
+                  "no_surviving_minority_centroid"
+                ],
+                "fold": 2,
+                "repeat": 0,
+                "weighted_unmet": 35
+              }
+            ],
+            "LogReg": [
+              {
+                "additions_unmet": 83,
+                "causes": [
+                  "no_surviving_minority_centroid"
+                ],
+                "fold": 1,
+                "repeat": 4,
+                "weighted_unmet": 35
+              },
+              {
+                "additions_unmet": 83,
+                "causes": [
+                  "no_surviving_minority_centroid"
+                ],
+                "fold": 2,
+                "repeat": 0,
+                "weighted_unmet": 35
+              },
+              {
+                "additions_unmet": 83,
+                "causes": [
+                  "no_surviving_minority_centroid"
+                ],
+                "fold": 0,
+                "repeat": 2,
+                "weighted_unmet": 35
+              }
+            ]
+          },
+          "warning_events": {}
+        }
+      },
+      "sshr_with_u_minus_empty_u_metric_means": {
+        "GNB": {
+          "f1": -0.09224684465860938,
+          "fpr": 0.03608358934971838,
+          "gmean": -0.0054355507589671755,
+          "mcc": -0.08102901407204001,
+          "probability_auc": -0.007807987711213506
+        },
+        "LogReg": {
+          "f1": -0.0777347427254548,
+          "fpr": 0.030268177163338454,
+          "gmean": -0.01598233194684211,
+          "mcc": -0.06782397837300719,
+          "probability_auc": -0.0027977470558115903
+        }
+      }
+    },
+    "yeast4": {
+      "aggregate_artifact_file_sha256": {
+        "docs/sshr_pilot/yeast4/ablation.csv": "2c456fbe97a8fcf12276d60971510cc261285112584f90cd753be9b248dcf1e9",
+        "docs/sshr_pilot/yeast4/clusters.csv": "a67e396dc32241ce948ee817f6dc621a975558d4fa6ec925defd3374aca7c494",
+        "docs/sshr_pilot/yeast4/coverage.csv": "306cd3959853b4f89079473df58c55bcd90730970a7834afb4ac1c04fc8ae796",
+        "docs/sshr_pilot/yeast4/diagnostics.csv": "26576e7613f3496692bdd7889155f2845305b8d8054ee19e7951f383280fdcf7",
+        "docs/sshr_pilot/yeast4/scores.csv": "116e2b8990cad7481de1a6da67076fd9b26bcb127df21648960708842a0df546",
+        "docs/sshr_pilot/yeast4/summary.json": "9229efc339d8360f7394cba14bf8ca0aac28dc8ba06ad61b6064ac13a4697773"
+      },
+      "archive_sha256": "dda966d6e09c665bab0325e3481dc0045e7f2fb9a4ddabdf47607ef4031b88b5",
+      "duplicate_audit": {
+        "coordinate_group_count": 1453,
+        "duplicate_coordinate_groups": 31,
+        "duplicate_coordinate_pairs": 31,
+        "duplicate_excess_rows": 31,
+        "rows_in_duplicate_groups": 62
+      },
+      "frozen_full_folds_sha256": "489ca6d9f3bf16f983a1ea394ac55e34dd0e4dcc561cc30367431fdfe23cd922",
+      "frozen_full_masks_sha256": "06852e33b1f3ffc9dc11c94f8ed4b509b74cbb106ac0d9cd61ba1b98703a7148",
+      "original_coordinate_groups_sha256": "4251123f517006fb2faf4ea04fb477c0c3c891413cc658041cd0675a697d0f02",
+      "original_input_features": 8,
+      "raw_source_sha256": "2e50d1b43c97875d2071859428d718487086e695a1a6ec559336ccadb40c1ff0",
+      "rows": 1484,
+      "runs": {
+        "with-u": {
+          "guard_counts": {
+            "sshr_sshc": 0,
+            "ugo_max_iter": 0
+          },
+          "job_artifact_tree_sha256": "22a7f712247698b91a45483b0f465dd3b2b60544ffca5f9770b2ded60aab68bc",
+          "jobs": 300,
+          "manifest_file_sha256": "7ba0211c6c92202a0c36508fa0521b275ed2e5e4497a829106829784bf441016",
+          "run_id": "f671665b652ece0399ca7e073cd50abfc95a85fe505b00b28caf3214cbe76de7",
+          "sshc_stop_reason_counts": {
+            "prune:clusters_pruned": 50,
+            "refine:centroids_converged": 2,
+            "refine:objective_declined": 48,
+            "split:no_progress_partition": 32,
+            "split:objective_declined": 18
+          },
+          "sshr_fold_event_totals_by_classifier": {
+            "GNB": {
+              "correct": 96,
+              "generated_smote": 8938,
+              "pseudo_accuracy": 0.3516483516483517,
+              "removed_majority": 4061,
+              "removed_minority": 3,
+              "selected": 273
+            },
+            "LogReg": {
+              "correct": 96,
+              "generated_smote": 8938,
+              "pseudo_accuracy": 0.3516483516483517,
+              "removed_majority": 4061,
+              "removed_minority": 3,
+              "selected": 273
+            }
+          },
+          "sshr_printed_final_objective_f1_anomalies_by_classifier": {
+            "GNB": 6,
+            "LogReg": 6
+          },
+          "sshr_printed_final_objective_f1_range_by_classifier": {
+            "GNB": [
+              0.0,
+              1.2781747739991391
+            ],
+            "LogReg": [
+              0.0,
+              1.2781747739991391
+            ]
+          },
+          "sshr_quota_shortfall_folds_by_classifier": {
+            "GNB": [
+              {
+                "additions_unmet": 388,
+                "causes": [
+                  "no_surviving_minority_centroid"
+                ],
+                "fold": 1,
+                "repeat": 1,
+                "weighted_unmet": 166
+              }
+            ],
+            "LogReg": [
+              {
+                "additions_unmet": 388,
+                "causes": [
+                  "no_surviving_minority_centroid"
+                ],
+                "fold": 1,
+                "repeat": 1,
+                "weighted_unmet": 166
+              }
+            ]
+          },
+          "warning_events": {
+            "UserWarning": 50
+          }
+        },
+        "without-u": {
+          "guard_counts": {
+            "sshr_sshc": 0
+          },
+          "job_artifact_tree_sha256": "bc019846f50554a0fb786650acf43ad6774a01830ddcaf8478692f54e12d3e39",
+          "jobs": 100,
+          "manifest_file_sha256": "402a549ba4f4aa5ddcb1676f93002b1d62ec80d17d95265636cfd5fb28d9e05e",
+          "run_id": "f0056c079a11992b13a43a29af698753c8361f833ea4e7f414dfda83e6de3e18",
+          "sshc_stop_reason_counts": {
+            "prune:clusters_pruned": 50,
+            "refine:centroids_converged": 2,
+            "refine:objective_declined": 48,
+            "split:no_progress_partition": 32,
+            "split:objective_declined": 18
+          },
+          "sshr_fold_event_totals_by_classifier": {
+            "GNB": {
+              "correct": 0,
+              "generated_smote": 9185,
+              "pseudo_accuracy": null,
+              "removed_majority": 4088,
+              "removed_minority": 4,
+              "selected": 0
+            },
+            "LogReg": {
+              "correct": 0,
+              "generated_smote": 9185,
+              "pseudo_accuracy": null,
+              "removed_majority": 4088,
+              "removed_minority": 4,
+              "selected": 0
+            }
+          },
+          "sshr_printed_final_objective_f1_anomalies_by_classifier": {
+            "GNB": 5,
+            "LogReg": 5
+          },
+          "sshr_printed_final_objective_f1_range_by_classifier": {
+            "GNB": [
+              0.0,
+              1.2995974698102357
+            ],
+            "LogReg": [
+              0.0,
+              1.2995974698102357
+            ]
+          },
+          "sshr_quota_shortfall_folds_by_classifier": {
+            "GNB": [
+              {
+                "additions_unmet": 388,
+                "causes": [
+                  "no_surviving_minority_centroid"
+                ],
+                "fold": 1,
+                "repeat": 1,
+                "weighted_unmet": 166
+              }
+            ],
+            "LogReg": [
+              {
+                "additions_unmet": 388,
+                "causes": [
+                  "no_surviving_minority_centroid"
+                ],
+                "fold": 1,
+                "repeat": 1,
+                "weighted_unmet": 166
+              }
+            ]
+          },
+          "warning_events": {}
+        }
+      },
+      "sshr_with_u_minus_empty_u_metric_means": {
+        "GNB": {
+          "f1": -0.0053953047541554265,
+          "fpr": 0.033256370641132155,
+          "gmean": 0.08103138041455464,
+          "mcc": 0.001668447897224874,
+          "probability_auc": 0.029623971034376136
+        },
+        "LogReg": {
+          "f1": -0.009633837956244133,
+          "fpr": 0.014532215348223463,
+          "gmean": 0.01721523962761709,
+          "mcc": -0.0018025399285494547,
+          "probability_auc": -0.007084995725232068
+        }
+      }
+    }
+  },
+  "frozen_source_commit": "6e0f1c31b5c54c694b8107e846f5111719eae85d",
+  "jobs_audited": 800,
+  "kind": "independent read-only saved-artifact audit",
+  "limits": [
+    "Audit recomputes held-out metrics and pseudo-label accuracy, not classifier predictions or model fits.",
+    "Saved generated feature coordinates are not available for independent per-row overlap-proxy recomputation. Saved proxy aggregation and audited code's original reduced-L reference scope are checked.",
+    "Lineage checks establish source-row provenance; they do not establish correctness of pseudo-labels or novelty, superiority, author-code equivalence or author-result replication."
+  ],
+  "privacy": "No feature rows, gold label vectors, predictions or probability vectors in this evidence.",
+  "schema_version": 1,
+  "scope": "Two datasets; 600 six-method jobs and 200 paired NORES/SSHR empty-U jobs; no refits.",
+  "source_registration_file_sha256": "841133fcf07a6c2aa60e8da00dc960a5f3730d4542babc561f83e33e40c5444c",
+  "source_sha256": "df36f8dbf26fde3956e87c06d4f7856192d87bb7dc68d68566b06111b862a478",
+  "study_runner_file_sha256": "1ba65a55682dd0a8dbbc49c8c0159b29886c842b9e146a32d44b10f6d0b72ab3",
+  "warning_events": {
+    "UserWarning": 100
+  }
+}
