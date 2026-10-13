@@ -1,0 +1,15 @@
+{
+  "purpose": "Presentation derived from existing results; no fitting",
+  "sources": {
+    "docs/audit/recomputed_scores.csv": "d5a4f6b0b4601b716098685816adbbe2acb6e59309c30b20d1c173f9cad0be57",
+    "docs/audit/recomputed_ablation.csv": "95133be4db1f9b71c0bc2b73c68345250c825a2039777d2d2d906f1b8ff6c7dd",
+    "docs/audit/pseudo_label_audit.csv": "a93e4497371c30a1b37e93bd57d2e49647c9e2f74595968c8a18299f1c44cc6b",
+    "docs/EC_EBO_SMALL_STUDY_SCORES.csv": "0d5443dd3807043f4fcdf9785e9f982e54f63d81bc9e4f37bc550f29e8ae0103",
+    "docs/BFCH_SMALL_STUDY_SCORES.csv": "1f46f8f7028bcae089faa82a2a7f515da244844ddf05ee9d02649c4ecacbe4fe",
+    "docs/reproduction/SIMULATION_PILOT.md": "09b2ca2c423d0f532393b2e12e7ae09400c7cd8ce45ff14a696dfa00517b5c0e",
+    "docs/reproduction/BENCHMARK_EXECUTION.md": "77ef613ba72b9a534062378729295b6d3119897d7d3bb6a3ba88f8da7f8a9a99",
+    "docs/audit/audit_protocol.md": "c83539021e7c29066317677d9bd98e4895d8dc773a66d1fa59e63ea3be188878",
+    "docs/SSHR_SMALL_STUDY.md": "4281a39f98ec0d6e6d7d8afb507ac53dd3818a114c4ec461d6da3dba0cafcf07"
+  },
+  "plot_count": 8
+}
