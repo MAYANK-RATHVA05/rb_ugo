@@ -1,5 +1,11 @@
 # Manual Stage 4R-7 benchmark execution
 
+This records a historical interrupted benchmark and its reproducible commands,
+not a currently running study. The latest SSHR checkout lacks both
+`data/raw/ugo74_approx/` and `results/stage4r7-full/`; recorded progress below
+cannot be resumed from Git alone. Copy/hash-verify the original inputs and job
+cache first, and obtain a separate user instruction before restarting training.
+
 The complete declared matrix contains 74 datasets, 14 classifiers, 11
 conditions and 10 outer folds: **113,960 jobs**. Results are local and ignored
 by Git. Each fold job is written atomically, so rerunning the same command reuses
@@ -10,7 +16,7 @@ smaller run can validate the pipeline and support a clearly scoped exploratory
 comparison. A claim about the full paper benchmark requires all 74 datasets and
 the additional analyses specified by the paper.
 
-## Current local progress
+## Recorded interruption progress
 
 The initial run was stopped at the user's request after **28,919 saved jobs**.
 Of 74 datasets, **18 are complete** (27,720 terminal jobs): 27,610 successes,
@@ -28,7 +34,7 @@ No benchmark worker should be running while reviewing these records. The local
 results are ignored by Git; a different machine needs the copied raw inputs and
 result directory to resume them.
 
-## Resume in the current cloud workspace
+## Resume with verified local inputs and cache
 
 From `/workspace/rb_ugo`:
 

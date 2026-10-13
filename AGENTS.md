@@ -5,17 +5,26 @@
 - Generate synthetic examples from fitting data only.
 - Use nested evaluation or separate selection data where necessary.
 - Always compare against the original no-resampling baseline.
-- Distinguish faithfully reproduced UGO from our proposed changes.
+- Current scope: audited reproduction and controlled comparison of published UGO, BFCH-SMOTE, EC-EBO and SSHR. The earlier RB-UGO/CSG extension proposal is inactive; new methods or novelty claims require a separate user request.
+- Distinguish verified paper rules, verified author-code behavior and declared interpretations. Read the relevant method/source decisions before changing an algorithm; never invent source access or equivalence.
+- Preserve original UGO and the separate BFCH-SMOTE/EC-EBO implementations. SSHR and new methods remain opt-in unless the user explicitly requests a default change.
 - Set and report random seeds (default RANDOM_STATE = 42).
 - Never invent datasets, results, citations, or theoretical guarantees.
 - Write tests for implemented functionality, including failure behavior.
 - Keep code modular and readable. Target Python 3.11 and portable pathlib paths.
 - Do not add unnecessary frontend, API, dashboard, database, or cloud infrastructure.
-- Stop after the requested stage. Stage 1 is initialization; Stage 2 is data inspection; Stage 3 is original-UGO implementation and software checks. Further stages require user approval.
-- Do not implement SMOTE, UGO, RB-UGO, model training, dataset downloading, or experiments in Stage 1.
+- Stop after the requested scope. Stage numbers belong to each method's historical workflow; they do not undo completed later work. SSHR Stages 0–4 are complete on sshr-implementation; further training, benchmarks or extensions require a new request.
+- main_stage1.py remains initialization-only; main_stage2.py remains data inspection-only. Do not turn these entry points into training or download commands.
 - Codex and Antigravity are separate tools; never assume cloud changes have synchronized locally.
 - After completing and validating each requested stage, commit its changes and push to GitHub. Report the commit and branch; do not proceed to the next stage without approval.
 - Use small, meaningful commits for independently validated changes, with accurate messages; do not fabricate work history or rewrite existing commits to disguise authorship.
-- Stage 2 must not fit preprocessing, split or resample data, train models, calculate model performance, or implement UGO/RB-UGO. Synthetic fixtures are software tests only; never commit real or private raw datasets.
-- Stage 3 may fit internal UGO classifiers on fitting data only. Do not implement Risk-Budgeted UGO, held-out batch selection, FPR constraints, final-model scoring, or benchmark experiments.
-- The Stage 3 implementation is provisional until the full paper is checked. Read docs/ugo_reproduction.md; do not call the assumed cap, pools, rounding, or noise conventions verified paper rules. Keep opt-in and diagnostic status explicit.
+- Raw/private/licensed datasets, uploaded papers, individual job records, credentials, environments and caches stay outside Git. Commit reviewed source provenance and aggregate evidence only; artificial fixtures are software checks, not real-data results.
+- Read docs/ugo_reproduction.md and the current method decisions. Full papers have been audited, but conflicting cap/pool/rounding, clustering and metric definitions remain declared interpretations; do not claim exact author-code or paper-result fidelity.
+- For controlled label hiding, every baseline receives identical observed L; only the semi-supervised method receives separate training U. Hidden training labels are evaluator-only after generation. Outer-test features and labels never enter the unlabelled pool.
+- SSHR selects existing unlabelled rows with pseudo-labels; only its SMOTE fallback creates feature vectors. Report selection, generation, removals and unmet quotas separately; confidence/density alone does not prove minority membership.
+- Freeze source hashes, seeds, folds, masks and parameters before inspecting held-out results. Preserve entity/time constraints and keep original coordinate groups together across train/test and L/U boundaries.
+- Retain failed/unavailable jobs and compare explicitly shared successful folds. Repeated-fold SDs are descriptive, not confidence intervals; small pilots do not establish general superiority.
+- Historical source audits, study artifacts, hashes and stage records retain their original context. Update active descriptions without rewriting reported results or historical evidence.
+- Source/runtime changes invalidate strict result identities. Documentation/name changes must leave src/, native/, requirements, tests, frozen manifests and CSV/JSON evidence unchanged.
+- Run checks appropriate to the change. Implemented method/runner stages require focused tests and the full suite; documentation changes need factual, link/command, diff and artifact-integrity checks, without tests that merely mirror wording.
+- Preserve pre-existing local changes, datasets, papers and local commits. Fetch before publishing; use fast-forward updates, never force-push, rewrite history or discard concurrent work.

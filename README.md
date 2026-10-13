@@ -1,204 +1,122 @@
-# Risk-Budgeted Uncertainty-Guided Oversampling (RB-UGO)
+# Imbalanced Learning Reproductions
 
-## Scope: foundation and original UGO reproduction
+Python 3.11 implementations, source audits and reproducible comparisons of
+published resampling methods: **UGO, BFCH-SMOTE, EC-EBO and SSHR**. The current
+work reproduces existing papers with explicit interpretations where their
+operational details are ambiguous. The earlier risk-budget and CSG extension
+proposals are inactive; this repository makes no methodological novelty claim.
+See [project scope](docs/PROJECT_SCOPE.md) for the current boundaries.
 
-This portable Python 3.11 research repository provides configuration and directory
-validation (Stage 1), plus binary CSV/KEEL loading and descriptive imbalance
-analysis (Stage 2). Stage 3 added provisional UGO-ROS/UGO-SMOTE and an artificial
-sanity check. Stage 4R-2 applies reviewed fixed-batch and explicit-cap corrections
-after reading the full paper; unresolved source choices still prevent a verified
-faithful reproduction claim. Stage 4R-3 uses the three uploaded original method
-papers for numerical RWO, MCSMOTE, LEAO, and all four UGO generator variants.
-Their source conflicts and remaining implementation conventions are recorded.
-Stage 4R-4 prepares simulations, dataset candidates and classifier identities.
-Stage 4R-5 adds training-only preprocessing, paired ten-fold evaluation,
-fresh final model fitting, IAM/MCC/F1 and atomic resumable results. Validation
-includes artificial software fixtures. Stage 4R-6 executes a measured pilot of
-both declared paper simulation reconstructions. Real benchmark experiments remain
-for later authorized stages. Risk-Budgeted UGO is not implemented.
+The GitHub repository is currently
+[`MAYANK-RATHVA05/rb_ugo`](https://github.com/MAYANK-RATHVA05/rb_ugo).
+`imbalanced-learning-reproductions` is the proposed repository name; the rename
+has not been applied. [Repository rename instructions](docs/REPOSITORY_RENAME.md)
+record the remaining action and how to update existing clones afterward.
 
-The `bfch-smote-implementation` branch adds a separate BFCH-SMOTE sampler in
-`src/bfch_smote.py`. Its paper steps, geometric correction, limits, and
-paired-run example are in [docs/BFCH_METHOD.md](docs/BFCH_METHOD.md).
-Existing UGO evaluation defaults remain unchanged; select `bfch_smote`
-explicitly to compare it on the same fitting folds. The BFCH comparison
-workflow also records G-mean and probability AUC and exports a same-fold
-table from saved jobs; see the method notes for commands and limits. A
-[two-dataset descriptive comparison](docs/BFCH_SMALL_STUDY.md) records the
-first local BFCH, UGO, SMOTE, and no-resampling results with their source
-limitations and saved aggregate scores.
+## Implementations and branch status
 
-The [EC-EBO method decisions](docs/EC_EBO_METHOD_DECISIONS.md) audit the
-paper's intra-class imbalance method and record its documented ambiguities.
-Part 1 adds externally constrained minority clustering in
-`src/ec_ebo_clustering.py`; Part 2 adds training-data entropy and per-cluster
-allocation in `src/ec_ebo_entropy.py`; Part 3 adds an audited minority-sample
-generator in `src/ec_ebo.py`. Part 4 makes `ec_ebo` an opt-in method in the
-same-fold evaluation runner. A [two-dataset descriptive comparison](docs/EC_EBO_SMALL_STUDY.md)
-records Part 5 results and their limits; it is not an author-paper benchmark.
+**Use `sshr-implementation` for all four methods and the latest pilot.**
+`main` currently contains UGO, BFCH-SMOTE and EC-EBO code. SSHR code, its pilot
+artifacts and the supervisor briefing remain on `sshr-implementation`; links
+to those materials below explicitly select that branch.
 
-## Original UGO reproduction specification
+| Method | Implemented work | Evidence and limits |
+| --- | --- | --- |
+| UGO | Classifier-guided UGO-ROS, UGO-SMOTE, UGO-RWO and UGO-MCSMOTE; noise handling, stopping, fresh final-model evaluation and resumable jobs | [Paper alignment](docs/ugo_reproduction.md), [generator decisions](docs/reproduction/GENERATOR_ALIGNMENT.md), [300-job simulation pilot](docs/reproduction/SIMULATION_PILOT.md). Paper ambiguities and classifier approximations prevent exact author-code/result equivalence claims. |
+| BFCH-SMOTE | Boundary fusion and convex-hull sampling, explicit geometric corrections, opt-in runner integration | [Method audit](docs/BFCH_METHOD.md) and [160-job two-dataset comparison](docs/BFCH_SMALL_STUDY.md). Descriptive local results, not the paper's benchmark. |
+| EC-EBO | Externally constrained minority clustering, entropy allocation, minority generation and opt-in runner integration | [Method decisions](docs/EC_EBO_METHOD_DECISIONS.md) and [200-job two-dataset comparison](docs/EC_EBO_SMALL_STUDY.md). Source ambiguities and quota shortfalls are retained. |
+| SSHR | Semi-supervised hierarchical clustering, majority undersampling, unlabelled-point selection, SMOTE fallback and a three-input estimator | [Method decisions](https://github.com/MAYANK-RATHVA05/rb_ugo/blob/sshr-implementation/docs/SSHR_METHOD_DECISIONS.md), [integration](https://github.com/MAYANK-RATHVA05/rb_ugo/blob/sshr-implementation/docs/SSHR_INTEGRATION.md) and [800-job two-dataset pilot](https://github.com/MAYANK-RATHVA05/rb_ugo/blob/sshr-implementation/docs/SSHR_SMALL_STUDY.md). Author code and the original unlabelled-pool protocol remain unverified. |
 
-Stage 4R-1 records the full-paper requirements in
-[the reproduction specification](docs/reproduction/SPECIFICATION.md) and
-[source register](docs/reproduction/SOURCE_REGISTER.json). It inventories the
-available article and supplementary results, fourteen classifiers,
-comparison methods, experiment outputs and unresolved paper choices. It also
-identifies reusable batch/cap corrections on the historical verification branch.
-Stage 4R-2 selectively recovers those corrections, with conformance tests and
-[a core alignment report](docs/reproduction/CORE_ALIGNMENT.md). Batches now use
-the fixed original total; `cap_interpretation` exposes both conflicting published
-thresholds. Neither stage runs benchmark experiments. Original UGO reproduction
-is separate from the RB-UGO research motivation below.
+**SSHR mainly selects existing unlabelled observations and assigns minority
+pseudo-labels. Only its SMOTE fallback generates new feature vectors.**
+Diagnostics distinguish retained rows, removed majority/minority rows, selected
+pseudo-labelled observations, generated vectors and unmet quotas.
 
-The [dataset collection report](docs/reproduction/DATASET_COLLECTION.md) records
-the final 74-entry benchmark input collection. It includes 56 source metadata
-matches and 18 explicitly accepted approximate variants. All inputs are local
-and ignored by Git; the portable manifest retains their hashes and preparation
-choices. Real benchmark training has not been executed, and this collection
-does not establish exact author preprocessing or evaluation folds.
+The original UGO algorithm and existing default method lists are preserved.
+BFCH-SMOTE, EC-EBO and SSHR are selected explicitly. Source audits distinguish
+verified paper rules, verified author behavior when available, and declared
+implementation choices.
 
-Stage 4R-3 adds `variant="rwo"`, `variant="mcsmote"`, their standalone
-baselines, the LEAO comparator, and constructors for NORES/RUS/ROS/SMOTE.
-See the [generator alignment report](docs/reproduction/GENERATOR_ALIGNMENT.md)
-for source equations, numerical scope and unresolved conventions.
+## Latest measured study
 
-Stage 4R-4 prepares the two paper simulations, a provenance-guarded registry
-of eight **unverified** dataset candidates, and all fourteen paper classifier
-identities. The classifier-completion stage now gives all fourteen declared
-Python interfaces, including pinned BART and native C5.0 backends. See the
-[experiment setup report](docs/reproduction/EXPERIMENT_SETUP.md). The 74-dataset
-collection has 56 metadata matches and 18 explicitly accepted approximations.
+The [SSHR pilot report](https://github.com/MAYANK-RATHVA05/rb_ugo/blob/sshr-implementation/docs/SSHR_SMALL_STUDY.md)
+compares NORES, SMOTE, UGO-SMOTE, BFCH-SMOTE, EC-EBO and SSHR on **Ecoli4 and
+Yeast4**, using LogReg/GNB, five repeats of five shared outer folds and the same
+reduced labelled training set. Its 600 main-study jobs and 200 empty-U controls
+all succeeded. The complete branch passed **738 tests** in the recorded Linux
+environment with the optional classifier backends installed.
 
-Stage 4R-5 supplies the [evaluation runner](docs/reproduction/EVALUATION.md)
-with all eleven conditions and mandatory NORES. Its manifest records source
-ambiguities, classifier approximations, exact folds, configuration and hashes;
-failures and unavailable classifiers retain empty scores and explicit coverage.
-Verify the software fixture and resume by repeating:
+Adding the unlabelled pool reduced mean F1 in all four dataset/classifier
+comparisons. Yeast4 with GNB showed higher mean probability ROC-AUC and G-mean
+alongside higher false-positive rate. Retrospective pseudo-label accuracy was
+**54.3% on Ecoli4** and **35.2% on Yeast4**, weighted over selection events within
+each dataset/classifier condition. These events are not unique observations;
+SSHR diagnostics match across classifier copies and must not be double-counted.
+The two-dataset pilot establishes neither general superiority nor exact paper
+result reproduction.
 
-    .venv/bin/python main_stage4r5.py --software-check --output results/stage4r5-software-check
+Read the [CSV/JSON artifact guide](https://github.com/MAYANK-RATHVA05/rb_ugo/blob/sshr-implementation/docs/sshr_pilot/README.md)
+for metric definitions, coverage, counts, cluster records, source hashes and
+ablation denominators. The
+[supervisor briefing PDF](https://github.com/MAYANK-RATHVA05/rb_ugo/blob/sshr-implementation/docs/presentation/Imbalanced_Learning_Pilot_Results.pdf)
+and [editable Word copy](https://github.com/MAYANK-RATHVA05/rb_ugo/blob/sshr-implementation/docs/presentation/Imbalanced_Learning_Pilot_Results.docx)
+summarize the same pilot without adding experiments.
 
-Stage 4R-6 completes 300 simulation fold jobs with LogReg/GNB/KNN and five
-methods. The [pilot report](docs/reproduction/SIMULATION_PILOT.md) records
-mixed scores, 19 UGO cap stops, a 25.11-second invocation, 168.44 MiB process
-peak, complete resume, and differences from Tables 9–10. The paper's F1 averaging
-is unresolved; no exact-result or general superiority claim is made.
+## UGO benchmark progress
 
-    .venv/bin/python main_stage4r6.py --report-dir docs/reproduction/pilot_stage4r6
+The [dataset collection report](docs/reproduction/DATASET_COLLECTION.md) and
+[portable manifest](data/manifests/ugo_74_approximate.json) document a historical
+74-entry input collection: **56 source metadata matches and 18 accepted
+approximate variants**. Count/name compatibility does not establish exact author
+feature values, class definitions, preprocessing or evaluation folds. Raw files
+are excluded from Git and are not automatically available in another checkout.
 
-Stage 4R-7 uses the [manual benchmark runner](docs/reproduction/BENCHMARK_EXECUTION.md)
-to validate and resume the complete 113,960-job matrix across the prepared 74
-inputs. Raw inputs and detailed results remain local and ignored by Git.
+The [interrupted benchmark record](docs/reproduction/BENCHMARK_EXECUTION.md)
+reports 28,919 saved jobs, including 18 complete datasets with 27,610 successful
+jobs and 110 recorded failures. The full 113,960-job matrix was not completed.
+The historical `data/raw/ugo74_approx/` and `results/stage4r7-full/` directories
+are absent from the current cloud checkout; GitHub contains their documentation,
+not the raw inputs or detailed job cache. No full-paper reproduction is claimed.
+Read [DATASETS.md](DATASETS.md) before preparing or transferring data.
 
-## Research motivation
+## Antigravity setup on Windows
 
-In imbalanced classification, a minority class has fewer observations than the
-majority class. Overall accuracy can hide poor minority detection; evaluation
-must consider both classes and the costs of errors.
-
-Basic oversampling can duplicate observations, encourage overfitting, or produce
-synthetic points in ambiguous or noisy regions. More minority examples do not
-necessarily improve generalization, and false positives can increase.
-
-The base paper, **“Uncertainty guided oversampling: A classifier-specific approach
-for effective handling of class imbalance in machine learning,”** motivates using
-classifier uncertainty to guide oversampling for a particular classifier. A
-faithful implementation requires resolving the source conflicts and completing
-its experimental protocol. The available article has been audited; this project
-does not yet claim unique author-code equivalence or reproduced paper results.
-
-Our proposed research question is whether accepting or rejecting uncertainty-guided
-synthetic minority batches according to held-out balanced risk and majority-class
-false-positive constraints improves reliability. This is a hypothesis, not a
-claim of novelty or superiority. Literature review and controlled experiments,
-including the original no-resampling baseline and faithfully reproduced UGO,
-are required. Selection data must remain separate from the outer test data.
-
-## Layout
-
-```text
-rb_ugo/                     # Repository root, not a second nested directory
-├── data/
-│   ├── raw/.gitkeep         # Original inputs (future stages)
-│   └── processed/.gitkeep   # Derived data (future stages)
-├── src/
-│   ├── __init__.py
-│   ├── config.py           # Paths and RANDOM_STATE = 42
-│   ├── data_loader.py      # Strict CSV/KEEL binary loader
-│   ├── imbalance_stats.py  # Descriptive counts and readable summary
-│   ├── _validation.py     # Numerical input checks
-│   ├── uncertainty.py     # Signed MMA
-│   ├── noise_detection.py # Neighbor votes and relocation
-│   ├── stopping.py        # Welch decision and provisional cap
-│   ├── generators.py      # Shared batches and numerical RWO baseline
-│   ├── mcsmote.py        # Gaussian transition and Sinkhorn MCSMOTE
-│   ├── leao.py           # LEAO comparator
-│   ├── comparators.py    # NORES and standalone comparator constructors
-│   ├── simulations.py    # Declared linear/nonlinear paper reconstructions
-│   ├── dataset_registry.py # Historical candidate file/hash checks
-│   ├── classifier_registry.py # Fourteen names and available local approximations
-│   ├── preprocessing.py   # Fold-local imputation, encoding, filtering and scaling
-│   ├── metrics.py         # IAM/MCC/F1 with fixed source labels
-│   ├── evaluation.py      # Paired ten-fold runner and fresh final fits
-│   ├── results.py         # Atomic records and strict resume identity
-│   ├── pilot.py           # Fixed simulations, paired summaries and resources
-│   └── ugo.py             # Provisional UGO variants and diagnostics
-├── notebooks/.gitkeep      # Future exploratory notebooks
-├── results/.gitkeep        # Future generated research outputs
-├── tests/                 # Stage 1/2/3 tests and synthetic fixtures
-├── main_stage1.py          # Directory checks and environment display
-├── main_stage2.py          # Dataset inspection CLI
-├── main_stage3.py          # Provisional UGO software sanity check
-├── main_stage4r4.py        # Experiment-input and capability inspection
-├── main_stage4r5.py        # Evaluation CLI and artificial integration check
-├── main_stage4r6.py        # Measured simulation pilot and descriptive export
-├── docs/ugo_reproduction.md # Equations, assumptions, evidence, unresolved fidelity
-├── requirements.txt       # Pinned research dependencies
-├── requirements-dev.txt   # Runtime dependencies plus pytest
-├── requirements-classifiers.txt # Pinned optional classifier backend
-├── native/                # C5.0 process adapter (compiled output stays ignored)
-├── README.md
-├── DATASETS.md             # Benchmark provenance and manual data handling
-├── AGENTS.md               # Permanent research rules
-└── .gitignore
-```
-
-Data and generated results are ignored by Git; directory markers are retained.
-Paths are resolved from the source location, independently of the shell's current
-directory. Initialization checks directories and never creates missing ones.
-
-## Antigravity setup on Windows (PowerShell)
-
-Codex Cloud and Google Antigravity are separate environments. First synchronize
-the project through Git; cloud edits are not automatically visible in your IDE.
-Once the Stage 1 files have been committed and pushed to GitHub:
+Codex Cloud and Antigravity have separate files. Synchronize through Git before
+opening the project; changing the GitHub repository name does not rename a local
+folder. For a fresh clone in PowerShell:
 
 ```powershell
-git clone https://github.com/MAYANK-RATHVA05/rb_ugo.git
-Set-Location rb_ugo
-# For an existing clone, use git pull on the branch containing Stage 1 instead.
+git clone --branch sshr-implementation https://github.com/MAYANK-RATHVA05/rb_ugo.git imbalanced-learning-reproductions
+Set-Location imbalanced-learning-reproductions
 py -3.11 --version
 py -3.11 -m venv .venv
 .\.venv\Scripts\python.exe -m pip install -r requirements-dev.txt
 .\.venv\Scripts\python.exe main_stage1.py
-.\.venv\Scripts\python.exe -m pytest -q
+.\.venv\Scripts\python.exe -m pytest -q tests/test_sshr.py tests/test_sshr_clustering.py tests/test_sshr_resampling.py tests/test_sshr_evaluation.py tests/test_sshr_cli.py tests/test_sshr_small_study.py tests/test_sshr_study_report.py
 ```
 
-Install Python 3.11 if `py -3.11` is unavailable. In Antigravity, choose **Open
-Folder** and select this repository root (the folder containing this README).
-Select `.venv\Scripts\python.exe` as the Python interpreter when prompted.
-Run the commands above in its PowerShell terminal. Explicit interpreter paths
-avoid activation and PowerShell execution-policy changes.
-
-To check the installed dependencies:
+For the existing clone at `C:\ugo\ugo_base`, inspect local changes before
+switching branches. Preserve them if Git reports a conflict; do not use reset or
+force to make the following commands succeed:
 
 ```powershell
-.\.venv\Scripts\python.exe -c "import numpy, pandas, sklearn, imblearn, scipy, matplotlib, seaborn, tqdm, pytest; print('Dependency imports successful.')"
+Set-Location C:\ugo\ugo_base
+git status --short --branch
+git fetch origin
+git switch sshr-implementation
+git pull --ff-only
 ```
 
-## Cloud / Linux setup
+Open this repository root in Antigravity and choose
+`.venv\Scripts\python.exe` as the interpreter. Install Python 3.11 if the `py`
+command cannot locate it. The core requirements support the LogReg/GNB pilot.
+The optional fourteen-classifier setup includes native C5.0 and was validated
+on Linux; native Windows C5.0 execution has not been verified. Use the documented
+Linux/WSL setup when reproducing the full optional backend environment.
 
-With Python 3.11 available, from the repository root:
+## Cloud / Linux / WSL setup
+
+From the repository root with Python 3.11, Git and a C compiler available:
 
 ```bash
 python3.11 -m venv .venv
@@ -208,163 +126,98 @@ python3.11 -m venv .venv
 .venv/bin/python -m pytest -q
 ```
 
-The C5.0 build needs Git and a C compiler. It verifies a pinned CRAN C50 source
-commit and checksum before compiling into the ignored `.runtime/c50` directory.
-No credentials or external services are needed beyond dependency/source download.
+Dependency versions are pinned. The C5.0 setup verifies a pinned CRAN C50 source
+commit and checksum before compiling into ignored `.runtime/c50`. The
+[classifier completion record](docs/reproduction/CLASSIFIER_COMPLETION.md)
+documents all fourteen interfaces and their deviations from unspecified author
+package settings. Installation does not start benchmark training.
 
-## Stage 2: inspect a dataset
+## Inspect data and run software checks
 
-From the repository root, CSV needs an explicit target (the column containing
-class labels). KEEL normally identifies it through a single `@outputs` entry:
+The strict binary loader supports CSV with an explicit target and a documented
+subset of KEEL `.dat`. Inspection preserves original rows and does not train,
+impute, encode or resample:
 
 ```bash
-.venv/bin/python main_stage2.py --help
 .venv/bin/python main_stage2.py --data tests/fixtures/toy.csv --target class
 .venv/bin/python main_stage2.py --data tests/fixtures/toy.dat
-.venv/bin/python main_stage2.py --data tests/fixtures/toy.csv --target class --save-json csv_report.json
-.venv/bin/python main_stage2.py --data tests/fixtures/toy.dat --save-json keel_report.json
+.venv/bin/python main_stage3.py
+.venv/bin/python -m scripts.run_sshr_study --software-check --output results/sshr-software-check
 ```
 
-For your own manually downloaded files, substitute `data/raw/example.csv` or
-`data/raw/example.dat`. Nothing downloads real datasets automatically. Read
-[DATASETS.md](DATASETS.md) before adding benchmark data.
+The last command requires `sshr-implementation` and runs all six methods on
+artificial data. These checks are software validation, not research results.
+On Windows, replace `.venv/bin/python` with `.\.venv\Scripts\python.exe`.
 
-`--save-json` optionally takes a simple `.json` filename. Without a filename it
-uses `<dataset-stem>_report.json`. Reports always go into `results/stage2/`, include
-metadata and counts but no sample rows, and never overwrite existing reports.
-Use a new filename or deliberately remove an old local report to rerun. Identical
-CSV and DAT stems otherwise share the default output name. Reports are ignored
-by Git. Errors print a readable message and return a nonzero exit code.
+To regenerate the fixed SSHR study manually, first place the hash-verified
+Ecoli4/Yeast4 files at the paths in [DATASETS.md](DATASETS.md), then run on
+`sshr-implementation`:
 
-### What the numbers mean
-
-The majority class is the more frequent class, encoded as **0**. The minority
-class is the less frequent class, encoded as **1**. Original labels are retained,
-and the mapping is reported. A tie has no automatic minority: use
-`--minority-label "rare"` to designate a class. An explicit label must exist and
-cannot select a class with a greater count than the other class. These are
-file-level inspection labels; later evaluation must define the positive outcome
-and class roles from fitting data or an explicit research definition, never from
-outer-test data to guide training or selection.
-
-The **imbalance ratio** is majority count divided by minority count. For example,
-90 majority and 10 minority records give 9.0. Our six-record toy fixtures give
-5.0; this is a software-test example, not a research result.
-
-The summary also counts samples, features, class percentages, numerical and
-categorical columns, missing feature entries, and rows with any missing features.
-Duplicate feature rows compare features alone; duplicate complete rows compare
-features **and the target**. Both count additional occurrences after the first,
-so three identical rows yield two duplicates. Matching missing values are treated
-as equal in these comparisons. Different labels with identical features increase
-feature duplicates but do not necessarily increase complete-row duplicates.
-No missing values or duplicates are removed.
-
-### Python interface and file support
-
-```python
-from src.data_loader import load_dataset
-from src.imbalance_stats import calculate_statistics
-
-dataset = load_dataset("tests/fixtures/toy.csv", target_column="class")
-# dataset.X: feature DataFrame; dataset.y: aligned integer target Series
-# dataset.original_y: original text labels; dataset.label_mapping: label -> 0/1
-stats = calculate_statistics(dataset)
-print(stats.to_dict())
+```bash
+python -m scripts.run_sshr_small_study --output results/sshr-small-study --report-dir docs/sshr_pilot
 ```
 
-`LoadedDataset` documents feature names/types, majority/minority labels/counts,
-target name, source filename, and format. `ImbalanceStats` documents all 13
-statistics. Loading does not mutate the file, reorder or remove rows, or fit
-anything.
+Use the selected environment's Python interpreter. The runner never downloads
+datasets; it validates inputs before fitting and resumes only matching saved
+identities. Run identity changes require a new output directory. The shared
+aggregate report alone cannot resume training without the ignored job records.
 
-- Files must be UTF-8 (a UTF-8 BOM is supported), with `.csv` or `.dat` suffixes.
-- CSV uses comma separators, a unique nonempty header, and standard double-quoted
-  fields, including embedded commas, doubled double quotes, and multiline fields.
-  A feature is numerical if every nonmissing value parses numerically; otherwise
-  it is categorical. All-missing CSV columns are categorical because type cannot
-  be inferred. Numeric-looking category codes/identifiers may therefore need a
-  future explicit schema; CSV does not carry declared feature types.
-- KEEL accepts `@relation`, `@attribute`, `@inputs`, `@outputs`, and `@data`,
-  with case-insensitive directives; real/numeric/integer and declared nominal
-  attributes; and optional numeric range metadata. Declared ranges are parsed
-  but not used to filter or clip values. Integers and finite numerical values are
-  validated; undeclared nominal values fail.
-- KEEL supports full-line `%` comments, comma-delimited records, single/double
-  quoted names/values, and doubled matching quotes. Sparse records, multiline
-  records, inline comments, and backslash escapes are unsupported. This is a
-  documented KEEL subset, not a general ARFF parser.
-- KEEL respects `@inputs` when present; otherwise non-target attributes become
-  features. `--target` overrides KEEL output selection and makes all other
-  declared attributes features. Multiple declared outputs remain unsupported,
-  including with an override. Missing output metadata requires an override.
-- Empty fields and `?` represent missing values. Text such as `NA` is preserved
-  as text, not silently treated as missing. Numeric infinity is rejected.
-- Target labels remain strings, so `01` and `1` stay distinct. Missing targets,
-  empty data, one-class or multiclass targets, inconsistent record widths,
-  malformed declarations, and target-only datasets are rejected. Columns with
-  missing features remain available without imputation or feature encoding.
-- The loader reads the whole file into memory. No schema override, streaming,
-  multiclass support, or original train/test split interpretation is implemented.
+## APIs and layout
 
-### Run Stage 2 in Antigravity on Windows
-
-Synchronize the Stage 2 feature branch first (or pull `main` after its PR merges):
-
-```powershell
-git fetch origin
-git switch stage2-data-loading
-git pull --ff-only
-.\.venv\Scripts\python.exe -m pip install -r requirements-dev.txt
-.\.venv\Scripts\python.exe main_stage1.py
-.\.venv\Scripts\python.exe main_stage2.py --help
-.\.venv\Scripts\python.exe main_stage2.py --data tests/fixtures/toy.csv --target class
-.\.venv\Scripts\python.exe main_stage2.py --data tests/fixtures/toy.dat --save-json keel_report.json
-.\.venv\Scripts\python.exe -m pytest -q
-```
-
-If this is your first local setup, use the Python 3.11 environment-creation steps
-above before these commands. Open this repository root in Antigravity and select
-`.venv\Scripts\python.exe`. Linux cloud validation does not establish that the
-Windows environment has already been tested or synchronized.
-
-## Original UGO software: Stage 3 and Stage 4R-2 corrections
-
-Read [docs/ugo_reproduction.md](docs/ugo_reproduction.md) first. The implementation
-follows the paper's signed MMA equation and highest-mean-uncertainty class rule,
-with kNN noise detection, relocation, and Welch stopping. It does not silently
-force minority-only generation or replace uncertainty selection with ordinary
-SMOTE. It uses fixed original-total batches and names the two conflicting cap
-expressions. Selection pools, rounding, neighborhood details and batch clipping
-remain explicit reproduction conventions where the paper is ambiguous.
+UGO needs a probability classifier for internal uncertainty fitting and accepts
+labelled fitting data. Its provisional flag records unresolved source choices:
 
 ```python
 from sklearn.linear_model import LogisticRegression
 from src.ugo import UGO
 
-# X_fit/y_fit must be fitting data only: finite numerical features, two classes.
-sampler = UGO(LogisticRegression(max_iter=1000, random_state=42),
-              variant="smote", cap_interpretation="section_3_3",
-              allow_provisional=True)
-# X_augmented, y_augmented = sampler.fit_resample(X_fit, y_fit)
-# print(sampler.diagnostics_)
+sampler = UGO(
+    LogisticRegression(max_iter=1000, random_state=42),
+    variant="smote", cap_interpretation="section_3_3", allow_provisional=True,
+)
+# X_resampled, y_resampled = sampler.fit_resample(X_train, y_train)
 ```
 
-Run the included artificial-data sanity check on Windows after synchronizing:
+Fit a fresh downstream classifier on the returned rows; UGO's last internal
+uncertainty model may predate its last generated batch. On `sshr-implementation`,
+SSHR accepts a separate unlabelled training feature pool:
 
-```powershell
-git fetch origin
-git switch ugo-paper-reproduction
-git pull --ff-only
-.\.venv\Scripts\python.exe main_stage1.py
-.\.venv\Scripts\python.exe main_stage3.py
-.\.venv\Scripts\python.exe -m pytest -q
+```python
+from src.sshr import SSHR
+
+sampler = SSHR(minority_label=1, random_state=42)
+# X_resampled, y_resampled = sampler.fit_resample(X_labeled, y_labeled, X_unlabeled)
 ```
 
-Linux uses `.venv/bin/python main_stage3.py`. The demo's counts and stopping
-diagnostics are software evidence only; it reports no accuracy or benchmark
-results. Categorical/missing features require future training-only preprocessing
-outside UGO. Already-converted numeric category codes cannot be detected by
-dtype alone; callers must ensure numerical distance is meaningful. Stage 1/2
-entry points continue to work unchanged. Stop after the requested reproduction
-stage; subsequent stages require separate authorization under AGENTS.md.
+Both interfaces require meaningful finite numerical features. Neither interface
+can identify test rows incorrectly supplied by a caller. The controlled SSHR
+runner rejects unsupported categorical/one-hot source inputs and enforces its
+training-pool boundaries.
+
+| Path | Purpose |
+| --- | --- |
+| `src/` | Loaders, samplers, classifier adapters, preprocessing, evaluation and resumable results |
+| `scripts/` | Reproducible study runners, report exporters and optional C5.0 setup |
+| `docs/` | Paper decisions, implementation records and measured comparisons |
+| `data/manifests/` | Portable source hashes and declared dataset preparation choices |
+| `data/raw/`, `data/processed/` | Local inputs and derivatives, ignored by Git |
+| `results/` | Local detailed experiment records and generated outputs, ignored by Git |
+| `tests/` | Software checks and artificial fixtures |
+| `main_stage*.py` | Existing inspection, UGO check and reproduction entry points |
+
+## Evaluation rules
+
+Preprocessing, clustering, pseudo-labelling and resampling use fitting data
+only. Outer-test features and labels never enter the unlabelled pool. In a
+controlled label-hiding study, all methods receive the same reduced labelled
+training set; hidden labels are used only for retrospective auditing after
+generation. Fold/group definitions, seeds, source hashes, failures and quota
+shortfalls are recorded.
+
+Compare against NORES on the same held-out folds. Report standard minority F1,
+G-mean, MCC, probability ROC-AUC and false-positive rate with their denominators;
+the SSHR paper's printed AUC is not assumed equivalent to probability ROC-AUC.
+Repeated folds are dependent, and their sample standard deviations are
+descriptive. Distance proxies do not establish true overlap or class membership.
+Further experiments or extensions require a separately requested stage under
+[AGENTS.md](AGENTS.md).

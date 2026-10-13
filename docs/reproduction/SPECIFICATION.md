@@ -1,5 +1,15 @@
 # Original UGO reproduction specification
 
+This is the historical Stage 4R-1 specification, with later alignment notes.
+The active project now reproduces published UGO, BFCH-SMOTE, EC-EBO and SSHR;
+see [PROJECT_SCOPE.md](../PROJECT_SCOPE.md). Current source/data and executed-work
+records are [DATASET_COLLECTION.md](DATASET_COLLECTION.md),
+[CLASSIFIER_COMPLETION.md](CLASSIFIER_COMPLETION.md),
+[BENCHMARK_EXECUTION.md](BENCHMARK_EXECUTION.md) and the
+[SSHR study](https://github.com/MAYANK-RATHVA05/rb_ugo/blob/sshr-implementation/docs/SSHR_SMALL_STUDY.md).
+Statements about the starting implementation and unavailable artifacts below
+are historical, not the current repository's complete capability inventory.
+
 Stage 4R-1: source inventory, paper-to-code specification and recovery review.
 Prepared 2026-10-11. This stage changes documentation only; no algorithm repair,
 data acquisition, final-model training or benchmark experiment is executed here.
@@ -52,7 +62,10 @@ claim the two files are byte-identical or text-identical without comparison.
 Do not commit uploaded PDFs or real datasets. Retain originals outside Git;
 record hashes and portable provenance rather than transient attachment paths.
 
-No supplementary package or author implementation is available here. The paper
+At the original Stage 4R-1 audit, no supplementary package or author implementation
+was available here. The publisher supplement was subsequently supplied and
+audited in the later collection/source records; author-code equivalence remains
+unverified. The paper
 explicitly refers to the supplement for the 74-dataset list and detailed results.
 It does not establish that the supplement necessarily includes code, seeds,
 package versions or fold files; those are requirements to investigate.
@@ -307,8 +320,10 @@ Stage 4R-5 implements fold-local preprocessing, source-checked metrics and the
 paired ten-fold runner with atomic resumable records. Its verification uses
 artificial fixtures; see [EVALUATION.md](EVALUATION.md). Stage 4R-6 completes
 the selected 300-job simulation pilot, measured resources, resume and descriptive
-paper comparison; see [SIMULATION_PILOT.md](SIMULATION_PILOT.md). Real-data
-pilot expansion needs verified inputs. Stages 4R-7 and 4R-8 remain planned.
+paper comparison; see [SIMULATION_PILOT.md](SIMULATION_PILOT.md). Later real-data
+BFCH/EC-EBO/SSHR pilots are documented separately. Stage 4R-7 ran partially and
+was interrupted as recorded in [BENCHMARK_EXECUTION.md](BENCHMARK_EXECUTION.md);
+full benchmark coverage and the Stage 4R-8 final paper comparison remain incomplete.
 
 | Stage | Work | Exit evidence |
 | --- | --- | --- |

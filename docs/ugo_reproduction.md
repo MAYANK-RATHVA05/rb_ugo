@@ -24,12 +24,17 @@ for effective handling of class imbalance in machine learning,” Knowledge-Base
 Systems 342 (2026), 115886, DOI
 [10.1016/j.knosys.2026.115886](https://doi.org/10.1016/j.knosys.2026.115886).
 Page numbers refer to the uploaded 20-page PDF; its hash is in the source register.
-No author implementation or separately supplied supplement is available.
+Author-code equivalence remains unverified. The publisher supplement was supplied
+later; the [collection record](reproduction/DATASET_COLLECTION.md) and source
+register document its 74-entry metadata/results and accepted input approximations.
+Earlier absence statements describe the original source-audit snapshot.
 
 Runtime still requires allow_provisional=True and emits a warning. Diagnostics
 report source_audited_with_ambiguities, not unique author-code equivalence.
-No RB-UGO/DRA-UGO, held-out batch acceptance, benchmark scoring or performance
-claims are included.
+The sampler implements the published UGO framework, with no held-out risk-budget
+acceptance extension. Separate runners fit fresh final classifiers and save
+held-out scores; these descriptive results do not resolve source fidelity.
+The [project scope](PROJECT_SCOPE.md) now covers published-method reproduction.
 
 ## Data and classifier contract
 
@@ -241,7 +246,14 @@ software verification uses artificial fixtures. Stage 4R-6 additionally runs
 the [measured simulation pilot](reproduction/SIMULATION_PILOT.md), preserving
 mixed results, cap termination and unresolved F1 averaging.
 
-Still required: evidence for ambiguous conventions and author code, verified
-benchmark variants, exact missing classifier implementations, real-data
-pilots/full experiments, statistical analyses and full paper-result comparison. Stop after
-the requested stage; later stages require separate authorization under AGENTS.md.
+Later records include [BFCH](BFCH_SMALL_STUDY.md) and
+[EC-EBO](EC_EBO_SMALL_STUDY.md) real-data comparisons,
+[all fourteen declared classifier interfaces](reproduction/CLASSIFIER_COMPLETION.md),
+the [74-entry input collection](reproduction/DATASET_COLLECTION.md), and an
+[interrupted partial benchmark](reproduction/BENCHMARK_EXECUTION.md).
+The [SSHR pilot](https://github.com/MAYANK-RATHVA05/rb_ugo/blob/sshr-implementation/docs/SSHR_SMALL_STUDY.md)
+is a separate controlled six-method study. These do not constitute full paper
+reproduction. Remaining gaps include author code/ambiguous conventions, exact
+variant/classifier/fold fidelity, complete benchmark coverage, statistical
+analyses and comparison with all published tables/figures. Stop at the requested
+scope; future experiments require a separate user instruction.
