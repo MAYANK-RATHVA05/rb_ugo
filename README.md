@@ -405,6 +405,9 @@ jobs, separate pseudo-label versus SMOTE counts, quotas, clusters, geometric
 proxies and the empty-U ablation. Mean F1 declined with U in all four conditions;
 Yeast4 GNB had higher mean probability ROC-AUC and G-mean alongside higher FPR. These
 are descriptive results, not author-result fidelity or general superiority.
+The [supervisor briefing](docs/presentation/Imbalanced_Learning_Pilot_Results.pdf)
+and [editable Word copy](docs/presentation/Imbalanced_Learning_Pilot_Results.docx)
+summarize this pilot without adding a new experiment.
 
     python -m scripts.run_sshr_small_study --output results/sshr-small-study --report-dir docs/sshr_pilot
 
