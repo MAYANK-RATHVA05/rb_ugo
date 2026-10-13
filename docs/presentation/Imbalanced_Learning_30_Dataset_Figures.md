@@ -1,0 +1,9 @@
+# Three figures for the 30-variant supervisor discussion
+
+Open the [three-page figure PDF](figures/Imbalanced_Learning_30_Dataset_Figures.pdf) after the [main results report](Imbalanced_Learning_30_Dataset_Results.pdf). Each figure also has a separate PNG for slides:
+
+1. [F1 versus FPR](figures/01_f1_fpr_tradeoff.png) places the six methods by their unweighted 30-variant mean F1 and false-positive rate, separately for LogReg and GNB. Up means better F1; left means fewer false alarms. For LogReg, SMOTE has higher mean F1 than UGO-SMOTE (0.495 versus 0.475), but also higher FPR (0.137 versus 0.047). The figure shows the tradeoff, not a universal winner.
+2. [F1 consistency](figures/02_f1_consistency.png) counts variants on which each method has higher, equal or lower same-fold mean F1 than no resampling. UGO-SMOTE is higher on 22 LogReg variants and 16 GNB variants, with 5 and 9 ties respectively. Counts show direction across variants, not the size of each gain or statistical significance.
+3. [SSHR unlabelled-pool effect](figures/03_sshr_unlabelled_effect.png) plots the paired per-variant change from supplying training-only `U` to SSHR. For LogReg/GNB, mean F1 changes by -0.016/-0.026 and mean FPR by +0.021/+0.024. Each dot is one variant and each black diamond is its classifier's 30-variant mean. Below zero is worse for F1; above zero is worse for FPR.
+
+All figures are computed from the committed [comparison table](Imbalanced_Learning_30_Dataset_Comparison.csv) and [SSHR ablation table](Imbalanced_Learning_30_Dataset_SSHR_Ablation.csv) using `python -m scripts.plot_all_methods_30`. No training or parameter selection was performed to create the graphs. The main comparison uses 25 shared successful folds for 29 variants and 22 for one wine variant; the SSHR ablation uses 25 paired folds for every variant. The 30 variants come from 10 source families, so the dots and counts are descriptive and are not independent-sample inference.

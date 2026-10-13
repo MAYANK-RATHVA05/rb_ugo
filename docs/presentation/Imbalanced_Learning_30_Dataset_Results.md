@@ -83,6 +83,7 @@ For a subsequent research method, define the primary target **before** tuning—
 
 # Files and provenance
 
+- [Three-page figure pack](figures/Imbalanced_Learning_30_Dataset_Figures.pdf) and [figure-reading guide](Imbalanced_Learning_30_Dataset_Figures.md): visual summaries of F1/FPR tradeoffs, per-variant consistency and the SSHR ablation.
 - [30-dataset comparison table](Imbalanced_Learning_30_Dataset_Comparison.csv): 300 Excel-friendly rows, with all five metrics side by side for six methods, separately by classifier and dataset.
 - [Detailed aggregate scores](Imbalanced_Learning_30_Dataset_Scores.csv): 1,800 rows with mean, sample SD, shared-fold count and paired difference from NORES.
 - [Method coverage](Imbalanced_Learning_30_Dataset_Coverage.csv): planned, successful and failed fold events for every dataset, classifier and method.

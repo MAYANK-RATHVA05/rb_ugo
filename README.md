@@ -422,3 +422,5 @@ are audited in the [supervisor briefing](docs/presentation/Imbalanced_Learning_3
 with a [dataset-level comparison table](docs/presentation/Imbalanced_Learning_30_Dataset_Comparison.csv).
 The 30 variants come from 10 source families; this is a descriptive comparison
 of our implementations, not a reproduction of the papers' reported scores.
+The [three-page figure pack](docs/presentation/figures/Imbalanced_Learning_30_Dataset_Figures.pdf)
+visualizes F1/FPR tradeoffs, dataset-level consistency and SSHR's unlabelled-pool ablation.
