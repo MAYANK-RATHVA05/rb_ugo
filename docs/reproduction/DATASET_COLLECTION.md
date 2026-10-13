@@ -1,5 +1,11 @@
 # Dataset collection and accepted approximations
 
+This is the historical preparation/verification record, not a live file
+inventory. The 74-input checks below describe that collection stage. Raw inputs
+are not committed, and their availability depends on the checkout; the latest
+SSHR cloud checkout does not contain `data/raw/ugo74_approx/`. See the current
+[dataset guide](../../DATASETS.md) before running a registered experiment.
+
 All 74 entries in the paper's final dataset list have prepared local inputs.
 The user accepted using the collected candidate variants even when their exact
 preparation differs from the paper. This is an independent reproduction input
