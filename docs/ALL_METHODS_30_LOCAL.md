@@ -31,10 +31,26 @@ before switching branches. Python 3.11 is the tested target; the existing
 `.venv` may be reused. On a fresh clone, create it with `py -3.11 -m venv .venv`.
 
 The raw data under `data/raw/ugo74_approx/` are deliberately ignored by Git.
-The script never downloads them. Copy the prepared files into the registered
-relative paths before training; their names and SHA-256 values are in
-[ugo_74_approximate.json](../data/manifests/ugo_74_approximate.json). A Git pull
-alone does not provide the raw data.
+A Git pull alone does not provide them. To rebuild the selected inputs locally,
+put the four KEEL section ZIPs (`imb_IRlowerThan9.zip` and
+`imb_IRhigherThan9p1.zip` through `imb_IRhigherThan9p3.zip`) and the UCI
+`statlog+landsat+satellite.zip` in your Downloads folder. These are the
+original archives collected for the UGO baseline. The preparation command
+finds renamed copies such as `(1)` by their registered SHA-256. The banana and
+abalone R objects are fetched from pinned public CRAN GitHub revisions unless
+matching local copies are already in Downloads. Install the R-data reader and
+run:
+
+```powershell
+.\.venv\Scripts\python.exe -m pip install pyreadr==0.5.7
+.\.venv\Scripts\python.exe -m scripts.prepare_all_methods_30_inputs --source-dir "$env:USERPROFILE\Downloads"
+```
+
+Use another folder with `--source-dir` if the five original ZIPs are elsewhere.
+The command verifies both source hashes and prepared-input hashes, leaves
+existing mismatched files untouched, and never trains models. It writes only
+under the ignored `data/raw/` folder. The target paths and SHA-256 values are
+in [ugo_74_approximate.json](../data/manifests/ugo_74_approximate.json).
 
 ## Check sources without training
 
