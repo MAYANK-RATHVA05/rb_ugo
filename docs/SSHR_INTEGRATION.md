@@ -6,6 +6,10 @@ The command-line entry point is [scripts/run_sshr_study.py](../scripts/run_sshr_
 Existing UGO, BFCH-SMOTE, EC-EBO, comparator registries, evaluation defaults,
 preprocessing and probability-AUC implementation are unchanged.
 
+This document retains Stage 3's API and historical software validation. The
+subsequently authorized [Stage 4 study](SSHR_SMALL_STUDY.md) is complete;
+its real-data outcomes are recorded separately from the artificial checks.
+
 **SSHR selects EXISTING unlabelled observations with minority pseudo-labels.
 Only its within-cluster SMOTE fallback generates synthetic feature vectors.**
 The output retains separate counts and provenance for these operations; neither
@@ -172,12 +176,14 @@ not proof of continuous semantics; one-hot coordinates must not be falsely
 declared continuous. Numerical missing values use the existing `L`-only imputer;
 infinite values are rejected.
 
-This path currently rejects duplicate feature-coordinate rows rather than
-silently deduplicating or allowing copies across test/training partitions.
-Stage 4 must resolve duplicates and any group/time constraints using a documented
-preparation recipe before selecting suitable local inputs. Group/time constraints
-require supplied compliant folds; their domain compliance remains the caller's
-responsibility.
+The default path rejects duplicate feature-coordinate rows. Stage 4 adds an
+explicit opt-in: provenance may supply integer `coordinate_groups`, one per
+raw input row, together with compliant supplied folds and masks plus their
+authorities. Identical raw feature vectors must have the same group, and a
+group cannot cross outer train/test or observed L/hidden U boundaries. All rows
+remain intact; no silent deduplication occurs. See the documented Stage 4
+preparation recipe. Other entity/time constraints still require caller-supplied
+compliant partitions and cannot be inferred from these files.
 
 Supplied partitions are lists of records:
 
@@ -224,8 +230,9 @@ original observed majority row is strictly less than distance to the nearest
 original observed minority row. Ties are separate. The reference remains the
 original reduced `L` before method-specific deletion; hidden truth and test rows
 are absent. This is a local geometric proxy, not irreducible class overlap.
-Equivalent baseline proxy exports and paired descriptive summaries remain for
-Stage 4.
+Stage 4 adds equivalent baseline exports, with generated minority/majority
+counts separated, an append-only observed-prefix check, and integrity-checked
+paired descriptive summaries. Existing supervised algorithms are unchanged.
 
 From the repository root, run the artificial check with:
 
@@ -273,8 +280,10 @@ on artificial data, and the tests inspect preprocessing/sampling boundaries and
 frozen-mask perturbation behavior; these checks are not real-data performance
 evidence. No new dependency or existing algorithm/test-file change was required.
 
-Stage 3 stops after software validation, documentation, commit and push.
-**Wait for the user's “next” before Stage 4:** at most two suitable hash-verified
-numeric local datasets, paired classifiers/folds/label budgets, baseline overlap
-proxies, saved descriptive metrics and limitations. No real-data performance,
-superiority, paper-result fidelity or methodological novelty is claimed here.
+Stage 3 stopped after software validation, documentation, commit and push.
+The user's subsequent **“next”** authorized Stage 4: the hash-verified Ecoli4/
+Yeast4 study with paired classifiers/folds/label budgets, baseline proxies and
+the unlabelled-data ablation. The [measured report](SSHR_SMALL_STUDY.md) preserves
+coverage, diagnostics and limitations; these outcomes do not alter the historical
+Stage 3 checks above or establish paper-result fidelity, superiority or novelty.
+**Stop after Stage 4 and wait for the user's review.**

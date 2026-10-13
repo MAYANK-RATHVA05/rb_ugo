@@ -369,7 +369,7 @@ dtype alone; callers must ensure numerical distance is meaningful. Stage 1/2
 entry points continue to work unchanged. Stop after the requested reproduction
 stage; subsequent stages require separate authorization under AGENTS.md.
 
-## SSHR reproduction: Stage 3 estimator and controlled runner
+## SSHR reproduction: Stage 4 two-dataset pilot complete
 
 [SSHR method decisions](docs/SSHR_METHOD_DECISIONS.md) audit the full Jiang et al.
 (2023) paper and record explicit interpretations for the staged implementation.
@@ -396,5 +396,18 @@ The artificial check runs all six methods without using real datasets:
 
     .venv/bin/python -m scripts.run_sshr_study --software-check --output results/sshr-software-check
 
-Existing methods and their defaults are unchanged. The real-data study remains
-for Stage 4; wait for the user's “next” before running it.
+Stage 4 completed the fixed Ecoli4/Yeast4 pilot with all six methods, LogReg/GNB,
+five repeats of five shared outer folds and the same reduced training-label
+budget. Exact raw-coordinate groups stay together across train/test and L/U;
+original raw rows are preserved. The [measured study](docs/SSHR_SMALL_STUDY.md)
+and [CSV/JSON artifacts](docs/sshr_pilot/README.md) report all 800 successful
+jobs, separate pseudo-label versus SMOTE counts, quotas, clusters, geometric
+proxies and the empty-U ablation. Mean F1 declined with U in all four conditions;
+Yeast4 GNB had higher mean probability ROC-AUC and G-mean alongside higher FPR. These
+are descriptive results, not author-result fidelity or general superiority.
+
+    python -m scripts.run_sshr_small_study --output results/sshr-small-study --report-dir docs/sshr_pilot
+
+The registered local raw files are required and remain outside Git. Existing
+algorithms and default method lists are unchanged; SSHR is opt-in. The full
+suite passes 738 tests. Stop after Stage 4 and wait for the user's review.

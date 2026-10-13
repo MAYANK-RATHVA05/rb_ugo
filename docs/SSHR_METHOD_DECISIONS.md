@@ -1,7 +1,10 @@
 # SSHR method decisions — source audit and staged reproduction
 
-**Stage 3 adds the full SSHR resampling estimator and an opt-in controlled
-runner. A real-data SSHR study has not been run.**
+**Stages 1–4 are complete: SSHC, SSHR resampling, the opt-in controlled runner,
+and a fixed two-dataset real-data pilot.** The
+[Stage 4 study](SSHR_SMALL_STUDY.md) records all 800 successful jobs, the
+unlabelled-data ablation and measured limitations; no paper-result fidelity or
+general superiority is established.
 This document preserves the Stage 0 source evidence and distinguishes implemented
 decisions from proposed choices for later stages. See the
 [SSHC implementation record](SSHC_IMPLEMENTATION.md) and
@@ -344,7 +347,7 @@ if reported, must have a separate name and must not replace probability AUC.
    policies, seeds and source/code hashes, not just method and dataset names.
 
 [SSHR_INTEGRATION.md](SSHR_INTEGRATION.md) records the concrete estimator/runner
-API, required source metadata, supplied partitions, duplicate-input restriction,
+API, required source metadata, supplied partitions, duplicate/group restrictions,
 global row lineage, training-only SSHR overlap proxy, metrics and software checks.
 No masks or parameters are changed to rescue baseline failures; tied/inverted
 reduced counts retain each existing baseline's implementation semantics and
@@ -387,20 +390,22 @@ diagnosed class-erasure failure and actual Stage 2 validation.
 
 ## 9. Stage status and small-study gate
 
-Stages 1–3 were separately authorized by the user's **“next”**. Stage 4 requires
-a further **“next”**; no real-data study is part of the integration checks:
+Stages 1–4 were separately authorized by the user's **“next”**. Stage 3's
+software integration checks remain distinct from the measured Stage 4 study:
 
 | Stage | Planned deliverable and validation |
 | --- | --- |
 | 1 — implemented | Separate SSHC module and hand-calculated initialization, assignments, splits, literal/standard objectives, pruning conflict modes, rollback, convergence guards, ties, pure/impure/small/unlabelled-only clusters and invalid-input tests. Validation is recorded in [SSHC_IMPLEMENTATION.md](SSHC_IMPLEMENTATION.md). |
 | 2 — implemented core | SSHR cleaning, ranked confidence selection and within-cluster fallback; row conservation/lineage, nonmutation, labels, empty `U`, zero-distance helper, singleton cases, erased classes, reproducibility and unmet quotas. Validation is recorded in [SSHR_RESAMPLING.md](SSHR_RESAMPLING.md). |
 | 3 — implemented | Full estimator and opt-in controlled runner; training-only feature provenance, hidden-label isolation, identical reduced baselines, categorical rejection, fixed outer folds/masks, persistence/cache identities and fresh final fitting. Validation is recorded in [SSHR_INTEGRATION.md](SSHR_INTEGRATION.md). |
-| 4 | At most two local numerical datasets, hash and metadata checked first. Same folds/classifiers for the six requested methods; save held-out F1/G-mean/MCC/probability AUC/FPR, pseudo-label accuracy, lineage counts, cluster sizes, shortfalls and training-only overlap proxy. Commit a descriptive report. No 44/74-dataset benchmark. |
+| 4 — complete | Ecoli4 and Yeast4 raw/archive hashes and metadata checked before training; raw-coordinate groups retained intact. Six methods, two classifiers and 25 frozen shared folds plus matched empty-U/NORES controls: 800/800 successful jobs. All metrics, pseudo-label audits, lineage counts, clusters, shortfalls, baseline proxies and coverage are in [SSHR_SMALL_STUDY.md](SSHR_SMALL_STUDY.md) and its linked artifacts. No 44/74-dataset benchmark. |
 
-Ecoli4 and Yeast4 are candidate numerical inputs listed in the SSHR paper's
-Table 2 and supplied locally; their exact files must be hash-verified before the
-later study. Duplicate/group handling must be resolved before forming outer
-folds. A training-only overlap proxy can count appended rows whose nearest
+Ecoli4 and Yeast4 are numerical inputs listed in the SSHR paper's Table 2 and
+supplied locally. Stage 4 verified their registered raw/ZIP hashes before
+training, preserved all rows, and kept identical raw-coordinate groups together
+across outer folds and observed/hidden training pools. This is a declared
+grouping/label-hiding design, not recovered author folds or unlabelled protocol.
+A training-only overlap proxy counts appended rows whose nearest
 observed-labelled neighbours favour majority, using the same original reduced
 `L` reference for every method, **before** method-specific deletion. Record its
 neighbour count and ties; it is not irreducible overlap or hidden-label truth.
@@ -432,6 +437,10 @@ Stage 1 resolved the test prerequisites without deleting supplied data and was
 committed as `393d319c867c6d5a70b8fbca59b95b1b2ec376de`. Stage 2 was separately
 authorized and committed as `5548cc53dbed5cd23b46f08ec4772a1680f53a73`; the user
 then authorized Stage 3. The implementation validation records are separate.
-**Stop after Stage 3 and wait for the user's “next” before Stage 4.**
+The user subsequently authorized Stage 4. Its protocol/source/reporting code
+was committed before training as
+`6e0f1c31b5c54c694b8107e846f5111719eae85d`; the measured report preserves that
+fixed implementation and its unresolved interpretations.
+**Stop after Stage 4 and wait for the user's review.**
 Source-code access/clarification remains
 required for any claim of exact author-implementation fidelity.
