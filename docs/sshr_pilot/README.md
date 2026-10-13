@@ -23,6 +23,11 @@ with `json.loads` after reading the CSV. Undefined scalar values are blank CSV
 cells and JSON `null`. An empty dictionary means no available fields, not a
 measured zero for every possible field.
 
+This directory's `.gitattributes` preserves CSV/JSON artifact bytes without line
+ending conversion. The byte hashes in the audit therefore remain valid in
+GitHub and in Windows or Linux checkouts; the rest of the repository retains
+its existing CSV line-ending policy.
+
 [validation.json](validation.json) preserves the separate read-only audit of
 all 800 saved jobs, source/run/artifact hashes, frozen-design reconstruction,
 metric and pseudo-label recomputation, accounting assertions and explicit limits.
