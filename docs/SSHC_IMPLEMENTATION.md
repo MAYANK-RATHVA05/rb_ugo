@@ -177,6 +177,6 @@ software fixtures, not real-data experimental results.
 
 These checks are not evidence of predictive benefit or correct pseudo-labels.
 Original UGO, BFCH-SMOTE, EC-EBO and evaluation defaults are unchanged.
-Stop after the Stage 1 commit/push. **Wait for the user's “next” before Stage 2:**
-majority undersampling, confidence ranking, selection of existing unlabelled
-rows and the SMOTE fallback.
+Stage 1 was committed and pushed as `393d319c867c6d5a70b8fbca59b95b1b2ec376de`.
+The user then authorized Stage 2's separate [resampling core](SSHR_RESAMPLING.md).
+The SSHC implementation and its numerical policies are unchanged by that stage.

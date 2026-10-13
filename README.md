@@ -369,7 +369,7 @@ dtype alone; callers must ensure numerical distance is meaningful. Stage 1/2
 entry points continue to work unchanged. Stop after the requested reproduction
 stage; subsequent stages require separate authorization under AGENTS.md.
 
-## SSHR reproduction: Stage 1 clustering
+## SSHR reproduction: Stage 2 resampling components
 
 [SSHR method decisions](docs/SSHR_METHOD_DECISIONS.md) audit the full Jiang et al.
 (2023) paper and record explicit interpretations for the staged implementation.
@@ -383,6 +383,11 @@ access evidence and baseline test limitations. Stage 1 adds the separate
 [implementation record](docs/SSHC_IMPLEMENTATION.md) gives the API, objective
 modes, numerical checks and limitations. It accepts observed training labels
 plus a separate unlabelled training feature pool, and returns clusters and
-diagnostics. SSHR resampling and runner integration remain for later stages;
-existing methods and their defaults are unchanged. Wait for the user's “next”
-before Stage 2.
+diagnostics. Stage 2 adds `src/sshr_resampling.py`, which consumes the frozen
+partition for majority cleaning/removal, confidence-ranked selection of existing
+unlabelled observations, and within-cluster SMOTE fallback. Its
+[resampling record](docs/SSHR_RESAMPLING.md) describes the functional API,
+row lineage, policy choices and shortfall diagnostics. The full estimator,
+runner integration and real-data study remain for later stages. Existing
+methods and their defaults are unchanged. Wait for the user's “next” before
+Stage 3.

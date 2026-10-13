@@ -1,11 +1,13 @@
 # SSHR method decisions — source audit and staged reproduction
 
-**Stage 1 implements SSHC clustering only. SSHR resampling, runner integration,
-and a real-data SSHR study have not been implemented.** This document preserves
-the Stage 0 source evidence and distinguishes implemented clustering decisions
-from proposed choices for later stages. See [the SSHC implementation record](SSHC_IMPLEMENTATION.md)
-for the API, checks and limits. Existing UGO, BFCH-SMOTE, EC-EBO, evaluation
-code and default method lists are unchanged.
+**Stage 2 adds SSHR resampling components to Stage 1's SSHC clustering. The full
+estimator, runner integration and a real-data SSHR study are not implemented.**
+This document preserves the Stage 0 source evidence and distinguishes implemented
+decisions from proposed choices for later stages. See the
+[SSHC implementation record](SSHC_IMPLEMENTATION.md) and
+[SSHR resampling record](SSHR_RESAMPLING.md) for the APIs, checks and limits.
+Existing UGO, BFCH-SMOTE, EC-EBO, evaluation code and default method lists are
+unchanged.
 
 **SSHR mainly selects EXISTING unlabelled observations and assigns minority
 pseudo-labels to them. These are added real observations, not synthetic feature
@@ -70,7 +72,7 @@ heuristic, not verified calibrated class-membership probability. Table 7, p.10
 reports pseudo-label accuracy as low as 0.013 on Abalone19; this is an author's
 reported value, not a result reproduced here.
 
-Planned public input is `fit_resample(X_labeled, y_labeled, X_unlabeled)` with
+The Stage 3 public estimator input will be `fit_resample(X_labeled, y_labeled, X_unlabeled)` with
 separate aligned finite numerical matrices and two observed classes. Hidden
 labels are not an argument or fitted attribute. Empty `X_unlabeled` is allowed
 for an explicitly identified ablation; missing observed classes, mismatched
@@ -229,18 +231,20 @@ SMOTE seeds/neighbours, or singleton-cluster handling.
 | Class erasure | If preliminary cleaning erases either observed class, raise a diagnosed failure; never swap label identities or inspect hidden labels to repair it. |
 | Reassignment after cleaning | No reclustering/reassignment is printed in Algorithm 2. Freeze the SSHC model; remove deleted cluster centroids from `P`, exclude their unlabelled members from selection, and update surviving membership counts after labelled-row removal. Record this interpretation. |
 | Quota timing | After preliminary cleaning compute `G=max(0,N_minus_remaining-N_plus_remaining)`. Set `n_U=floor(lambda*G)`, `n_O=G-n_U`. This closes the remaining integer gap if quotas are met. Using pre-clean counts could overbalance after extra cleaning; timing and rounding are interpretations. |
-| Weighted removal | Rank remaining observed majority rows by descending Eq.5 weight, without replacement; stable original labelled-row positions resolve ties. Ranking versus weighted random selection is not established by the paper. Use a numerically stable equivalent logistic calculation. |
+| Weighted removal | Rank remaining observed majority rows by descending Eq.5 weight, without replacement; stable original labelled-row positions resolve ties. Ranking versus weighted random selection is not established by the paper. Use a numerically stable equivalent logistic calculation. Nearest-minority references include all surviving minority-labelled centroids, including unanchored birth-minority centroids; the observed-anchor restriction applies to pseudo-selection and SMOTE, not this distance reference. No surviving minority centroid gives a weighted-removal shortfall, which does not increase the addition quota. |
 | Confidence counts | `n_plus` counts surviving **observed labelled minority rows**; `n` counts surviving assigned labelled rows plus assigned unlabelled rows. No iterative pseudo-label updates to confidence. An observed minority anchor is required for an eligible cluster. |
 | Confidence degeneracy | A zero total centroid-distance denominator gives an undefined score; skip that candidate and report it. Finite zero scores remain rankable; no undocumented confidence threshold is introduced. No eligible minority centroid produces a diagnosed shortfall. |
 | Pseudo-label ranking | Select globally among eligible minority clusters by descending Eq.7 score, without replacement. Stable original unlabelled-row positions resolve ties. Keep original coordinates and record source row IDs and scores. |
-| SMOTE pool | Within surviving minority-labelled clusters, use remaining observed minority rows plus the newly selected pseudo-labelled rows. Including selected rows follows the stage order but is not verified author code. Never use unselected `U` or hidden labels as SMOTE anchors. |
+| SMOTE pool | Default `smote_pool_policy="observed_and_selected"` uses remaining observed minority rows plus newly selected pseudo-labelled rows within surviving minority-labelled clusters. Including selected rows follows the stage order but is not verified author code. Expose `observed_only` separately. Never use unselected `U` or hidden labels as SMOTE anchors. |
 | SMOTE allocation | Allocate the remaining deficit among clusters with at least two eligible minority rows, proportional to those pool sizes; largest-remainder rounding and cluster-ID ties preserve an exact requested budget. This allocation is not specified by [P]. |
 | Neighbours / shortage | Use `min(5,cluster_pool_size-1)` neighbours, recording clamps. Singleton/no-eligible clusters cannot interpolate; report unmet quota. Do not replace missing synthesis with ROS, arbitrary duplicates or cross-cluster interpolation. |
 | Randomness / conservation | One recorded seed (project default 42) controls SMOTE choices. Preserve original retained labelled-row order, then append selected `U` rows, then SMOTE rows. Keep input arrays unchanged. |
 
 If preliminary cleaning makes the designated majority no longer larger, request
 no additional balancing (`G=0`) and report the changed counts; do not rename
-classes. Tied initial counts similarly permit a documented no-op. No fallback
+classes. Preliminary cleaning still applies with tied or inverted initial
+counts; `G=0` means no additional balancing, not necessarily unchanged rows.
+This clarifies the Stage 0 tie-handling proposal. No fallback
 is claimed to establish that generated or pseudo-labelled rows belong to the
 minority class. Exposure of policy choices is required before implementation.
 
@@ -265,7 +269,7 @@ do not claim that our strict training-only protocol recovers their executed
 experiment. The unreachable source might resolve these omissions later.
 
 The paper's Section 3.4 quotes approximate SSHC/resampling complexity bounds;
-they are not runtime guarantees for an unimplemented Python version. Actual
+they are not runtime guarantees for this Python implementation. Actual
 cost will depend on split/refinement rounds, number of clusters, sorting,
 SMOTE neighbour search, and memory policy. No new convergence or generalization
 guarantee is claimed.
@@ -335,7 +339,7 @@ if reported, must have a separate name and must not replace probability AUC.
    unchanged; SSHR is opt-in. Cache identities must include mask indices,
    policies, seeds and source/code hashes, not just method and dataset names.
 
-## 8. Stage 2 diagnostics and conservation contract — not implemented
+## 8. Stage 2 diagnostics and conservation contract — implemented core
 
 Report separately:
 
@@ -359,22 +363,26 @@ Required accounting identities are:
 output_rows = input_labelled_rows - removed_majority_rows - removed_minority_rows
               + selected_pseudo_rows + smote_generated_rows
 requested_additions = selected_pseudo_rows + smote_generated_rows + unmet_additions
+requested_weighted_removals = weighted_removals + unmet_weighted_removals
 ```
 
 No selected `U` row is counted as SMOTE-generated. Distinct original rows may
 have identical coordinates; lineage distinguishes observation provenance from
 coordinate uniqueness. Inputs remain intact, and every original/output row must
-be traceable. Shortfalls do not imply successful class balancing.
+be traceable. Shortfalls do not imply successful class balancing. For a positive
+post-clean gap, the final count gap equals unmet weighted removals plus unmet
+additions. [SSHR_RESAMPLING.md](SSHR_RESAMPLING.md) documents the result object,
+diagnosed class-erasure failure and actual Stage 2 validation.
 
 ## 9. Stage status and small-study gate
 
-Stage 1 was authorized by the user's **“next”**. Later stages require a further
-**“next”**; they are not part of the clustering implementation:
+Stages 1 and 2 were separately authorized by the user's **“next”**. Stages 3 and
+4 require a further **“next”**; they are not part of the resampling core:
 
 | Stage | Planned deliverable and validation |
 | --- | --- |
 | 1 — implemented | Separate SSHC module and hand-calculated initialization, assignments, splits, literal/standard objectives, pruning conflict modes, rollback, convergence guards, ties, pure/impure/small/unlabelled-only clusters and invalid-input tests. Validation is recorded in [SSHC_IMPLEMENTATION.md](SSHC_IMPLEMENTATION.md). |
-| 2 | SSHR cleaning, ranked confidence selection and within-cluster fallback; exact row conservation/lineage, nonmutation, class labels, empty `U`, zero distances, singleton cases, erased classes, reproducibility and unmet-quota tests. Focused plus full pytest, commit and push. |
+| 2 — implemented core | SSHR cleaning, ranked confidence selection and within-cluster fallback; row conservation/lineage, nonmutation, labels, empty `U`, zero-distance helper, singleton cases, erased classes, reproducibility and unmet quotas. Validation is recorded in [SSHR_RESAMPLING.md](SSHR_RESAMPLING.md). |
 | 3 | Full estimator and opt-in runner; train-only feature provenance, hidden-label isolation, identical reduced baselines, categorical rejection, fixed outer folds, persistence/cache identities and final-fit tests. Focused plus full pytest, commit and push. |
 | 4 | At most two local numerical datasets, hash and metadata checked first. Same folds/classifiers for the six requested methods; save held-out F1/G-mean/MCC/probability AUC/FPR, pseudo-label accuracy, lineage counts, cluster sizes, shortfalls and training-only overlap proxy. Commit a descriptive report. No 44/74-dataset benchmark. |
 
@@ -409,7 +417,9 @@ equation counterexample arithmetic, stage status, no-author-code claims, and a
 documentation-only diff. No SSHR implementation or real-data training study ran
 in that stage. Its audit was committed as
 `2b05f0b8d975ccc3e94755f28b960468eb4de0bc`; the user then authorized Stage 1.
-Stage 1 resolves the test prerequisites without deleting supplied data; its
-validation record is separate. **Stop after Stage 1 and wait for the user's
-“next” before implementing Stage 2.** Source-code access/clarification remains
+Stage 1 resolved the test prerequisites without deleting supplied data and was
+committed as `393d319c867c6d5a70b8fbca59b95b1b2ec376de`; the user then authorized
+Stage 2. The implementation validation records are separate. **Stop after
+Stage 2 and wait for the user's “next” before implementing Stage 3.**
+Source-code access/clarification remains
 required for any claim of exact author-implementation fidelity.
