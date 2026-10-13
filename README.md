@@ -417,5 +417,8 @@ suite passed 738 tests.
 
 The separately authorized [30-dataset local study guide](docs/ALL_METHODS_30_LOCAL.md)
 freezes a 30-variant selection and provides a preflight, resumable six-method
-runner, and a combined same-fold CSV table. It retains the Stage 4 protocol;
-no 30-dataset comparison result is claimed until the local run completes.
+runner, and a combined same-fold CSV table. The completed local aggregate results
+are audited in the [supervisor briefing](docs/presentation/Imbalanced_Learning_30_Dataset_Results.md),
+with a [dataset-level comparison table](docs/presentation/Imbalanced_Learning_30_Dataset_Comparison.csv).
+The 30 variants come from 10 source families; this is a descriptive comparison
+of our implementations, not a reproduction of the papers' reported scores.
