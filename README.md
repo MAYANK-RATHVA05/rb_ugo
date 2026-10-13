@@ -369,7 +369,7 @@ dtype alone; callers must ensure numerical distance is meaningful. Stage 1/2
 entry points continue to work unchanged. Stop after the requested reproduction
 stage; subsequent stages require separate authorization under AGENTS.md.
 
-## SSHR reproduction: Stage 2 resampling components
+## SSHR reproduction: Stage 3 estimator and controlled runner
 
 [SSHR method decisions](docs/SSHR_METHOD_DECISIONS.md) audit the full Jiang et al.
 (2023) paper and record explicit interpretations for the staged implementation.
@@ -387,7 +387,14 @@ diagnostics. Stage 2 adds `src/sshr_resampling.py`, which consumes the frozen
 partition for majority cleaning/removal, confidence-ranked selection of existing
 unlabelled observations, and within-cluster SMOTE fallback. Its
 [resampling record](docs/SSHR_RESAMPLING.md) describes the functional API,
-row lineage, policy choices and shortfall diagnostics. The full estimator,
-runner integration and real-data study remain for later stages. Existing
-methods and their defaults are unchanged. Wait for the user's “next” before
-Stage 3.
+row lineage, policy choices and shortfall diagnostics. Stage 3 supplies the
+`SSHR.fit_resample(X_labeled, y_labeled, X_unlabeled)` estimator and a separate
+controlled runner with fixed training-only label masks and the same reduced
+labelled set for all baselines. The [integration record](docs/SSHR_INTEGRATION.md)
+describes source restrictions, leakage checks, resume identities and diagnostics.
+The artificial check runs all six methods without using real datasets:
+
+    .venv/bin/python -m scripts.run_sshr_study --software-check --output results/sshr-software-check
+
+Existing methods and their defaults are unchanged. The real-data study remains
+for Stage 4; wait for the user's “next” before running it.

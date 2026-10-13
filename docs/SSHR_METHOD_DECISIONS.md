@@ -1,11 +1,12 @@
 # SSHR method decisions — source audit and staged reproduction
 
-**Stage 2 adds SSHR resampling components to Stage 1's SSHC clustering. The full
-estimator, runner integration and a real-data SSHR study are not implemented.**
+**Stage 3 adds the full SSHR resampling estimator and an opt-in controlled
+runner. A real-data SSHR study has not been run.**
 This document preserves the Stage 0 source evidence and distinguishes implemented
 decisions from proposed choices for later stages. See the
 [SSHC implementation record](SSHC_IMPLEMENTATION.md) and
-[SSHR resampling record](SSHR_RESAMPLING.md) for the APIs, checks and limits.
+[SSHR resampling record](SSHR_RESAMPLING.md) and
+[integration record](SSHR_INTEGRATION.md) for the APIs, checks and limits.
 Existing UGO, BFCH-SMOTE, EC-EBO, evaluation code and default method lists are
 unchanged.
 
@@ -72,7 +73,7 @@ heuristic, not verified calibrated class-membership probability. Table 7, p.10
 reports pseudo-label accuracy as low as 0.013 on Abalone19; this is an author's
 reported value, not a result reproduced here.
 
-The Stage 3 public estimator input will be `fit_resample(X_labeled, y_labeled, X_unlabeled)` with
+The public estimator input is `fit_resample(X_labeled, y_labeled, X_unlabeled)` with
 separate aligned finite numerical matrices and two observed classes. Hidden
 labels are not an argument or fitted attribute. Empty `X_unlabeled` is allowed
 for an explicitly identified ablation; missing observed classes, mismatched
@@ -307,17 +308,20 @@ These are the user's requested evaluation measures, not an assertion of exact
 comparability to the paper's AUC column. A literal printed-metric diagnostic,
 if reported, must have a separate name and must not replace probability AUC.
 
-## 7. Stage 3 integration and controlled label-hiding protocol — not implemented
+## 7. Stage 3 integration and controlled label-hiding protocol — implemented
 
 1. Freeze and save outer fold definitions before preprocessing or masking.
    The SSHR paper uses five folds/five repeats; the current runner uses ten
-   folds. Extend the opt-in experiment path later without changing existing
-   runner defaults, and record the chosen folds/repeat count explicitly.
+   folds. The separate controlled runner defaults to five folds/five repeats
+   without changing existing runner defaults; record the chosen counts explicitly.
 2. Within **each outer training fold only**, form disjoint `L` and `U` pools
-   using a deterministic, documented label mask. Proposed first pilot:
-   retain 50% of each training class's labels, seed 42 plus recorded fold/repeat
-   derivation, with at least two observed rows per class. Stratified masking
-   is an experiment-design choice; the method never receives withheld labels.
+   using a deterministic, documented label mask. Implemented default: retain
+   `max(2,floor(0.5*n_class))` labels, up to the available training-class count;
+   fail if a class has fewer than two training rows. Record clamps and actual
+   label fraction. Root seed 42 uses recorded `SeedSequence` fold/mask/job
+   derivations. Stratified masking is an experiment-design choice using known
+   training labels before hiding, not an author-verified unlabelled protocol.
+   The method never receives withheld labels.
 3. Preserve hidden `y_U` only in the evaluator for retrospective pseudo-label
    accuracy. No SSHC objective, cluster label, confidence count, parameter
    choice, quota, or fallback may read it. Empty-selection accuracy is undefined,
@@ -336,8 +340,15 @@ if reported, must have a separate name and must not replace probability AUC.
    test disjointness even when predictions are cached or runs are resumed.
 7. Restrict this path to original numerical features, explicitly rejecting
    categorical/boolean sources. Existing methods and default registries remain
-   unchanged; SSHR is opt-in. Cache identities must include mask indices,
+   unchanged; SSHR is opt-in through the new controlled runner. Cache identities include mask indices,
    policies, seeds and source/code hashes, not just method and dataset names.
+
+[SSHR_INTEGRATION.md](SSHR_INTEGRATION.md) records the concrete estimator/runner
+API, required source metadata, supplied partitions, duplicate-input restriction,
+global row lineage, training-only SSHR overlap proxy, metrics and software checks.
+No masks or parameters are changed to rescue baseline failures; tied/inverted
+reduced counts retain each existing baseline's implementation semantics and
+failure coverage.
 
 ## 8. Stage 2 diagnostics and conservation contract — implemented core
 
@@ -376,14 +387,14 @@ diagnosed class-erasure failure and actual Stage 2 validation.
 
 ## 9. Stage status and small-study gate
 
-Stages 1 and 2 were separately authorized by the user's **“next”**. Stages 3 and
-4 require a further **“next”**; they are not part of the resampling core:
+Stages 1–3 were separately authorized by the user's **“next”**. Stage 4 requires
+a further **“next”**; no real-data study is part of the integration checks:
 
 | Stage | Planned deliverable and validation |
 | --- | --- |
 | 1 — implemented | Separate SSHC module and hand-calculated initialization, assignments, splits, literal/standard objectives, pruning conflict modes, rollback, convergence guards, ties, pure/impure/small/unlabelled-only clusters and invalid-input tests. Validation is recorded in [SSHC_IMPLEMENTATION.md](SSHC_IMPLEMENTATION.md). |
 | 2 — implemented core | SSHR cleaning, ranked confidence selection and within-cluster fallback; row conservation/lineage, nonmutation, labels, empty `U`, zero-distance helper, singleton cases, erased classes, reproducibility and unmet quotas. Validation is recorded in [SSHR_RESAMPLING.md](SSHR_RESAMPLING.md). |
-| 3 | Full estimator and opt-in runner; train-only feature provenance, hidden-label isolation, identical reduced baselines, categorical rejection, fixed outer folds, persistence/cache identities and final-fit tests. Focused plus full pytest, commit and push. |
+| 3 — implemented | Full estimator and opt-in controlled runner; training-only feature provenance, hidden-label isolation, identical reduced baselines, categorical rejection, fixed outer folds/masks, persistence/cache identities and fresh final fitting. Validation is recorded in [SSHR_INTEGRATION.md](SSHR_INTEGRATION.md). |
 | 4 | At most two local numerical datasets, hash and metadata checked first. Same folds/classifiers for the six requested methods; save held-out F1/G-mean/MCC/probability AUC/FPR, pseudo-label accuracy, lineage counts, cluster sizes, shortfalls and training-only overlap proxy. Commit a descriptive report. No 44/74-dataset benchmark. |
 
 Ecoli4 and Yeast4 are candidate numerical inputs listed in the SSHR paper's
@@ -418,8 +429,9 @@ documentation-only diff. No SSHR implementation or real-data training study ran
 in that stage. Its audit was committed as
 `2b05f0b8d975ccc3e94755f28b960468eb4de0bc`; the user then authorized Stage 1.
 Stage 1 resolved the test prerequisites without deleting supplied data and was
-committed as `393d319c867c6d5a70b8fbca59b95b1b2ec376de`; the user then authorized
-Stage 2. The implementation validation records are separate. **Stop after
-Stage 2 and wait for the user's “next” before implementing Stage 3.**
+committed as `393d319c867c6d5a70b8fbca59b95b1b2ec376de`. Stage 2 was separately
+authorized and committed as `5548cc53dbed5cd23b46f08ec4772a1680f53a73`; the user
+then authorized Stage 3. The implementation validation records are separate.
+**Stop after Stage 3 and wait for the user's “next” before Stage 4.**
 Source-code access/clarification remains
 required for any claim of exact author-implementation fidelity.

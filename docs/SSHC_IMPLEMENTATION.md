@@ -3,7 +3,8 @@
 Stage 1 implements **clustering only**, in [src/sshr_clustering.py](../src/sshr_clustering.py).
 It does not remove training rows, assign training pseudo-labels, generate
 synthetic rows, fit a final classifier or run a real-data experiment.
-The complete SSHR estimator and runner are not yet implemented.
+The separate Stage 3 [SSHR estimator and controlled runner](SSHR_INTEGRATION.md)
+now wrap this clustering module; the Stage 1 validation record below is historical.
 
 The source is Jiang et al. (2023), *A semi-supervised resampling method for
 class-imbalanced learning*, [DOI:10.1016/j.eswa.2023.119733](https://doi.org/10.1016/j.eswa.2023.119733),

@@ -2,9 +2,10 @@
 
 Stage 2 adds the resampling core in [src/sshr_resampling.py](../src/sshr_resampling.py).
 It consumes an existing SSHC partition and separate labelled and unlabelled
-training pools. The complete estimator, preprocessing, label-mask protocol,
-runner registration and real-data experiments are reserved for later stages.
-No downstream classifier is trained in this stage.
+training pools. The later Stage 3 [estimator and controlled runner](SSHR_INTEGRATION.md)
+now supply the public interface and training-only label-mask protocol. This
+Stage 2 core itself trains no downstream classifier; real-data experiments remain
+for a separately authorized Stage 4.
 
 **Selected pseudo-labelled rows are EXISTING unlabelled observations. Only the
 SMOTE fallback generates NEW synthetic feature vectors.** Cluster membership
@@ -229,8 +230,8 @@ The printed SSHC objective conflict remains inherited from Stage 1. This stage
 does not calculate the paper's printed AUC or probability ROC AUC. The paper's
 unlabelled-pool construction remains unverified.
 
-Validation uses artificial software fixtures only. Stage 3 will provide the
-complete estimator and opt-in runner, enforce training-only pool construction,
-and give all baselines the same reduced labelled set. Stage 4 will require a
-separately authorized small real-data study. Stop after the validated Stage 2
-commit and push; wait for the user's **“next”** before Stage 3.
+Stage 2 validation used artificial software fixtures only and was committed as
+`5548cc53dbed5cd23b46f08ec4772a1680f53a73`. The user then authorized Stage 3's
+separate estimator/runner, with training-only pools and identical reduced
+labelled baselines. Stage 4 requires a separately authorized small real-data
+study; its results are not included in either software-validation record.
