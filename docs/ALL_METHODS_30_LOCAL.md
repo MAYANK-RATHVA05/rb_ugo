@@ -114,3 +114,18 @@ subset without stating it. Use separate LogReg and GNB summaries, report all
 five metrics plus coverage, and note correlated Ecoli/Yeast variants. The
 earlier UGO-only benchmark used different folds and cannot be inserted into
 this table.
+
+## Package results for review
+
+After all 30 dataset reports are written, create one small ZIP to upload for
+analysis. It contains the combined table, `overview.json`, and each dataset's
+six aggregate report files. Raw data, saved fold jobs and predictions stay on
+your PC. The command checks report completeness and records any reduced or
+failed fold coverage in `review_manifest.json` inside the ZIP:
+
+```powershell
+.\.venv\Scripts\python.exe -m scripts.package_all_methods_30_reports
+```
+
+Upload `results/all-methods-30-review.zip`. The packaging command does not
+change the experiment or push results to GitHub.
