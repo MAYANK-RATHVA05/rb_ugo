@@ -412,5 +412,10 @@ summarize this pilot without adding a new experiment.
     python -m scripts.run_sshr_small_study --output results/sshr-small-study --report-dir docs/sshr_pilot
 
 The registered local raw files are required and remain outside Git. Existing
-algorithms and default method lists are unchanged; SSHR is opt-in. The full
-suite passes 738 tests. Stop after Stage 4 and wait for the user's review.
+algorithms and default method lists are unchanged; SSHR is opt-in. The Stage 4
+suite passed 738 tests.
+
+The separately authorized [30-dataset local study guide](docs/ALL_METHODS_30_LOCAL.md)
+freezes a 30-variant selection and provides a preflight, resumable six-method
+runner, and a combined same-fold CSV table. It retains the Stage 4 protocol;
+no 30-dataset comparison result is claimed until the local run completes.
