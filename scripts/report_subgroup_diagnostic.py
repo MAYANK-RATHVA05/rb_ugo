@@ -34,7 +34,7 @@ def independent_ap(y, scores):
 
 def _csv(path, rows):
     with path.open("w", newline="") as f:
-        writer = csv.DictWriter(f, fieldnames=sorted(set().union(*(r.keys() for r in rows))))
+        writer = csv.DictWriter(f, fieldnames=sorted(set().union(*(r.keys() for r in rows))), lineterminator="\n")
         writer.writeheader()
         writer.writerows(rows)
 

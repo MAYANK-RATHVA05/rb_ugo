@@ -29,7 +29,7 @@ development is recommended from this pilot.
   arm passed the original-row prefix check. Preprocessing and resampling used
   F only; tuning/thresholds used V only; true mode identifiers were evaluator
   metadata. All learned models were fresh final fits after resampling.
-- **756 tests passed**, including 18 focused diagnostic/report checks. Baseline
+- **757 tests passed**, including 19 focused diagnostic/report checks. Baseline
   UGO numerically matches its instrumented form without an ablation. Tests
   cover exception-safe filter restoration, group-blind APIs, validation before
   test construction, inactive generation, cache integrity, threshold ties,
@@ -42,6 +42,9 @@ development is recommended from this pilot.
 - Exact reruns produced byte-identical manifests, mechanism summaries, per-seed
   metric CSV and numerical summaries; cached results were reused. Additional
   direct RF checks against unmodified UGO matched the traced fitting arrays.
+- Reviewed CSV exports use LF line endings. All four artifact checksums were
+  verified against committed Git blobs as well as local files, preventing
+  checkout newline normalization from invalidating the audit.
 
 Scientific scope: controlled software/simulation evidence only. No real-data
 study, new sampler, claim of exact author-result reproduction or novelty claim
