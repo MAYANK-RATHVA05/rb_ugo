@@ -1,0 +1,241 @@
+{
+  "repository": "https://github.com/SCI2SUGR/KEEL",
+  "commit": "5f404a9470f17528445baabe3a5d9f5202adee7a",
+  "files": [
+    {
+      "dataset": "ecoli2",
+      "path": "data/raw/keel/ecoli2/ecoli2.dat",
+      "url": "https://raw.githubusercontent.com/SCI2SUGR/KEEL/5f404a9470f17528445baabe3a5d9f5202adee7a/dist/data/ecoli2/ecoli2.dat",
+      "bytes": 17843,
+      "sha256": "0fd2a70626e5361c9676ce80088c501c865320195396434e175e1f0c555d044a"
+    },
+    {
+      "dataset": "ecoli2",
+      "path": "data/raw/keel/ecoli2/ecoli2-5-1tra.dat",
+      "url": "https://raw.githubusercontent.com/SCI2SUGR/KEEL/5f404a9470f17528445baabe3a5d9f5202adee7a/dist/data/ecoli2/ecoli2-5-1tra.dat",
+      "bytes": 13614,
+      "sha256": "dfd0687be88075e35e0f80485f051f691431a40ac762ff28c53be11e152ef1f2"
+    },
+    {
+      "dataset": "ecoli2",
+      "path": "data/raw/keel/ecoli2/ecoli2-5-1tst.dat",
+      "url": "https://raw.githubusercontent.com/SCI2SUGR/KEEL/5f404a9470f17528445baabe3a5d9f5202adee7a/dist/data/ecoli2/ecoli2-5-1tst.dat",
+      "bytes": 3706,
+      "sha256": "357db0f92c622965949f479a009bcf837a87d7117e025c9724eebf08ea217c18"
+    },
+    {
+      "dataset": "ecoli2",
+      "path": "data/raw/keel/ecoli2/ecoli2-5-2tra.dat",
+      "url": "https://raw.githubusercontent.com/SCI2SUGR/KEEL/5f404a9470f17528445baabe3a5d9f5202adee7a/dist/data/ecoli2/ecoli2-5-2tra.dat",
+      "bytes": 13656,
+      "sha256": "707d6e7350bc6ec5ae321bc33eb2f4c72200e62642e12c4059815152721aaaf0"
+    },
+    {
+      "dataset": "ecoli2",
+      "path": "data/raw/keel/ecoli2/ecoli2-5-2tst.dat",
+      "url": "https://raw.githubusercontent.com/SCI2SUGR/KEEL/5f404a9470f17528445baabe3a5d9f5202adee7a/dist/data/ecoli2/ecoli2-5-2tst.dat",
+      "bytes": 3664,
+      "sha256": "bb0ee7826f12d924bbad3335b2854124aa67fef146968d20bb7cc673df4b3aae"
+    },
+    {
+      "dataset": "ecoli2",
+      "path": "data/raw/keel/ecoli2/ecoli2-5-3tra.dat",
+      "url": "https://raw.githubusercontent.com/SCI2SUGR/KEEL/5f404a9470f17528445baabe3a5d9f5202adee7a/dist/data/ecoli2/ecoli2-5-3tra.dat",
+      "bytes": 13659,
+      "sha256": "b17580e5c05e516e67d956b022f6b8d1359c559e8c119657264eddf88ca94710"
+    },
+    {
+      "dataset": "ecoli2",
+      "path": "data/raw/keel/ecoli2/ecoli2-5-3tst.dat",
+      "url": "https://raw.githubusercontent.com/SCI2SUGR/KEEL/5f404a9470f17528445baabe3a5d9f5202adee7a/dist/data/ecoli2/ecoli2-5-3tst.dat",
+      "bytes": 3661,
+      "sha256": "6404795f034ada105611291c7ae035cbb37a1615ad7f76f37cfb617a50d2330f"
+    },
+    {
+      "dataset": "ecoli2",
+      "path": "data/raw/keel/ecoli2/ecoli2-5-4tra.dat",
+      "url": "https://raw.githubusercontent.com/SCI2SUGR/KEEL/5f404a9470f17528445baabe3a5d9f5202adee7a/dist/data/ecoli2/ecoli2-5-4tra.dat",
+      "bytes": 13663,
+      "sha256": "c47996aeca06006cd95ecf8797aafb2d49d3b9651c67d9120583a951b6a22e08"
+    },
+    {
+      "dataset": "ecoli2",
+      "path": "data/raw/keel/ecoli2/ecoli2-5-4tst.dat",
+      "url": "https://raw.githubusercontent.com/SCI2SUGR/KEEL/5f404a9470f17528445baabe3a5d9f5202adee7a/dist/data/ecoli2/ecoli2-5-4tst.dat",
+      "bytes": 3657,
+      "sha256": "6189afbf3d8cc1a232b4a9b7feda28d5a17297327f6e4faaa8396ed4da58e4ab"
+    },
+    {
+      "dataset": "ecoli2",
+      "path": "data/raw/keel/ecoli2/ecoli2-5-5tra.dat",
+      "url": "https://raw.githubusercontent.com/SCI2SUGR/KEEL/5f404a9470f17528445baabe3a5d9f5202adee7a/dist/data/ecoli2/ecoli2-5-5tra.dat",
+      "bytes": 13653,
+      "sha256": "b07e00a272b4c0733ed6a21dea53d7bb22b617121db8a674f6e1c07bdf7f7161"
+    },
+    {
+      "dataset": "ecoli2",
+      "path": "data/raw/keel/ecoli2/ecoli2-5-5tst.dat",
+      "url": "https://raw.githubusercontent.com/SCI2SUGR/KEEL/5f404a9470f17528445baabe3a5d9f5202adee7a/dist/data/ecoli2/ecoli2-5-5tst.dat",
+      "bytes": 3667,
+      "sha256": "e06c7ecc3faee9b331b5300f5970d0a60d7f6098f95fa53f4a49471c638fc78a"
+    },
+    {
+      "dataset": "yeast3",
+      "path": "data/raw/keel/yeast3/yeast3.dat",
+      "url": "https://raw.githubusercontent.com/SCI2SUGR/KEEL/5f404a9470f17528445baabe3a5d9f5202adee7a/dist/data/yeast3/yeast3.dat",
+      "bytes": 82696,
+      "sha256": "fda5bea98b4891a3320d02394d11c691eca642cc5cd72e7a206c2cf9cae6092e"
+    },
+    {
+      "dataset": "yeast3",
+      "path": "data/raw/keel/yeast3/yeast3-5-1tra.dat",
+      "url": "https://raw.githubusercontent.com/SCI2SUGR/KEEL/5f404a9470f17528445baabe3a5d9f5202adee7a/dist/data/yeast3/yeast3-5-1tra.dat",
+      "bytes": 66219,
+      "sha256": "d402eafbd0bcc58f4c82e459c310930cd76bba0854aa93d5b702564d3f8c4073"
+    },
+    {
+      "dataset": "yeast3",
+      "path": "data/raw/keel/yeast3/yeast3-5-1tst.dat",
+      "url": "https://raw.githubusercontent.com/SCI2SUGR/KEEL/5f404a9470f17528445baabe3a5d9f5202adee7a/dist/data/yeast3/yeast3-5-1tst.dat",
+      "bytes": 16865,
+      "sha256": "76e001cbdb1b849d4b79b60633ef825b2e4fbd72e7616cd8e823d443fdd8fafe"
+    },
+    {
+      "dataset": "yeast3",
+      "path": "data/raw/keel/yeast3/yeast3-5-2tra.dat",
+      "url": "https://raw.githubusercontent.com/SCI2SUGR/KEEL/5f404a9470f17528445baabe3a5d9f5202adee7a/dist/data/yeast3/yeast3-5-2tra.dat",
+      "bytes": 66211,
+      "sha256": "0984f7847ceff8fe829f6e960e4589499212fbd22d61caae9d5ac823a31ad78a"
+    },
+    {
+      "dataset": "yeast3",
+      "path": "data/raw/keel/yeast3/yeast3-5-2tst.dat",
+      "url": "https://raw.githubusercontent.com/SCI2SUGR/KEEL/5f404a9470f17528445baabe3a5d9f5202adee7a/dist/data/yeast3/yeast3-5-2tst.dat",
+      "bytes": 16873,
+      "sha256": "62b4044a520cbeafd96822ce433211dcb84f110f6dfee53b2aa53a86c72850f3"
+    },
+    {
+      "dataset": "yeast3",
+      "path": "data/raw/keel/yeast3/yeast3-5-3tra.dat",
+      "url": "https://raw.githubusercontent.com/SCI2SUGR/KEEL/5f404a9470f17528445baabe3a5d9f5202adee7a/dist/data/yeast3/yeast3-5-3tra.dat",
+      "bytes": 66220,
+      "sha256": "4deb6c80550f9f95e4509a0c81d1692609423607a7f9a2b9980bc85ce8322b01"
+    },
+    {
+      "dataset": "yeast3",
+      "path": "data/raw/keel/yeast3/yeast3-5-3tst.dat",
+      "url": "https://raw.githubusercontent.com/SCI2SUGR/KEEL/5f404a9470f17528445baabe3a5d9f5202adee7a/dist/data/yeast3/yeast3-5-3tst.dat",
+      "bytes": 16864,
+      "sha256": "7064c779e43decc718ab29c9bb2a3ca8ce6cc7d5ccfb9bb0f7c252169f7e4613"
+    },
+    {
+      "dataset": "yeast3",
+      "path": "data/raw/keel/yeast3/yeast3-5-4tra.dat",
+      "url": "https://raw.githubusercontent.com/SCI2SUGR/KEEL/5f404a9470f17528445baabe3a5d9f5202adee7a/dist/data/yeast3/yeast3-5-4tra.dat",
+      "bytes": 66236,
+      "sha256": "4225410adab8ef4fb44dc077fcb3cc89ad07291f16cc2caf6c43add4f06184af"
+    },
+    {
+      "dataset": "yeast3",
+      "path": "data/raw/keel/yeast3/yeast3-5-4tst.dat",
+      "url": "https://raw.githubusercontent.com/SCI2SUGR/KEEL/5f404a9470f17528445baabe3a5d9f5202adee7a/dist/data/yeast3/yeast3-5-4tst.dat",
+      "bytes": 16848,
+      "sha256": "6ef00fb0bc67d50ebfec1d74abd1741a26e599d082b27a291ca91e1633ff4128"
+    },
+    {
+      "dataset": "yeast3",
+      "path": "data/raw/keel/yeast3/yeast3-5-5tra.dat",
+      "url": "https://raw.githubusercontent.com/SCI2SUGR/KEEL/5f404a9470f17528445baabe3a5d9f5202adee7a/dist/data/yeast3/yeast3-5-5tra.dat",
+      "bytes": 66286,
+      "sha256": "2ecd43a0e2b1b3e9e1fad7e60dc3f3e8b72e5c0bf64164eb806779a10f111f47"
+    },
+    {
+      "dataset": "yeast3",
+      "path": "data/raw/keel/yeast3/yeast3-5-5tst.dat",
+      "url": "https://raw.githubusercontent.com/SCI2SUGR/KEEL/5f404a9470f17528445baabe3a5d9f5202adee7a/dist/data/yeast3/yeast3-5-5tst.dat",
+      "bytes": 16798,
+      "sha256": "64cc1154fa38ccef08a3cc69021ca0042523cb0bd7b88b15a18e37f693af9666"
+    },
+    {
+      "dataset": "ecoli4",
+      "path": "data/raw/keel/ecoli4/ecoli4.dat",
+      "url": "https://raw.githubusercontent.com/SCI2SUGR/KEEL/5f404a9470f17528445baabe3a5d9f5202adee7a/dist/data/ecoli4/ecoli4.dat",
+      "bytes": 17838,
+      "sha256": "1890c32ba2550cfe106d0524ebf6a42c2b50730f6521bd4f22eb58e7bda86bcb"
+    },
+    {
+      "dataset": "ecoli4",
+      "path": "data/raw/keel/ecoli4/ecoli4-5-1tra.dat",
+      "url": "https://raw.githubusercontent.com/SCI2SUGR/KEEL/5f404a9470f17528445baabe3a5d9f5202adee7a/dist/data/ecoli4/ecoli4-5-1tra.dat",
+      "bytes": 13615,
+      "sha256": "a09cf22654f1ecbca7b2b7f59e43e23b6ec88ab58486f13250565a1226ce542a"
+    },
+    {
+      "dataset": "ecoli4",
+      "path": "data/raw/keel/ecoli4/ecoli4-5-1tst.dat",
+      "url": "https://raw.githubusercontent.com/SCI2SUGR/KEEL/5f404a9470f17528445baabe3a5d9f5202adee7a/dist/data/ecoli4/ecoli4-5-1tst.dat",
+      "bytes": 3711,
+      "sha256": "bb63929920d619bb1990ca047180bea1bfb1d1193cc9d6761e34b6bcdc8a8d44"
+    },
+    {
+      "dataset": "ecoli4",
+      "path": "data/raw/keel/ecoli4/ecoli4-5-2tra.dat",
+      "url": "https://raw.githubusercontent.com/SCI2SUGR/KEEL/5f404a9470f17528445baabe3a5d9f5202adee7a/dist/data/ecoli4/ecoli4-5-2tra.dat",
+      "bytes": 13670,
+      "sha256": "96d0b516918889ce4885c8a7d02601f4898e70224f74b981dc884b4085225650"
+    },
+    {
+      "dataset": "ecoli4",
+      "path": "data/raw/keel/ecoli4/ecoli4-5-2tst.dat",
+      "url": "https://raw.githubusercontent.com/SCI2SUGR/KEEL/5f404a9470f17528445baabe3a5d9f5202adee7a/dist/data/ecoli4/ecoli4-5-2tst.dat",
+      "bytes": 3656,
+      "sha256": "af31789b5760f6eb8339372bfb0fe62c665d51037d18c1d8c3aa6c9a182e0c26"
+    },
+    {
+      "dataset": "ecoli4",
+      "path": "data/raw/keel/ecoli4/ecoli4-5-3tra.dat",
+      "url": "https://raw.githubusercontent.com/SCI2SUGR/KEEL/5f404a9470f17528445baabe3a5d9f5202adee7a/dist/data/ecoli4/ecoli4-5-3tra.dat",
+      "bytes": 13652,
+      "sha256": "da72682b5435cf90c8b0fac0c809d3c12f3d145b028739fb5320aa6ec59dc122"
+    },
+    {
+      "dataset": "ecoli4",
+      "path": "data/raw/keel/ecoli4/ecoli4-5-3tst.dat",
+      "url": "https://raw.githubusercontent.com/SCI2SUGR/KEEL/5f404a9470f17528445baabe3a5d9f5202adee7a/dist/data/ecoli4/ecoli4-5-3tst.dat",
+      "bytes": 3674,
+      "sha256": "49919ca233a99f64e3912a723f5445dec0af5e3d41eaf974f7b24687ea856765"
+    },
+    {
+      "dataset": "ecoli4",
+      "path": "data/raw/keel/ecoli4/ecoli4-5-4tra.dat",
+      "url": "https://raw.githubusercontent.com/SCI2SUGR/KEEL/5f404a9470f17528445baabe3a5d9f5202adee7a/dist/data/ecoli4/ecoli4-5-4tra.dat",
+      "bytes": 13658,
+      "sha256": "32e7115ab3b2d692812fd7ea88e535270de6afce929687e0950236011921c909"
+    },
+    {
+      "dataset": "ecoli4",
+      "path": "data/raw/keel/ecoli4/ecoli4-5-4tst.dat",
+      "url": "https://raw.githubusercontent.com/SCI2SUGR/KEEL/5f404a9470f17528445baabe3a5d9f5202adee7a/dist/data/ecoli4/ecoli4-5-4tst.dat",
+      "bytes": 3668,
+      "sha256": "9597fb6352c0d8363b8dfdf10daf08ca4a33ff880605016359bf3c2344174261"
+    },
+    {
+      "dataset": "ecoli4",
+      "path": "data/raw/keel/ecoli4/ecoli4-5-5tra.dat",
+      "url": "https://raw.githubusercontent.com/SCI2SUGR/KEEL/5f404a9470f17528445baabe3a5d9f5202adee7a/dist/data/ecoli4/ecoli4-5-5tra.dat",
+      "bytes": 13665,
+      "sha256": "72475d606217d73e36dd577c0a42e1d1a777a7de9f5d2e9f67502ab507b84d3c"
+    },
+    {
+      "dataset": "ecoli4",
+      "path": "data/raw/keel/ecoli4/ecoli4-5-5tst.dat",
+      "url": "https://raw.githubusercontent.com/SCI2SUGR/KEEL/5f404a9470f17528445baabe3a5d9f5202adee7a/dist/data/ecoli4/ecoli4-5-5tst.dat",
+      "bytes": 3661,
+      "sha256": "3883b35c07e4a95fcd77f5428e5e1a44b77ad3d4a139fb544106dc6f0c699f9e"
+    }
+  ],
+  "retrieved_on": "2026-10-17",
+  "scope": "Provider-committed KEEL files and fivefold partitions; not verified UGO author folds",
+  "license_status": "KEEL repository license does not independently authenticate dataset-specific licenses",
+  "integrity": "HTTPS retrieval at pinned commit; SHA-256 records the observed provider bytes"
+}
