@@ -1,0 +1,204 @@
+{
+  "run_id": "76cf95f6ee7a40395358152c922ffae332f4c0cc138b5d0ef5e0826644f95335",
+  "protocol_sha256": "98ab2d9ee2c48dffcfb5df7c4496d5e7ec3acf7885ad94c7130b401aac8d10b9",
+  "software": {
+    "c50_backend": {
+      "commit": "02261dcca3a8aac8b540e342b813f1a15a74cc72",
+      "compat_sha256": "a4ad5cd22938beae8ae93c1adbb25be5503df767dec6b3afde02633c8a4bd7de",
+      "compiler": "cc (Debian 14.2.0-19) 14.2.0",
+      "driver_sha256": "c380237d24dbf291e35ba655f9f767641c46d25f377503d532a2674b930e6397",
+      "executable_sha256": "726be23240960b1ab2be30793586b712328d2d4d9517e9988f3d1f6e8ddcf90e",
+      "license": "GPL-3.0-or-later",
+      "package": "CRAN C50",
+      "r_sampling_supported": false,
+      "upstream_source_sha256": "e18fc76b0e868e9f0d78fc1ac4443495cc457f509eecabc756835c996067d5d6",
+      "url": "https://github.com/cran/C50.git",
+      "version": "0.2.0"
+    },
+    "packages": {
+      "imbalanced-learn": "0.12.4",
+      "numpy": "1.26.4",
+      "pandas": "2.2.3",
+      "scikit-learn": "1.5.2",
+      "scipy": "1.14.1",
+      "stochtree": "0.2.1"
+    },
+    "python": "3.11.17",
+    "source_sha256": "7b693a523dbdd430abae1de72779bcf6b945834615f2ed5f783d1e4c7cd0ef63"
+  },
+  "report_script_sha256": "cd7e04ee9b4c31af91590c49415877971a4ba87f9a4e476e6756166addfbc40e",
+  "mechanism_status": {
+    "success": 840
+  },
+  "pilot_status": {
+    "success": 1080
+  },
+  "independently_replayed_primary_models": [
+    {
+      "seed": 48,
+      "arm": "ugo_k5"
+    },
+    {
+      "seed": 48,
+      "arm": "nores"
+    },
+    {
+      "seed": 44,
+      "arm": "ros_match_ugo_generation_filter_disabled"
+    },
+    {
+      "seed": 45,
+      "arm": "ugo_k5"
+    },
+    {
+      "seed": 44,
+      "arm": "ugo_k5"
+    },
+    {
+      "seed": 43,
+      "arm": "ugo_generation_filter_disabled"
+    },
+    {
+      "seed": 50,
+      "arm": "ugo_k5"
+    },
+    {
+      "seed": 46,
+      "arm": "ugo_k5"
+    },
+    {
+      "seed": 49,
+      "arm": "ros_match_ugo_generation_filter_disabled"
+    },
+    {
+      "seed": 50,
+      "arm": "ros_match_ugo_generation_filter_disabled"
+    },
+    {
+      "seed": 50,
+      "arm": "ugo_generation_filter_disabled"
+    },
+    {
+      "seed": 49,
+      "arm": "nores"
+    },
+    {
+      "seed": 48,
+      "arm": "ugo_generation_filter_disabled"
+    },
+    {
+      "seed": 43,
+      "arm": "ugo_k5"
+    },
+    {
+      "seed": 43,
+      "arm": "nores"
+    },
+    {
+      "seed": 46,
+      "arm": "nores"
+    },
+    {
+      "seed": 46,
+      "arm": "ugo_generation_filter_disabled"
+    },
+    {
+      "seed": 45,
+      "arm": "ros_match_ugo_generation_filter_disabled"
+    },
+    {
+      "seed": 51,
+      "arm": "ugo_generation_filter_disabled"
+    },
+    {
+      "seed": 44,
+      "arm": "ugo_generation_filter_disabled"
+    },
+    {
+      "seed": 42,
+      "arm": "ugo_generation_filter_disabled"
+    },
+    {
+      "seed": 47,
+      "arm": "ugo_generation_filter_disabled"
+    },
+    {
+      "seed": 49,
+      "arm": "ugo_k5"
+    },
+    {
+      "seed": 51,
+      "arm": "ugo_k5"
+    },
+    {
+      "seed": 47,
+      "arm": "ugo_k5"
+    },
+    {
+      "seed": 47,
+      "arm": "nores"
+    },
+    {
+      "seed": 42,
+      "arm": "ros_match_ugo_generation_filter_disabled"
+    },
+    {
+      "seed": 50,
+      "arm": "nores"
+    },
+    {
+      "seed": 42,
+      "arm": "ugo_k5"
+    },
+    {
+      "seed": 46,
+      "arm": "ros_match_ugo_generation_filter_disabled"
+    },
+    {
+      "seed": 44,
+      "arm": "nores"
+    },
+    {
+      "seed": 45,
+      "arm": "ugo_generation_filter_disabled"
+    },
+    {
+      "seed": 51,
+      "arm": "nores"
+    },
+    {
+      "seed": 42,
+      "arm": "nores"
+    },
+    {
+      "seed": 43,
+      "arm": "ros_match_ugo_generation_filter_disabled"
+    },
+    {
+      "seed": 51,
+      "arm": "ros_match_ugo_generation_filter_disabled"
+    },
+    {
+      "seed": 47,
+      "arm": "ros_match_ugo_generation_filter_disabled"
+    },
+    {
+      "seed": 45,
+      "arm": "nores"
+    },
+    {
+      "seed": 49,
+      "arm": "ugo_generation_filter_disabled"
+    },
+    {
+      "seed": 48,
+      "arm": "ros_match_ugo_generation_filter_disabled"
+    }
+  ],
+  "artifacts_sha256": {
+    "aggregate_metrics.csv": "0ff4b1abe4418650d1a6757c84ade889710b7a3bcb4d73a2846dc198b9d6b360",
+    "validation_selections.csv": "833362de13c3019150ba3dbd9091a2c9d8780c9cadf7069101aa54d4d03b9744",
+    "mechanism_summary.csv": "61f644e4f7a05771b0e8f74f2c320ed93cf0458c87ebd9876ff6614e5fb63967",
+    "paired_contrasts.csv": "5b3cca1668473402d7fb92acb7556a087714fc692e470b81d6157349d59d7321"
+  }
+}

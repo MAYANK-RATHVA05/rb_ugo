@@ -72,6 +72,9 @@ grid to control the four-choice neighborhood-selection opportunity.
 The ablations are internal harness modes, not registered methods. Instrumentation
 must reproduce original UGO numerically when no ablation is enabled. Scopes
 restore the original filter even on exceptions and are run sequentially.
+For the generation-only ablation, inherited `history.seed_indices` describes
+the original filtered ranking; `generation.actual_seed_pool` and
+`generation.drawn_seed_indices` identify the pool and anchors actually used.
 
 ## Mechanism-first execution and decision
 
