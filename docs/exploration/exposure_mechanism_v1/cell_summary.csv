@@ -1,0 +1,9 @@
+cell_index,separation,labeled_minority_count,unlabeled_minority_prevalence,cases,budget_active,inactive_reasons,eligible_endpoints_mean,eligible_endpoints_max,usable_endpoints_mean,binding_rounds,restrictive_rounds,usable_rounds,binding_frequency,restrictive_frequency,eligible_realized_error,eligible_oracle_error
+0,1.0,8,0.02,10,0,"{""no_minority_generation_round"": 10}",0.0,0.0,0.0,0,0,0,,,,
+1,1.0,8,0.2,10,0,"{""no_minority_generation_round"": 10}",0.0,0.0,0.0,0,0,0,,,,
+2,1.0,32,0.02,10,0,"{""no_eligible_endpoint"": 9, ""no_minority_generation_round"": 1}",0.0,0.0,0.0,0,0,0,,,,
+3,1.0,32,0.2,10,0,"{""no_eligible_endpoint"": 9, ""no_minority_generation_round"": 1}",0.0,0.0,0.0,0,0,0,,,,
+4,3.0,8,0.02,10,0,"{""no_eligible_endpoint"": 3, ""no_minority_generation_round"": 7}",0.0,0.0,0.0,0,0,0,,,,
+5,3.0,8,0.2,10,0,"{""no_eligible_endpoint"": 2, ""no_minority_generation_round"": 8}",0.0,0.0,0.0,0,0,0,,,,
+6,3.0,32,0.02,10,5,"{""active"": 5, ""no_eligible_endpoint"": 4, ""no_minority_generation_round"": 1}",0.6,2.0,0.6,2,2,10,0.2,0.2,0.2,0.026714397031275795
+7,3.0,32,0.2,10,8,"{""active"": 8, ""no_eligible_endpoint"": 2}",10.6,20.0,10.6,14,14,14,1.0,1.0,0.0,0.005574547614048988

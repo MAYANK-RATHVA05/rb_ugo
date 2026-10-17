@@ -1,0 +1,1441 @@
+cell_index,separation,labeled_minority_count,unlabeled_minority_prevalence,control,metric,active_only,shared_successes,seeds,n,mean,sd,se,minimum,maximum,budget_wins,ties,budget_losses
+0,1.0,8,0.02,parent,mcc,False,10,"[42, 43, 44, 45, 46, 47, 48, 49, 50, 51]",10,0.0,0.0,0.0,0.0,0.0,0,10,0
+0,1.0,8,0.02,parent,mcc,True,10,[],0,,,,,,0,0,0
+0,1.0,8,0.02,parent,gmean,False,10,"[42, 43, 44, 45, 46, 47, 48, 49, 50, 51]",10,0.0,0.0,0.0,0.0,0.0,0,10,0
+0,1.0,8,0.02,parent,gmean,True,10,[],0,,,,,,0,0,0
+0,1.0,8,0.02,parent,ap,False,10,"[42, 43, 44, 45, 46, 47, 48, 49, 50, 51]",10,0.0,0.0,0.0,0.0,0.0,0,10,0
+0,1.0,8,0.02,parent,ap,True,10,[],0,,,,,,0,0,0
+0,1.0,8,0.02,parent,realized_lineage_error,False,10,[],0,,,,,,0,0,0
+0,1.0,8,0.02,parent,realized_lineage_error,True,10,[],0,,,,,,0,0,0
+0,1.0,8,0.02,parent,oracle_endpoint_error,False,10,[],0,,,,,,0,0,0
+0,1.0,8,0.02,parent,oracle_endpoint_error,True,10,[],0,,,,,,0,0,0
+0,1.0,8,0.02,parent,oracle_u_child_error,False,10,[],0,,,,,,0,0,0
+0,1.0,8,0.02,parent,oracle_u_child_error,True,10,[],0,,,,,,0,0,0
+0,1.0,8,0.02,parent,oracle_added_minority_error,False,10,[],0,,,,,,0,0,0
+0,1.0,8,0.02,parent,oracle_added_minority_error,True,10,[],0,,,,,,0,0,0
+0,1.0,8,0.02,parent,estimated_endpoint_error,False,10,[],0,,,,,,0,0,0
+0,1.0,8,0.02,parent,estimated_endpoint_error,True,10,[],0,,,,,,0,0,0
+0,1.0,8,0.02,parent,selected_endpoint_error,False,10,[],0,,,,,,0,0,0
+0,1.0,8,0.02,parent,selected_endpoint_error,True,10,[],0,,,,,,0,0,0
+0,1.0,8,0.02,parent,u_child_mode_coverage,False,10,[],0,,,,,,0,0,0
+0,1.0,8,0.02,parent,u_child_mode_coverage,True,10,[],0,,,,,,0,0,0
+0,1.0,8,0.02,parent,mode_coverage,False,10,"[42, 43, 44, 45, 46, 47, 48, 49, 50, 51]",10,0.0,0.0,0.0,0.0,0.0,0,10,0
+0,1.0,8,0.02,parent,mode_coverage,True,10,[],0,,,,,,0,0,0
+0,1.0,8,0.02,parent,selected_endpoints,False,10,"[42, 43, 44, 45, 46, 47, 48, 49, 50, 51]",10,0.0,0.0,0.0,0.0,0.0,0,10,0
+0,1.0,8,0.02,parent,selected_endpoints,True,10,[],0,,,,,,0,0,0
+0,1.0,8,0.02,parent,effective_endpoints,False,10,[],0,,,,,,0,0,0
+0,1.0,8,0.02,parent,effective_endpoints,True,10,[],0,,,,,,0,0,0
+0,1.0,8,0.02,parent,u_mass,False,10,"[42, 43, 44, 45, 46, 47, 48, 49, 50, 51]",10,0.0,0.0,0.0,0.0,0.0,0,10,0
+0,1.0,8,0.02,parent,u_mass,True,10,[],0,,,,,,0,0,0
+0,1.0,8,0.02,parent,incremental_seconds,False,10,"[42, 43, 44, 45, 46, 47, 48, 49, 50, 51]",10,5.8936900177286586e-05,0.00029530275567372867,9.338293072531932e-05,-0.00012227200022607576,0.000887502000296081,7,0,3
+0,1.0,8,0.02,parent,incremental_seconds,True,10,[],0,,,,,,0,0,0
+0,1.0,8,0.02,unconstrained,mcc,False,10,"[42, 43, 44, 45, 46, 47, 48, 49, 50, 51]",10,0.0,0.0,0.0,0.0,0.0,0,10,0
+0,1.0,8,0.02,unconstrained,mcc,True,10,[],0,,,,,,0,0,0
+0,1.0,8,0.02,unconstrained,gmean,False,10,"[42, 43, 44, 45, 46, 47, 48, 49, 50, 51]",10,0.0,0.0,0.0,0.0,0.0,0,10,0
+0,1.0,8,0.02,unconstrained,gmean,True,10,[],0,,,,,,0,0,0
+0,1.0,8,0.02,unconstrained,ap,False,10,"[42, 43, 44, 45, 46, 47, 48, 49, 50, 51]",10,0.0,0.0,0.0,0.0,0.0,0,10,0
+0,1.0,8,0.02,unconstrained,ap,True,10,[],0,,,,,,0,0,0
+0,1.0,8,0.02,unconstrained,realized_lineage_error,False,10,[],0,,,,,,0,0,0
+0,1.0,8,0.02,unconstrained,realized_lineage_error,True,10,[],0,,,,,,0,0,0
+0,1.0,8,0.02,unconstrained,oracle_endpoint_error,False,10,[],0,,,,,,0,0,0
+0,1.0,8,0.02,unconstrained,oracle_endpoint_error,True,10,[],0,,,,,,0,0,0
+0,1.0,8,0.02,unconstrained,oracle_u_child_error,False,10,[],0,,,,,,0,0,0
+0,1.0,8,0.02,unconstrained,oracle_u_child_error,True,10,[],0,,,,,,0,0,0
+0,1.0,8,0.02,unconstrained,oracle_added_minority_error,False,10,[],0,,,,,,0,0,0
+0,1.0,8,0.02,unconstrained,oracle_added_minority_error,True,10,[],0,,,,,,0,0,0
+0,1.0,8,0.02,unconstrained,estimated_endpoint_error,False,10,[],0,,,,,,0,0,0
+0,1.0,8,0.02,unconstrained,estimated_endpoint_error,True,10,[],0,,,,,,0,0,0
+0,1.0,8,0.02,unconstrained,selected_endpoint_error,False,10,[],0,,,,,,0,0,0
+0,1.0,8,0.02,unconstrained,selected_endpoint_error,True,10,[],0,,,,,,0,0,0
+0,1.0,8,0.02,unconstrained,u_child_mode_coverage,False,10,[],0,,,,,,0,0,0
+0,1.0,8,0.02,unconstrained,u_child_mode_coverage,True,10,[],0,,,,,,0,0,0
+0,1.0,8,0.02,unconstrained,mode_coverage,False,10,"[42, 43, 44, 45, 46, 47, 48, 49, 50, 51]",10,0.0,0.0,0.0,0.0,0.0,0,10,0
+0,1.0,8,0.02,unconstrained,mode_coverage,True,10,[],0,,,,,,0,0,0
+0,1.0,8,0.02,unconstrained,selected_endpoints,False,10,"[42, 43, 44, 45, 46, 47, 48, 49, 50, 51]",10,0.0,0.0,0.0,0.0,0.0,0,10,0
+0,1.0,8,0.02,unconstrained,selected_endpoints,True,10,[],0,,,,,,0,0,0
+0,1.0,8,0.02,unconstrained,effective_endpoints,False,10,[],0,,,,,,0,0,0
+0,1.0,8,0.02,unconstrained,effective_endpoints,True,10,[],0,,,,,,0,0,0
+0,1.0,8,0.02,unconstrained,u_mass,False,10,"[42, 43, 44, 45, 46, 47, 48, 49, 50, 51]",10,0.0,0.0,0.0,0.0,0.0,0,10,0
+0,1.0,8,0.02,unconstrained,u_mass,True,10,[],0,,,,,,0,0,0
+0,1.0,8,0.02,unconstrained,incremental_seconds,False,10,"[42, 43, 44, 45, 46, 47, 48, 49, 50, 51]",10,8.324249974975829e-05,0.0002599474165461725,8.220259081624454e-05,-0.00010910100036198855,0.0007977889999892795,4,0,6
+0,1.0,8,0.02,unconstrained,incremental_seconds,True,10,[],0,,,,,,0,0,0
+0,1.0,8,0.02,count_matched,mcc,False,10,"[42, 43, 44, 45, 46, 47, 48, 49, 50, 51]",10,0.0,0.0,0.0,0.0,0.0,0,10,0
+0,1.0,8,0.02,count_matched,mcc,True,10,[],0,,,,,,0,0,0
+0,1.0,8,0.02,count_matched,gmean,False,10,"[42, 43, 44, 45, 46, 47, 48, 49, 50, 51]",10,0.0,0.0,0.0,0.0,0.0,0,10,0
+0,1.0,8,0.02,count_matched,gmean,True,10,[],0,,,,,,0,0,0
+0,1.0,8,0.02,count_matched,ap,False,10,"[42, 43, 44, 45, 46, 47, 48, 49, 50, 51]",10,0.0,0.0,0.0,0.0,0.0,0,10,0
+0,1.0,8,0.02,count_matched,ap,True,10,[],0,,,,,,0,0,0
+0,1.0,8,0.02,count_matched,realized_lineage_error,False,10,[],0,,,,,,0,0,0
+0,1.0,8,0.02,count_matched,realized_lineage_error,True,10,[],0,,,,,,0,0,0
+0,1.0,8,0.02,count_matched,oracle_endpoint_error,False,10,[],0,,,,,,0,0,0
+0,1.0,8,0.02,count_matched,oracle_endpoint_error,True,10,[],0,,,,,,0,0,0
+0,1.0,8,0.02,count_matched,oracle_u_child_error,False,10,[],0,,,,,,0,0,0
+0,1.0,8,0.02,count_matched,oracle_u_child_error,True,10,[],0,,,,,,0,0,0
+0,1.0,8,0.02,count_matched,oracle_added_minority_error,False,10,[],0,,,,,,0,0,0
+0,1.0,8,0.02,count_matched,oracle_added_minority_error,True,10,[],0,,,,,,0,0,0
+0,1.0,8,0.02,count_matched,estimated_endpoint_error,False,10,[],0,,,,,,0,0,0
+0,1.0,8,0.02,count_matched,estimated_endpoint_error,True,10,[],0,,,,,,0,0,0
+0,1.0,8,0.02,count_matched,selected_endpoint_error,False,10,[],0,,,,,,0,0,0
+0,1.0,8,0.02,count_matched,selected_endpoint_error,True,10,[],0,,,,,,0,0,0
+0,1.0,8,0.02,count_matched,u_child_mode_coverage,False,10,[],0,,,,,,0,0,0
+0,1.0,8,0.02,count_matched,u_child_mode_coverage,True,10,[],0,,,,,,0,0,0
+0,1.0,8,0.02,count_matched,mode_coverage,False,10,"[42, 43, 44, 45, 46, 47, 48, 49, 50, 51]",10,0.0,0.0,0.0,0.0,0.0,0,10,0
+0,1.0,8,0.02,count_matched,mode_coverage,True,10,[],0,,,,,,0,0,0
+0,1.0,8,0.02,count_matched,selected_endpoints,False,10,"[42, 43, 44, 45, 46, 47, 48, 49, 50, 51]",10,0.0,0.0,0.0,0.0,0.0,0,10,0
+0,1.0,8,0.02,count_matched,selected_endpoints,True,10,[],0,,,,,,0,0,0
+0,1.0,8,0.02,count_matched,effective_endpoints,False,10,[],0,,,,,,0,0,0
+0,1.0,8,0.02,count_matched,effective_endpoints,True,10,[],0,,,,,,0,0,0
+0,1.0,8,0.02,count_matched,u_mass,False,10,"[42, 43, 44, 45, 46, 47, 48, 49, 50, 51]",10,0.0,0.0,0.0,0.0,0.0,0,10,0
+0,1.0,8,0.02,count_matched,u_mass,True,10,[],0,,,,,,0,0,0
+0,1.0,8,0.02,count_matched,incremental_seconds,False,10,"[42, 43, 44, 45, 46, 47, 48, 49, 50, 51]",10,-2.185849989473354e-05,0.0003701122126547736,0.0001170397581833679,-0.0004625639999176201,0.0008725109996703395,6,0,4
+0,1.0,8,0.02,count_matched,incremental_seconds,True,10,[],0,,,,,,0,0,0
+0,1.0,8,0.02,threshold_matched,mcc,False,10,"[42, 43, 44, 45, 46, 47, 48, 49, 50, 51]",10,0.0,0.0,0.0,0.0,0.0,0,10,0
+0,1.0,8,0.02,threshold_matched,mcc,True,10,[],0,,,,,,0,0,0
+0,1.0,8,0.02,threshold_matched,gmean,False,10,"[42, 43, 44, 45, 46, 47, 48, 49, 50, 51]",10,0.0,0.0,0.0,0.0,0.0,0,10,0
+0,1.0,8,0.02,threshold_matched,gmean,True,10,[],0,,,,,,0,0,0
+0,1.0,8,0.02,threshold_matched,ap,False,10,"[42, 43, 44, 45, 46, 47, 48, 49, 50, 51]",10,0.0,0.0,0.0,0.0,0.0,0,10,0
+0,1.0,8,0.02,threshold_matched,ap,True,10,[],0,,,,,,0,0,0
+0,1.0,8,0.02,threshold_matched,realized_lineage_error,False,10,[],0,,,,,,0,0,0
+0,1.0,8,0.02,threshold_matched,realized_lineage_error,True,10,[],0,,,,,,0,0,0
+0,1.0,8,0.02,threshold_matched,oracle_endpoint_error,False,10,[],0,,,,,,0,0,0
+0,1.0,8,0.02,threshold_matched,oracle_endpoint_error,True,10,[],0,,,,,,0,0,0
+0,1.0,8,0.02,threshold_matched,oracle_u_child_error,False,10,[],0,,,,,,0,0,0
+0,1.0,8,0.02,threshold_matched,oracle_u_child_error,True,10,[],0,,,,,,0,0,0
+0,1.0,8,0.02,threshold_matched,oracle_added_minority_error,False,10,[],0,,,,,,0,0,0
+0,1.0,8,0.02,threshold_matched,oracle_added_minority_error,True,10,[],0,,,,,,0,0,0
+0,1.0,8,0.02,threshold_matched,estimated_endpoint_error,False,10,[],0,,,,,,0,0,0
+0,1.0,8,0.02,threshold_matched,estimated_endpoint_error,True,10,[],0,,,,,,0,0,0
+0,1.0,8,0.02,threshold_matched,selected_endpoint_error,False,10,[],0,,,,,,0,0,0
+0,1.0,8,0.02,threshold_matched,selected_endpoint_error,True,10,[],0,,,,,,0,0,0
+0,1.0,8,0.02,threshold_matched,u_child_mode_coverage,False,10,[],0,,,,,,0,0,0
+0,1.0,8,0.02,threshold_matched,u_child_mode_coverage,True,10,[],0,,,,,,0,0,0
+0,1.0,8,0.02,threshold_matched,mode_coverage,False,10,"[42, 43, 44, 45, 46, 47, 48, 49, 50, 51]",10,0.0,0.0,0.0,0.0,0.0,0,10,0
+0,1.0,8,0.02,threshold_matched,mode_coverage,True,10,[],0,,,,,,0,0,0
+0,1.0,8,0.02,threshold_matched,selected_endpoints,False,10,"[42, 43, 44, 45, 46, 47, 48, 49, 50, 51]",10,0.0,0.0,0.0,0.0,0.0,0,10,0
+0,1.0,8,0.02,threshold_matched,selected_endpoints,True,10,[],0,,,,,,0,0,0
+0,1.0,8,0.02,threshold_matched,effective_endpoints,False,10,[],0,,,,,,0,0,0
+0,1.0,8,0.02,threshold_matched,effective_endpoints,True,10,[],0,,,,,,0,0,0
+0,1.0,8,0.02,threshold_matched,u_mass,False,10,"[42, 43, 44, 45, 46, 47, 48, 49, 50, 51]",10,0.0,0.0,0.0,0.0,0.0,0,10,0
+0,1.0,8,0.02,threshold_matched,u_mass,True,10,[],0,,,,,,0,0,0
+0,1.0,8,0.02,threshold_matched,incremental_seconds,False,10,"[42, 43, 44, 45, 46, 47, 48, 49, 50, 51]",10,5.0500799989094955e-05,0.00033862635576591686,0.00010708305599827887,-0.0003175490001012804,0.0009362639998471423,6,0,4
+0,1.0,8,0.02,threshold_matched,incremental_seconds,True,10,[],0,,,,,,0,0,0
+0,1.0,8,0.02,weighted_pl,mcc,False,10,"[42, 43, 44, 45, 46, 47, 48, 49, 50, 51]",10,0.0,0.0,0.0,0.0,0.0,0,10,0
+0,1.0,8,0.02,weighted_pl,mcc,True,10,[],0,,,,,,0,0,0
+0,1.0,8,0.02,weighted_pl,gmean,False,10,"[42, 43, 44, 45, 46, 47, 48, 49, 50, 51]",10,0.0,0.0,0.0,0.0,0.0,0,10,0
+0,1.0,8,0.02,weighted_pl,gmean,True,10,[],0,,,,,,0,0,0
+0,1.0,8,0.02,weighted_pl,ap,False,10,"[42, 43, 44, 45, 46, 47, 48, 49, 50, 51]",10,0.0,0.0,0.0,0.0,0.0,0,10,0
+0,1.0,8,0.02,weighted_pl,ap,True,10,[],0,,,,,,0,0,0
+0,1.0,8,0.02,weighted_pl,realized_lineage_error,False,10,[],0,,,,,,0,0,0
+0,1.0,8,0.02,weighted_pl,realized_lineage_error,True,10,[],0,,,,,,0,0,0
+0,1.0,8,0.02,weighted_pl,oracle_endpoint_error,False,10,[],0,,,,,,0,0,0
+0,1.0,8,0.02,weighted_pl,oracle_endpoint_error,True,10,[],0,,,,,,0,0,0
+0,1.0,8,0.02,weighted_pl,oracle_u_child_error,False,10,[],0,,,,,,0,0,0
+0,1.0,8,0.02,weighted_pl,oracle_u_child_error,True,10,[],0,,,,,,0,0,0
+0,1.0,8,0.02,weighted_pl,oracle_added_minority_error,False,10,[],0,,,,,,0,0,0
+0,1.0,8,0.02,weighted_pl,oracle_added_minority_error,True,10,[],0,,,,,,0,0,0
+0,1.0,8,0.02,weighted_pl,estimated_endpoint_error,False,10,[],0,,,,,,0,0,0
+0,1.0,8,0.02,weighted_pl,estimated_endpoint_error,True,10,[],0,,,,,,0,0,0
+0,1.0,8,0.02,weighted_pl,selected_endpoint_error,False,10,[],0,,,,,,0,0,0
+0,1.0,8,0.02,weighted_pl,selected_endpoint_error,True,10,[],0,,,,,,0,0,0
+0,1.0,8,0.02,weighted_pl,u_child_mode_coverage,False,10,[],0,,,,,,0,0,0
+0,1.0,8,0.02,weighted_pl,u_child_mode_coverage,True,10,[],0,,,,,,0,0,0
+0,1.0,8,0.02,weighted_pl,mode_coverage,False,10,"[42, 43, 44, 45, 46, 47, 48, 49, 50, 51]",10,0.0,0.0,0.0,0.0,0.0,0,10,0
+0,1.0,8,0.02,weighted_pl,mode_coverage,True,10,[],0,,,,,,0,0,0
+0,1.0,8,0.02,weighted_pl,selected_endpoints,False,10,"[42, 43, 44, 45, 46, 47, 48, 49, 50, 51]",10,0.0,0.0,0.0,0.0,0.0,0,10,0
+0,1.0,8,0.02,weighted_pl,selected_endpoints,True,10,[],0,,,,,,0,0,0
+0,1.0,8,0.02,weighted_pl,effective_endpoints,False,10,[],0,,,,,,0,0,0
+0,1.0,8,0.02,weighted_pl,effective_endpoints,True,10,[],0,,,,,,0,0,0
+0,1.0,8,0.02,weighted_pl,u_mass,False,10,"[42, 43, 44, 45, 46, 47, 48, 49, 50, 51]",10,0.0,0.0,0.0,0.0,0.0,0,10,0
+0,1.0,8,0.02,weighted_pl,u_mass,True,10,[],0,,,,,,0,0,0
+0,1.0,8,0.02,weighted_pl,incremental_seconds,False,10,"[42, 43, 44, 45, 46, 47, 48, 49, 50, 51]",10,0.00011382559991943709,0.00029845280615074923,9.437906415050781e-05,-8.46759994601598e-05,0.000954740999986825,2,0,8
+0,1.0,8,0.02,weighted_pl,incremental_seconds,True,10,[],0,,,,,,0,0,0
+0,1.0,8,0.02,nores,mcc,False,10,"[42, 43, 44, 45, 46, 47, 48, 49, 50, 51]",10,0.0,0.0,0.0,0.0,0.0,0,10,0
+0,1.0,8,0.02,nores,mcc,True,10,[],0,,,,,,0,0,0
+0,1.0,8,0.02,nores,gmean,False,10,"[42, 43, 44, 45, 46, 47, 48, 49, 50, 51]",10,0.0,0.0,0.0,0.0,0.0,0,10,0
+0,1.0,8,0.02,nores,gmean,True,10,[],0,,,,,,0,0,0
+0,1.0,8,0.02,nores,ap,False,10,"[42, 43, 44, 45, 46, 47, 48, 49, 50, 51]",10,0.0,0.0,0.0,0.0,0.0,0,10,0
+0,1.0,8,0.02,nores,ap,True,10,[],0,,,,,,0,0,0
+0,1.0,8,0.02,nores,realized_lineage_error,False,10,[],0,,,,,,0,0,0
+0,1.0,8,0.02,nores,realized_lineage_error,True,10,[],0,,,,,,0,0,0
+0,1.0,8,0.02,nores,oracle_endpoint_error,False,10,[],0,,,,,,0,0,0
+0,1.0,8,0.02,nores,oracle_endpoint_error,True,10,[],0,,,,,,0,0,0
+0,1.0,8,0.02,nores,oracle_u_child_error,False,10,[],0,,,,,,0,0,0
+0,1.0,8,0.02,nores,oracle_u_child_error,True,10,[],0,,,,,,0,0,0
+0,1.0,8,0.02,nores,oracle_added_minority_error,False,10,[],0,,,,,,0,0,0
+0,1.0,8,0.02,nores,oracle_added_minority_error,True,10,[],0,,,,,,0,0,0
+0,1.0,8,0.02,nores,estimated_endpoint_error,False,10,[],0,,,,,,0,0,0
+0,1.0,8,0.02,nores,estimated_endpoint_error,True,10,[],0,,,,,,0,0,0
+0,1.0,8,0.02,nores,selected_endpoint_error,False,10,[],0,,,,,,0,0,0
+0,1.0,8,0.02,nores,selected_endpoint_error,True,10,[],0,,,,,,0,0,0
+0,1.0,8,0.02,nores,u_child_mode_coverage,False,10,[],0,,,,,,0,0,0
+0,1.0,8,0.02,nores,u_child_mode_coverage,True,10,[],0,,,,,,0,0,0
+0,1.0,8,0.02,nores,mode_coverage,False,10,"[42, 43, 44, 45, 46, 47, 48, 49, 50, 51]",10,0.0,0.0,0.0,0.0,0.0,0,10,0
+0,1.0,8,0.02,nores,mode_coverage,True,10,[],0,,,,,,0,0,0
+0,1.0,8,0.02,nores,selected_endpoints,False,10,"[42, 43, 44, 45, 46, 47, 48, 49, 50, 51]",10,0.0,0.0,0.0,0.0,0.0,0,10,0
+0,1.0,8,0.02,nores,selected_endpoints,True,10,[],0,,,,,,0,0,0
+0,1.0,8,0.02,nores,effective_endpoints,False,10,[],0,,,,,,0,0,0
+0,1.0,8,0.02,nores,effective_endpoints,True,10,[],0,,,,,,0,0,0
+0,1.0,8,0.02,nores,u_mass,False,10,"[42, 43, 44, 45, 46, 47, 48, 49, 50, 51]",10,0.0,0.0,0.0,0.0,0.0,0,10,0
+0,1.0,8,0.02,nores,u_mass,True,10,[],0,,,,,,0,0,0
+0,1.0,8,0.02,nores,incremental_seconds,False,10,"[42, 43, 44, 45, 46, 47, 48, 49, 50, 51]",10,0.00013900099997954385,0.00028255265882582396,8.93509960826081e-05,-7.703299979766598e-05,0.0009241259999726026,1,0,9
+0,1.0,8,0.02,nores,incremental_seconds,True,10,[],0,,,,,,0,0,0
+1,1.0,8,0.2,parent,mcc,False,10,"[42, 43, 44, 45, 46, 47, 48, 49, 50, 51]",10,0.0,0.0,0.0,0.0,0.0,0,10,0
+1,1.0,8,0.2,parent,mcc,True,10,[],0,,,,,,0,0,0
+1,1.0,8,0.2,parent,gmean,False,10,"[42, 43, 44, 45, 46, 47, 48, 49, 50, 51]",10,0.0,0.0,0.0,0.0,0.0,0,10,0
+1,1.0,8,0.2,parent,gmean,True,10,[],0,,,,,,0,0,0
+1,1.0,8,0.2,parent,ap,False,10,"[42, 43, 44, 45, 46, 47, 48, 49, 50, 51]",10,0.0,0.0,0.0,0.0,0.0,0,10,0
+1,1.0,8,0.2,parent,ap,True,10,[],0,,,,,,0,0,0
+1,1.0,8,0.2,parent,realized_lineage_error,False,10,[],0,,,,,,0,0,0
+1,1.0,8,0.2,parent,realized_lineage_error,True,10,[],0,,,,,,0,0,0
+1,1.0,8,0.2,parent,oracle_endpoint_error,False,10,[],0,,,,,,0,0,0
+1,1.0,8,0.2,parent,oracle_endpoint_error,True,10,[],0,,,,,,0,0,0
+1,1.0,8,0.2,parent,oracle_u_child_error,False,10,[],0,,,,,,0,0,0
+1,1.0,8,0.2,parent,oracle_u_child_error,True,10,[],0,,,,,,0,0,0
+1,1.0,8,0.2,parent,oracle_added_minority_error,False,10,[],0,,,,,,0,0,0
+1,1.0,8,0.2,parent,oracle_added_minority_error,True,10,[],0,,,,,,0,0,0
+1,1.0,8,0.2,parent,estimated_endpoint_error,False,10,[],0,,,,,,0,0,0
+1,1.0,8,0.2,parent,estimated_endpoint_error,True,10,[],0,,,,,,0,0,0
+1,1.0,8,0.2,parent,selected_endpoint_error,False,10,[],0,,,,,,0,0,0
+1,1.0,8,0.2,parent,selected_endpoint_error,True,10,[],0,,,,,,0,0,0
+1,1.0,8,0.2,parent,u_child_mode_coverage,False,10,[],0,,,,,,0,0,0
+1,1.0,8,0.2,parent,u_child_mode_coverage,True,10,[],0,,,,,,0,0,0
+1,1.0,8,0.2,parent,mode_coverage,False,10,"[42, 43, 44, 45, 46, 47, 48, 49, 50, 51]",10,0.0,0.0,0.0,0.0,0.0,0,10,0
+1,1.0,8,0.2,parent,mode_coverage,True,10,[],0,,,,,,0,0,0
+1,1.0,8,0.2,parent,selected_endpoints,False,10,"[42, 43, 44, 45, 46, 47, 48, 49, 50, 51]",10,0.0,0.0,0.0,0.0,0.0,0,10,0
+1,1.0,8,0.2,parent,selected_endpoints,True,10,[],0,,,,,,0,0,0
+1,1.0,8,0.2,parent,effective_endpoints,False,10,[],0,,,,,,0,0,0
+1,1.0,8,0.2,parent,effective_endpoints,True,10,[],0,,,,,,0,0,0
+1,1.0,8,0.2,parent,u_mass,False,10,"[42, 43, 44, 45, 46, 47, 48, 49, 50, 51]",10,0.0,0.0,0.0,0.0,0.0,0,10,0
+1,1.0,8,0.2,parent,u_mass,True,10,[],0,,,,,,0,0,0
+1,1.0,8,0.2,parent,incremental_seconds,False,10,"[42, 43, 44, 45, 46, 47, 48, 49, 50, 51]",10,-7.96593001268775e-05,0.00038497148845107224,0.00012173867377305949,-0.0011111979997622257,0.0002891969998017885,5,0,5
+1,1.0,8,0.2,parent,incremental_seconds,True,10,[],0,,,,,,0,0,0
+1,1.0,8,0.2,unconstrained,mcc,False,10,"[42, 43, 44, 45, 46, 47, 48, 49, 50, 51]",10,0.0,0.0,0.0,0.0,0.0,0,10,0
+1,1.0,8,0.2,unconstrained,mcc,True,10,[],0,,,,,,0,0,0
+1,1.0,8,0.2,unconstrained,gmean,False,10,"[42, 43, 44, 45, 46, 47, 48, 49, 50, 51]",10,0.0,0.0,0.0,0.0,0.0,0,10,0
+1,1.0,8,0.2,unconstrained,gmean,True,10,[],0,,,,,,0,0,0
+1,1.0,8,0.2,unconstrained,ap,False,10,"[42, 43, 44, 45, 46, 47, 48, 49, 50, 51]",10,0.0,0.0,0.0,0.0,0.0,0,10,0
+1,1.0,8,0.2,unconstrained,ap,True,10,[],0,,,,,,0,0,0
+1,1.0,8,0.2,unconstrained,realized_lineage_error,False,10,[],0,,,,,,0,0,0
+1,1.0,8,0.2,unconstrained,realized_lineage_error,True,10,[],0,,,,,,0,0,0
+1,1.0,8,0.2,unconstrained,oracle_endpoint_error,False,10,[],0,,,,,,0,0,0
+1,1.0,8,0.2,unconstrained,oracle_endpoint_error,True,10,[],0,,,,,,0,0,0
+1,1.0,8,0.2,unconstrained,oracle_u_child_error,False,10,[],0,,,,,,0,0,0
+1,1.0,8,0.2,unconstrained,oracle_u_child_error,True,10,[],0,,,,,,0,0,0
+1,1.0,8,0.2,unconstrained,oracle_added_minority_error,False,10,[],0,,,,,,0,0,0
+1,1.0,8,0.2,unconstrained,oracle_added_minority_error,True,10,[],0,,,,,,0,0,0
+1,1.0,8,0.2,unconstrained,estimated_endpoint_error,False,10,[],0,,,,,,0,0,0
+1,1.0,8,0.2,unconstrained,estimated_endpoint_error,True,10,[],0,,,,,,0,0,0
+1,1.0,8,0.2,unconstrained,selected_endpoint_error,False,10,[],0,,,,,,0,0,0
+1,1.0,8,0.2,unconstrained,selected_endpoint_error,True,10,[],0,,,,,,0,0,0
+1,1.0,8,0.2,unconstrained,u_child_mode_coverage,False,10,[],0,,,,,,0,0,0
+1,1.0,8,0.2,unconstrained,u_child_mode_coverage,True,10,[],0,,,,,,0,0,0
+1,1.0,8,0.2,unconstrained,mode_coverage,False,10,"[42, 43, 44, 45, 46, 47, 48, 49, 50, 51]",10,0.0,0.0,0.0,0.0,0.0,0,10,0
+1,1.0,8,0.2,unconstrained,mode_coverage,True,10,[],0,,,,,,0,0,0
+1,1.0,8,0.2,unconstrained,selected_endpoints,False,10,"[42, 43, 44, 45, 46, 47, 48, 49, 50, 51]",10,0.0,0.0,0.0,0.0,0.0,0,10,0
+1,1.0,8,0.2,unconstrained,selected_endpoints,True,10,[],0,,,,,,0,0,0
+1,1.0,8,0.2,unconstrained,effective_endpoints,False,10,[],0,,,,,,0,0,0
+1,1.0,8,0.2,unconstrained,effective_endpoints,True,10,[],0,,,,,,0,0,0
+1,1.0,8,0.2,unconstrained,u_mass,False,10,"[42, 43, 44, 45, 46, 47, 48, 49, 50, 51]",10,0.0,0.0,0.0,0.0,0.0,0,10,0
+1,1.0,8,0.2,unconstrained,u_mass,True,10,[],0,,,,,,0,0,0
+1,1.0,8,0.2,unconstrained,incremental_seconds,False,10,"[42, 43, 44, 45, 46, 47, 48, 49, 50, 51]",10,0.00011718299992935499,0.0003232934072167364,0.00010223435193212042,-0.0003642390001914464,0.0006823870003245247,4,0,6
+1,1.0,8,0.2,unconstrained,incremental_seconds,True,10,[],0,,,,,,0,0,0
+1,1.0,8,0.2,count_matched,mcc,False,10,"[42, 43, 44, 45, 46, 47, 48, 49, 50, 51]",10,0.0,0.0,0.0,0.0,0.0,0,10,0
+1,1.0,8,0.2,count_matched,mcc,True,10,[],0,,,,,,0,0,0
+1,1.0,8,0.2,count_matched,gmean,False,10,"[42, 43, 44, 45, 46, 47, 48, 49, 50, 51]",10,0.0,0.0,0.0,0.0,0.0,0,10,0
+1,1.0,8,0.2,count_matched,gmean,True,10,[],0,,,,,,0,0,0
+1,1.0,8,0.2,count_matched,ap,False,10,"[42, 43, 44, 45, 46, 47, 48, 49, 50, 51]",10,0.0,0.0,0.0,0.0,0.0,0,10,0
+1,1.0,8,0.2,count_matched,ap,True,10,[],0,,,,,,0,0,0
+1,1.0,8,0.2,count_matched,realized_lineage_error,False,10,[],0,,,,,,0,0,0
+1,1.0,8,0.2,count_matched,realized_lineage_error,True,10,[],0,,,,,,0,0,0
+1,1.0,8,0.2,count_matched,oracle_endpoint_error,False,10,[],0,,,,,,0,0,0
+1,1.0,8,0.2,count_matched,oracle_endpoint_error,True,10,[],0,,,,,,0,0,0
+1,1.0,8,0.2,count_matched,oracle_u_child_error,False,10,[],0,,,,,,0,0,0
+1,1.0,8,0.2,count_matched,oracle_u_child_error,True,10,[],0,,,,,,0,0,0
+1,1.0,8,0.2,count_matched,oracle_added_minority_error,False,10,[],0,,,,,,0,0,0
+1,1.0,8,0.2,count_matched,oracle_added_minority_error,True,10,[],0,,,,,,0,0,0
+1,1.0,8,0.2,count_matched,estimated_endpoint_error,False,10,[],0,,,,,,0,0,0
+1,1.0,8,0.2,count_matched,estimated_endpoint_error,True,10,[],0,,,,,,0,0,0
+1,1.0,8,0.2,count_matched,selected_endpoint_error,False,10,[],0,,,,,,0,0,0
+1,1.0,8,0.2,count_matched,selected_endpoint_error,True,10,[],0,,,,,,0,0,0
+1,1.0,8,0.2,count_matched,u_child_mode_coverage,False,10,[],0,,,,,,0,0,0
+1,1.0,8,0.2,count_matched,u_child_mode_coverage,True,10,[],0,,,,,,0,0,0
+1,1.0,8,0.2,count_matched,mode_coverage,False,10,"[42, 43, 44, 45, 46, 47, 48, 49, 50, 51]",10,0.0,0.0,0.0,0.0,0.0,0,10,0
+1,1.0,8,0.2,count_matched,mode_coverage,True,10,[],0,,,,,,0,0,0
+1,1.0,8,0.2,count_matched,selected_endpoints,False,10,"[42, 43, 44, 45, 46, 47, 48, 49, 50, 51]",10,0.0,0.0,0.0,0.0,0.0,0,10,0
+1,1.0,8,0.2,count_matched,selected_endpoints,True,10,[],0,,,,,,0,0,0
+1,1.0,8,0.2,count_matched,effective_endpoints,False,10,[],0,,,,,,0,0,0
+1,1.0,8,0.2,count_matched,effective_endpoints,True,10,[],0,,,,,,0,0,0
+1,1.0,8,0.2,count_matched,u_mass,False,10,"[42, 43, 44, 45, 46, 47, 48, 49, 50, 51]",10,0.0,0.0,0.0,0.0,0.0,0,10,0
+1,1.0,8,0.2,count_matched,u_mass,True,10,[],0,,,,,,0,0,0
+1,1.0,8,0.2,count_matched,incremental_seconds,False,10,"[42, 43, 44, 45, 46, 47, 48, 49, 50, 51]",10,-0.0001769448001141427,0.0009299400130568209,0.00029407285285862756,-0.0025122930001089117,0.000930115999381087,3,0,7
+1,1.0,8,0.2,count_matched,incremental_seconds,True,10,[],0,,,,,,0,0,0
+1,1.0,8,0.2,threshold_matched,mcc,False,10,"[42, 43, 44, 45, 46, 47, 48, 49, 50, 51]",10,0.0,0.0,0.0,0.0,0.0,0,10,0
+1,1.0,8,0.2,threshold_matched,mcc,True,10,[],0,,,,,,0,0,0
+1,1.0,8,0.2,threshold_matched,gmean,False,10,"[42, 43, 44, 45, 46, 47, 48, 49, 50, 51]",10,0.0,0.0,0.0,0.0,0.0,0,10,0
+1,1.0,8,0.2,threshold_matched,gmean,True,10,[],0,,,,,,0,0,0
+1,1.0,8,0.2,threshold_matched,ap,False,10,"[42, 43, 44, 45, 46, 47, 48, 49, 50, 51]",10,0.0,0.0,0.0,0.0,0.0,0,10,0
+1,1.0,8,0.2,threshold_matched,ap,True,10,[],0,,,,,,0,0,0
+1,1.0,8,0.2,threshold_matched,realized_lineage_error,False,10,[],0,,,,,,0,0,0
+1,1.0,8,0.2,threshold_matched,realized_lineage_error,True,10,[],0,,,,,,0,0,0
+1,1.0,8,0.2,threshold_matched,oracle_endpoint_error,False,10,[],0,,,,,,0,0,0
+1,1.0,8,0.2,threshold_matched,oracle_endpoint_error,True,10,[],0,,,,,,0,0,0
+1,1.0,8,0.2,threshold_matched,oracle_u_child_error,False,10,[],0,,,,,,0,0,0
+1,1.0,8,0.2,threshold_matched,oracle_u_child_error,True,10,[],0,,,,,,0,0,0
+1,1.0,8,0.2,threshold_matched,oracle_added_minority_error,False,10,[],0,,,,,,0,0,0
+1,1.0,8,0.2,threshold_matched,oracle_added_minority_error,True,10,[],0,,,,,,0,0,0
+1,1.0,8,0.2,threshold_matched,estimated_endpoint_error,False,10,[],0,,,,,,0,0,0
+1,1.0,8,0.2,threshold_matched,estimated_endpoint_error,True,10,[],0,,,,,,0,0,0
+1,1.0,8,0.2,threshold_matched,selected_endpoint_error,False,10,[],0,,,,,,0,0,0
+1,1.0,8,0.2,threshold_matched,selected_endpoint_error,True,10,[],0,,,,,,0,0,0
+1,1.0,8,0.2,threshold_matched,u_child_mode_coverage,False,10,[],0,,,,,,0,0,0
+1,1.0,8,0.2,threshold_matched,u_child_mode_coverage,True,10,[],0,,,,,,0,0,0
+1,1.0,8,0.2,threshold_matched,mode_coverage,False,10,"[42, 43, 44, 45, 46, 47, 48, 49, 50, 51]",10,0.0,0.0,0.0,0.0,0.0,0,10,0
+1,1.0,8,0.2,threshold_matched,mode_coverage,True,10,[],0,,,,,,0,0,0
+1,1.0,8,0.2,threshold_matched,selected_endpoints,False,10,"[42, 43, 44, 45, 46, 47, 48, 49, 50, 51]",10,0.0,0.0,0.0,0.0,0.0,0,10,0
+1,1.0,8,0.2,threshold_matched,selected_endpoints,True,10,[],0,,,,,,0,0,0
+1,1.0,8,0.2,threshold_matched,effective_endpoints,False,10,[],0,,,,,,0,0,0
+1,1.0,8,0.2,threshold_matched,effective_endpoints,True,10,[],0,,,,,,0,0,0
+1,1.0,8,0.2,threshold_matched,u_mass,False,10,"[42, 43, 44, 45, 46, 47, 48, 49, 50, 51]",10,0.0,0.0,0.0,0.0,0.0,0,10,0
+1,1.0,8,0.2,threshold_matched,u_mass,True,10,[],0,,,,,,0,0,0
+1,1.0,8,0.2,threshold_matched,incremental_seconds,False,10,"[42, 43, 44, 45, 46, 47, 48, 49, 50, 51]",10,0.00015179179990809644,0.0004487229819616595,0.00014189866614614942,-0.0006145069996819075,0.0009871099996416888,4,0,6
+1,1.0,8,0.2,threshold_matched,incremental_seconds,True,10,[],0,,,,,,0,0,0
+1,1.0,8,0.2,weighted_pl,mcc,False,10,"[42, 43, 44, 45, 46, 47, 48, 49, 50, 51]",10,0.0,0.0,0.0,0.0,0.0,0,10,0
+1,1.0,8,0.2,weighted_pl,mcc,True,10,[],0,,,,,,0,0,0
+1,1.0,8,0.2,weighted_pl,gmean,False,10,"[42, 43, 44, 45, 46, 47, 48, 49, 50, 51]",10,0.0,0.0,0.0,0.0,0.0,0,10,0
+1,1.0,8,0.2,weighted_pl,gmean,True,10,[],0,,,,,,0,0,0
+1,1.0,8,0.2,weighted_pl,ap,False,10,"[42, 43, 44, 45, 46, 47, 48, 49, 50, 51]",10,0.0,0.0,0.0,0.0,0.0,0,10,0
+1,1.0,8,0.2,weighted_pl,ap,True,10,[],0,,,,,,0,0,0
+1,1.0,8,0.2,weighted_pl,realized_lineage_error,False,10,[],0,,,,,,0,0,0
+1,1.0,8,0.2,weighted_pl,realized_lineage_error,True,10,[],0,,,,,,0,0,0
+1,1.0,8,0.2,weighted_pl,oracle_endpoint_error,False,10,[],0,,,,,,0,0,0
+1,1.0,8,0.2,weighted_pl,oracle_endpoint_error,True,10,[],0,,,,,,0,0,0
+1,1.0,8,0.2,weighted_pl,oracle_u_child_error,False,10,[],0,,,,,,0,0,0
+1,1.0,8,0.2,weighted_pl,oracle_u_child_error,True,10,[],0,,,,,,0,0,0
+1,1.0,8,0.2,weighted_pl,oracle_added_minority_error,False,10,[],0,,,,,,0,0,0
+1,1.0,8,0.2,weighted_pl,oracle_added_minority_error,True,10,[],0,,,,,,0,0,0
+1,1.0,8,0.2,weighted_pl,estimated_endpoint_error,False,10,[],0,,,,,,0,0,0
+1,1.0,8,0.2,weighted_pl,estimated_endpoint_error,True,10,[],0,,,,,,0,0,0
+1,1.0,8,0.2,weighted_pl,selected_endpoint_error,False,10,[],0,,,,,,0,0,0
+1,1.0,8,0.2,weighted_pl,selected_endpoint_error,True,10,[],0,,,,,,0,0,0
+1,1.0,8,0.2,weighted_pl,u_child_mode_coverage,False,10,[],0,,,,,,0,0,0
+1,1.0,8,0.2,weighted_pl,u_child_mode_coverage,True,10,[],0,,,,,,0,0,0
+1,1.0,8,0.2,weighted_pl,mode_coverage,False,10,"[42, 43, 44, 45, 46, 47, 48, 49, 50, 51]",10,0.0,0.0,0.0,0.0,0.0,0,10,0
+1,1.0,8,0.2,weighted_pl,mode_coverage,True,10,[],0,,,,,,0,0,0
+1,1.0,8,0.2,weighted_pl,selected_endpoints,False,10,"[42, 43, 44, 45, 46, 47, 48, 49, 50, 51]",10,0.0,0.0,0.0,0.0,0.0,0,10,0
+1,1.0,8,0.2,weighted_pl,selected_endpoints,True,10,[],0,,,,,,0,0,0
+1,1.0,8,0.2,weighted_pl,effective_endpoints,False,10,[],0,,,,,,0,0,0
+1,1.0,8,0.2,weighted_pl,effective_endpoints,True,10,[],0,,,,,,0,0,0
+1,1.0,8,0.2,weighted_pl,u_mass,False,10,"[42, 43, 44, 45, 46, 47, 48, 49, 50, 51]",10,0.0,0.0,0.0,0.0,0.0,0,10,0
+1,1.0,8,0.2,weighted_pl,u_mass,True,10,[],0,,,,,,0,0,0
+1,1.0,8,0.2,weighted_pl,incremental_seconds,False,10,"[42, 43, 44, 45, 46, 47, 48, 49, 50, 51]",10,0.00021406469973044294,0.0003998961905994634,0.00012645827899191193,-0.0002952550007648824,0.001057464999576041,3,0,7
+1,1.0,8,0.2,weighted_pl,incremental_seconds,True,10,[],0,,,,,,0,0,0
+1,1.0,8,0.2,nores,mcc,False,10,"[42, 43, 44, 45, 46, 47, 48, 49, 50, 51]",10,0.0,0.0,0.0,0.0,0.0,0,10,0
+1,1.0,8,0.2,nores,mcc,True,10,[],0,,,,,,0,0,0
+1,1.0,8,0.2,nores,gmean,False,10,"[42, 43, 44, 45, 46, 47, 48, 49, 50, 51]",10,0.0,0.0,0.0,0.0,0.0,0,10,0
+1,1.0,8,0.2,nores,gmean,True,10,[],0,,,,,,0,0,0
+1,1.0,8,0.2,nores,ap,False,10,"[42, 43, 44, 45, 46, 47, 48, 49, 50, 51]",10,0.0,0.0,0.0,0.0,0.0,0,10,0
+1,1.0,8,0.2,nores,ap,True,10,[],0,,,,,,0,0,0
+1,1.0,8,0.2,nores,realized_lineage_error,False,10,[],0,,,,,,0,0,0
+1,1.0,8,0.2,nores,realized_lineage_error,True,10,[],0,,,,,,0,0,0
+1,1.0,8,0.2,nores,oracle_endpoint_error,False,10,[],0,,,,,,0,0,0
+1,1.0,8,0.2,nores,oracle_endpoint_error,True,10,[],0,,,,,,0,0,0
+1,1.0,8,0.2,nores,oracle_u_child_error,False,10,[],0,,,,,,0,0,0
+1,1.0,8,0.2,nores,oracle_u_child_error,True,10,[],0,,,,,,0,0,0
+1,1.0,8,0.2,nores,oracle_added_minority_error,False,10,[],0,,,,,,0,0,0
+1,1.0,8,0.2,nores,oracle_added_minority_error,True,10,[],0,,,,,,0,0,0
+1,1.0,8,0.2,nores,estimated_endpoint_error,False,10,[],0,,,,,,0,0,0
+1,1.0,8,0.2,nores,estimated_endpoint_error,True,10,[],0,,,,,,0,0,0
+1,1.0,8,0.2,nores,selected_endpoint_error,False,10,[],0,,,,,,0,0,0
+1,1.0,8,0.2,nores,selected_endpoint_error,True,10,[],0,,,,,,0,0,0
+1,1.0,8,0.2,nores,u_child_mode_coverage,False,10,[],0,,,,,,0,0,0
+1,1.0,8,0.2,nores,u_child_mode_coverage,True,10,[],0,,,,,,0,0,0
+1,1.0,8,0.2,nores,mode_coverage,False,10,"[42, 43, 44, 45, 46, 47, 48, 49, 50, 51]",10,0.0,0.0,0.0,0.0,0.0,0,10,0
+1,1.0,8,0.2,nores,mode_coverage,True,10,[],0,,,,,,0,0,0
+1,1.0,8,0.2,nores,selected_endpoints,False,10,"[42, 43, 44, 45, 46, 47, 48, 49, 50, 51]",10,0.0,0.0,0.0,0.0,0.0,0,10,0
+1,1.0,8,0.2,nores,selected_endpoints,True,10,[],0,,,,,,0,0,0
+1,1.0,8,0.2,nores,effective_endpoints,False,10,[],0,,,,,,0,0,0
+1,1.0,8,0.2,nores,effective_endpoints,True,10,[],0,,,,,,0,0,0
+1,1.0,8,0.2,nores,u_mass,False,10,"[42, 43, 44, 45, 46, 47, 48, 49, 50, 51]",10,0.0,0.0,0.0,0.0,0.0,0,10,0
+1,1.0,8,0.2,nores,u_mass,True,10,[],0,,,,,,0,0,0
+1,1.0,8,0.2,nores,incremental_seconds,False,10,"[42, 43, 44, 45, 46, 47, 48, 49, 50, 51]",10,0.00025188909994540155,0.0003298793301008534,0.0001043170036129239,-0.0003346950002196536,0.0006974800003263226,1,0,9
+1,1.0,8,0.2,nores,incremental_seconds,True,10,[],0,,,,,,0,0,0
+2,1.0,32,0.02,parent,mcc,False,10,"[42, 43, 44, 45, 46, 47, 48, 49, 50, 51]",10,0.0,0.0,0.0,0.0,0.0,0,10,0
+2,1.0,32,0.02,parent,mcc,True,10,[],0,,,,,,0,0,0
+2,1.0,32,0.02,parent,gmean,False,10,"[42, 43, 44, 45, 46, 47, 48, 49, 50, 51]",10,0.0,0.0,0.0,0.0,0.0,0,10,0
+2,1.0,32,0.02,parent,gmean,True,10,[],0,,,,,,0,0,0
+2,1.0,32,0.02,parent,ap,False,10,"[42, 43, 44, 45, 46, 47, 48, 49, 50, 51]",10,0.0,0.0,0.0,0.0,0.0,0,10,0
+2,1.0,32,0.02,parent,ap,True,10,[],0,,,,,,0,0,0
+2,1.0,32,0.02,parent,realized_lineage_error,False,10,[],0,,,,,,0,0,0
+2,1.0,32,0.02,parent,realized_lineage_error,True,10,[],0,,,,,,0,0,0
+2,1.0,32,0.02,parent,oracle_endpoint_error,False,10,[],0,,,,,,0,0,0
+2,1.0,32,0.02,parent,oracle_endpoint_error,True,10,[],0,,,,,,0,0,0
+2,1.0,32,0.02,parent,oracle_u_child_error,False,10,[],0,,,,,,0,0,0
+2,1.0,32,0.02,parent,oracle_u_child_error,True,10,[],0,,,,,,0,0,0
+2,1.0,32,0.02,parent,oracle_added_minority_error,False,10,"[42, 43, 44, 45, 46, 47, 48, 50, 51]",9,0.0,0.0,0.0,0.0,0.0,0,9,0
+2,1.0,32,0.02,parent,oracle_added_minority_error,True,10,[],0,,,,,,0,0,0
+2,1.0,32,0.02,parent,estimated_endpoint_error,False,10,[],0,,,,,,0,0,0
+2,1.0,32,0.02,parent,estimated_endpoint_error,True,10,[],0,,,,,,0,0,0
+2,1.0,32,0.02,parent,selected_endpoint_error,False,10,[],0,,,,,,0,0,0
+2,1.0,32,0.02,parent,selected_endpoint_error,True,10,[],0,,,,,,0,0,0
+2,1.0,32,0.02,parent,u_child_mode_coverage,False,10,[],0,,,,,,0,0,0
+2,1.0,32,0.02,parent,u_child_mode_coverage,True,10,[],0,,,,,,0,0,0
+2,1.0,32,0.02,parent,mode_coverage,False,10,"[42, 43, 44, 45, 46, 47, 48, 49, 50, 51]",10,0.0,0.0,0.0,0.0,0.0,0,10,0
+2,1.0,32,0.02,parent,mode_coverage,True,10,[],0,,,,,,0,0,0
+2,1.0,32,0.02,parent,selected_endpoints,False,10,"[42, 43, 44, 45, 46, 47, 48, 49, 50, 51]",10,0.0,0.0,0.0,0.0,0.0,0,10,0
+2,1.0,32,0.02,parent,selected_endpoints,True,10,[],0,,,,,,0,0,0
+2,1.0,32,0.02,parent,effective_endpoints,False,10,[],0,,,,,,0,0,0
+2,1.0,32,0.02,parent,effective_endpoints,True,10,[],0,,,,,,0,0,0
+2,1.0,32,0.02,parent,u_mass,False,10,"[42, 43, 44, 45, 46, 47, 48, 49, 50, 51]",10,0.0,0.0,0.0,0.0,0.0,0,10,0
+2,1.0,32,0.02,parent,u_mass,True,10,[],0,,,,,,0,0,0
+2,1.0,32,0.02,parent,incremental_seconds,False,10,"[42, 43, 44, 45, 46, 47, 48, 49, 50, 51]",10,4.64857001134078e-05,0.00016047035122216286,5.0745180678921914e-05,-0.00012558699972942122,0.00045447100046658306,3,0,7
+2,1.0,32,0.02,parent,incremental_seconds,True,10,[],0,,,,,,0,0,0
+2,1.0,32,0.02,unconstrained,mcc,False,10,"[42, 43, 44, 45, 46, 47, 48, 49, 50, 51]",10,0.0,0.0,0.0,0.0,0.0,0,10,0
+2,1.0,32,0.02,unconstrained,mcc,True,10,[],0,,,,,,0,0,0
+2,1.0,32,0.02,unconstrained,gmean,False,10,"[42, 43, 44, 45, 46, 47, 48, 49, 50, 51]",10,0.0,0.0,0.0,0.0,0.0,0,10,0
+2,1.0,32,0.02,unconstrained,gmean,True,10,[],0,,,,,,0,0,0
+2,1.0,32,0.02,unconstrained,ap,False,10,"[42, 43, 44, 45, 46, 47, 48, 49, 50, 51]",10,0.0,0.0,0.0,0.0,0.0,0,10,0
+2,1.0,32,0.02,unconstrained,ap,True,10,[],0,,,,,,0,0,0
+2,1.0,32,0.02,unconstrained,realized_lineage_error,False,10,[],0,,,,,,0,0,0
+2,1.0,32,0.02,unconstrained,realized_lineage_error,True,10,[],0,,,,,,0,0,0
+2,1.0,32,0.02,unconstrained,oracle_endpoint_error,False,10,[],0,,,,,,0,0,0
+2,1.0,32,0.02,unconstrained,oracle_endpoint_error,True,10,[],0,,,,,,0,0,0
+2,1.0,32,0.02,unconstrained,oracle_u_child_error,False,10,[],0,,,,,,0,0,0
+2,1.0,32,0.02,unconstrained,oracle_u_child_error,True,10,[],0,,,,,,0,0,0
+2,1.0,32,0.02,unconstrained,oracle_added_minority_error,False,10,"[42, 43, 44, 45, 46, 47, 48, 50, 51]",9,0.0,0.0,0.0,0.0,0.0,0,9,0
+2,1.0,32,0.02,unconstrained,oracle_added_minority_error,True,10,[],0,,,,,,0,0,0
+2,1.0,32,0.02,unconstrained,estimated_endpoint_error,False,10,[],0,,,,,,0,0,0
+2,1.0,32,0.02,unconstrained,estimated_endpoint_error,True,10,[],0,,,,,,0,0,0
+2,1.0,32,0.02,unconstrained,selected_endpoint_error,False,10,[],0,,,,,,0,0,0
+2,1.0,32,0.02,unconstrained,selected_endpoint_error,True,10,[],0,,,,,,0,0,0
+2,1.0,32,0.02,unconstrained,u_child_mode_coverage,False,10,[],0,,,,,,0,0,0
+2,1.0,32,0.02,unconstrained,u_child_mode_coverage,True,10,[],0,,,,,,0,0,0
+2,1.0,32,0.02,unconstrained,mode_coverage,False,10,"[42, 43, 44, 45, 46, 47, 48, 49, 50, 51]",10,0.0,0.0,0.0,0.0,0.0,0,10,0
+2,1.0,32,0.02,unconstrained,mode_coverage,True,10,[],0,,,,,,0,0,0
+2,1.0,32,0.02,unconstrained,selected_endpoints,False,10,"[42, 43, 44, 45, 46, 47, 48, 49, 50, 51]",10,0.0,0.0,0.0,0.0,0.0,0,10,0
+2,1.0,32,0.02,unconstrained,selected_endpoints,True,10,[],0,,,,,,0,0,0
+2,1.0,32,0.02,unconstrained,effective_endpoints,False,10,[],0,,,,,,0,0,0
+2,1.0,32,0.02,unconstrained,effective_endpoints,True,10,[],0,,,,,,0,0,0
+2,1.0,32,0.02,unconstrained,u_mass,False,10,"[42, 43, 44, 45, 46, 47, 48, 49, 50, 51]",10,0.0,0.0,0.0,0.0,0.0,0,10,0
+2,1.0,32,0.02,unconstrained,u_mass,True,10,[],0,,,,,,0,0,0
+2,1.0,32,0.02,unconstrained,incremental_seconds,False,10,"[42, 43, 44, 45, 46, 47, 48, 49, 50, 51]",10,4.8901100035436686e-05,0.00019838810361798035,6.273582681143089e-05,-0.0003455510000094364,0.00048133000018424354,2,0,8
+2,1.0,32,0.02,unconstrained,incremental_seconds,True,10,[],0,,,,,,0,0,0
+2,1.0,32,0.02,count_matched,mcc,False,10,"[42, 43, 44, 45, 46, 47, 48, 49, 50, 51]",10,0.0,0.0,0.0,0.0,0.0,0,10,0
+2,1.0,32,0.02,count_matched,mcc,True,10,[],0,,,,,,0,0,0
+2,1.0,32,0.02,count_matched,gmean,False,10,"[42, 43, 44, 45, 46, 47, 48, 49, 50, 51]",10,0.0,0.0,0.0,0.0,0.0,0,10,0
+2,1.0,32,0.02,count_matched,gmean,True,10,[],0,,,,,,0,0,0
+2,1.0,32,0.02,count_matched,ap,False,10,"[42, 43, 44, 45, 46, 47, 48, 49, 50, 51]",10,0.0,0.0,0.0,0.0,0.0,0,10,0
+2,1.0,32,0.02,count_matched,ap,True,10,[],0,,,,,,0,0,0
+2,1.0,32,0.02,count_matched,realized_lineage_error,False,10,[],0,,,,,,0,0,0
+2,1.0,32,0.02,count_matched,realized_lineage_error,True,10,[],0,,,,,,0,0,0
+2,1.0,32,0.02,count_matched,oracle_endpoint_error,False,10,[],0,,,,,,0,0,0
+2,1.0,32,0.02,count_matched,oracle_endpoint_error,True,10,[],0,,,,,,0,0,0
+2,1.0,32,0.02,count_matched,oracle_u_child_error,False,10,[],0,,,,,,0,0,0
+2,1.0,32,0.02,count_matched,oracle_u_child_error,True,10,[],0,,,,,,0,0,0
+2,1.0,32,0.02,count_matched,oracle_added_minority_error,False,10,"[42, 43, 44, 45, 46, 47, 48, 50, 51]",9,0.0,0.0,0.0,0.0,0.0,0,9,0
+2,1.0,32,0.02,count_matched,oracle_added_minority_error,True,10,[],0,,,,,,0,0,0
+2,1.0,32,0.02,count_matched,estimated_endpoint_error,False,10,[],0,,,,,,0,0,0
+2,1.0,32,0.02,count_matched,estimated_endpoint_error,True,10,[],0,,,,,,0,0,0
+2,1.0,32,0.02,count_matched,selected_endpoint_error,False,10,[],0,,,,,,0,0,0
+2,1.0,32,0.02,count_matched,selected_endpoint_error,True,10,[],0,,,,,,0,0,0
+2,1.0,32,0.02,count_matched,u_child_mode_coverage,False,10,[],0,,,,,,0,0,0
+2,1.0,32,0.02,count_matched,u_child_mode_coverage,True,10,[],0,,,,,,0,0,0
+2,1.0,32,0.02,count_matched,mode_coverage,False,10,"[42, 43, 44, 45, 46, 47, 48, 49, 50, 51]",10,0.0,0.0,0.0,0.0,0.0,0,10,0
+2,1.0,32,0.02,count_matched,mode_coverage,True,10,[],0,,,,,,0,0,0
+2,1.0,32,0.02,count_matched,selected_endpoints,False,10,"[42, 43, 44, 45, 46, 47, 48, 49, 50, 51]",10,0.0,0.0,0.0,0.0,0.0,0,10,0
+2,1.0,32,0.02,count_matched,selected_endpoints,True,10,[],0,,,,,,0,0,0
+2,1.0,32,0.02,count_matched,effective_endpoints,False,10,[],0,,,,,,0,0,0
+2,1.0,32,0.02,count_matched,effective_endpoints,True,10,[],0,,,,,,0,0,0
+2,1.0,32,0.02,count_matched,u_mass,False,10,"[42, 43, 44, 45, 46, 47, 48, 49, 50, 51]",10,0.0,0.0,0.0,0.0,0.0,0,10,0
+2,1.0,32,0.02,count_matched,u_mass,True,10,[],0,,,,,,0,0,0
+2,1.0,32,0.02,count_matched,incremental_seconds,False,10,"[42, 43, 44, 45, 46, 47, 48, 49, 50, 51]",10,6.221159992492176e-05,0.00014624665284073982,4.62472523152672e-05,-0.00010187900033997721,0.00043400200047472026,3,0,7
+2,1.0,32,0.02,count_matched,incremental_seconds,True,10,[],0,,,,,,0,0,0
+2,1.0,32,0.02,threshold_matched,mcc,False,10,"[42, 43, 44, 45, 46, 47, 48, 49, 50, 51]",10,0.0,0.0,0.0,0.0,0.0,0,10,0
+2,1.0,32,0.02,threshold_matched,mcc,True,10,[],0,,,,,,0,0,0
+2,1.0,32,0.02,threshold_matched,gmean,False,10,"[42, 43, 44, 45, 46, 47, 48, 49, 50, 51]",10,0.0,0.0,0.0,0.0,0.0,0,10,0
+2,1.0,32,0.02,threshold_matched,gmean,True,10,[],0,,,,,,0,0,0
+2,1.0,32,0.02,threshold_matched,ap,False,10,"[42, 43, 44, 45, 46, 47, 48, 49, 50, 51]",10,0.0,0.0,0.0,0.0,0.0,0,10,0
+2,1.0,32,0.02,threshold_matched,ap,True,10,[],0,,,,,,0,0,0
+2,1.0,32,0.02,threshold_matched,realized_lineage_error,False,10,[],0,,,,,,0,0,0
+2,1.0,32,0.02,threshold_matched,realized_lineage_error,True,10,[],0,,,,,,0,0,0
+2,1.0,32,0.02,threshold_matched,oracle_endpoint_error,False,10,[],0,,,,,,0,0,0
+2,1.0,32,0.02,threshold_matched,oracle_endpoint_error,True,10,[],0,,,,,,0,0,0
+2,1.0,32,0.02,threshold_matched,oracle_u_child_error,False,10,[],0,,,,,,0,0,0
+2,1.0,32,0.02,threshold_matched,oracle_u_child_error,True,10,[],0,,,,,,0,0,0
+2,1.0,32,0.02,threshold_matched,oracle_added_minority_error,False,10,"[42, 43, 44, 45, 46, 47, 48, 50, 51]",9,0.0,0.0,0.0,0.0,0.0,0,9,0
+2,1.0,32,0.02,threshold_matched,oracle_added_minority_error,True,10,[],0,,,,,,0,0,0
+2,1.0,32,0.02,threshold_matched,estimated_endpoint_error,False,10,[],0,,,,,,0,0,0
+2,1.0,32,0.02,threshold_matched,estimated_endpoint_error,True,10,[],0,,,,,,0,0,0
+2,1.0,32,0.02,threshold_matched,selected_endpoint_error,False,10,[],0,,,,,,0,0,0
+2,1.0,32,0.02,threshold_matched,selected_endpoint_error,True,10,[],0,,,,,,0,0,0
+2,1.0,32,0.02,threshold_matched,u_child_mode_coverage,False,10,[],0,,,,,,0,0,0
+2,1.0,32,0.02,threshold_matched,u_child_mode_coverage,True,10,[],0,,,,,,0,0,0
+2,1.0,32,0.02,threshold_matched,mode_coverage,False,10,"[42, 43, 44, 45, 46, 47, 48, 49, 50, 51]",10,0.0,0.0,0.0,0.0,0.0,0,10,0
+2,1.0,32,0.02,threshold_matched,mode_coverage,True,10,[],0,,,,,,0,0,0
+2,1.0,32,0.02,threshold_matched,selected_endpoints,False,10,"[42, 43, 44, 45, 46, 47, 48, 49, 50, 51]",10,0.0,0.0,0.0,0.0,0.0,0,10,0
+2,1.0,32,0.02,threshold_matched,selected_endpoints,True,10,[],0,,,,,,0,0,0
+2,1.0,32,0.02,threshold_matched,effective_endpoints,False,10,[],0,,,,,,0,0,0
+2,1.0,32,0.02,threshold_matched,effective_endpoints,True,10,[],0,,,,,,0,0,0
+2,1.0,32,0.02,threshold_matched,u_mass,False,10,"[42, 43, 44, 45, 46, 47, 48, 49, 50, 51]",10,0.0,0.0,0.0,0.0,0.0,0,10,0
+2,1.0,32,0.02,threshold_matched,u_mass,True,10,[],0,,,,,,0,0,0
+2,1.0,32,0.02,threshold_matched,incremental_seconds,False,10,"[42, 43, 44, 45, 46, 47, 48, 49, 50, 51]",10,5.533580015253392e-05,0.0001552149108203743,4.9083264501229686e-05,-0.00014963100056775147,0.0004560340007628838,2,0,8
+2,1.0,32,0.02,threshold_matched,incremental_seconds,True,10,[],0,,,,,,0,0,0
+2,1.0,32,0.02,weighted_pl,mcc,False,10,"[42, 43, 44, 45, 46, 47, 48, 49, 50, 51]",10,0.0,0.0,0.0,0.0,0.0,0,10,0
+2,1.0,32,0.02,weighted_pl,mcc,True,10,[],0,,,,,,0,0,0
+2,1.0,32,0.02,weighted_pl,gmean,False,10,"[42, 43, 44, 45, 46, 47, 48, 49, 50, 51]",10,0.0,0.0,0.0,0.0,0.0,0,10,0
+2,1.0,32,0.02,weighted_pl,gmean,True,10,[],0,,,,,,0,0,0
+2,1.0,32,0.02,weighted_pl,ap,False,10,"[42, 43, 44, 45, 46, 47, 48, 49, 50, 51]",10,0.0,0.0,0.0,0.0,0.0,0,10,0
+2,1.0,32,0.02,weighted_pl,ap,True,10,[],0,,,,,,0,0,0
+2,1.0,32,0.02,weighted_pl,realized_lineage_error,False,10,[],0,,,,,,0,0,0
+2,1.0,32,0.02,weighted_pl,realized_lineage_error,True,10,[],0,,,,,,0,0,0
+2,1.0,32,0.02,weighted_pl,oracle_endpoint_error,False,10,[],0,,,,,,0,0,0
+2,1.0,32,0.02,weighted_pl,oracle_endpoint_error,True,10,[],0,,,,,,0,0,0
+2,1.0,32,0.02,weighted_pl,oracle_u_child_error,False,10,[],0,,,,,,0,0,0
+2,1.0,32,0.02,weighted_pl,oracle_u_child_error,True,10,[],0,,,,,,0,0,0
+2,1.0,32,0.02,weighted_pl,oracle_added_minority_error,False,10,"[42, 43, 44, 45, 46, 47, 48, 50, 51]",9,0.0,0.0,0.0,0.0,0.0,0,9,0
+2,1.0,32,0.02,weighted_pl,oracle_added_minority_error,True,10,[],0,,,,,,0,0,0
+2,1.0,32,0.02,weighted_pl,estimated_endpoint_error,False,10,[],0,,,,,,0,0,0
+2,1.0,32,0.02,weighted_pl,estimated_endpoint_error,True,10,[],0,,,,,,0,0,0
+2,1.0,32,0.02,weighted_pl,selected_endpoint_error,False,10,[],0,,,,,,0,0,0
+2,1.0,32,0.02,weighted_pl,selected_endpoint_error,True,10,[],0,,,,,,0,0,0
+2,1.0,32,0.02,weighted_pl,u_child_mode_coverage,False,10,[],0,,,,,,0,0,0
+2,1.0,32,0.02,weighted_pl,u_child_mode_coverage,True,10,[],0,,,,,,0,0,0
+2,1.0,32,0.02,weighted_pl,mode_coverage,False,10,"[42, 43, 44, 45, 46, 47, 48, 49, 50, 51]",10,0.0,0.0,0.0,0.0,0.0,0,10,0
+2,1.0,32,0.02,weighted_pl,mode_coverage,True,10,[],0,,,,,,0,0,0
+2,1.0,32,0.02,weighted_pl,selected_endpoints,False,10,"[42, 43, 44, 45, 46, 47, 48, 49, 50, 51]",10,0.0,0.0,0.0,0.0,0.0,0,10,0
+2,1.0,32,0.02,weighted_pl,selected_endpoints,True,10,[],0,,,,,,0,0,0
+2,1.0,32,0.02,weighted_pl,effective_endpoints,False,10,[],0,,,,,,0,0,0
+2,1.0,32,0.02,weighted_pl,effective_endpoints,True,10,[],0,,,,,,0,0,0
+2,1.0,32,0.02,weighted_pl,u_mass,False,10,"[42, 43, 44, 45, 46, 47, 48, 49, 50, 51]",10,0.0,0.0,0.0,0.0,0.0,0,10,0
+2,1.0,32,0.02,weighted_pl,u_mass,True,10,[],0,,,,,,0,0,0
+2,1.0,32,0.02,weighted_pl,incremental_seconds,False,10,"[42, 43, 44, 45, 46, 47, 48, 49, 50, 51]",10,8.281330005956988e-05,0.00015030139440080367,4.7529474180581815e-05,-6.084099959480227e-05,0.0004637550005099911,3,0,7
+2,1.0,32,0.02,weighted_pl,incremental_seconds,True,10,[],0,,,,,,0,0,0
+2,1.0,32,0.02,nores,mcc,False,10,"[42, 43, 44, 45, 46, 47, 48, 49, 50, 51]",10,0.09057155906341813,0.06449619044418527,0.020395486220761237,0.0,0.17154386305154176,9,1,0
+2,1.0,32,0.02,nores,mcc,True,10,[],0,,,,,,0,0,0
+2,1.0,32,0.02,nores,gmean,False,10,"[42, 43, 44, 45, 46, 47, 48, 49, 50, 51]",10,0.23211821191951584,0.12706797055570107,0.040182420461122685,0.0,0.4066121076588407,9,1,0
+2,1.0,32,0.02,nores,gmean,True,10,[],0,,,,,,0,0,0
+2,1.0,32,0.02,nores,ap,False,10,"[42, 43, 44, 45, 46, 47, 48, 49, 50, 51]",10,-0.001025517020769351,0.0031901438980466335,0.001008812078151534,-0.007477281966314753,0.003414943045065344,4,1,5
+2,1.0,32,0.02,nores,ap,True,10,[],0,,,,,,0,0,0
+2,1.0,32,0.02,nores,realized_lineage_error,False,10,[],0,,,,,,0,0,0
+2,1.0,32,0.02,nores,realized_lineage_error,True,10,[],0,,,,,,0,0,0
+2,1.0,32,0.02,nores,oracle_endpoint_error,False,10,[],0,,,,,,0,0,0
+2,1.0,32,0.02,nores,oracle_endpoint_error,True,10,[],0,,,,,,0,0,0
+2,1.0,32,0.02,nores,oracle_u_child_error,False,10,[],0,,,,,,0,0,0
+2,1.0,32,0.02,nores,oracle_u_child_error,True,10,[],0,,,,,,0,0,0
+2,1.0,32,0.02,nores,oracle_added_minority_error,False,10,[],0,,,,,,0,0,0
+2,1.0,32,0.02,nores,oracle_added_minority_error,True,10,[],0,,,,,,0,0,0
+2,1.0,32,0.02,nores,estimated_endpoint_error,False,10,[],0,,,,,,0,0,0
+2,1.0,32,0.02,nores,estimated_endpoint_error,True,10,[],0,,,,,,0,0,0
+2,1.0,32,0.02,nores,selected_endpoint_error,False,10,[],0,,,,,,0,0,0
+2,1.0,32,0.02,nores,selected_endpoint_error,True,10,[],0,,,,,,0,0,0
+2,1.0,32,0.02,nores,u_child_mode_coverage,False,10,[],0,,,,,,0,0,0
+2,1.0,32,0.02,nores,u_child_mode_coverage,True,10,[],0,,,,,,0,0,0
+2,1.0,32,0.02,nores,mode_coverage,False,10,"[42, 43, 44, 45, 46, 47, 48, 49, 50, 51]",10,0.75,0.3535533905932738,0.11180339887498948,0.0,1.0,9,1,0
+2,1.0,32,0.02,nores,mode_coverage,True,10,[],0,,,,,,0,0,0
+2,1.0,32,0.02,nores,selected_endpoints,False,10,"[42, 43, 44, 45, 46, 47, 48, 49, 50, 51]",10,0.0,0.0,0.0,0.0,0.0,0,10,0
+2,1.0,32,0.02,nores,selected_endpoints,True,10,[],0,,,,,,0,0,0
+2,1.0,32,0.02,nores,effective_endpoints,False,10,[],0,,,,,,0,0,0
+2,1.0,32,0.02,nores,effective_endpoints,True,10,[],0,,,,,,0,0,0
+2,1.0,32,0.02,nores,u_mass,False,10,"[42, 43, 44, 45, 46, 47, 48, 49, 50, 51]",10,0.0,0.0,0.0,0.0,0.0,0,10,0
+2,1.0,32,0.02,nores,u_mass,True,10,[],0,,,,,,0,0,0
+2,1.0,32,0.02,nores,incremental_seconds,False,10,"[42, 43, 44, 45, 46, 47, 48, 49, 50, 51]",10,0.00017039329986801022,0.00015669126748811256,4.955012947211262e-05,-3.5494000258040614e-05,0.000566195999908814,1,0,9
+2,1.0,32,0.02,nores,incremental_seconds,True,10,[],0,,,,,,0,0,0
+3,1.0,32,0.2,parent,mcc,False,10,"[42, 43, 44, 45, 46, 47, 48, 49, 50, 51]",10,0.0,0.0,0.0,0.0,0.0,0,10,0
+3,1.0,32,0.2,parent,mcc,True,10,[],0,,,,,,0,0,0
+3,1.0,32,0.2,parent,gmean,False,10,"[42, 43, 44, 45, 46, 47, 48, 49, 50, 51]",10,0.0,0.0,0.0,0.0,0.0,0,10,0
+3,1.0,32,0.2,parent,gmean,True,10,[],0,,,,,,0,0,0
+3,1.0,32,0.2,parent,ap,False,10,"[42, 43, 44, 45, 46, 47, 48, 49, 50, 51]",10,0.0,0.0,0.0,0.0,0.0,0,10,0
+3,1.0,32,0.2,parent,ap,True,10,[],0,,,,,,0,0,0
+3,1.0,32,0.2,parent,realized_lineage_error,False,10,[],0,,,,,,0,0,0
+3,1.0,32,0.2,parent,realized_lineage_error,True,10,[],0,,,,,,0,0,0
+3,1.0,32,0.2,parent,oracle_endpoint_error,False,10,[],0,,,,,,0,0,0
+3,1.0,32,0.2,parent,oracle_endpoint_error,True,10,[],0,,,,,,0,0,0
+3,1.0,32,0.2,parent,oracle_u_child_error,False,10,[],0,,,,,,0,0,0
+3,1.0,32,0.2,parent,oracle_u_child_error,True,10,[],0,,,,,,0,0,0
+3,1.0,32,0.2,parent,oracle_added_minority_error,False,10,"[42, 44, 45, 46, 47, 48, 49, 50, 51]",9,0.0,0.0,0.0,0.0,0.0,0,9,0
+3,1.0,32,0.2,parent,oracle_added_minority_error,True,10,[],0,,,,,,0,0,0
+3,1.0,32,0.2,parent,estimated_endpoint_error,False,10,[],0,,,,,,0,0,0
+3,1.0,32,0.2,parent,estimated_endpoint_error,True,10,[],0,,,,,,0,0,0
+3,1.0,32,0.2,parent,selected_endpoint_error,False,10,[],0,,,,,,0,0,0
+3,1.0,32,0.2,parent,selected_endpoint_error,True,10,[],0,,,,,,0,0,0
+3,1.0,32,0.2,parent,u_child_mode_coverage,False,10,[],0,,,,,,0,0,0
+3,1.0,32,0.2,parent,u_child_mode_coverage,True,10,[],0,,,,,,0,0,0
+3,1.0,32,0.2,parent,mode_coverage,False,10,"[42, 43, 44, 45, 46, 47, 48, 49, 50, 51]",10,0.0,0.0,0.0,0.0,0.0,0,10,0
+3,1.0,32,0.2,parent,mode_coverage,True,10,[],0,,,,,,0,0,0
+3,1.0,32,0.2,parent,selected_endpoints,False,10,"[42, 43, 44, 45, 46, 47, 48, 49, 50, 51]",10,0.0,0.0,0.0,0.0,0.0,0,10,0
+3,1.0,32,0.2,parent,selected_endpoints,True,10,[],0,,,,,,0,0,0
+3,1.0,32,0.2,parent,effective_endpoints,False,10,[],0,,,,,,0,0,0
+3,1.0,32,0.2,parent,effective_endpoints,True,10,[],0,,,,,,0,0,0
+3,1.0,32,0.2,parent,u_mass,False,10,"[42, 43, 44, 45, 46, 47, 48, 49, 50, 51]",10,0.0,0.0,0.0,0.0,0.0,0,10,0
+3,1.0,32,0.2,parent,u_mass,True,10,[],0,,,,,,0,0,0
+3,1.0,32,0.2,parent,incremental_seconds,False,10,"[42, 43, 44, 45, 46, 47, 48, 49, 50, 51]",10,6.0256899951127706e-05,0.0001688845871618978,5.340599571288289e-05,-0.00014723700041940901,0.0005045160000918258,3,0,7
+3,1.0,32,0.2,parent,incremental_seconds,True,10,[],0,,,,,,0,0,0
+3,1.0,32,0.2,unconstrained,mcc,False,10,"[42, 43, 44, 45, 46, 47, 48, 49, 50, 51]",10,0.0,0.0,0.0,0.0,0.0,0,10,0
+3,1.0,32,0.2,unconstrained,mcc,True,10,[],0,,,,,,0,0,0
+3,1.0,32,0.2,unconstrained,gmean,False,10,"[42, 43, 44, 45, 46, 47, 48, 49, 50, 51]",10,0.0,0.0,0.0,0.0,0.0,0,10,0
+3,1.0,32,0.2,unconstrained,gmean,True,10,[],0,,,,,,0,0,0
+3,1.0,32,0.2,unconstrained,ap,False,10,"[42, 43, 44, 45, 46, 47, 48, 49, 50, 51]",10,0.0,0.0,0.0,0.0,0.0,0,10,0
+3,1.0,32,0.2,unconstrained,ap,True,10,[],0,,,,,,0,0,0
+3,1.0,32,0.2,unconstrained,realized_lineage_error,False,10,[],0,,,,,,0,0,0
+3,1.0,32,0.2,unconstrained,realized_lineage_error,True,10,[],0,,,,,,0,0,0
+3,1.0,32,0.2,unconstrained,oracle_endpoint_error,False,10,[],0,,,,,,0,0,0
+3,1.0,32,0.2,unconstrained,oracle_endpoint_error,True,10,[],0,,,,,,0,0,0
+3,1.0,32,0.2,unconstrained,oracle_u_child_error,False,10,[],0,,,,,,0,0,0
+3,1.0,32,0.2,unconstrained,oracle_u_child_error,True,10,[],0,,,,,,0,0,0
+3,1.0,32,0.2,unconstrained,oracle_added_minority_error,False,10,"[42, 44, 45, 46, 47, 48, 49, 50, 51]",9,0.0,0.0,0.0,0.0,0.0,0,9,0
+3,1.0,32,0.2,unconstrained,oracle_added_minority_error,True,10,[],0,,,,,,0,0,0
+3,1.0,32,0.2,unconstrained,estimated_endpoint_error,False,10,[],0,,,,,,0,0,0
+3,1.0,32,0.2,unconstrained,estimated_endpoint_error,True,10,[],0,,,,,,0,0,0
+3,1.0,32,0.2,unconstrained,selected_endpoint_error,False,10,[],0,,,,,,0,0,0
+3,1.0,32,0.2,unconstrained,selected_endpoint_error,True,10,[],0,,,,,,0,0,0
+3,1.0,32,0.2,unconstrained,u_child_mode_coverage,False,10,[],0,,,,,,0,0,0
+3,1.0,32,0.2,unconstrained,u_child_mode_coverage,True,10,[],0,,,,,,0,0,0
+3,1.0,32,0.2,unconstrained,mode_coverage,False,10,"[42, 43, 44, 45, 46, 47, 48, 49, 50, 51]",10,0.0,0.0,0.0,0.0,0.0,0,10,0
+3,1.0,32,0.2,unconstrained,mode_coverage,True,10,[],0,,,,,,0,0,0
+3,1.0,32,0.2,unconstrained,selected_endpoints,False,10,"[42, 43, 44, 45, 46, 47, 48, 49, 50, 51]",10,0.0,0.0,0.0,0.0,0.0,0,10,0
+3,1.0,32,0.2,unconstrained,selected_endpoints,True,10,[],0,,,,,,0,0,0
+3,1.0,32,0.2,unconstrained,effective_endpoints,False,10,[],0,,,,,,0,0,0
+3,1.0,32,0.2,unconstrained,effective_endpoints,True,10,[],0,,,,,,0,0,0
+3,1.0,32,0.2,unconstrained,u_mass,False,10,"[42, 43, 44, 45, 46, 47, 48, 49, 50, 51]",10,0.0,0.0,0.0,0.0,0.0,0,10,0
+3,1.0,32,0.2,unconstrained,u_mass,True,10,[],0,,,,,,0,0,0
+3,1.0,32,0.2,unconstrained,incremental_seconds,False,10,"[42, 43, 44, 45, 46, 47, 48, 49, 50, 51]",10,1.762189995133667e-05,0.0001381792274351126,4.369610840173822e-05,-0.000286713999685162,0.0002713520002544101,5,0,5
+3,1.0,32,0.2,unconstrained,incremental_seconds,True,10,[],0,,,,,,0,0,0
+3,1.0,32,0.2,count_matched,mcc,False,10,"[42, 43, 44, 45, 46, 47, 48, 49, 50, 51]",10,0.0,0.0,0.0,0.0,0.0,0,10,0
+3,1.0,32,0.2,count_matched,mcc,True,10,[],0,,,,,,0,0,0
+3,1.0,32,0.2,count_matched,gmean,False,10,"[42, 43, 44, 45, 46, 47, 48, 49, 50, 51]",10,0.0,0.0,0.0,0.0,0.0,0,10,0
+3,1.0,32,0.2,count_matched,gmean,True,10,[],0,,,,,,0,0,0
+3,1.0,32,0.2,count_matched,ap,False,10,"[42, 43, 44, 45, 46, 47, 48, 49, 50, 51]",10,0.0,0.0,0.0,0.0,0.0,0,10,0
+3,1.0,32,0.2,count_matched,ap,True,10,[],0,,,,,,0,0,0
+3,1.0,32,0.2,count_matched,realized_lineage_error,False,10,[],0,,,,,,0,0,0
+3,1.0,32,0.2,count_matched,realized_lineage_error,True,10,[],0,,,,,,0,0,0
+3,1.0,32,0.2,count_matched,oracle_endpoint_error,False,10,[],0,,,,,,0,0,0
+3,1.0,32,0.2,count_matched,oracle_endpoint_error,True,10,[],0,,,,,,0,0,0
+3,1.0,32,0.2,count_matched,oracle_u_child_error,False,10,[],0,,,,,,0,0,0
+3,1.0,32,0.2,count_matched,oracle_u_child_error,True,10,[],0,,,,,,0,0,0
+3,1.0,32,0.2,count_matched,oracle_added_minority_error,False,10,"[42, 44, 45, 46, 47, 48, 49, 50, 51]",9,0.0,0.0,0.0,0.0,0.0,0,9,0
+3,1.0,32,0.2,count_matched,oracle_added_minority_error,True,10,[],0,,,,,,0,0,0
+3,1.0,32,0.2,count_matched,estimated_endpoint_error,False,10,[],0,,,,,,0,0,0
+3,1.0,32,0.2,count_matched,estimated_endpoint_error,True,10,[],0,,,,,,0,0,0
+3,1.0,32,0.2,count_matched,selected_endpoint_error,False,10,[],0,,,,,,0,0,0
+3,1.0,32,0.2,count_matched,selected_endpoint_error,True,10,[],0,,,,,,0,0,0
+3,1.0,32,0.2,count_matched,u_child_mode_coverage,False,10,[],0,,,,,,0,0,0
+3,1.0,32,0.2,count_matched,u_child_mode_coverage,True,10,[],0,,,,,,0,0,0
+3,1.0,32,0.2,count_matched,mode_coverage,False,10,"[42, 43, 44, 45, 46, 47, 48, 49, 50, 51]",10,0.0,0.0,0.0,0.0,0.0,0,10,0
+3,1.0,32,0.2,count_matched,mode_coverage,True,10,[],0,,,,,,0,0,0
+3,1.0,32,0.2,count_matched,selected_endpoints,False,10,"[42, 43, 44, 45, 46, 47, 48, 49, 50, 51]",10,0.0,0.0,0.0,0.0,0.0,0,10,0
+3,1.0,32,0.2,count_matched,selected_endpoints,True,10,[],0,,,,,,0,0,0
+3,1.0,32,0.2,count_matched,effective_endpoints,False,10,[],0,,,,,,0,0,0
+3,1.0,32,0.2,count_matched,effective_endpoints,True,10,[],0,,,,,,0,0,0
+3,1.0,32,0.2,count_matched,u_mass,False,10,"[42, 43, 44, 45, 46, 47, 48, 49, 50, 51]",10,0.0,0.0,0.0,0.0,0.0,0,10,0
+3,1.0,32,0.2,count_matched,u_mass,True,10,[],0,,,,,,0,0,0
+3,1.0,32,0.2,count_matched,incremental_seconds,False,10,"[42, 43, 44, 45, 46, 47, 48, 49, 50, 51]",10,5.2487099901554755e-05,0.00013229661760232007,4.183586383596555e-05,-0.00018261100058225566,0.0003600619997996546,2,0,8
+3,1.0,32,0.2,count_matched,incremental_seconds,True,10,[],0,,,,,,0,0,0
+3,1.0,32,0.2,threshold_matched,mcc,False,10,"[42, 43, 44, 45, 46, 47, 48, 49, 50, 51]",10,0.0,0.0,0.0,0.0,0.0,0,10,0
+3,1.0,32,0.2,threshold_matched,mcc,True,10,[],0,,,,,,0,0,0
+3,1.0,32,0.2,threshold_matched,gmean,False,10,"[42, 43, 44, 45, 46, 47, 48, 49, 50, 51]",10,0.0,0.0,0.0,0.0,0.0,0,10,0
+3,1.0,32,0.2,threshold_matched,gmean,True,10,[],0,,,,,,0,0,0
+3,1.0,32,0.2,threshold_matched,ap,False,10,"[42, 43, 44, 45, 46, 47, 48, 49, 50, 51]",10,0.0,0.0,0.0,0.0,0.0,0,10,0
+3,1.0,32,0.2,threshold_matched,ap,True,10,[],0,,,,,,0,0,0
+3,1.0,32,0.2,threshold_matched,realized_lineage_error,False,10,[],0,,,,,,0,0,0
+3,1.0,32,0.2,threshold_matched,realized_lineage_error,True,10,[],0,,,,,,0,0,0
+3,1.0,32,0.2,threshold_matched,oracle_endpoint_error,False,10,[],0,,,,,,0,0,0
+3,1.0,32,0.2,threshold_matched,oracle_endpoint_error,True,10,[],0,,,,,,0,0,0
+3,1.0,32,0.2,threshold_matched,oracle_u_child_error,False,10,[],0,,,,,,0,0,0
+3,1.0,32,0.2,threshold_matched,oracle_u_child_error,True,10,[],0,,,,,,0,0,0
+3,1.0,32,0.2,threshold_matched,oracle_added_minority_error,False,10,"[42, 44, 45, 46, 47, 48, 49, 50, 51]",9,0.0,0.0,0.0,0.0,0.0,0,9,0
+3,1.0,32,0.2,threshold_matched,oracle_added_minority_error,True,10,[],0,,,,,,0,0,0
+3,1.0,32,0.2,threshold_matched,estimated_endpoint_error,False,10,[],0,,,,,,0,0,0
+3,1.0,32,0.2,threshold_matched,estimated_endpoint_error,True,10,[],0,,,,,,0,0,0
+3,1.0,32,0.2,threshold_matched,selected_endpoint_error,False,10,[],0,,,,,,0,0,0
+3,1.0,32,0.2,threshold_matched,selected_endpoint_error,True,10,[],0,,,,,,0,0,0
+3,1.0,32,0.2,threshold_matched,u_child_mode_coverage,False,10,[],0,,,,,,0,0,0
+3,1.0,32,0.2,threshold_matched,u_child_mode_coverage,True,10,[],0,,,,,,0,0,0
+3,1.0,32,0.2,threshold_matched,mode_coverage,False,10,"[42, 43, 44, 45, 46, 47, 48, 49, 50, 51]",10,0.0,0.0,0.0,0.0,0.0,0,10,0
+3,1.0,32,0.2,threshold_matched,mode_coverage,True,10,[],0,,,,,,0,0,0
+3,1.0,32,0.2,threshold_matched,selected_endpoints,False,10,"[42, 43, 44, 45, 46, 47, 48, 49, 50, 51]",10,0.0,0.0,0.0,0.0,0.0,0,10,0
+3,1.0,32,0.2,threshold_matched,selected_endpoints,True,10,[],0,,,,,,0,0,0
+3,1.0,32,0.2,threshold_matched,effective_endpoints,False,10,[],0,,,,,,0,0,0
+3,1.0,32,0.2,threshold_matched,effective_endpoints,True,10,[],0,,,,,,0,0,0
+3,1.0,32,0.2,threshold_matched,u_mass,False,10,"[42, 43, 44, 45, 46, 47, 48, 49, 50, 51]",10,0.0,0.0,0.0,0.0,0.0,0,10,0
+3,1.0,32,0.2,threshold_matched,u_mass,True,10,[],0,,,,,,0,0,0
+3,1.0,32,0.2,threshold_matched,incremental_seconds,False,10,"[42, 43, 44, 45, 46, 47, 48, 49, 50, 51]",10,3.3550004445714877e-07,0.0002214604035073951,7.003192866233104e-05,-0.0004006620006293815,0.000490817000354582,6,0,4
+3,1.0,32,0.2,threshold_matched,incremental_seconds,True,10,[],0,,,,,,0,0,0
+3,1.0,32,0.2,weighted_pl,mcc,False,10,"[42, 43, 44, 45, 46, 47, 48, 49, 50, 51]",10,0.0,0.0,0.0,0.0,0.0,0,10,0
+3,1.0,32,0.2,weighted_pl,mcc,True,10,[],0,,,,,,0,0,0
+3,1.0,32,0.2,weighted_pl,gmean,False,10,"[42, 43, 44, 45, 46, 47, 48, 49, 50, 51]",10,0.0,0.0,0.0,0.0,0.0,0,10,0
+3,1.0,32,0.2,weighted_pl,gmean,True,10,[],0,,,,,,0,0,0
+3,1.0,32,0.2,weighted_pl,ap,False,10,"[42, 43, 44, 45, 46, 47, 48, 49, 50, 51]",10,0.0,0.0,0.0,0.0,0.0,0,10,0
+3,1.0,32,0.2,weighted_pl,ap,True,10,[],0,,,,,,0,0,0
+3,1.0,32,0.2,weighted_pl,realized_lineage_error,False,10,[],0,,,,,,0,0,0
+3,1.0,32,0.2,weighted_pl,realized_lineage_error,True,10,[],0,,,,,,0,0,0
+3,1.0,32,0.2,weighted_pl,oracle_endpoint_error,False,10,[],0,,,,,,0,0,0
+3,1.0,32,0.2,weighted_pl,oracle_endpoint_error,True,10,[],0,,,,,,0,0,0
+3,1.0,32,0.2,weighted_pl,oracle_u_child_error,False,10,[],0,,,,,,0,0,0
+3,1.0,32,0.2,weighted_pl,oracle_u_child_error,True,10,[],0,,,,,,0,0,0
+3,1.0,32,0.2,weighted_pl,oracle_added_minority_error,False,10,"[42, 44, 45, 46, 47, 48, 49, 50, 51]",9,0.0,0.0,0.0,0.0,0.0,0,9,0
+3,1.0,32,0.2,weighted_pl,oracle_added_minority_error,True,10,[],0,,,,,,0,0,0
+3,1.0,32,0.2,weighted_pl,estimated_endpoint_error,False,10,[],0,,,,,,0,0,0
+3,1.0,32,0.2,weighted_pl,estimated_endpoint_error,True,10,[],0,,,,,,0,0,0
+3,1.0,32,0.2,weighted_pl,selected_endpoint_error,False,10,[],0,,,,,,0,0,0
+3,1.0,32,0.2,weighted_pl,selected_endpoint_error,True,10,[],0,,,,,,0,0,0
+3,1.0,32,0.2,weighted_pl,u_child_mode_coverage,False,10,[],0,,,,,,0,0,0
+3,1.0,32,0.2,weighted_pl,u_child_mode_coverage,True,10,[],0,,,,,,0,0,0
+3,1.0,32,0.2,weighted_pl,mode_coverage,False,10,"[42, 43, 44, 45, 46, 47, 48, 49, 50, 51]",10,0.0,0.0,0.0,0.0,0.0,0,10,0
+3,1.0,32,0.2,weighted_pl,mode_coverage,True,10,[],0,,,,,,0,0,0
+3,1.0,32,0.2,weighted_pl,selected_endpoints,False,10,"[42, 43, 44, 45, 46, 47, 48, 49, 50, 51]",10,0.0,0.0,0.0,0.0,0.0,0,10,0
+3,1.0,32,0.2,weighted_pl,selected_endpoints,True,10,[],0,,,,,,0,0,0
+3,1.0,32,0.2,weighted_pl,effective_endpoints,False,10,[],0,,,,,,0,0,0
+3,1.0,32,0.2,weighted_pl,effective_endpoints,True,10,[],0,,,,,,0,0,0
+3,1.0,32,0.2,weighted_pl,u_mass,False,10,"[42, 43, 44, 45, 46, 47, 48, 49, 50, 51]",10,0.0,0.0,0.0,0.0,0.0,0,10,0
+3,1.0,32,0.2,weighted_pl,u_mass,True,10,[],0,,,,,,0,0,0
+3,1.0,32,0.2,weighted_pl,incremental_seconds,False,10,"[42, 43, 44, 45, 46, 47, 48, 49, 50, 51]",10,6.527149998873938e-05,0.00015577298595437862,4.9259743354125423e-05,-0.00020737799968628678,0.0004378270000415796,1,0,9
+3,1.0,32,0.2,weighted_pl,incremental_seconds,True,10,[],0,,,,,,0,0,0
+3,1.0,32,0.2,nores,mcc,False,10,"[42, 43, 44, 45, 46, 47, 48, 49, 50, 51]",10,0.07106769805085342,0.04561240612935023,0.014423909292937149,0.0,0.14357025729397768,9,1,0
+3,1.0,32,0.2,nores,mcc,True,10,[],0,,,,,,0,0,0
+3,1.0,32,0.2,nores,gmean,False,10,"[42, 43, 44, 45, 46, 47, 48, 49, 50, 51]",10,0.1951707484676628,0.10299922097890499,0.03257121355163375,0.0,0.3598633463787569,9,1,0
+3,1.0,32,0.2,nores,gmean,True,10,[],0,,,,,,0,0,0
+3,1.0,32,0.2,nores,ap,False,10,"[42, 43, 44, 45, 46, 47, 48, 49, 50, 51]",10,-0.002196781930022912,0.009507312833059972,0.0030064762980217693,-0.01976892416775039,0.014902504797735083,4,1,5
+3,1.0,32,0.2,nores,ap,True,10,[],0,,,,,,0,0,0
+3,1.0,32,0.2,nores,realized_lineage_error,False,10,[],0,,,,,,0,0,0
+3,1.0,32,0.2,nores,realized_lineage_error,True,10,[],0,,,,,,0,0,0
+3,1.0,32,0.2,nores,oracle_endpoint_error,False,10,[],0,,,,,,0,0,0
+3,1.0,32,0.2,nores,oracle_endpoint_error,True,10,[],0,,,,,,0,0,0
+3,1.0,32,0.2,nores,oracle_u_child_error,False,10,[],0,,,,,,0,0,0
+3,1.0,32,0.2,nores,oracle_u_child_error,True,10,[],0,,,,,,0,0,0
+3,1.0,32,0.2,nores,oracle_added_minority_error,False,10,[],0,,,,,,0,0,0
+3,1.0,32,0.2,nores,oracle_added_minority_error,True,10,[],0,,,,,,0,0,0
+3,1.0,32,0.2,nores,estimated_endpoint_error,False,10,[],0,,,,,,0,0,0
+3,1.0,32,0.2,nores,estimated_endpoint_error,True,10,[],0,,,,,,0,0,0
+3,1.0,32,0.2,nores,selected_endpoint_error,False,10,[],0,,,,,,0,0,0
+3,1.0,32,0.2,nores,selected_endpoint_error,True,10,[],0,,,,,,0,0,0
+3,1.0,32,0.2,nores,u_child_mode_coverage,False,10,[],0,,,,,,0,0,0
+3,1.0,32,0.2,nores,u_child_mode_coverage,True,10,[],0,,,,,,0,0,0
+3,1.0,32,0.2,nores,mode_coverage,False,10,"[42, 43, 44, 45, 46, 47, 48, 49, 50, 51]",10,0.75,0.3535533905932738,0.11180339887498948,0.0,1.0,9,1,0
+3,1.0,32,0.2,nores,mode_coverage,True,10,[],0,,,,,,0,0,0
+3,1.0,32,0.2,nores,selected_endpoints,False,10,"[42, 43, 44, 45, 46, 47, 48, 49, 50, 51]",10,0.0,0.0,0.0,0.0,0.0,0,10,0
+3,1.0,32,0.2,nores,selected_endpoints,True,10,[],0,,,,,,0,0,0
+3,1.0,32,0.2,nores,effective_endpoints,False,10,[],0,,,,,,0,0,0
+3,1.0,32,0.2,nores,effective_endpoints,True,10,[],0,,,,,,0,0,0
+3,1.0,32,0.2,nores,u_mass,False,10,"[42, 43, 44, 45, 46, 47, 48, 49, 50, 51]",10,0.0,0.0,0.0,0.0,0.0,0,10,0
+3,1.0,32,0.2,nores,u_mass,True,10,[],0,,,,,,0,0,0
+3,1.0,32,0.2,nores,incremental_seconds,False,10,"[42, 43, 44, 45, 46, 47, 48, 49, 50, 51]",10,0.00019989690003967552,0.0001670940089508437,5.2839765165322826e-05,9.740299992699875e-05,0.0006657130002167833,0,0,10
+3,1.0,32,0.2,nores,incremental_seconds,True,10,[],0,,,,,,0,0,0
+4,3.0,8,0.02,parent,mcc,False,10,"[42, 43, 44, 45, 46, 47, 48, 49, 50, 51]",10,0.0,0.0,0.0,0.0,0.0,0,10,0
+4,3.0,8,0.02,parent,mcc,True,10,[],0,,,,,,0,0,0
+4,3.0,8,0.02,parent,gmean,False,10,"[42, 43, 44, 45, 46, 47, 48, 49, 50, 51]",10,0.0,0.0,0.0,0.0,0.0,0,10,0
+4,3.0,8,0.02,parent,gmean,True,10,[],0,,,,,,0,0,0
+4,3.0,8,0.02,parent,ap,False,10,"[42, 43, 44, 45, 46, 47, 48, 49, 50, 51]",10,0.0,0.0,0.0,0.0,0.0,0,10,0
+4,3.0,8,0.02,parent,ap,True,10,[],0,,,,,,0,0,0
+4,3.0,8,0.02,parent,realized_lineage_error,False,10,[],0,,,,,,0,0,0
+4,3.0,8,0.02,parent,realized_lineage_error,True,10,[],0,,,,,,0,0,0
+4,3.0,8,0.02,parent,oracle_endpoint_error,False,10,[],0,,,,,,0,0,0
+4,3.0,8,0.02,parent,oracle_endpoint_error,True,10,[],0,,,,,,0,0,0
+4,3.0,8,0.02,parent,oracle_u_child_error,False,10,[],0,,,,,,0,0,0
+4,3.0,8,0.02,parent,oracle_u_child_error,True,10,[],0,,,,,,0,0,0
+4,3.0,8,0.02,parent,oracle_added_minority_error,False,10,"[45, 48, 51]",3,0.0,0.0,0.0,0.0,0.0,0,3,0
+4,3.0,8,0.02,parent,oracle_added_minority_error,True,10,[],0,,,,,,0,0,0
+4,3.0,8,0.02,parent,estimated_endpoint_error,False,10,[],0,,,,,,0,0,0
+4,3.0,8,0.02,parent,estimated_endpoint_error,True,10,[],0,,,,,,0,0,0
+4,3.0,8,0.02,parent,selected_endpoint_error,False,10,[],0,,,,,,0,0,0
+4,3.0,8,0.02,parent,selected_endpoint_error,True,10,[],0,,,,,,0,0,0
+4,3.0,8,0.02,parent,u_child_mode_coverage,False,10,[],0,,,,,,0,0,0
+4,3.0,8,0.02,parent,u_child_mode_coverage,True,10,[],0,,,,,,0,0,0
+4,3.0,8,0.02,parent,mode_coverage,False,10,"[42, 43, 44, 45, 46, 47, 48, 49, 50, 51]",10,0.0,0.0,0.0,0.0,0.0,0,10,0
+4,3.0,8,0.02,parent,mode_coverage,True,10,[],0,,,,,,0,0,0
+4,3.0,8,0.02,parent,selected_endpoints,False,10,"[42, 43, 44, 45, 46, 47, 48, 49, 50, 51]",10,0.0,0.0,0.0,0.0,0.0,0,10,0
+4,3.0,8,0.02,parent,selected_endpoints,True,10,[],0,,,,,,0,0,0
+4,3.0,8,0.02,parent,effective_endpoints,False,10,[],0,,,,,,0,0,0
+4,3.0,8,0.02,parent,effective_endpoints,True,10,[],0,,,,,,0,0,0
+4,3.0,8,0.02,parent,u_mass,False,10,"[42, 43, 44, 45, 46, 47, 48, 49, 50, 51]",10,0.0,0.0,0.0,0.0,0.0,0,10,0
+4,3.0,8,0.02,parent,u_mass,True,10,[],0,,,,,,0,0,0
+4,3.0,8,0.02,parent,incremental_seconds,False,10,"[42, 43, 44, 45, 46, 47, 48, 49, 50, 51]",10,-3.359289980835456e-05,0.00023825174576831576,7.534181731392611e-05,-0.0006058549993213092,0.00027796999984275317,5,0,5
+4,3.0,8,0.02,parent,incremental_seconds,True,10,[],0,,,,,,0,0,0
+4,3.0,8,0.02,unconstrained,mcc,False,10,"[42, 43, 44, 45, 46, 47, 48, 49, 50, 51]",10,0.0,0.0,0.0,0.0,0.0,0,10,0
+4,3.0,8,0.02,unconstrained,mcc,True,10,[],0,,,,,,0,0,0
+4,3.0,8,0.02,unconstrained,gmean,False,10,"[42, 43, 44, 45, 46, 47, 48, 49, 50, 51]",10,0.0,0.0,0.0,0.0,0.0,0,10,0
+4,3.0,8,0.02,unconstrained,gmean,True,10,[],0,,,,,,0,0,0
+4,3.0,8,0.02,unconstrained,ap,False,10,"[42, 43, 44, 45, 46, 47, 48, 49, 50, 51]",10,0.0,0.0,0.0,0.0,0.0,0,10,0
+4,3.0,8,0.02,unconstrained,ap,True,10,[],0,,,,,,0,0,0
+4,3.0,8,0.02,unconstrained,realized_lineage_error,False,10,[],0,,,,,,0,0,0
+4,3.0,8,0.02,unconstrained,realized_lineage_error,True,10,[],0,,,,,,0,0,0
+4,3.0,8,0.02,unconstrained,oracle_endpoint_error,False,10,[],0,,,,,,0,0,0
+4,3.0,8,0.02,unconstrained,oracle_endpoint_error,True,10,[],0,,,,,,0,0,0
+4,3.0,8,0.02,unconstrained,oracle_u_child_error,False,10,[],0,,,,,,0,0,0
+4,3.0,8,0.02,unconstrained,oracle_u_child_error,True,10,[],0,,,,,,0,0,0
+4,3.0,8,0.02,unconstrained,oracle_added_minority_error,False,10,"[45, 48, 51]",3,0.0,0.0,0.0,0.0,0.0,0,3,0
+4,3.0,8,0.02,unconstrained,oracle_added_minority_error,True,10,[],0,,,,,,0,0,0
+4,3.0,8,0.02,unconstrained,estimated_endpoint_error,False,10,[],0,,,,,,0,0,0
+4,3.0,8,0.02,unconstrained,estimated_endpoint_error,True,10,[],0,,,,,,0,0,0
+4,3.0,8,0.02,unconstrained,selected_endpoint_error,False,10,[],0,,,,,,0,0,0
+4,3.0,8,0.02,unconstrained,selected_endpoint_error,True,10,[],0,,,,,,0,0,0
+4,3.0,8,0.02,unconstrained,u_child_mode_coverage,False,10,[],0,,,,,,0,0,0
+4,3.0,8,0.02,unconstrained,u_child_mode_coverage,True,10,[],0,,,,,,0,0,0
+4,3.0,8,0.02,unconstrained,mode_coverage,False,10,"[42, 43, 44, 45, 46, 47, 48, 49, 50, 51]",10,0.0,0.0,0.0,0.0,0.0,0,10,0
+4,3.0,8,0.02,unconstrained,mode_coverage,True,10,[],0,,,,,,0,0,0
+4,3.0,8,0.02,unconstrained,selected_endpoints,False,10,"[42, 43, 44, 45, 46, 47, 48, 49, 50, 51]",10,0.0,0.0,0.0,0.0,0.0,0,10,0
+4,3.0,8,0.02,unconstrained,selected_endpoints,True,10,[],0,,,,,,0,0,0
+4,3.0,8,0.02,unconstrained,effective_endpoints,False,10,[],0,,,,,,0,0,0
+4,3.0,8,0.02,unconstrained,effective_endpoints,True,10,[],0,,,,,,0,0,0
+4,3.0,8,0.02,unconstrained,u_mass,False,10,"[42, 43, 44, 45, 46, 47, 48, 49, 50, 51]",10,0.0,0.0,0.0,0.0,0.0,0,10,0
+4,3.0,8,0.02,unconstrained,u_mass,True,10,[],0,,,,,,0,0,0
+4,3.0,8,0.02,unconstrained,incremental_seconds,False,10,"[42, 43, 44, 45, 46, 47, 48, 49, 50, 51]",10,-7.298489986169443e-05,0.0003685034847112577,0.00011653103373966101,-0.0009660159994382411,0.00026200800039077876,4,0,6
+4,3.0,8,0.02,unconstrained,incremental_seconds,True,10,[],0,,,,,,0,0,0
+4,3.0,8,0.02,count_matched,mcc,False,10,"[42, 43, 44, 45, 46, 47, 48, 49, 50, 51]",10,0.0,0.0,0.0,0.0,0.0,0,10,0
+4,3.0,8,0.02,count_matched,mcc,True,10,[],0,,,,,,0,0,0
+4,3.0,8,0.02,count_matched,gmean,False,10,"[42, 43, 44, 45, 46, 47, 48, 49, 50, 51]",10,0.0,0.0,0.0,0.0,0.0,0,10,0
+4,3.0,8,0.02,count_matched,gmean,True,10,[],0,,,,,,0,0,0
+4,3.0,8,0.02,count_matched,ap,False,10,"[42, 43, 44, 45, 46, 47, 48, 49, 50, 51]",10,0.0,0.0,0.0,0.0,0.0,0,10,0
+4,3.0,8,0.02,count_matched,ap,True,10,[],0,,,,,,0,0,0
+4,3.0,8,0.02,count_matched,realized_lineage_error,False,10,[],0,,,,,,0,0,0
+4,3.0,8,0.02,count_matched,realized_lineage_error,True,10,[],0,,,,,,0,0,0
+4,3.0,8,0.02,count_matched,oracle_endpoint_error,False,10,[],0,,,,,,0,0,0
+4,3.0,8,0.02,count_matched,oracle_endpoint_error,True,10,[],0,,,,,,0,0,0
+4,3.0,8,0.02,count_matched,oracle_u_child_error,False,10,[],0,,,,,,0,0,0
+4,3.0,8,0.02,count_matched,oracle_u_child_error,True,10,[],0,,,,,,0,0,0
+4,3.0,8,0.02,count_matched,oracle_added_minority_error,False,10,"[45, 48, 51]",3,0.0,0.0,0.0,0.0,0.0,0,3,0
+4,3.0,8,0.02,count_matched,oracle_added_minority_error,True,10,[],0,,,,,,0,0,0
+4,3.0,8,0.02,count_matched,estimated_endpoint_error,False,10,[],0,,,,,,0,0,0
+4,3.0,8,0.02,count_matched,estimated_endpoint_error,True,10,[],0,,,,,,0,0,0
+4,3.0,8,0.02,count_matched,selected_endpoint_error,False,10,[],0,,,,,,0,0,0
+4,3.0,8,0.02,count_matched,selected_endpoint_error,True,10,[],0,,,,,,0,0,0
+4,3.0,8,0.02,count_matched,u_child_mode_coverage,False,10,[],0,,,,,,0,0,0
+4,3.0,8,0.02,count_matched,u_child_mode_coverage,True,10,[],0,,,,,,0,0,0
+4,3.0,8,0.02,count_matched,mode_coverage,False,10,"[42, 43, 44, 45, 46, 47, 48, 49, 50, 51]",10,0.0,0.0,0.0,0.0,0.0,0,10,0
+4,3.0,8,0.02,count_matched,mode_coverage,True,10,[],0,,,,,,0,0,0
+4,3.0,8,0.02,count_matched,selected_endpoints,False,10,"[42, 43, 44, 45, 46, 47, 48, 49, 50, 51]",10,0.0,0.0,0.0,0.0,0.0,0,10,0
+4,3.0,8,0.02,count_matched,selected_endpoints,True,10,[],0,,,,,,0,0,0
+4,3.0,8,0.02,count_matched,effective_endpoints,False,10,[],0,,,,,,0,0,0
+4,3.0,8,0.02,count_matched,effective_endpoints,True,10,[],0,,,,,,0,0,0
+4,3.0,8,0.02,count_matched,u_mass,False,10,"[42, 43, 44, 45, 46, 47, 48, 49, 50, 51]",10,0.0,0.0,0.0,0.0,0.0,0,10,0
+4,3.0,8,0.02,count_matched,u_mass,True,10,[],0,,,,,,0,0,0
+4,3.0,8,0.02,count_matched,incremental_seconds,False,10,"[42, 43, 44, 45, 46, 47, 48, 49, 50, 51]",10,0.00010909459988397429,0.00010562463358942918,3.340144191633225e-05,-1.738499940984184e-05,0.00034532899962869124,2,0,8
+4,3.0,8,0.02,count_matched,incremental_seconds,True,10,[],0,,,,,,0,0,0
+4,3.0,8,0.02,threshold_matched,mcc,False,10,"[42, 43, 44, 45, 46, 47, 48, 49, 50, 51]",10,0.0,0.0,0.0,0.0,0.0,0,10,0
+4,3.0,8,0.02,threshold_matched,mcc,True,10,[],0,,,,,,0,0,0
+4,3.0,8,0.02,threshold_matched,gmean,False,10,"[42, 43, 44, 45, 46, 47, 48, 49, 50, 51]",10,0.0,0.0,0.0,0.0,0.0,0,10,0
+4,3.0,8,0.02,threshold_matched,gmean,True,10,[],0,,,,,,0,0,0
+4,3.0,8,0.02,threshold_matched,ap,False,10,"[42, 43, 44, 45, 46, 47, 48, 49, 50, 51]",10,0.0,0.0,0.0,0.0,0.0,0,10,0
+4,3.0,8,0.02,threshold_matched,ap,True,10,[],0,,,,,,0,0,0
+4,3.0,8,0.02,threshold_matched,realized_lineage_error,False,10,[],0,,,,,,0,0,0
+4,3.0,8,0.02,threshold_matched,realized_lineage_error,True,10,[],0,,,,,,0,0,0
+4,3.0,8,0.02,threshold_matched,oracle_endpoint_error,False,10,[],0,,,,,,0,0,0
+4,3.0,8,0.02,threshold_matched,oracle_endpoint_error,True,10,[],0,,,,,,0,0,0
+4,3.0,8,0.02,threshold_matched,oracle_u_child_error,False,10,[],0,,,,,,0,0,0
+4,3.0,8,0.02,threshold_matched,oracle_u_child_error,True,10,[],0,,,,,,0,0,0
+4,3.0,8,0.02,threshold_matched,oracle_added_minority_error,False,10,"[45, 48, 51]",3,0.0,0.0,0.0,0.0,0.0,0,3,0
+4,3.0,8,0.02,threshold_matched,oracle_added_minority_error,True,10,[],0,,,,,,0,0,0
+4,3.0,8,0.02,threshold_matched,estimated_endpoint_error,False,10,[],0,,,,,,0,0,0
+4,3.0,8,0.02,threshold_matched,estimated_endpoint_error,True,10,[],0,,,,,,0,0,0
+4,3.0,8,0.02,threshold_matched,selected_endpoint_error,False,10,[],0,,,,,,0,0,0
+4,3.0,8,0.02,threshold_matched,selected_endpoint_error,True,10,[],0,,,,,,0,0,0
+4,3.0,8,0.02,threshold_matched,u_child_mode_coverage,False,10,[],0,,,,,,0,0,0
+4,3.0,8,0.02,threshold_matched,u_child_mode_coverage,True,10,[],0,,,,,,0,0,0
+4,3.0,8,0.02,threshold_matched,mode_coverage,False,10,"[42, 43, 44, 45, 46, 47, 48, 49, 50, 51]",10,0.0,0.0,0.0,0.0,0.0,0,10,0
+4,3.0,8,0.02,threshold_matched,mode_coverage,True,10,[],0,,,,,,0,0,0
+4,3.0,8,0.02,threshold_matched,selected_endpoints,False,10,"[42, 43, 44, 45, 46, 47, 48, 49, 50, 51]",10,0.0,0.0,0.0,0.0,0.0,0,10,0
+4,3.0,8,0.02,threshold_matched,selected_endpoints,True,10,[],0,,,,,,0,0,0
+4,3.0,8,0.02,threshold_matched,effective_endpoints,False,10,[],0,,,,,,0,0,0
+4,3.0,8,0.02,threshold_matched,effective_endpoints,True,10,[],0,,,,,,0,0,0
+4,3.0,8,0.02,threshold_matched,u_mass,False,10,"[42, 43, 44, 45, 46, 47, 48, 49, 50, 51]",10,0.0,0.0,0.0,0.0,0.0,0,10,0
+4,3.0,8,0.02,threshold_matched,u_mass,True,10,[],0,,,,,,0,0,0
+4,3.0,8,0.02,threshold_matched,incremental_seconds,False,10,"[42, 43, 44, 45, 46, 47, 48, 49, 50, 51]",10,6.205180025062874e-05,0.00019876093619052463,6.285372682294488e-05,-0.0003452699988883978,0.00042559899975458393,3,0,7
+4,3.0,8,0.02,threshold_matched,incremental_seconds,True,10,[],0,,,,,,0,0,0
+4,3.0,8,0.02,weighted_pl,mcc,False,10,"[42, 43, 44, 45, 46, 47, 48, 49, 50, 51]",10,0.0,0.0,0.0,0.0,0.0,0,10,0
+4,3.0,8,0.02,weighted_pl,mcc,True,10,[],0,,,,,,0,0,0
+4,3.0,8,0.02,weighted_pl,gmean,False,10,"[42, 43, 44, 45, 46, 47, 48, 49, 50, 51]",10,0.0,0.0,0.0,0.0,0.0,0,10,0
+4,3.0,8,0.02,weighted_pl,gmean,True,10,[],0,,,,,,0,0,0
+4,3.0,8,0.02,weighted_pl,ap,False,10,"[42, 43, 44, 45, 46, 47, 48, 49, 50, 51]",10,0.0,0.0,0.0,0.0,0.0,0,10,0
+4,3.0,8,0.02,weighted_pl,ap,True,10,[],0,,,,,,0,0,0
+4,3.0,8,0.02,weighted_pl,realized_lineage_error,False,10,[],0,,,,,,0,0,0
+4,3.0,8,0.02,weighted_pl,realized_lineage_error,True,10,[],0,,,,,,0,0,0
+4,3.0,8,0.02,weighted_pl,oracle_endpoint_error,False,10,[],0,,,,,,0,0,0
+4,3.0,8,0.02,weighted_pl,oracle_endpoint_error,True,10,[],0,,,,,,0,0,0
+4,3.0,8,0.02,weighted_pl,oracle_u_child_error,False,10,[],0,,,,,,0,0,0
+4,3.0,8,0.02,weighted_pl,oracle_u_child_error,True,10,[],0,,,,,,0,0,0
+4,3.0,8,0.02,weighted_pl,oracle_added_minority_error,False,10,"[45, 48, 51]",3,0.0,0.0,0.0,0.0,0.0,0,3,0
+4,3.0,8,0.02,weighted_pl,oracle_added_minority_error,True,10,[],0,,,,,,0,0,0
+4,3.0,8,0.02,weighted_pl,estimated_endpoint_error,False,10,[],0,,,,,,0,0,0
+4,3.0,8,0.02,weighted_pl,estimated_endpoint_error,True,10,[],0,,,,,,0,0,0
+4,3.0,8,0.02,weighted_pl,selected_endpoint_error,False,10,[],0,,,,,,0,0,0
+4,3.0,8,0.02,weighted_pl,selected_endpoint_error,True,10,[],0,,,,,,0,0,0
+4,3.0,8,0.02,weighted_pl,u_child_mode_coverage,False,10,[],0,,,,,,0,0,0
+4,3.0,8,0.02,weighted_pl,u_child_mode_coverage,True,10,[],0,,,,,,0,0,0
+4,3.0,8,0.02,weighted_pl,mode_coverage,False,10,"[42, 43, 44, 45, 46, 47, 48, 49, 50, 51]",10,0.0,0.0,0.0,0.0,0.0,0,10,0
+4,3.0,8,0.02,weighted_pl,mode_coverage,True,10,[],0,,,,,,0,0,0
+4,3.0,8,0.02,weighted_pl,selected_endpoints,False,10,"[42, 43, 44, 45, 46, 47, 48, 49, 50, 51]",10,0.0,0.0,0.0,0.0,0.0,0,10,0
+4,3.0,8,0.02,weighted_pl,selected_endpoints,True,10,[],0,,,,,,0,0,0
+4,3.0,8,0.02,weighted_pl,effective_endpoints,False,10,[],0,,,,,,0,0,0
+4,3.0,8,0.02,weighted_pl,effective_endpoints,True,10,[],0,,,,,,0,0,0
+4,3.0,8,0.02,weighted_pl,u_mass,False,10,"[42, 43, 44, 45, 46, 47, 48, 49, 50, 51]",10,0.0,0.0,0.0,0.0,0.0,0,10,0
+4,3.0,8,0.02,weighted_pl,u_mass,True,10,[],0,,,,,,0,0,0
+4,3.0,8,0.02,weighted_pl,incremental_seconds,False,10,"[42, 43, 44, 45, 46, 47, 48, 49, 50, 51]",10,-0.00034077449981850805,0.0011682766975497966,0.00036944153015570116,-0.0036204679995535116,0.0002933120003945078,4,0,6
+4,3.0,8,0.02,weighted_pl,incremental_seconds,True,10,[],0,,,,,,0,0,0
+4,3.0,8,0.02,nores,mcc,False,10,"[42, 43, 44, 45, 46, 47, 48, 49, 50, 51]",10,0.031800869044089575,0.05259099883331903,0.016630734073654608,0.0,0.13302871641616465,3,7,0
+4,3.0,8,0.02,nores,mcc,True,10,[],0,,,,,,0,0,0
+4,3.0,8,0.02,nores,gmean,False,10,"[42, 43, 44, 45, 46, 47, 48, 49, 50, 51]",10,0.03417609891616158,0.05672131750113653,0.017936855518916175,0.0,0.13149821195793254,3,7,0
+4,3.0,8,0.02,nores,gmean,True,10,[],0,,,,,,0,0,0
+4,3.0,8,0.02,nores,ap,False,10,"[42, 43, 44, 45, 46, 47, 48, 49, 50, 51]",10,0.0014004002144451743,0.003113363668392651,0.0009845320376537954,-0.00016182882621273986,0.008883878488488484,2,7,1
+4,3.0,8,0.02,nores,ap,True,10,[],0,,,,,,0,0,0
+4,3.0,8,0.02,nores,realized_lineage_error,False,10,[],0,,,,,,0,0,0
+4,3.0,8,0.02,nores,realized_lineage_error,True,10,[],0,,,,,,0,0,0
+4,3.0,8,0.02,nores,oracle_endpoint_error,False,10,[],0,,,,,,0,0,0
+4,3.0,8,0.02,nores,oracle_endpoint_error,True,10,[],0,,,,,,0,0,0
+4,3.0,8,0.02,nores,oracle_u_child_error,False,10,[],0,,,,,,0,0,0
+4,3.0,8,0.02,nores,oracle_u_child_error,True,10,[],0,,,,,,0,0,0
+4,3.0,8,0.02,nores,oracle_added_minority_error,False,10,[],0,,,,,,0,0,0
+4,3.0,8,0.02,nores,oracle_added_minority_error,True,10,[],0,,,,,,0,0,0
+4,3.0,8,0.02,nores,estimated_endpoint_error,False,10,[],0,,,,,,0,0,0
+4,3.0,8,0.02,nores,estimated_endpoint_error,True,10,[],0,,,,,,0,0,0
+4,3.0,8,0.02,nores,selected_endpoint_error,False,10,[],0,,,,,,0,0,0
+4,3.0,8,0.02,nores,selected_endpoint_error,True,10,[],0,,,,,,0,0,0
+4,3.0,8,0.02,nores,u_child_mode_coverage,False,10,[],0,,,,,,0,0,0
+4,3.0,8,0.02,nores,u_child_mode_coverage,True,10,[],0,,,,,,0,0,0
+4,3.0,8,0.02,nores,mode_coverage,False,10,"[42, 43, 44, 45, 46, 47, 48, 49, 50, 51]",10,0.25,0.42491829279939874,0.13437096247164249,0.0,1.0,3,7,0
+4,3.0,8,0.02,nores,mode_coverage,True,10,[],0,,,,,,0,0,0
+4,3.0,8,0.02,nores,selected_endpoints,False,10,"[42, 43, 44, 45, 46, 47, 48, 49, 50, 51]",10,0.0,0.0,0.0,0.0,0.0,0,10,0
+4,3.0,8,0.02,nores,selected_endpoints,True,10,[],0,,,,,,0,0,0
+4,3.0,8,0.02,nores,effective_endpoints,False,10,[],0,,,,,,0,0,0
+4,3.0,8,0.02,nores,effective_endpoints,True,10,[],0,,,,,,0,0,0
+4,3.0,8,0.02,nores,u_mass,False,10,"[42, 43, 44, 45, 46, 47, 48, 49, 50, 51]",10,0.0,0.0,0.0,0.0,0.0,0,10,0
+4,3.0,8,0.02,nores,u_mass,True,10,[],0,,,,,,0,0,0
+4,3.0,8,0.02,nores,incremental_seconds,False,10,"[42, 43, 44, 45, 46, 47, 48, 49, 50, 51]",10,8.53968003866612e-05,0.00022596931174219043,7.14577706405953e-05,-0.00027595699930316187,0.0004198720007480006,3,0,7
+4,3.0,8,0.02,nores,incremental_seconds,True,10,[],0,,,,,,0,0,0
+5,3.0,8,0.2,parent,mcc,False,10,"[42, 43, 44, 45, 46, 47, 48, 49, 50, 51]",10,0.0,0.0,0.0,0.0,0.0,0,10,0
+5,3.0,8,0.2,parent,mcc,True,10,[],0,,,,,,0,0,0
+5,3.0,8,0.2,parent,gmean,False,10,"[42, 43, 44, 45, 46, 47, 48, 49, 50, 51]",10,0.0,0.0,0.0,0.0,0.0,0,10,0
+5,3.0,8,0.2,parent,gmean,True,10,[],0,,,,,,0,0,0
+5,3.0,8,0.2,parent,ap,False,10,"[42, 43, 44, 45, 46, 47, 48, 49, 50, 51]",10,0.0,0.0,0.0,0.0,0.0,0,10,0
+5,3.0,8,0.2,parent,ap,True,10,[],0,,,,,,0,0,0
+5,3.0,8,0.2,parent,realized_lineage_error,False,10,[],0,,,,,,0,0,0
+5,3.0,8,0.2,parent,realized_lineage_error,True,10,[],0,,,,,,0,0,0
+5,3.0,8,0.2,parent,oracle_endpoint_error,False,10,[],0,,,,,,0,0,0
+5,3.0,8,0.2,parent,oracle_endpoint_error,True,10,[],0,,,,,,0,0,0
+5,3.0,8,0.2,parent,oracle_u_child_error,False,10,[],0,,,,,,0,0,0
+5,3.0,8,0.2,parent,oracle_u_child_error,True,10,[],0,,,,,,0,0,0
+5,3.0,8,0.2,parent,oracle_added_minority_error,False,10,"[44, 48]",2,0.0,0.0,0.0,0.0,0.0,0,2,0
+5,3.0,8,0.2,parent,oracle_added_minority_error,True,10,[],0,,,,,,0,0,0
+5,3.0,8,0.2,parent,estimated_endpoint_error,False,10,[],0,,,,,,0,0,0
+5,3.0,8,0.2,parent,estimated_endpoint_error,True,10,[],0,,,,,,0,0,0
+5,3.0,8,0.2,parent,selected_endpoint_error,False,10,[],0,,,,,,0,0,0
+5,3.0,8,0.2,parent,selected_endpoint_error,True,10,[],0,,,,,,0,0,0
+5,3.0,8,0.2,parent,u_child_mode_coverage,False,10,[],0,,,,,,0,0,0
+5,3.0,8,0.2,parent,u_child_mode_coverage,True,10,[],0,,,,,,0,0,0
+5,3.0,8,0.2,parent,mode_coverage,False,10,"[42, 43, 44, 45, 46, 47, 48, 49, 50, 51]",10,0.0,0.0,0.0,0.0,0.0,0,10,0
+5,3.0,8,0.2,parent,mode_coverage,True,10,[],0,,,,,,0,0,0
+5,3.0,8,0.2,parent,selected_endpoints,False,10,"[42, 43, 44, 45, 46, 47, 48, 49, 50, 51]",10,0.0,0.0,0.0,0.0,0.0,0,10,0
+5,3.0,8,0.2,parent,selected_endpoints,True,10,[],0,,,,,,0,0,0
+5,3.0,8,0.2,parent,effective_endpoints,False,10,[],0,,,,,,0,0,0
+5,3.0,8,0.2,parent,effective_endpoints,True,10,[],0,,,,,,0,0,0
+5,3.0,8,0.2,parent,u_mass,False,10,"[42, 43, 44, 45, 46, 47, 48, 49, 50, 51]",10,0.0,0.0,0.0,0.0,0.0,0,10,0
+5,3.0,8,0.2,parent,u_mass,True,10,[],0,,,,,,0,0,0
+5,3.0,8,0.2,parent,incremental_seconds,False,10,"[42, 43, 44, 45, 46, 47, 48, 49, 50, 51]",10,-0.0003096011997968162,0.000870569420054009,0.00027529822286625344,-0.0027777150003203133,0.00011923600141017232,7,0,3
+5,3.0,8,0.2,parent,incremental_seconds,True,10,[],0,,,,,,0,0,0
+5,3.0,8,0.2,unconstrained,mcc,False,10,"[42, 43, 44, 45, 46, 47, 48, 49, 50, 51]",10,0.0,0.0,0.0,0.0,0.0,0,10,0
+5,3.0,8,0.2,unconstrained,mcc,True,10,[],0,,,,,,0,0,0
+5,3.0,8,0.2,unconstrained,gmean,False,10,"[42, 43, 44, 45, 46, 47, 48, 49, 50, 51]",10,0.0,0.0,0.0,0.0,0.0,0,10,0
+5,3.0,8,0.2,unconstrained,gmean,True,10,[],0,,,,,,0,0,0
+5,3.0,8,0.2,unconstrained,ap,False,10,"[42, 43, 44, 45, 46, 47, 48, 49, 50, 51]",10,0.0,0.0,0.0,0.0,0.0,0,10,0
+5,3.0,8,0.2,unconstrained,ap,True,10,[],0,,,,,,0,0,0
+5,3.0,8,0.2,unconstrained,realized_lineage_error,False,10,[],0,,,,,,0,0,0
+5,3.0,8,0.2,unconstrained,realized_lineage_error,True,10,[],0,,,,,,0,0,0
+5,3.0,8,0.2,unconstrained,oracle_endpoint_error,False,10,[],0,,,,,,0,0,0
+5,3.0,8,0.2,unconstrained,oracle_endpoint_error,True,10,[],0,,,,,,0,0,0
+5,3.0,8,0.2,unconstrained,oracle_u_child_error,False,10,[],0,,,,,,0,0,0
+5,3.0,8,0.2,unconstrained,oracle_u_child_error,True,10,[],0,,,,,,0,0,0
+5,3.0,8,0.2,unconstrained,oracle_added_minority_error,False,10,"[44, 48]",2,0.0,0.0,0.0,0.0,0.0,0,2,0
+5,3.0,8,0.2,unconstrained,oracle_added_minority_error,True,10,[],0,,,,,,0,0,0
+5,3.0,8,0.2,unconstrained,estimated_endpoint_error,False,10,[],0,,,,,,0,0,0
+5,3.0,8,0.2,unconstrained,estimated_endpoint_error,True,10,[],0,,,,,,0,0,0
+5,3.0,8,0.2,unconstrained,selected_endpoint_error,False,10,[],0,,,,,,0,0,0
+5,3.0,8,0.2,unconstrained,selected_endpoint_error,True,10,[],0,,,,,,0,0,0
+5,3.0,8,0.2,unconstrained,u_child_mode_coverage,False,10,[],0,,,,,,0,0,0
+5,3.0,8,0.2,unconstrained,u_child_mode_coverage,True,10,[],0,,,,,,0,0,0
+5,3.0,8,0.2,unconstrained,mode_coverage,False,10,"[42, 43, 44, 45, 46, 47, 48, 49, 50, 51]",10,0.0,0.0,0.0,0.0,0.0,0,10,0
+5,3.0,8,0.2,unconstrained,mode_coverage,True,10,[],0,,,,,,0,0,0
+5,3.0,8,0.2,unconstrained,selected_endpoints,False,10,"[42, 43, 44, 45, 46, 47, 48, 49, 50, 51]",10,0.0,0.0,0.0,0.0,0.0,0,10,0
+5,3.0,8,0.2,unconstrained,selected_endpoints,True,10,[],0,,,,,,0,0,0
+5,3.0,8,0.2,unconstrained,effective_endpoints,False,10,[],0,,,,,,0,0,0
+5,3.0,8,0.2,unconstrained,effective_endpoints,True,10,[],0,,,,,,0,0,0
+5,3.0,8,0.2,unconstrained,u_mass,False,10,"[42, 43, 44, 45, 46, 47, 48, 49, 50, 51]",10,0.0,0.0,0.0,0.0,0.0,0,10,0
+5,3.0,8,0.2,unconstrained,u_mass,True,10,[],0,,,,,,0,0,0
+5,3.0,8,0.2,unconstrained,incremental_seconds,False,10,"[42, 43, 44, 45, 46, 47, 48, 49, 50, 51]",10,-0.00017461490001551282,0.000549851059475188,0.00017387817217983016,-0.0015932849996715959,0.0004959519992553396,6,0,4
+5,3.0,8,0.2,unconstrained,incremental_seconds,True,10,[],0,,,,,,0,0,0
+5,3.0,8,0.2,count_matched,mcc,False,10,"[42, 43, 44, 45, 46, 47, 48, 49, 50, 51]",10,0.0,0.0,0.0,0.0,0.0,0,10,0
+5,3.0,8,0.2,count_matched,mcc,True,10,[],0,,,,,,0,0,0
+5,3.0,8,0.2,count_matched,gmean,False,10,"[42, 43, 44, 45, 46, 47, 48, 49, 50, 51]",10,0.0,0.0,0.0,0.0,0.0,0,10,0
+5,3.0,8,0.2,count_matched,gmean,True,10,[],0,,,,,,0,0,0
+5,3.0,8,0.2,count_matched,ap,False,10,"[42, 43, 44, 45, 46, 47, 48, 49, 50, 51]",10,0.0,0.0,0.0,0.0,0.0,0,10,0
+5,3.0,8,0.2,count_matched,ap,True,10,[],0,,,,,,0,0,0
+5,3.0,8,0.2,count_matched,realized_lineage_error,False,10,[],0,,,,,,0,0,0
+5,3.0,8,0.2,count_matched,realized_lineage_error,True,10,[],0,,,,,,0,0,0
+5,3.0,8,0.2,count_matched,oracle_endpoint_error,False,10,[],0,,,,,,0,0,0
+5,3.0,8,0.2,count_matched,oracle_endpoint_error,True,10,[],0,,,,,,0,0,0
+5,3.0,8,0.2,count_matched,oracle_u_child_error,False,10,[],0,,,,,,0,0,0
+5,3.0,8,0.2,count_matched,oracle_u_child_error,True,10,[],0,,,,,,0,0,0
+5,3.0,8,0.2,count_matched,oracle_added_minority_error,False,10,"[44, 48]",2,0.0,0.0,0.0,0.0,0.0,0,2,0
+5,3.0,8,0.2,count_matched,oracle_added_minority_error,True,10,[],0,,,,,,0,0,0
+5,3.0,8,0.2,count_matched,estimated_endpoint_error,False,10,[],0,,,,,,0,0,0
+5,3.0,8,0.2,count_matched,estimated_endpoint_error,True,10,[],0,,,,,,0,0,0
+5,3.0,8,0.2,count_matched,selected_endpoint_error,False,10,[],0,,,,,,0,0,0
+5,3.0,8,0.2,count_matched,selected_endpoint_error,True,10,[],0,,,,,,0,0,0
+5,3.0,8,0.2,count_matched,u_child_mode_coverage,False,10,[],0,,,,,,0,0,0
+5,3.0,8,0.2,count_matched,u_child_mode_coverage,True,10,[],0,,,,,,0,0,0
+5,3.0,8,0.2,count_matched,mode_coverage,False,10,"[42, 43, 44, 45, 46, 47, 48, 49, 50, 51]",10,0.0,0.0,0.0,0.0,0.0,0,10,0
+5,3.0,8,0.2,count_matched,mode_coverage,True,10,[],0,,,,,,0,0,0
+5,3.0,8,0.2,count_matched,selected_endpoints,False,10,"[42, 43, 44, 45, 46, 47, 48, 49, 50, 51]",10,0.0,0.0,0.0,0.0,0.0,0,10,0
+5,3.0,8,0.2,count_matched,selected_endpoints,True,10,[],0,,,,,,0,0,0
+5,3.0,8,0.2,count_matched,effective_endpoints,False,10,[],0,,,,,,0,0,0
+5,3.0,8,0.2,count_matched,effective_endpoints,True,10,[],0,,,,,,0,0,0
+5,3.0,8,0.2,count_matched,u_mass,False,10,"[42, 43, 44, 45, 46, 47, 48, 49, 50, 51]",10,0.0,0.0,0.0,0.0,0.0,0,10,0
+5,3.0,8,0.2,count_matched,u_mass,True,10,[],0,,,,,,0,0,0
+5,3.0,8,0.2,count_matched,incremental_seconds,False,10,"[42, 43, 44, 45, 46, 47, 48, 49, 50, 51]",10,1.6259200219792546e-05,0.0002549604948023951,8.062558769390902e-05,-0.0004941189995406603,0.000563340999178763,5,0,5
+5,3.0,8,0.2,count_matched,incremental_seconds,True,10,[],0,,,,,,0,0,0
+5,3.0,8,0.2,threshold_matched,mcc,False,10,"[42, 43, 44, 45, 46, 47, 48, 49, 50, 51]",10,0.0,0.0,0.0,0.0,0.0,0,10,0
+5,3.0,8,0.2,threshold_matched,mcc,True,10,[],0,,,,,,0,0,0
+5,3.0,8,0.2,threshold_matched,gmean,False,10,"[42, 43, 44, 45, 46, 47, 48, 49, 50, 51]",10,0.0,0.0,0.0,0.0,0.0,0,10,0
+5,3.0,8,0.2,threshold_matched,gmean,True,10,[],0,,,,,,0,0,0
+5,3.0,8,0.2,threshold_matched,ap,False,10,"[42, 43, 44, 45, 46, 47, 48, 49, 50, 51]",10,0.0,0.0,0.0,0.0,0.0,0,10,0
+5,3.0,8,0.2,threshold_matched,ap,True,10,[],0,,,,,,0,0,0
+5,3.0,8,0.2,threshold_matched,realized_lineage_error,False,10,[],0,,,,,,0,0,0
+5,3.0,8,0.2,threshold_matched,realized_lineage_error,True,10,[],0,,,,,,0,0,0
+5,3.0,8,0.2,threshold_matched,oracle_endpoint_error,False,10,[],0,,,,,,0,0,0
+5,3.0,8,0.2,threshold_matched,oracle_endpoint_error,True,10,[],0,,,,,,0,0,0
+5,3.0,8,0.2,threshold_matched,oracle_u_child_error,False,10,[],0,,,,,,0,0,0
+5,3.0,8,0.2,threshold_matched,oracle_u_child_error,True,10,[],0,,,,,,0,0,0
+5,3.0,8,0.2,threshold_matched,oracle_added_minority_error,False,10,"[44, 48]",2,0.0,0.0,0.0,0.0,0.0,0,2,0
+5,3.0,8,0.2,threshold_matched,oracle_added_minority_error,True,10,[],0,,,,,,0,0,0
+5,3.0,8,0.2,threshold_matched,estimated_endpoint_error,False,10,[],0,,,,,,0,0,0
+5,3.0,8,0.2,threshold_matched,estimated_endpoint_error,True,10,[],0,,,,,,0,0,0
+5,3.0,8,0.2,threshold_matched,selected_endpoint_error,False,10,[],0,,,,,,0,0,0
+5,3.0,8,0.2,threshold_matched,selected_endpoint_error,True,10,[],0,,,,,,0,0,0
+5,3.0,8,0.2,threshold_matched,u_child_mode_coverage,False,10,[],0,,,,,,0,0,0
+5,3.0,8,0.2,threshold_matched,u_child_mode_coverage,True,10,[],0,,,,,,0,0,0
+5,3.0,8,0.2,threshold_matched,mode_coverage,False,10,"[42, 43, 44, 45, 46, 47, 48, 49, 50, 51]",10,0.0,0.0,0.0,0.0,0.0,0,10,0
+5,3.0,8,0.2,threshold_matched,mode_coverage,True,10,[],0,,,,,,0,0,0
+5,3.0,8,0.2,threshold_matched,selected_endpoints,False,10,"[42, 43, 44, 45, 46, 47, 48, 49, 50, 51]",10,0.0,0.0,0.0,0.0,0.0,0,10,0
+5,3.0,8,0.2,threshold_matched,selected_endpoints,True,10,[],0,,,,,,0,0,0
+5,3.0,8,0.2,threshold_matched,effective_endpoints,False,10,[],0,,,,,,0,0,0
+5,3.0,8,0.2,threshold_matched,effective_endpoints,True,10,[],0,,,,,,0,0,0
+5,3.0,8,0.2,threshold_matched,u_mass,False,10,"[42, 43, 44, 45, 46, 47, 48, 49, 50, 51]",10,0.0,0.0,0.0,0.0,0.0,0,10,0
+5,3.0,8,0.2,threshold_matched,u_mass,True,10,[],0,,,,,,0,0,0
+5,3.0,8,0.2,threshold_matched,incremental_seconds,False,10,"[42, 43, 44, 45, 46, 47, 48, 49, 50, 51]",10,9.14950010155735e-06,0.00018618646233718259,5.887732904746538e-05,-0.0004825039986826596,0.0002040310000666068,2,0,8
+5,3.0,8,0.2,threshold_matched,incremental_seconds,True,10,[],0,,,,,,0,0,0
+5,3.0,8,0.2,weighted_pl,mcc,False,10,"[42, 43, 44, 45, 46, 47, 48, 49, 50, 51]",10,0.0,0.0,0.0,0.0,0.0,0,10,0
+5,3.0,8,0.2,weighted_pl,mcc,True,10,[],0,,,,,,0,0,0
+5,3.0,8,0.2,weighted_pl,gmean,False,10,"[42, 43, 44, 45, 46, 47, 48, 49, 50, 51]",10,0.0,0.0,0.0,0.0,0.0,0,10,0
+5,3.0,8,0.2,weighted_pl,gmean,True,10,[],0,,,,,,0,0,0
+5,3.0,8,0.2,weighted_pl,ap,False,10,"[42, 43, 44, 45, 46, 47, 48, 49, 50, 51]",10,0.0,0.0,0.0,0.0,0.0,0,10,0
+5,3.0,8,0.2,weighted_pl,ap,True,10,[],0,,,,,,0,0,0
+5,3.0,8,0.2,weighted_pl,realized_lineage_error,False,10,[],0,,,,,,0,0,0
+5,3.0,8,0.2,weighted_pl,realized_lineage_error,True,10,[],0,,,,,,0,0,0
+5,3.0,8,0.2,weighted_pl,oracle_endpoint_error,False,10,[],0,,,,,,0,0,0
+5,3.0,8,0.2,weighted_pl,oracle_endpoint_error,True,10,[],0,,,,,,0,0,0
+5,3.0,8,0.2,weighted_pl,oracle_u_child_error,False,10,[],0,,,,,,0,0,0
+5,3.0,8,0.2,weighted_pl,oracle_u_child_error,True,10,[],0,,,,,,0,0,0
+5,3.0,8,0.2,weighted_pl,oracle_added_minority_error,False,10,"[44, 48]",2,0.0,0.0,0.0,0.0,0.0,0,2,0
+5,3.0,8,0.2,weighted_pl,oracle_added_minority_error,True,10,[],0,,,,,,0,0,0
+5,3.0,8,0.2,weighted_pl,estimated_endpoint_error,False,10,[],0,,,,,,0,0,0
+5,3.0,8,0.2,weighted_pl,estimated_endpoint_error,True,10,[],0,,,,,,0,0,0
+5,3.0,8,0.2,weighted_pl,selected_endpoint_error,False,10,[],0,,,,,,0,0,0
+5,3.0,8,0.2,weighted_pl,selected_endpoint_error,True,10,[],0,,,,,,0,0,0
+5,3.0,8,0.2,weighted_pl,u_child_mode_coverage,False,10,[],0,,,,,,0,0,0
+5,3.0,8,0.2,weighted_pl,u_child_mode_coverage,True,10,[],0,,,,,,0,0,0
+5,3.0,8,0.2,weighted_pl,mode_coverage,False,10,"[42, 43, 44, 45, 46, 47, 48, 49, 50, 51]",10,0.0,0.0,0.0,0.0,0.0,0,10,0
+5,3.0,8,0.2,weighted_pl,mode_coverage,True,10,[],0,,,,,,0,0,0
+5,3.0,8,0.2,weighted_pl,selected_endpoints,False,10,"[42, 43, 44, 45, 46, 47, 48, 49, 50, 51]",10,0.0,0.0,0.0,0.0,0.0,0,10,0
+5,3.0,8,0.2,weighted_pl,selected_endpoints,True,10,[],0,,,,,,0,0,0
+5,3.0,8,0.2,weighted_pl,effective_endpoints,False,10,[],0,,,,,,0,0,0
+5,3.0,8,0.2,weighted_pl,effective_endpoints,True,10,[],0,,,,,,0,0,0
+5,3.0,8,0.2,weighted_pl,u_mass,False,10,"[42, 43, 44, 45, 46, 47, 48, 49, 50, 51]",10,0.0,0.0,0.0,0.0,0.0,0,10,0
+5,3.0,8,0.2,weighted_pl,u_mass,True,10,[],0,,,,,,0,0,0
+5,3.0,8,0.2,weighted_pl,incremental_seconds,False,10,"[42, 43, 44, 45, 46, 47, 48, 49, 50, 51]",10,0.00010039830008281569,0.000153641730212444,4.8585781112042875e-05,-6.907299984959536e-05,0.0004956610000590445,1,0,9
+5,3.0,8,0.2,weighted_pl,incremental_seconds,True,10,[],0,,,,,,0,0,0
+5,3.0,8,0.2,nores,mcc,False,10,"[42, 43, 44, 45, 46, 47, 48, 49, 50, 51]",10,0.010162555437717935,0.02143330262975101,0.006777805408968979,0.0,0.05211216811875863,2,8,0
+5,3.0,8,0.2,nores,mcc,True,10,[],0,,,,,,0,0,0
+5,3.0,8,0.2,nores,gmean,False,10,"[42, 43, 44, 45, 46, 47, 48, 49, 50, 51]",10,0.010825193154495228,0.022869897353166215,0.007232096549026147,0.0,0.0572801353314899,2,8,0
+5,3.0,8,0.2,nores,gmean,True,10,[],0,,,,,,0,0,0
+5,3.0,8,0.2,nores,ap,False,10,"[42, 43, 44, 45, 46, 47, 48, 49, 50, 51]",10,-0.0016033290565110048,0.005088329937875536,0.0016090712090109764,-0.016084896377805635,5.1605812695587616e-05,1,8,1
+5,3.0,8,0.2,nores,ap,True,10,[],0,,,,,,0,0,0
+5,3.0,8,0.2,nores,realized_lineage_error,False,10,[],0,,,,,,0,0,0
+5,3.0,8,0.2,nores,realized_lineage_error,True,10,[],0,,,,,,0,0,0
+5,3.0,8,0.2,nores,oracle_endpoint_error,False,10,[],0,,,,,,0,0,0
+5,3.0,8,0.2,nores,oracle_endpoint_error,True,10,[],0,,,,,,0,0,0
+5,3.0,8,0.2,nores,oracle_u_child_error,False,10,[],0,,,,,,0,0,0
+5,3.0,8,0.2,nores,oracle_u_child_error,True,10,[],0,,,,,,0,0,0
+5,3.0,8,0.2,nores,oracle_added_minority_error,False,10,[],0,,,,,,0,0,0
+5,3.0,8,0.2,nores,oracle_added_minority_error,True,10,[],0,,,,,,0,0,0
+5,3.0,8,0.2,nores,estimated_endpoint_error,False,10,[],0,,,,,,0,0,0
+5,3.0,8,0.2,nores,estimated_endpoint_error,True,10,[],0,,,,,,0,0,0
+5,3.0,8,0.2,nores,selected_endpoint_error,False,10,[],0,,,,,,0,0,0
+5,3.0,8,0.2,nores,selected_endpoint_error,True,10,[],0,,,,,,0,0,0
+5,3.0,8,0.2,nores,u_child_mode_coverage,False,10,[],0,,,,,,0,0,0
+5,3.0,8,0.2,nores,u_child_mode_coverage,True,10,[],0,,,,,,0,0,0
+5,3.0,8,0.2,nores,mode_coverage,False,10,"[42, 43, 44, 45, 46, 47, 48, 49, 50, 51]",10,0.1,0.21081851067789198,0.06666666666666667,0.0,0.5,2,8,0
+5,3.0,8,0.2,nores,mode_coverage,True,10,[],0,,,,,,0,0,0
+5,3.0,8,0.2,nores,selected_endpoints,False,10,"[42, 43, 44, 45, 46, 47, 48, 49, 50, 51]",10,0.0,0.0,0.0,0.0,0.0,0,10,0
+5,3.0,8,0.2,nores,selected_endpoints,True,10,[],0,,,,,,0,0,0
+5,3.0,8,0.2,nores,effective_endpoints,False,10,[],0,,,,,,0,0,0
+5,3.0,8,0.2,nores,effective_endpoints,True,10,[],0,,,,,,0,0,0
+5,3.0,8,0.2,nores,u_mass,False,10,"[42, 43, 44, 45, 46, 47, 48, 49, 50, 51]",10,0.0,0.0,0.0,0.0,0.0,0,10,0
+5,3.0,8,0.2,nores,u_mass,True,10,[],0,,,,,,0,0,0
+5,3.0,8,0.2,nores,incremental_seconds,False,10,"[42, 43, 44, 45, 46, 47, 48, 49, 50, 51]",10,9.916220010381948e-05,0.00019851382241498774,6.277558258575486e-05,-7.227600008263835e-05,0.000603679999585438,4,0,6
+5,3.0,8,0.2,nores,incremental_seconds,True,10,[],0,,,,,,0,0,0
+6,3.0,32,0.02,parent,mcc,False,10,"[42, 43, 44, 45, 46, 47, 48, 49, 50, 51]",10,-0.0002678714175859187,0.0016512632658965576,0.0005221752936801362,-0.0037734477983754067,0.0022040439779008603,2,5,3
+6,3.0,32,0.02,parent,mcc,True,10,"[42, 46, 47, 48, 51]",5,-0.0005357428351718374,0.002440414022051351,0.0010913863293100982,-0.0037734477983754067,0.0022040439779008603,2,0,3
+6,3.0,32,0.02,parent,gmean,False,10,"[42, 43, 44, 45, 46, 47, 48, 49, 50, 51]",10,-0.0012060969070896044,0.00208344786861836,0.0006588440651057264,-0.00554418364902054,0.00028530693668460394,1,5,4
+6,3.0,32,0.02,parent,gmean,True,10,"[42, 46, 47, 48, 51]",5,-0.002412193814179209,0.0024758886131216796,0.0011072510487315505,-0.00554418364902054,0.00028530693668460394,1,0,4
+6,3.0,32,0.02,parent,ap,False,10,"[42, 43, 44, 45, 46, 47, 48, 49, 50, 51]",10,0.00017829244357463468,0.00042295537941315766,0.00013375023475662692,-5.617508400457272e-05,0.0012535044355747038,3,5,2
+6,3.0,32,0.02,parent,ap,True,10,"[42, 46, 47, 48, 51]",5,0.00035658488714926937,0.0005683615316004002,0.0002541790040908779,-5.617508400457272e-05,0.0012535044355747038,3,0,2
+6,3.0,32,0.02,parent,realized_lineage_error,False,10,[],0,,,,,,0,0,0
+6,3.0,32,0.02,parent,realized_lineage_error,True,10,[],0,,,,,,0,0,0
+6,3.0,32,0.02,parent,oracle_endpoint_error,False,10,[],0,,,,,,0,0,0
+6,3.0,32,0.02,parent,oracle_endpoint_error,True,10,[],0,,,,,,0,0,0
+6,3.0,32,0.02,parent,oracle_u_child_error,False,10,[],0,,,,,,0,0,0
+6,3.0,32,0.02,parent,oracle_u_child_error,True,10,[],0,,,,,,0,0,0
+6,3.0,32,0.02,parent,oracle_added_minority_error,False,10,"[42, 43, 44, 45, 46, 47, 48, 49, 51]",9,-0.030441037141844676,0.03408894945161682,0.01136298315053894,-0.07985915363378976,0.0,5,4,0
+6,3.0,32,0.02,parent,oracle_added_minority_error,True,10,"[42, 46, 47, 48, 51]",5,-0.054793866855320415,0.025615050523894605,0.011455398843703987,-0.07985915363378976,-0.01913893810433559,5,0,0
+6,3.0,32,0.02,parent,estimated_endpoint_error,False,10,[],0,,,,,,0,0,0
+6,3.0,32,0.02,parent,estimated_endpoint_error,True,10,[],0,,,,,,0,0,0
+6,3.0,32,0.02,parent,selected_endpoint_error,False,10,[],0,,,,,,0,0,0
+6,3.0,32,0.02,parent,selected_endpoint_error,True,10,[],0,,,,,,0,0,0
+6,3.0,32,0.02,parent,u_child_mode_coverage,False,10,[],0,,,,,,0,0,0
+6,3.0,32,0.02,parent,u_child_mode_coverage,True,10,[],0,,,,,,0,0,0
+6,3.0,32,0.02,parent,mode_coverage,False,10,"[42, 43, 44, 45, 46, 47, 48, 49, 50, 51]",10,0.0,0.0,0.0,0.0,0.0,0,10,0
+6,3.0,32,0.02,parent,mode_coverage,True,10,"[42, 46, 47, 48, 51]",5,0.0,0.0,0.0,0.0,0.0,0,5,0
+6,3.0,32,0.02,parent,selected_endpoints,False,10,"[42, 43, 44, 45, 46, 47, 48, 49, 50, 51]",10,0.6,0.6992058987801011,0.22110831935702666,0.0,2.0,5,5,0
+6,3.0,32,0.02,parent,selected_endpoints,True,10,"[42, 46, 47, 48, 51]",5,1.2,0.44721359549995804,0.20000000000000004,1.0,2.0,5,0,0
+6,3.0,32,0.02,parent,effective_endpoints,False,10,[],0,,,,,,0,0,0
+6,3.0,32,0.02,parent,effective_endpoints,True,10,[],0,,,,,,0,0,0
+6,3.0,32,0.02,parent,u_mass,False,10,"[42, 43, 44, 45, 46, 47, 48, 49, 50, 51]",10,5.6,6.603029607687671,2.0880613017821097,0.0,16.0,5,5,0
+6,3.0,32,0.02,parent,u_mass,True,10,"[42, 46, 47, 48, 51]",5,11.2,4.43846820423443,1.9849433241279208,5.0,16.0,5,0,0
+6,3.0,32,0.02,parent,incremental_seconds,False,10,"[42, 43, 44, 45, 46, 47, 48, 49, 50, 51]",10,1.6042300194385463e-05,0.0010378522523037583,0.0003281976992015611,-0.0025962179997804924,0.0014440230002037424,3,0,7
+6,3.0,32,0.02,parent,incremental_seconds,True,10,"[42, 46, 47, 48, 51]",5,5.3372000184026544e-05,0.0015538746182671317,0.0006949138549913685,-0.0025962179997804924,0.0014440230002037424,1,0,4
+6,3.0,32,0.02,unconstrained,mcc,False,10,"[42, 43, 44, 45, 46, 47, 48, 49, 50, 51]",10,0.0002753914770941113,0.0008708643158154799,0.0002753914770941112,0.0,0.0027539147709411127,1,9,0
+6,3.0,32,0.02,unconstrained,mcc,True,10,"[42, 46, 47, 48, 51]",5,0.0005507829541882226,0.0012315881264130181,0.0005507829541882226,0.0,0.0027539147709411127,1,4,0
+6,3.0,32,0.02,unconstrained,gmean,False,10,"[42, 43, 44, 45, 46, 47, 48, 49, 50, 51]",10,0.0002502033907823997,0.0007912125931695618,0.00025020339078239977,0.0,0.0025020339078239973,1,9,0
+6,3.0,32,0.02,unconstrained,gmean,True,10,"[42, 46, 47, 48, 51]",5,0.0005004067815647994,0.00111894357998078,0.0005004067815647994,0.0,0.0025020339078239973,1,4,0
+6,3.0,32,0.02,unconstrained,ap,False,10,"[42, 43, 44, 45, 46, 47, 48, 49, 50, 51]",10,1.5792355083821264e-05,4.9939811683014506e-05,1.579235508382126e-05,0.0,0.00015792355083821263,1,9,0
+6,3.0,32,0.02,unconstrained,ap,True,10,"[42, 46, 47, 48, 51]",5,3.158471016764253e-05,7.062555898447748e-05,3.158471016764253e-05,0.0,0.00015792355083821263,1,4,0
+6,3.0,32,0.02,unconstrained,realized_lineage_error,False,10,"[42, 46, 47, 48, 51]",5,0.0,0.0,0.0,0.0,0.0,0,5,0
+6,3.0,32,0.02,unconstrained,realized_lineage_error,True,10,"[42, 46, 47, 48, 51]",5,0.0,0.0,0.0,0.0,0.0,0,5,0
+6,3.0,32,0.02,unconstrained,oracle_endpoint_error,False,10,"[42, 46, 47, 48, 51]",5,0.0,0.0,0.0,0.0,0.0,0,5,0
+6,3.0,32,0.02,unconstrained,oracle_endpoint_error,True,10,"[42, 46, 47, 48, 51]",5,0.0,0.0,0.0,0.0,0.0,0,5,0
+6,3.0,32,0.02,unconstrained,oracle_u_child_error,False,10,"[42, 46, 47, 48, 51]",5,0.0004180340397401533,0.0009347525297678312,0.00041803403974015324,0.0,0.0020901701987007665,0,4,1
+6,3.0,32,0.02,unconstrained,oracle_u_child_error,True,10,"[42, 46, 47, 48, 51]",5,0.0004180340397401533,0.0009347525297678312,0.00041803403974015324,0.0,0.0020901701987007665,0,4,1
+6,3.0,32,0.02,unconstrained,oracle_added_minority_error,False,10,"[42, 43, 44, 45, 46, 47, 48, 49, 51]",9,0.005505255009929038,0.016515765029787115,0.005505255009929038,0.0,0.04954729508936134,0,8,1
+6,3.0,32,0.02,unconstrained,oracle_added_minority_error,True,10,"[42, 46, 47, 48, 51]",5,0.009909459017872269,0.022158223984210697,0.009909459017872269,0.0,0.04954729508936134,0,4,1
+6,3.0,32,0.02,unconstrained,estimated_endpoint_error,False,10,"[42, 46, 47, 48, 51]",5,-2.7755575615628915e-18,6.206335383118184e-18,2.775557561562892e-18,-1.3877787807814457e-17,0.0,0,5,0
+6,3.0,32,0.02,unconstrained,estimated_endpoint_error,True,10,"[42, 46, 47, 48, 51]",5,-2.7755575615628915e-18,6.206335383118184e-18,2.775557561562892e-18,-1.3877787807814457e-17,0.0,0,5,0
+6,3.0,32,0.02,unconstrained,selected_endpoint_error,False,10,"[42, 46, 47, 48, 51]",5,0.0,0.0,0.0,0.0,0.0,0,5,0
+6,3.0,32,0.02,unconstrained,selected_endpoint_error,True,10,"[42, 46, 47, 48, 51]",5,0.0,0.0,0.0,0.0,0.0,0,5,0
+6,3.0,32,0.02,unconstrained,u_child_mode_coverage,False,10,"[42, 46, 47, 48, 51]",5,0.0,0.0,0.0,0.0,0.0,0,5,0
+6,3.0,32,0.02,unconstrained,u_child_mode_coverage,True,10,"[42, 46, 47, 48, 51]",5,0.0,0.0,0.0,0.0,0.0,0,5,0
+6,3.0,32,0.02,unconstrained,mode_coverage,False,10,"[42, 43, 44, 45, 46, 47, 48, 49, 50, 51]",10,0.0,0.0,0.0,0.0,0.0,0,10,0
+6,3.0,32,0.02,unconstrained,mode_coverage,True,10,"[42, 46, 47, 48, 51]",5,0.0,0.0,0.0,0.0,0.0,0,5,0
+6,3.0,32,0.02,unconstrained,selected_endpoints,False,10,"[42, 43, 44, 45, 46, 47, 48, 49, 50, 51]",10,0.0,0.0,0.0,0.0,0.0,0,10,0
+6,3.0,32,0.02,unconstrained,selected_endpoints,True,10,"[42, 46, 47, 48, 51]",5,0.0,0.0,0.0,0.0,0.0,0,5,0
+6,3.0,32,0.02,unconstrained,effective_endpoints,False,10,"[42, 46, 47, 48, 51]",5,0.0,0.0,0.0,0.0,0.0,0,5,0
+6,3.0,32,0.02,unconstrained,effective_endpoints,True,10,"[42, 46, 47, 48, 51]",5,0.0,0.0,0.0,0.0,0.0,0,5,0
+6,3.0,32,0.02,unconstrained,u_mass,False,10,"[42, 43, 44, 45, 46, 47, 48, 49, 50, 51]",10,-0.4,1.2649110640673518,0.39999999999999997,-4.0,0.0,0,9,1
+6,3.0,32,0.02,unconstrained,u_mass,True,10,"[42, 46, 47, 48, 51]",5,-0.8,1.7888543819998322,0.8000000000000002,-4.0,0.0,0,4,1
+6,3.0,32,0.02,unconstrained,incremental_seconds,False,10,"[42, 43, 44, 45, 46, 47, 48, 49, 50, 51]",10,-9.392809974997362e-05,0.00024969155635809725,7.895940306038848e-05,-0.0005395659995883761,0.00018077499998980784,6,0,4
+6,3.0,32,0.02,unconstrained,incremental_seconds,True,10,"[42, 46, 47, 48, 51]",5,-7.213279977804631e-05,0.00030222002402090497,0.00013515690357447256,-0.0005395659995883761,0.00018077499998980784,2,0,3
+6,3.0,32,0.02,count_matched,mcc,False,10,"[42, 43, 44, 45, 46, 47, 48, 49, 50, 51]",10,0.0,0.0,0.0,0.0,0.0,0,10,0
+6,3.0,32,0.02,count_matched,mcc,True,10,"[42, 46, 47, 48, 51]",5,0.0,0.0,0.0,0.0,0.0,0,5,0
+6,3.0,32,0.02,count_matched,gmean,False,10,"[42, 43, 44, 45, 46, 47, 48, 49, 50, 51]",10,0.0,0.0,0.0,0.0,0.0,0,10,0
+6,3.0,32,0.02,count_matched,gmean,True,10,"[42, 46, 47, 48, 51]",5,0.0,0.0,0.0,0.0,0.0,0,5,0
+6,3.0,32,0.02,count_matched,ap,False,10,"[42, 43, 44, 45, 46, 47, 48, 49, 50, 51]",10,0.0,0.0,0.0,0.0,0.0,0,10,0
+6,3.0,32,0.02,count_matched,ap,True,10,"[42, 46, 47, 48, 51]",5,0.0,0.0,0.0,0.0,0.0,0,5,0
+6,3.0,32,0.02,count_matched,realized_lineage_error,False,10,"[42, 46, 47, 48, 51]",5,0.0,0.0,0.0,0.0,0.0,0,5,0
+6,3.0,32,0.02,count_matched,realized_lineage_error,True,10,"[42, 46, 47, 48, 51]",5,0.0,0.0,0.0,0.0,0.0,0,5,0
+6,3.0,32,0.02,count_matched,oracle_endpoint_error,False,10,"[42, 46, 47, 48, 51]",5,0.0,0.0,0.0,0.0,0.0,0,5,0
+6,3.0,32,0.02,count_matched,oracle_endpoint_error,True,10,"[42, 46, 47, 48, 51]",5,0.0,0.0,0.0,0.0,0.0,0,5,0
+6,3.0,32,0.02,count_matched,oracle_u_child_error,False,10,"[42, 46, 47, 48, 51]",5,0.0,0.0,0.0,0.0,0.0,0,5,0
+6,3.0,32,0.02,count_matched,oracle_u_child_error,True,10,"[42, 46, 47, 48, 51]",5,0.0,0.0,0.0,0.0,0.0,0,5,0
+6,3.0,32,0.02,count_matched,oracle_added_minority_error,False,10,"[42, 43, 44, 45, 46, 47, 48, 49, 51]",9,0.0,0.0,0.0,0.0,0.0,0,9,0
+6,3.0,32,0.02,count_matched,oracle_added_minority_error,True,10,"[42, 46, 47, 48, 51]",5,0.0,0.0,0.0,0.0,0.0,0,5,0
+6,3.0,32,0.02,count_matched,estimated_endpoint_error,False,10,"[42, 46, 47, 48, 51]",5,0.0,0.0,0.0,0.0,0.0,0,5,0
+6,3.0,32,0.02,count_matched,estimated_endpoint_error,True,10,"[42, 46, 47, 48, 51]",5,0.0,0.0,0.0,0.0,0.0,0,5,0
+6,3.0,32,0.02,count_matched,selected_endpoint_error,False,10,"[42, 46, 47, 48, 51]",5,0.0,0.0,0.0,0.0,0.0,0,5,0
+6,3.0,32,0.02,count_matched,selected_endpoint_error,True,10,"[42, 46, 47, 48, 51]",5,0.0,0.0,0.0,0.0,0.0,0,5,0
+6,3.0,32,0.02,count_matched,u_child_mode_coverage,False,10,"[42, 46, 47, 48, 51]",5,0.0,0.0,0.0,0.0,0.0,0,5,0
+6,3.0,32,0.02,count_matched,u_child_mode_coverage,True,10,"[42, 46, 47, 48, 51]",5,0.0,0.0,0.0,0.0,0.0,0,5,0
+6,3.0,32,0.02,count_matched,mode_coverage,False,10,"[42, 43, 44, 45, 46, 47, 48, 49, 50, 51]",10,0.0,0.0,0.0,0.0,0.0,0,10,0
+6,3.0,32,0.02,count_matched,mode_coverage,True,10,"[42, 46, 47, 48, 51]",5,0.0,0.0,0.0,0.0,0.0,0,5,0
+6,3.0,32,0.02,count_matched,selected_endpoints,False,10,"[42, 43, 44, 45, 46, 47, 48, 49, 50, 51]",10,0.0,0.0,0.0,0.0,0.0,0,10,0
+6,3.0,32,0.02,count_matched,selected_endpoints,True,10,"[42, 46, 47, 48, 51]",5,0.0,0.0,0.0,0.0,0.0,0,5,0
+6,3.0,32,0.02,count_matched,effective_endpoints,False,10,"[42, 46, 47, 48, 51]",5,0.0,0.0,0.0,0.0,0.0,0,5,0
+6,3.0,32,0.02,count_matched,effective_endpoints,True,10,"[42, 46, 47, 48, 51]",5,0.0,0.0,0.0,0.0,0.0,0,5,0
+6,3.0,32,0.02,count_matched,u_mass,False,10,"[42, 43, 44, 45, 46, 47, 48, 49, 50, 51]",10,0.0,0.0,0.0,0.0,0.0,0,10,0
+6,3.0,32,0.02,count_matched,u_mass,True,10,"[42, 46, 47, 48, 51]",5,0.0,0.0,0.0,0.0,0.0,0,5,0
+6,3.0,32,0.02,count_matched,incremental_seconds,False,10,"[42, 43, 44, 45, 46, 47, 48, 49, 50, 51]",10,-6.314539969025646e-05,0.0002317460998046877,7.328455142435155e-05,-0.0006624199995712843,0.0002126330005012278,6,0,4
+6,3.0,32,0.02,count_matched,incremental_seconds,True,10,"[42, 46, 47, 48, 51]",5,-0.0001623643998755142,0.0002905733441789949,0.00012994835000673508,-0.0006624199995712843,8.561599997847225e-05,4,0,1
+6,3.0,32,0.02,threshold_matched,mcc,False,10,"[42, 43, 44, 45, 46, 47, 48, 49, 50, 51]",10,0.0,0.0,0.0,0.0,0.0,0,10,0
+6,3.0,32,0.02,threshold_matched,mcc,True,10,"[42, 46, 47, 48, 51]",5,0.0,0.0,0.0,0.0,0.0,0,5,0
+6,3.0,32,0.02,threshold_matched,gmean,False,10,"[42, 43, 44, 45, 46, 47, 48, 49, 50, 51]",10,0.0,0.0,0.0,0.0,0.0,0,10,0
+6,3.0,32,0.02,threshold_matched,gmean,True,10,"[42, 46, 47, 48, 51]",5,0.0,0.0,0.0,0.0,0.0,0,5,0
+6,3.0,32,0.02,threshold_matched,ap,False,10,"[42, 43, 44, 45, 46, 47, 48, 49, 50, 51]",10,0.0,0.0,0.0,0.0,0.0,0,10,0
+6,3.0,32,0.02,threshold_matched,ap,True,10,"[42, 46, 47, 48, 51]",5,0.0,0.0,0.0,0.0,0.0,0,5,0
+6,3.0,32,0.02,threshold_matched,realized_lineage_error,False,10,"[42, 46, 47, 48, 51]",5,0.0,0.0,0.0,0.0,0.0,0,5,0
+6,3.0,32,0.02,threshold_matched,realized_lineage_error,True,10,"[42, 46, 47, 48, 51]",5,0.0,0.0,0.0,0.0,0.0,0,5,0
+6,3.0,32,0.02,threshold_matched,oracle_endpoint_error,False,10,"[42, 46, 47, 48, 51]",5,0.0,0.0,0.0,0.0,0.0,0,5,0
+6,3.0,32,0.02,threshold_matched,oracle_endpoint_error,True,10,"[42, 46, 47, 48, 51]",5,0.0,0.0,0.0,0.0,0.0,0,5,0
+6,3.0,32,0.02,threshold_matched,oracle_u_child_error,False,10,"[42, 46, 47, 48, 51]",5,0.0,0.0,0.0,0.0,0.0,0,5,0
+6,3.0,32,0.02,threshold_matched,oracle_u_child_error,True,10,"[42, 46, 47, 48, 51]",5,0.0,0.0,0.0,0.0,0.0,0,5,0
+6,3.0,32,0.02,threshold_matched,oracle_added_minority_error,False,10,"[42, 43, 44, 45, 46, 47, 48, 49, 51]",9,0.0,0.0,0.0,0.0,0.0,0,9,0
+6,3.0,32,0.02,threshold_matched,oracle_added_minority_error,True,10,"[42, 46, 47, 48, 51]",5,0.0,0.0,0.0,0.0,0.0,0,5,0
+6,3.0,32,0.02,threshold_matched,estimated_endpoint_error,False,10,"[42, 46, 47, 48, 51]",5,0.0,0.0,0.0,0.0,0.0,0,5,0
+6,3.0,32,0.02,threshold_matched,estimated_endpoint_error,True,10,"[42, 46, 47, 48, 51]",5,0.0,0.0,0.0,0.0,0.0,0,5,0
+6,3.0,32,0.02,threshold_matched,selected_endpoint_error,False,10,"[42, 46, 47, 48, 51]",5,0.0,0.0,0.0,0.0,0.0,0,5,0
+6,3.0,32,0.02,threshold_matched,selected_endpoint_error,True,10,"[42, 46, 47, 48, 51]",5,0.0,0.0,0.0,0.0,0.0,0,5,0
+6,3.0,32,0.02,threshold_matched,u_child_mode_coverage,False,10,"[42, 46, 47, 48, 51]",5,0.0,0.0,0.0,0.0,0.0,0,5,0
+6,3.0,32,0.02,threshold_matched,u_child_mode_coverage,True,10,"[42, 46, 47, 48, 51]",5,0.0,0.0,0.0,0.0,0.0,0,5,0
+6,3.0,32,0.02,threshold_matched,mode_coverage,False,10,"[42, 43, 44, 45, 46, 47, 48, 49, 50, 51]",10,0.0,0.0,0.0,0.0,0.0,0,10,0
+6,3.0,32,0.02,threshold_matched,mode_coverage,True,10,"[42, 46, 47, 48, 51]",5,0.0,0.0,0.0,0.0,0.0,0,5,0
+6,3.0,32,0.02,threshold_matched,selected_endpoints,False,10,"[42, 43, 44, 45, 46, 47, 48, 49, 50, 51]",10,0.0,0.0,0.0,0.0,0.0,0,10,0
+6,3.0,32,0.02,threshold_matched,selected_endpoints,True,10,"[42, 46, 47, 48, 51]",5,0.0,0.0,0.0,0.0,0.0,0,5,0
+6,3.0,32,0.02,threshold_matched,effective_endpoints,False,10,"[42, 46, 47, 48, 51]",5,0.0,0.0,0.0,0.0,0.0,0,5,0
+6,3.0,32,0.02,threshold_matched,effective_endpoints,True,10,"[42, 46, 47, 48, 51]",5,0.0,0.0,0.0,0.0,0.0,0,5,0
+6,3.0,32,0.02,threshold_matched,u_mass,False,10,"[42, 43, 44, 45, 46, 47, 48, 49, 50, 51]",10,0.0,0.0,0.0,0.0,0.0,0,10,0
+6,3.0,32,0.02,threshold_matched,u_mass,True,10,"[42, 46, 47, 48, 51]",5,0.0,0.0,0.0,0.0,0.0,0,5,0
+6,3.0,32,0.02,threshold_matched,incremental_seconds,False,10,"[42, 43, 44, 45, 46, 47, 48, 49, 50, 51]",10,-5.6120299950634946e-05,0.00023363820616701094,7.388288799237528e-05,-0.0006400240008588298,0.00021219200061750598,6,0,4
+6,3.0,32,0.02,threshold_matched,incremental_seconds,True,10,"[42, 46, 47, 48, 51]",5,-7.109520010999404e-05,0.0003449824837193806,0.00015428085692864989,-0.0006400240008588298,0.00021219200061750598,2,0,3
+6,3.0,32,0.02,weighted_pl,mcc,False,10,"[42, 43, 44, 45, 46, 47, 48, 49, 50, 51]",10,0.00020010628101231332,0.0007732746119684118,0.0002445309030603081,-0.0008635723793534167,0.001735065596875085,3,5,2
+6,3.0,32,0.02,weighted_pl,mcc,True,10,"[42, 46, 47, 48, 51]",5,0.00040021256202462665,0.001115925332697969,0.0004990569803453455,-0.0008635723793534167,0.001735065596875085,3,0,2
+6,3.0,32,0.02,weighted_pl,gmean,False,10,"[42, 43, 44, 45, 46, 47, 48, 49, 50, 51]",10,0.00035608334091682405,0.0007333779792236167,0.00023191448001582727,-0.0006613543073669126,0.0017660615481353004,4,5,1
+6,3.0,32,0.02,weighted_pl,gmean,True,10,"[42, 46, 47, 48, 51]",5,0.0007121666818336481,0.0009450708818530715,0.000422648547075828,-0.0006613543073669126,0.0017660615481353004,4,0,1
+6,3.0,32,0.02,weighted_pl,ap,False,10,"[42, 43, 44, 45, 46, 47, 48, 49, 50, 51]",10,3.867944148527869e-06,8.685451465026576e-05,2.746580913633026e-05,-0.00020238468991140568,0.0001109906433589547,3,5,2
+6,3.0,32,0.02,weighted_pl,ap,True,10,"[42, 46, 47, 48, 51]",5,7.735888297055737e-06,0.00013013814824719704,5.819954918933553e-05,-0.00020238468991140568,0.0001109906433589547,3,0,2
+6,3.0,32,0.02,weighted_pl,realized_lineage_error,False,10,"[42, 46, 47, 48, 51]",5,0.0,0.0,0.0,0.0,0.0,0,5,0
+6,3.0,32,0.02,weighted_pl,realized_lineage_error,True,10,"[42, 46, 47, 48, 51]",5,0.0,0.0,0.0,0.0,0.0,0,5,0
+6,3.0,32,0.02,weighted_pl,oracle_endpoint_error,False,10,"[42, 46, 47, 48, 51]",5,0.0,0.0,0.0,0.0,0.0,0,5,0
+6,3.0,32,0.02,weighted_pl,oracle_endpoint_error,True,10,"[42, 46, 47, 48, 51]",5,0.0,0.0,0.0,0.0,0.0,0,5,0
+6,3.0,32,0.02,weighted_pl,oracle_u_child_error,False,10,[],0,,,,,,0,0,0
+6,3.0,32,0.02,weighted_pl,oracle_u_child_error,True,10,[],0,,,,,,0,0,0
+6,3.0,32,0.02,weighted_pl,oracle_added_minority_error,False,10,"[42, 43, 44, 45, 46, 47, 48, 49, 51]",9,0.007115681873087217,0.007984503349047158,0.0026615011163490525,0.0,0.022034028132543182,0,4,5
+6,3.0,32,0.02,weighted_pl,oracle_added_minority_error,True,10,"[42, 46, 47, 48, 51]",5,0.01280822737155699,0.006030366168627155,0.0026968617364530557,0.005853774380557536,0.022034028132543182,0,0,5
+6,3.0,32,0.02,weighted_pl,estimated_endpoint_error,False,10,"[42, 46, 47, 48, 51]",5,0.0,0.0,0.0,0.0,0.0,0,5,0
+6,3.0,32,0.02,weighted_pl,estimated_endpoint_error,True,10,"[42, 46, 47, 48, 51]",5,0.0,0.0,0.0,0.0,0.0,0,5,0
+6,3.0,32,0.02,weighted_pl,selected_endpoint_error,False,10,"[42, 46, 47, 48, 51]",5,0.0,0.0,0.0,0.0,0.0,0,5,0
+6,3.0,32,0.02,weighted_pl,selected_endpoint_error,True,10,"[42, 46, 47, 48, 51]",5,0.0,0.0,0.0,0.0,0.0,0,5,0
+6,3.0,32,0.02,weighted_pl,u_child_mode_coverage,False,10,[],0,,,,,,0,0,0
+6,3.0,32,0.02,weighted_pl,u_child_mode_coverage,True,10,[],0,,,,,,0,0,0
+6,3.0,32,0.02,weighted_pl,mode_coverage,False,10,"[42, 43, 44, 45, 46, 47, 48, 49, 50, 51]",10,0.0,0.0,0.0,0.0,0.0,0,10,0
+6,3.0,32,0.02,weighted_pl,mode_coverage,True,10,"[42, 46, 47, 48, 51]",5,0.0,0.0,0.0,0.0,0.0,0,5,0
+6,3.0,32,0.02,weighted_pl,selected_endpoints,False,10,"[42, 43, 44, 45, 46, 47, 48, 49, 50, 51]",10,0.0,0.0,0.0,0.0,0.0,0,10,0
+6,3.0,32,0.02,weighted_pl,selected_endpoints,True,10,"[42, 46, 47, 48, 51]",5,0.0,0.0,0.0,0.0,0.0,0,5,0
+6,3.0,32,0.02,weighted_pl,effective_endpoints,False,10,"[42, 46, 47, 48, 51]",5,0.0,0.0,0.0,0.0,0.0,0,5,0
+6,3.0,32,0.02,weighted_pl,effective_endpoints,True,10,"[42, 46, 47, 48, 51]",5,0.0,0.0,0.0,0.0,0.0,0,5,0
+6,3.0,32,0.02,weighted_pl,u_mass,False,10,"[42, 43, 44, 45, 46, 47, 48, 49, 50, 51]",10,0.0,0.0,0.0,0.0,0.0,0,10,0
+6,3.0,32,0.02,weighted_pl,u_mass,True,10,"[42, 46, 47, 48, 51]",5,0.0,0.0,0.0,0.0,0.0,0,5,0
+6,3.0,32,0.02,weighted_pl,incremental_seconds,False,10,"[42, 43, 44, 45, 46, 47, 48, 49, 50, 51]",10,-7.279609990291646e-05,0.00030243245625561325,9.563754001269764e-05,-0.0005263469997771608,0.000363244000254781,5,0,5
+6,3.0,32,0.02,weighted_pl,incremental_seconds,True,10,"[42, 46, 47, 48, 51]",5,-9.667360009188997e-05,0.0003401858304000385,0.00015213572835134012,-0.00044983499947193195,0.000363244000254781,3,0,2
+6,3.0,32,0.02,nores,mcc,False,10,"[42, 43, 44, 45, 46, 47, 48, 49, 50, 51]",10,0.014507908636454913,0.014410339729538812,0.004556949540215743,-0.008099300842636659,0.03135050056415223,7,1,2
+6,3.0,32,0.02,nores,mcc,True,10,"[42, 46, 47, 48, 51]",5,0.014753763472369497,0.014324990595735214,0.00640633054982183,-0.008099300842636659,0.029942427135682403,4,0,1
+6,3.0,32,0.02,nores,gmean,False,10,"[42, 43, 44, 45, 46, 47, 48, 49, 50, 51]",10,0.02852534164524767,0.01504411721425147,0.0047573675783581975,0.0,0.04757463393114325,9,1,0
+6,3.0,32,0.02,nores,gmean,True,10,"[42, 46, 47, 48, 51]",5,0.03243798739902466,0.012381133713226137,0.005537011324257606,0.018912636536609573,0.04757463393114325,5,0,0
+6,3.0,32,0.02,nores,ap,False,10,"[42, 43, 44, 45, 46, 47, 48, 49, 50, 51]",10,-0.0004168199725674393,0.0017613949904543868,0.0005570020029046403,-0.004546718562830954,0.001584110526896776,3,1,6
+6,3.0,32,0.02,nores,ap,True,10,"[42, 46, 47, 48, 51]",5,-0.0007318386928299558,0.002273546602062975,0.0010167609504452952,-0.004546718562830954,0.001584110526896776,1,0,4
+6,3.0,32,0.02,nores,realized_lineage_error,False,10,[],0,,,,,,0,0,0
+6,3.0,32,0.02,nores,realized_lineage_error,True,10,[],0,,,,,,0,0,0
+6,3.0,32,0.02,nores,oracle_endpoint_error,False,10,[],0,,,,,,0,0,0
+6,3.0,32,0.02,nores,oracle_endpoint_error,True,10,[],0,,,,,,0,0,0
+6,3.0,32,0.02,nores,oracle_u_child_error,False,10,[],0,,,,,,0,0,0
+6,3.0,32,0.02,nores,oracle_u_child_error,True,10,[],0,,,,,,0,0,0
+6,3.0,32,0.02,nores,oracle_added_minority_error,False,10,[],0,,,,,,0,0,0
+6,3.0,32,0.02,nores,oracle_added_minority_error,True,10,[],0,,,,,,0,0,0
+6,3.0,32,0.02,nores,estimated_endpoint_error,False,10,[],0,,,,,,0,0,0
+6,3.0,32,0.02,nores,estimated_endpoint_error,True,10,[],0,,,,,,0,0,0
+6,3.0,32,0.02,nores,selected_endpoint_error,False,10,[],0,,,,,,0,0,0
+6,3.0,32,0.02,nores,selected_endpoint_error,True,10,[],0,,,,,,0,0,0
+6,3.0,32,0.02,nores,u_child_mode_coverage,False,10,[],0,,,,,,0,0,0
+6,3.0,32,0.02,nores,u_child_mode_coverage,True,10,[],0,,,,,,0,0,0
+6,3.0,32,0.02,nores,mode_coverage,False,10,"[42, 43, 44, 45, 46, 47, 48, 49, 50, 51]",10,0.9,0.31622776601683794,0.09999999999999999,0.0,1.0,9,1,0
+6,3.0,32,0.02,nores,mode_coverage,True,10,"[42, 46, 47, 48, 51]",5,1.0,0.0,0.0,1.0,1.0,5,0,0
+6,3.0,32,0.02,nores,selected_endpoints,False,10,"[42, 43, 44, 45, 46, 47, 48, 49, 50, 51]",10,0.6,0.6992058987801011,0.22110831935702666,0.0,2.0,5,5,0
+6,3.0,32,0.02,nores,selected_endpoints,True,10,"[42, 46, 47, 48, 51]",5,1.2,0.44721359549995804,0.20000000000000004,1.0,2.0,5,0,0
+6,3.0,32,0.02,nores,effective_endpoints,False,10,[],0,,,,,,0,0,0
+6,3.0,32,0.02,nores,effective_endpoints,True,10,[],0,,,,,,0,0,0
+6,3.0,32,0.02,nores,u_mass,False,10,"[42, 43, 44, 45, 46, 47, 48, 49, 50, 51]",10,5.6,6.603029607687671,2.0880613017821097,0.0,16.0,5,5,0
+6,3.0,32,0.02,nores,u_mass,True,10,"[42, 46, 47, 48, 51]",5,11.2,4.43846820423443,1.9849433241279208,5.0,16.0,5,0,0
+6,3.0,32,0.02,nores,incremental_seconds,False,10,"[42, 43, 44, 45, 46, 47, 48, 49, 50, 51]",10,0.0005300408999119099,0.0005894757918094378,0.00018640861276490516,-1.0564000149315689e-05,0.0016261219998341403,1,0,9
+6,3.0,32,0.02,nores,incremental_seconds,True,10,"[42, 46, 47, 48, 51]",5,0.0009955982000064978,0.0004803177784072017,0.00021480464066403674,0.000428402000125061,0.0016261219998341403,0,0,5
+7,3.0,32,0.2,parent,mcc,False,10,"[42, 43, 44, 45, 46, 47, 48, 49, 50, 51]",10,-0.00027986652392977265,0.0015184588011905049,0.0004801788344890792,-0.003486267853815894,0.0020042408090039654,4,2,4
+7,3.0,32,0.2,parent,mcc,True,10,"[42, 43, 44, 45, 46, 48, 49, 51]",8,-0.0003498331549122158,0.0017136277725580066,0.0006058589092026826,-0.003486267853815894,0.0020042408090039654,4,0,4
+7,3.0,32,0.2,parent,gmean,False,10,"[42, 43, 44, 45, 46, 47, 48, 49, 50, 51]",10,-0.0019382768545184504,0.002123160272776378,0.0006714022299557742,-0.007034970403431373,0.0,0,2,8
+7,3.0,32,0.2,parent,gmean,True,10,"[42, 43, 44, 45, 46, 48, 49, 51]",8,-0.002422846068148063,0.0021104499514544264,0.0007461567360141225,-0.007034970403431373,-0.0008919508891382932,0,0,8
+7,3.0,32,0.2,parent,ap,False,10,"[42, 43, 44, 45, 46, 47, 48, 49, 50, 51]",10,0.00020307619550870016,0.0005195464206771581,0.000164295003952782,-0.0006941640003707006,0.0013794051326010415,6,2,2
+7,3.0,32,0.2,parent,ap,True,10,"[42, 43, 44, 45, 46, 48, 49, 51]",8,0.0002538452443858752,0.0005764740727895872,0.00020381436302387224,-0.0006941640003707006,0.0013794051326010415,6,0,2
+7,3.0,32,0.2,parent,realized_lineage_error,False,10,[],0,,,,,,0,0,0
+7,3.0,32,0.2,parent,realized_lineage_error,True,10,[],0,,,,,,0,0,0
+7,3.0,32,0.2,parent,oracle_endpoint_error,False,10,[],0,,,,,,0,0,0
+7,3.0,32,0.2,parent,oracle_endpoint_error,True,10,[],0,,,,,,0,0,0
+7,3.0,32,0.2,parent,oracle_u_child_error,False,10,[],0,,,,,,0,0,0
+7,3.0,32,0.2,parent,oracle_u_child_error,True,10,[],0,,,,,,0,0,0
+7,3.0,32,0.2,parent,oracle_added_minority_error,False,10,"[42, 43, 44, 45, 46, 47, 48, 49, 50, 51]",10,-0.007983988755403421,0.007749504518797386,0.0024506085017166877,-0.0223673756521331,0.0,8,2,0
+7,3.0,32,0.2,parent,oracle_added_minority_error,True,10,"[42, 43, 44, 45, 46, 48, 49, 51]",8,-0.009979985944254277,0.007378861618218524,0.0026088215438397296,-0.0223673756521331,-0.001328187634838423,8,0,0
+7,3.0,32,0.2,parent,estimated_endpoint_error,False,10,[],0,,,,,,0,0,0
+7,3.0,32,0.2,parent,estimated_endpoint_error,True,10,[],0,,,,,,0,0,0
+7,3.0,32,0.2,parent,selected_endpoint_error,False,10,[],0,,,,,,0,0,0
+7,3.0,32,0.2,parent,selected_endpoint_error,True,10,[],0,,,,,,0,0,0
+7,3.0,32,0.2,parent,u_child_mode_coverage,False,10,[],0,,,,,,0,0,0
+7,3.0,32,0.2,parent,u_child_mode_coverage,True,10,[],0,,,,,,0,0,0
+7,3.0,32,0.2,parent,mode_coverage,False,10,"[42, 43, 44, 45, 46, 47, 48, 49, 50, 51]",10,0.0,0.0,0.0,0.0,0.0,0,10,0
+7,3.0,32,0.2,parent,mode_coverage,True,10,"[42, 43, 44, 45, 46, 48, 49, 51]",8,0.0,0.0,0.0,0.0,0.0,0,8,0
+7,3.0,32,0.2,parent,selected_endpoints,False,10,"[42, 43, 44, 45, 46, 47, 48, 49, 50, 51]",10,3.6,2.3190036174568114,0.7333333333333333,0.0,7.0,8,2,0
+7,3.0,32,0.2,parent,selected_endpoints,True,10,"[42, 43, 44, 45, 46, 48, 49, 51]",8,4.5,1.5118578920369088,0.5345224838248487,2.0,7.0,8,0,0
+7,3.0,32,0.2,parent,effective_endpoints,False,10,[],0,,,,,,0,0,0
+7,3.0,32,0.2,parent,effective_endpoints,True,10,[],0,,,,,,0,0,0
+7,3.0,32,0.2,parent,u_mass,False,10,"[42, 43, 44, 45, 46, 47, 48, 49, 50, 51]",10,9.4,7.4266786355379315,2.348521993841138,0.0,24.0,8,2,0
+7,3.0,32,0.2,parent,u_mass,True,10,"[42, 43, 44, 45, 46, 48, 49, 51]",8,11.75,6.273527146441853,2.2180267936034626,4.0,24.0,8,0,0
+7,3.0,32,0.2,parent,incremental_seconds,False,10,"[42, 43, 44, 45, 46, 47, 48, 49, 50, 51]",10,0.0023648158002288256,0.0015765155109759453,0.0004985379781268169,0.00010317300075257663,0.004998626000542572,0,0,10
+7,3.0,32,0.2,parent,incremental_seconds,True,10,"[42, 43, 44, 45, 46, 48, 49, 51]",8,0.0028633740001282604,0.0013246661597539568,0.0004683402121851826,0.001103068999327661,0.004998626000542572,0,0,8
+7,3.0,32,0.2,unconstrained,mcc,False,10,"[42, 43, 44, 45, 46, 47, 48, 49, 50, 51]",10,0.00037165777116553443,0.003644245948869217,0.0011524117552268243,-0.00825872540424255,0.004407023010385314,4,2,4
+7,3.0,32,0.2,unconstrained,mcc,True,10,"[42, 43, 44, 45, 46, 48, 49, 51]",8,0.00046457221395691806,0.004126212948515485,0.001458836578257519,-0.00825872540424255,0.004407023010385314,4,0,4
+7,3.0,32,0.2,unconstrained,gmean,False,10,"[42, 43, 44, 45, 46, 47, 48, 49, 50, 51]",10,0.004178684914589015,0.004548399855950406,0.0014383303253985042,-0.0026408596281283225,0.011671393480284231,7,2,1
+7,3.0,32,0.2,unconstrained,gmean,True,10,"[42, 43, 44, 45, 46, 48, 49, 51]",8,0.0052233561432362685,0.004512489844989801,0.0015954060847138604,-0.0026408596281283225,0.011671393480284231,7,0,1
+7,3.0,32,0.2,unconstrained,ap,False,10,"[42, 43, 44, 45, 46, 47, 48, 49, 50, 51]",10,-0.000741617147146767,0.0020671496287167166,0.0006536901091116232,-0.006019543666349825,0.001729214639022314,3,2,5
+7,3.0,32,0.2,unconstrained,ap,True,10,"[42, 43, 44, 45, 46, 48, 49, 51]",8,-0.0009270214339334587,0.00230164470092825,0.0008137542879542244,-0.006019543666349825,0.001729214639022314,3,0,5
+7,3.0,32,0.2,unconstrained,realized_lineage_error,False,10,"[42, 43, 44, 45, 46, 48, 49, 51]",8,0.0,0.0,0.0,0.0,0.0,0,8,0
+7,3.0,32,0.2,unconstrained,realized_lineage_error,True,10,"[42, 43, 44, 45, 46, 48, 49, 51]",8,0.0,0.0,0.0,0.0,0.0,0,8,0
+7,3.0,32,0.2,unconstrained,oracle_endpoint_error,False,10,"[42, 43, 44, 45, 46, 48, 49, 51]",8,-0.002974102769281114,0.0017472277894575788,0.0006177383091015177,-0.004264772051236991,0.00021915614507958883,7,0,1
+7,3.0,32,0.2,unconstrained,oracle_endpoint_error,True,10,"[42, 43, 44, 45, 46, 48, 49, 51]",8,-0.002974102769281114,0.0017472277894575788,0.0006177383091015177,-0.004264772051236991,0.00021915614507958883,7,0,1
+7,3.0,32,0.2,unconstrained,oracle_u_child_error,False,10,"[42, 43, 44, 45, 46, 48, 49, 51]",8,-0.0027355033830930575,0.006282927074358193,0.002221350169989617,-0.012654229284499278,0.005389702370004516,5,0,3
+7,3.0,32,0.2,unconstrained,oracle_u_child_error,True,10,"[42, 43, 44, 45, 46, 48, 49, 51]",8,-0.0027355033830930575,0.006282927074358193,0.002221350169989617,-0.012654229284499278,0.005389702370004516,5,0,3
+7,3.0,32,0.2,unconstrained,oracle_added_minority_error,False,10,"[42, 43, 44, 45, 46, 47, 48, 49, 50, 51]",10,0.015954115568461696,0.016994722766526967,0.005374203214534318,0.0,0.048286001437456316,0,2,8
+7,3.0,32,0.2,unconstrained,oracle_added_minority_error,True,10,"[42, 43, 44, 45, 46, 48, 49, 51]",8,0.01994264446057712,0.016746218798243086,0.005920682435735661,0.002323741080204479,0.048286001437456316,0,0,8
+7,3.0,32,0.2,unconstrained,estimated_endpoint_error,False,10,"[42, 43, 44, 45, 46, 48, 49, 51]",8,-0.02121762076834932,0.009906157708640211,0.003502355645641442,-0.03228044294493167,-0.0007026341278521669,8,0,0
+7,3.0,32,0.2,unconstrained,estimated_endpoint_error,True,10,"[42, 43, 44, 45, 46, 48, 49, 51]",8,-0.02121762076834932,0.009906157708640211,0.003502355645641442,-0.03228044294493167,-0.0007026341278521669,8,0,0
+7,3.0,32,0.2,unconstrained,selected_endpoint_error,False,10,"[42, 43, 44, 45, 46, 48, 49, 51]",8,0.0,0.0,0.0,0.0,0.0,0,8,0
+7,3.0,32,0.2,unconstrained,selected_endpoint_error,True,10,"[42, 43, 44, 45, 46, 48, 49, 51]",8,0.0,0.0,0.0,0.0,0.0,0,8,0
+7,3.0,32,0.2,unconstrained,u_child_mode_coverage,False,10,"[42, 43, 44, 45, 46, 48, 49, 51]",8,-0.0625,0.1767766952966369,0.0625,-0.5,0.0,0,7,1
+7,3.0,32,0.2,unconstrained,u_child_mode_coverage,True,10,"[42, 43, 44, 45, 46, 48, 49, 51]",8,-0.0625,0.1767766952966369,0.0625,-0.5,0.0,0,7,1
+7,3.0,32,0.2,unconstrained,mode_coverage,False,10,"[42, 43, 44, 45, 46, 47, 48, 49, 50, 51]",10,0.0,0.0,0.0,0.0,0.0,0,10,0
+7,3.0,32,0.2,unconstrained,mode_coverage,True,10,"[42, 43, 44, 45, 46, 48, 49, 51]",8,0.0,0.0,0.0,0.0,0.0,0,8,0
+7,3.0,32,0.2,unconstrained,selected_endpoints,False,10,"[42, 43, 44, 45, 46, 47, 48, 49, 50, 51]",10,-7.0,5.497474167490214,1.7384539747207062,-16.0,0.0,0,3,7
+7,3.0,32,0.2,unconstrained,selected_endpoints,True,10,"[42, 43, 44, 45, 46, 48, 49, 51]",8,-8.75,4.621378891320518,1.6339041762425535,-16.0,0.0,0,1,7
+7,3.0,32,0.2,unconstrained,effective_endpoints,False,10,"[42, 43, 44, 45, 46, 48, 49, 51]",8,-8.106046268309695,4.003560415881674,1.415472359479983,-14.0,-0.040000000000000036,0,0,8
+7,3.0,32,0.2,unconstrained,effective_endpoints,True,10,"[42, 43, 44, 45, 46, 48, 49, 51]",8,-8.106046268309695,4.003560415881674,1.415472359479983,-14.0,-0.040000000000000036,0,0,8
+7,3.0,32,0.2,unconstrained,u_mass,False,10,"[42, 43, 44, 45, 46, 47, 48, 49, 50, 51]",10,-21.4,15.664538862595917,4.953562130202646,-40.0,0.0,0,2,8
+7,3.0,32,0.2,unconstrained,u_mass,True,10,"[42, 43, 44, 45, 46, 48, 49, 51]",8,-26.75,12.325930854445494,4.357874645807452,-40.0,-6.0,0,0,8
+7,3.0,32,0.2,unconstrained,incremental_seconds,False,10,"[42, 43, 44, 45, 46, 47, 48, 49, 50, 51]",10,2.59139999798208e-05,0.00043067901616735874,0.00013619266315293349,-0.0005329079999683017,0.0010894499996538798,7,0,3
+7,3.0,32,0.2,unconstrained,incremental_seconds,True,10,"[42, 43, 44, 45, 46, 48, 49, 51]",8,-1.9239875086896063e-05,0.0004737623793373626,0.00016750029555026127,-0.0005329079999683017,0.0010894499996538798,7,0,1
+7,3.0,32,0.2,count_matched,mcc,False,10,"[42, 43, 44, 45, 46, 47, 48, 49, 50, 51]",10,-0.0002559557486853881,0.00041217878882413586,0.00013034237758938248,-0.0008683771398397822,0.0,0,7,3
+7,3.0,32,0.2,count_matched,mcc,True,10,"[42, 43, 44, 45, 46, 48, 49, 51]",8,-0.0003199446858567351,0.00044162667207172697,0.0001561386072873829,-0.0008683771398397822,0.0,0,5,3
+7,3.0,32,0.2,count_matched,gmean,False,10,"[42, 43, 44, 45, 46, 47, 48, 49, 50, 51]",10,-0.00020460899419365574,0.0003295115786394454,0.00010420071038983342,-0.0006972823332183076,0.0,0,7,3
+7,3.0,32,0.2,count_matched,gmean,True,10,"[42, 43, 44, 45, 46, 48, 49, 51]",8,-0.0002557612427420697,0.00035305580757858865,0.00012482407783805644,-0.0006972823332183076,0.0,0,5,3
+7,3.0,32,0.2,count_matched,ap,False,10,"[42, 43, 44, 45, 46, 47, 48, 49, 50, 51]",10,-5.157447911137147e-05,8.115569011043953e-05,2.5663682583179078e-05,-0.000234921339829941,2.2187341209845e-06,1,3,6
+7,3.0,32,0.2,count_matched,ap,True,10,"[42, 43, 44, 45, 46, 48, 49, 51]",8,-6.446809888921434e-05,8.670672827467808e-05,3.065545776876211e-05,-0.000234921339829941,2.2187341209845e-06,1,1,6
+7,3.0,32,0.2,count_matched,realized_lineage_error,False,10,"[42, 43, 44, 45, 46, 48, 49, 51]",8,0.0,0.0,0.0,0.0,0.0,0,8,0
+7,3.0,32,0.2,count_matched,realized_lineage_error,True,10,"[42, 43, 44, 45, 46, 48, 49, 51]",8,0.0,0.0,0.0,0.0,0.0,0,8,0
+7,3.0,32,0.2,count_matched,oracle_endpoint_error,False,10,"[42, 43, 44, 45, 46, 48, 49, 51]",8,-0.0036914415043872773,0.002337655304927211,0.0008264859590953687,-0.006753446407046318,0.0,7,1,0
+7,3.0,32,0.2,count_matched,oracle_endpoint_error,True,10,"[42, 43, 44, 45, 46, 48, 49, 51]",8,-0.0036914415043872773,0.002337655304927211,0.0008264859590953687,-0.006753446407046318,0.0,7,1,0
+7,3.0,32,0.2,count_matched,oracle_u_child_error,False,10,"[42, 43, 44, 45, 46, 48, 49, 51]",8,-0.003884992098789578,0.006623410143739045,0.002341729113608822,-0.01610036820456033,0.005552691885353032,5,1,2
+7,3.0,32,0.2,count_matched,oracle_u_child_error,True,10,"[42, 43, 44, 45, 46, 48, 49, 51]",8,-0.003884992098789578,0.006623410143739045,0.002341729113608822,-0.01610036820456033,0.005552691885353032,5,1,2
+7,3.0,32,0.2,count_matched,oracle_added_minority_error,False,10,"[42, 43, 44, 45, 46, 47, 48, 49, 50, 51]",10,-0.0006722594836168401,0.0013549972593959365,0.00042848775629771485,-0.002683394700760053,0.0018508972951176705,5,3,2
+7,3.0,32,0.2,count_matched,oracle_added_minority_error,True,10,"[42, 43, 44, 45, 46, 48, 49, 51]",8,-0.00084032435452105,0.0014829664346193091,0.0005243078110956751,-0.002683394700760053,0.0018508972951176705,5,1,2
+7,3.0,32,0.2,count_matched,estimated_endpoint_error,False,10,"[42, 43, 44, 45, 46, 48, 49, 51]",8,-0.022558278966099223,0.01217354270947537,0.004303997300467046,-0.0376810608140373,0.0,7,1,0
+7,3.0,32,0.2,count_matched,estimated_endpoint_error,True,10,"[42, 43, 44, 45, 46, 48, 49, 51]",8,-0.022558278966099223,0.01217354270947537,0.004303997300467046,-0.0376810608140373,0.0,7,1,0
+7,3.0,32,0.2,count_matched,selected_endpoint_error,False,10,"[42, 43, 44, 45, 46, 48, 49, 51]",8,0.0,0.0,0.0,0.0,0.0,0,8,0
+7,3.0,32,0.2,count_matched,selected_endpoint_error,True,10,"[42, 43, 44, 45, 46, 48, 49, 51]",8,0.0,0.0,0.0,0.0,0.0,0,8,0
+7,3.0,32,0.2,count_matched,u_child_mode_coverage,False,10,"[42, 43, 44, 45, 46, 48, 49, 51]",8,0.0625,0.1767766952966369,0.0625,0.0,0.5,1,7,0
+7,3.0,32,0.2,count_matched,u_child_mode_coverage,True,10,"[42, 43, 44, 45, 46, 48, 49, 51]",8,0.0625,0.1767766952966369,0.0625,0.0,0.5,1,7,0
+7,3.0,32,0.2,count_matched,mode_coverage,False,10,"[42, 43, 44, 45, 46, 47, 48, 49, 50, 51]",10,0.0,0.0,0.0,0.0,0.0,0,10,0
+7,3.0,32,0.2,count_matched,mode_coverage,True,10,"[42, 43, 44, 45, 46, 48, 49, 51]",8,0.0,0.0,0.0,0.0,0.0,0,8,0
+7,3.0,32,0.2,count_matched,selected_endpoints,False,10,"[42, 43, 44, 45, 46, 47, 48, 49, 50, 51]",10,-1.2,1.7511900715418263,0.5537749241945383,-5.0,0.0,0,6,4
+7,3.0,32,0.2,count_matched,selected_endpoints,True,10,"[42, 43, 44, 45, 46, 48, 49, 51]",8,-1.5,1.8516401995451028,0.6546536707079771,-5.0,0.0,0,4,4
+7,3.0,32,0.2,count_matched,effective_endpoints,False,10,"[42, 43, 44, 45, 46, 48, 49, 51]",8,-1.815151515151515,2.1469239471245785,0.759052240851789,-5.454545454545454,0.0,0,4,4
+7,3.0,32,0.2,count_matched,effective_endpoints,True,10,"[42, 43, 44, 45, 46, 48, 49, 51]",8,-1.815151515151515,2.1469239471245785,0.759052240851789,-5.454545454545454,0.0,0,4,4
+7,3.0,32,0.2,count_matched,u_mass,False,10,"[42, 43, 44, 45, 46, 47, 48, 49, 50, 51]",10,0.0,0.0,0.0,0.0,0.0,0,10,0
+7,3.0,32,0.2,count_matched,u_mass,True,10,"[42, 43, 44, 45, 46, 48, 49, 51]",8,0.0,0.0,0.0,0.0,0.0,0,8,0
+7,3.0,32,0.2,count_matched,incremental_seconds,False,10,"[42, 43, 44, 45, 46, 47, 48, 49, 50, 51]",10,0.00018198990023847726,0.00042612689062540007,0.0001347531546621717,-0.0003382609988875629,0.0012055310003233899,3,0,7
+7,3.0,32,0.2,count_matched,incremental_seconds,True,10,"[42, 43, 44, 45, 46, 48, 49, 51]",8,0.00015953062512608085,0.00046570217646725234,0.00016465058349666417,-0.0003382609988875629,0.0012055310003233899,3,0,5
+7,3.0,32,0.2,threshold_matched,mcc,False,10,"[42, 43, 44, 45, 46, 47, 48, 49, 50, 51]",10,0.0002455503533987269,0.0006560246050812645,0.00020745319531692658,-0.0007799234209586725,0.0015674903456469602,3,6,1
+7,3.0,32,0.2,threshold_matched,mcc,True,10,"[42, 43, 44, 45, 46, 48, 49, 51]",8,0.0003069379417484086,0.0007292439433229716,0.00025782666873144577,-0.0007799234209586725,0.0015674903456469602,3,4,1
+7,3.0,32,0.2,threshold_matched,gmean,False,10,"[42, 43, 44, 45, 46, 47, 48, 49, 50, 51]",10,0.00020118027811619755,0.0004394730621963369,0.00013897358468292648,-0.00014301867917787536,0.001208567849623865,3,6,1
+7,3.0,32,0.2,threshold_matched,gmean,True,10,"[42, 43, 44, 45, 46, 48, 49, 51]",8,0.00025147534764524693,0.0004835944863812999,0.0001709764703323213,-0.00014301867917787536,0.001208567849623865,3,4,1
+7,3.0,32,0.2,threshold_matched,ap,False,10,"[42, 43, 44, 45, 46, 47, 48, 49, 50, 51]",10,1.898922016368987e-05,9.924328562492012e-05,3.138348250533945e-05,-0.00015372445848060856,0.00020102657737586238,3,3,4
+7,3.0,32,0.2,threshold_matched,ap,True,10,"[42, 43, 44, 45, 46, 48, 49, 51]",8,2.3736525204612335e-05,0.00011195763960955599,3.958300308677833e-05,-0.00015372445848060856,0.00020102657737586238,3,1,4
+7,3.0,32,0.2,threshold_matched,realized_lineage_error,False,10,"[42, 43, 44, 45, 46, 48, 49, 51]",8,0.0,0.0,0.0,0.0,0.0,0,8,0
+7,3.0,32,0.2,threshold_matched,realized_lineage_error,True,10,"[42, 43, 44, 45, 46, 48, 49, 51]",8,0.0,0.0,0.0,0.0,0.0,0,8,0
+7,3.0,32,0.2,threshold_matched,oracle_endpoint_error,False,10,"[42, 43, 44, 45, 46, 48, 49, 51]",8,-0.0002889582023557086,0.0015304858634804866,0.0005411084662886003,-0.0037821455316919272,0.0012464751287347697,4,1,3
+7,3.0,32,0.2,threshold_matched,oracle_endpoint_error,True,10,"[42, 43, 44, 45, 46, 48, 49, 51]",8,-0.0002889582023557086,0.0015304858634804866,0.0005411084662886003,-0.0037821455316919272,0.0012464751287347697,4,1,3
+7,3.0,32,0.2,threshold_matched,oracle_u_child_error,False,10,"[42, 43, 44, 45, 46, 48, 49, 51]",8,-0.0035881930036981945,0.012761488953023283,0.004511867688359989,-0.023639576926865996,0.009692733013526614,4,1,3
+7,3.0,32,0.2,threshold_matched,oracle_u_child_error,True,10,"[42, 43, 44, 45, 46, 48, 49, 51]",8,-0.0035881930036981945,0.012761488953023283,0.004511867688359989,-0.023639576926865996,0.009692733013526614,4,1,3
+7,3.0,32,0.2,threshold_matched,oracle_added_minority_error,False,10,"[42, 43, 44, 45, 46, 47, 48, 49, 50, 51]",10,-0.0004406320535280667,0.0020056464591252637,0.0006342410991887633,-0.003939929487810995,0.0024231832533816514,4,3,3
+7,3.0,32,0.2,threshold_matched,oracle_added_minority_error,True,10,"[42, 43, 44, 45, 46, 48, 49, 51]",8,-0.0005507900669100834,0.0022588925211428105,0.000798639109835829,-0.003939929487810995,0.0024231832533816514,4,1,3
+7,3.0,32,0.2,threshold_matched,estimated_endpoint_error,False,10,"[42, 43, 44, 45, 46, 48, 49, 51]",8,0.005244303215101786,0.0029364056092014605,0.001038176159290284,0.0,0.00977602882625575,0,1,7
+7,3.0,32,0.2,threshold_matched,estimated_endpoint_error,True,10,"[42, 43, 44, 45, 46, 48, 49, 51]",8,0.005244303215101786,0.0029364056092014605,0.001038176159290284,0.0,0.00977602882625575,0,1,7
+7,3.0,32,0.2,threshold_matched,selected_endpoint_error,False,10,"[42, 43, 44, 45, 46, 48, 49, 51]",8,0.0,0.0,0.0,0.0,0.0,0,8,0
+7,3.0,32,0.2,threshold_matched,selected_endpoint_error,True,10,"[42, 43, 44, 45, 46, 48, 49, 51]",8,0.0,0.0,0.0,0.0,0.0,0,8,0
+7,3.0,32,0.2,threshold_matched,u_child_mode_coverage,False,10,"[42, 43, 44, 45, 46, 48, 49, 51]",8,0.125,0.3535533905932738,0.125,-0.5,0.5,3,4,1
+7,3.0,32,0.2,threshold_matched,u_child_mode_coverage,True,10,"[42, 43, 44, 45, 46, 48, 49, 51]",8,0.125,0.3535533905932738,0.125,-0.5,0.5,3,4,1
+7,3.0,32,0.2,threshold_matched,mode_coverage,False,10,"[42, 43, 44, 45, 46, 47, 48, 49, 50, 51]",10,0.0,0.0,0.0,0.0,0.0,0,10,0
+7,3.0,32,0.2,threshold_matched,mode_coverage,True,10,"[42, 43, 44, 45, 46, 48, 49, 51]",8,0.0,0.0,0.0,0.0,0.0,0,8,0
+7,3.0,32,0.2,threshold_matched,selected_endpoints,False,10,"[42, 43, 44, 45, 46, 47, 48, 49, 50, 51]",10,2.2,1.6193277068654823,0.5120763831912405,0.0,4.0,7,3,0
+7,3.0,32,0.2,threshold_matched,selected_endpoints,True,10,"[42, 43, 44, 45, 46, 48, 49, 51]",8,2.75,1.2817398889233114,0.4531634835874828,0.0,4.0,7,1,0
+7,3.0,32,0.2,threshold_matched,effective_endpoints,False,10,"[42, 43, 44, 45, 46, 48, 49, 51]",8,2.4348484848484846,1.184028347370819,0.4186172367715036,0.0,3.545454545454546,7,1,0
+7,3.0,32,0.2,threshold_matched,effective_endpoints,True,10,"[42, 43, 44, 45, 46, 48, 49, 51]",8,2.4348484848484846,1.184028347370819,0.4186172367715036,0.0,3.545454545454546,7,1,0
+7,3.0,32,0.2,threshold_matched,u_mass,False,10,"[42, 43, 44, 45, 46, 47, 48, 49, 50, 51]",10,0.0,0.0,0.0,0.0,0.0,0,10,0
+7,3.0,32,0.2,threshold_matched,u_mass,True,10,"[42, 43, 44, 45, 46, 48, 49, 51]",8,0.0,0.0,0.0,0.0,0.0,0,8,0
+7,3.0,32,0.2,threshold_matched,incremental_seconds,False,10,"[42, 43, 44, 45, 46, 47, 48, 49, 50, 51]",10,0.00022077040002841387,0.0003876159812145202,0.00012257493581189233,-0.00010077900014948682,0.001115357999879052,3,0,7
+7,3.0,32,0.2,threshold_matched,incremental_seconds,True,10,"[42, 43, 44, 45, 46, 48, 49, 51]",8,0.00018524524983831725,0.00041206829568996375,0.00014568814309717836,-0.00010077900014948682,0.001115357999879052,3,0,5
+7,3.0,32,0.2,weighted_pl,mcc,False,10,"[42, 43, 44, 45, 46, 47, 48, 49, 50, 51]",10,-5.560657479121156e-05,0.0007349395929576599,0.00023240830563832495,-0.0007681216140092983,0.0017183042797047632,4,2,4
+7,3.0,32,0.2,weighted_pl,mcc,True,10,"[42, 43, 44, 45, 46, 48, 49, 51]",8,-6.950821848901445e-05,0.0008326803210777411,0.0002943969507973312,-0.0007681216140092983,0.0017183042797047632,4,0,4
+7,3.0,32,0.2,weighted_pl,gmean,False,10,"[42, 43, 44, 45, 46, 47, 48, 49, 50, 51]",10,0.0005439130337245967,0.0005647956777703025,0.00017860407543726861,-0.00014442589342844592,0.0015546951598319758,7,2,1
+7,3.0,32,0.2,weighted_pl,gmean,True,10,"[42, 43, 44, 45, 46, 48, 49, 51]",8,0.000679891292155746,0.0005517949862576295,0.00019508898830375378,-0.00014442589342844592,0.0015546951598319758,7,0,1
+7,3.0,32,0.2,weighted_pl,ap,False,10,"[42, 43, 44, 45, 46, 47, 48, 49, 50, 51]",10,1.7673077510771406e-06,6.937103593331955e-05,2.193704771946743e-05,-0.00010766971068554287,0.0001177155490864612,3,2,5
+7,3.0,32,0.2,weighted_pl,ap,True,10,"[42, 43, 44, 45, 46, 48, 49, 51]",8,2.209134688846426e-06,7.865227014836495e-05,2.7807776788812557e-05,-0.00010766971068554287,0.0001177155490864612,3,0,5
+7,3.0,32,0.2,weighted_pl,realized_lineage_error,False,10,"[42, 43, 44, 45, 46, 48, 49, 51]",8,0.0,0.0,0.0,0.0,0.0,0,8,0
+7,3.0,32,0.2,weighted_pl,realized_lineage_error,True,10,"[42, 43, 44, 45, 46, 48, 49, 51]",8,0.0,0.0,0.0,0.0,0.0,0,8,0
+7,3.0,32,0.2,weighted_pl,oracle_endpoint_error,False,10,"[42, 43, 44, 45, 46, 48, 49, 51]",8,0.0,0.0,0.0,0.0,0.0,0,8,0
+7,3.0,32,0.2,weighted_pl,oracle_endpoint_error,True,10,"[42, 43, 44, 45, 46, 48, 49, 51]",8,0.0,0.0,0.0,0.0,0.0,0,8,0
+7,3.0,32,0.2,weighted_pl,oracle_u_child_error,False,10,[],0,,,,,,0,0,0
+7,3.0,32,0.2,weighted_pl,oracle_u_child_error,True,10,[],0,,,,,,0,0,0
+7,3.0,32,0.2,weighted_pl,oracle_added_minority_error,False,10,"[42, 43, 44, 45, 46, 47, 48, 49, 50, 51]",10,0.0028773603363258494,0.0035743267383160963,0.0011303013594719498,0.0,0.009543173665632884,0,2,8
+7,3.0,32,0.2,weighted_pl,oracle_added_minority_error,True,10,"[42, 43, 44, 45, 46, 48, 49, 51]",8,0.003596700420407312,0.0036700388948409843,0.0012975546948802213,0.0004680784330088443,0.009543173665632884,0,0,8
+7,3.0,32,0.2,weighted_pl,estimated_endpoint_error,False,10,"[42, 43, 44, 45, 46, 48, 49, 51]",8,0.0,0.0,0.0,0.0,0.0,0,8,0
+7,3.0,32,0.2,weighted_pl,estimated_endpoint_error,True,10,"[42, 43, 44, 45, 46, 48, 49, 51]",8,0.0,0.0,0.0,0.0,0.0,0,8,0
+7,3.0,32,0.2,weighted_pl,selected_endpoint_error,False,10,"[42, 43, 44, 45, 46, 48, 49, 51]",8,0.0,0.0,0.0,0.0,0.0,0,8,0
+7,3.0,32,0.2,weighted_pl,selected_endpoint_error,True,10,"[42, 43, 44, 45, 46, 48, 49, 51]",8,0.0,0.0,0.0,0.0,0.0,0,8,0
+7,3.0,32,0.2,weighted_pl,u_child_mode_coverage,False,10,[],0,,,,,,0,0,0
+7,3.0,32,0.2,weighted_pl,u_child_mode_coverage,True,10,[],0,,,,,,0,0,0
+7,3.0,32,0.2,weighted_pl,mode_coverage,False,10,"[42, 43, 44, 45, 46, 47, 48, 49, 50, 51]",10,0.0,0.0,0.0,0.0,0.0,0,10,0
+7,3.0,32,0.2,weighted_pl,mode_coverage,True,10,"[42, 43, 44, 45, 46, 48, 49, 51]",8,0.0,0.0,0.0,0.0,0.0,0,8,0
+7,3.0,32,0.2,weighted_pl,selected_endpoints,False,10,"[42, 43, 44, 45, 46, 47, 48, 49, 50, 51]",10,0.0,0.0,0.0,0.0,0.0,0,10,0
+7,3.0,32,0.2,weighted_pl,selected_endpoints,True,10,"[42, 43, 44, 45, 46, 48, 49, 51]",8,0.0,0.0,0.0,0.0,0.0,0,8,0
+7,3.0,32,0.2,weighted_pl,effective_endpoints,False,10,"[42, 43, 44, 45, 46, 48, 49, 51]",8,0.0,0.0,0.0,0.0,0.0,0,8,0
+7,3.0,32,0.2,weighted_pl,effective_endpoints,True,10,"[42, 43, 44, 45, 46, 48, 49, 51]",8,0.0,0.0,0.0,0.0,0.0,0,8,0
+7,3.0,32,0.2,weighted_pl,u_mass,False,10,"[42, 43, 44, 45, 46, 47, 48, 49, 50, 51]",10,0.0,0.0,0.0,0.0,0.0,0,10,0
+7,3.0,32,0.2,weighted_pl,u_mass,True,10,"[42, 43, 44, 45, 46, 48, 49, 51]",8,0.0,0.0,0.0,0.0,0.0,0,8,0
+7,3.0,32,0.2,weighted_pl,incremental_seconds,False,10,"[42, 43, 44, 45, 46, 47, 48, 49, 50, 51]",10,0.00012325230013630062,0.0005424754456635595,0.00017154579830117595,-0.0009665069997026876,0.0012000429996987805,4,0,6
+7,3.0,32,0.2,weighted_pl,incremental_seconds,True,10,"[42, 43, 44, 45, 46, 48, 49, 51]",8,7.830462499214264e-05,0.0005937364409659798,0.00020991753182230525,-0.0009665069997026876,0.0012000429996987805,4,0,4
+7,3.0,32,0.2,nores,mcc,False,10,"[42, 43, 44, 45, 46, 47, 48, 49, 50, 51]",10,0.012868187595719616,0.013913238528410763,0.004399752337898733,-0.0009659767161978028,0.04952663048791506,9,0,1
+7,3.0,32,0.2,nores,mcc,True,10,"[42, 43, 44, 45, 46, 48, 49, 51]",8,0.009582989954657062,0.005402948579461692,0.0019102307894697929,-0.0009659767161978028,0.014897354204865043,7,0,1
+7,3.0,32,0.2,nores,gmean,False,10,"[42, 43, 44, 45, 46, 47, 48, 49, 50, 51]",10,0.026272566554245046,0.015452744529426108,0.004886586881369332,0.012398266998968621,0.0642184056941385,10,0,0
+7,3.0,32,0.2,nores,gmean,True,10,"[42, 43, 44, 45, 46, 48, 49, 51]",8,0.020381598611988724,0.007043372960696319,0.002490208391467169,0.012398266998968621,0.031396754981870445,8,0,0
+7,3.0,32,0.2,nores,ap,False,10,"[42, 43, 44, 45, 46, 47, 48, 49, 50, 51]",10,-0.0010278716124312859,0.0021354159831347384,0.0006752778258633479,-0.006604510266446928,0.00038643237301472233,3,0,7
+7,3.0,32,0.2,nores,ap,True,10,"[42, 43, 44, 45, 46, 48, 49, 51]",8,-0.001333296889037272,0.0023063402384246533,0.0008154144111567355,-0.006604510266446928,0.000183275332008348,1,0,7
+7,3.0,32,0.2,nores,realized_lineage_error,False,10,[],0,,,,,,0,0,0
+7,3.0,32,0.2,nores,realized_lineage_error,True,10,[],0,,,,,,0,0,0
+7,3.0,32,0.2,nores,oracle_endpoint_error,False,10,[],0,,,,,,0,0,0
+7,3.0,32,0.2,nores,oracle_endpoint_error,True,10,[],0,,,,,,0,0,0
+7,3.0,32,0.2,nores,oracle_u_child_error,False,10,[],0,,,,,,0,0,0
+7,3.0,32,0.2,nores,oracle_u_child_error,True,10,[],0,,,,,,0,0,0
+7,3.0,32,0.2,nores,oracle_added_minority_error,False,10,[],0,,,,,,0,0,0
+7,3.0,32,0.2,nores,oracle_added_minority_error,True,10,[],0,,,,,,0,0,0
+7,3.0,32,0.2,nores,estimated_endpoint_error,False,10,[],0,,,,,,0,0,0
+7,3.0,32,0.2,nores,estimated_endpoint_error,True,10,[],0,,,,,,0,0,0
+7,3.0,32,0.2,nores,selected_endpoint_error,False,10,[],0,,,,,,0,0,0
+7,3.0,32,0.2,nores,selected_endpoint_error,True,10,[],0,,,,,,0,0,0
+7,3.0,32,0.2,nores,u_child_mode_coverage,False,10,[],0,,,,,,0,0,0
+7,3.0,32,0.2,nores,u_child_mode_coverage,True,10,[],0,,,,,,0,0,0
+7,3.0,32,0.2,nores,mode_coverage,False,10,"[42, 43, 44, 45, 46, 47, 48, 49, 50, 51]",10,1.0,0.0,0.0,1.0,1.0,10,0,0
+7,3.0,32,0.2,nores,mode_coverage,True,10,"[42, 43, 44, 45, 46, 48, 49, 51]",8,1.0,0.0,0.0,1.0,1.0,8,0,0
+7,3.0,32,0.2,nores,selected_endpoints,False,10,"[42, 43, 44, 45, 46, 47, 48, 49, 50, 51]",10,3.6,2.3190036174568114,0.7333333333333333,0.0,7.0,8,2,0
+7,3.0,32,0.2,nores,selected_endpoints,True,10,"[42, 43, 44, 45, 46, 48, 49, 51]",8,4.5,1.5118578920369088,0.5345224838248487,2.0,7.0,8,0,0
+7,3.0,32,0.2,nores,effective_endpoints,False,10,[],0,,,,,,0,0,0
+7,3.0,32,0.2,nores,effective_endpoints,True,10,[],0,,,,,,0,0,0
+7,3.0,32,0.2,nores,u_mass,False,10,"[42, 43, 44, 45, 46, 47, 48, 49, 50, 51]",10,9.4,7.4266786355379315,2.348521993841138,0.0,24.0,8,2,0
+7,3.0,32,0.2,nores,u_mass,True,10,"[42, 43, 44, 45, 46, 48, 49, 51]",8,11.75,6.273527146441853,2.2180267936034626,4.0,24.0,8,0,0
+7,3.0,32,0.2,nores,incremental_seconds,False,10,"[42, 43, 44, 45, 46, 47, 48, 49, 50, 51]",10,0.0025254971002141246,0.0016491863052001342,0.0005215185010390015,0.0002529029998186161,0.005246252000688401,0,0,10
+7,3.0,32,0.2,nores,incremental_seconds,True,10,"[42, 43, 44, 45, 46, 48, 49, 51]",8,0.003036260750263864,0.0014110675902891383,0.0004988877309030053,0.0012914470003124734,0.005246252000688401,0,0,8

@@ -1,0 +1,24 @@
+{
+  "cases": 80,
+  "jobs_checked": 560,
+  "active_cases": 13,
+  "max_classification_metric_residual": 1.1102230246251565e-16,
+  "checks": [
+    "independent Gaussian-density endpoint/child risks",
+    "realized lineage errors",
+    "fractional mode masses and coverage",
+    "confusion-matrix MCC/G-mean and sklearn AP",
+    "candidate lineage reconstruction",
+    "exact matched counts and fitting weights",
+    "estimated budget feasibility",
+    "all 80 decisions and 560 probability vectors identical in reporting replay"
+  ],
+  "failed_checks": 0,
+  "tests": {
+    "baseline": 756,
+    "focused_new": 10,
+    "full_passed": 766,
+    "failed": 0,
+    "skipped": 0
+  }
+}

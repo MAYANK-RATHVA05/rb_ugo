@@ -1,0 +1,331 @@
+{
+  "cases": 80,
+  "method_jobs": 560,
+  "failures": [],
+  "preregistration_commit": "23b2afe",
+  "config_sha256": "6859d07c08039093c48503769c9f27748eaf9e34b7ba656c1ab2e10ea6346e53",
+  "run_manifest_sha256": "9a750215738224476c79363320d68eb25f46535053ed7c381098f51076a099d3",
+  "training_manifest": {
+    "config": {
+      "schema_version": 1,
+      "study_id": "exposure-mechanism-v1",
+      "status": "preregistered_before_new_dataset_generation",
+      "baseline_commit": "a07382378f8840081206e1b31f145d306367ac09",
+      "dataset_seeds": [
+        42,
+        43,
+        44,
+        45,
+        46,
+        47,
+        48,
+        49,
+        50,
+        51
+      ],
+      "algorithm_seed": 42,
+      "grid": {
+        "separation": [
+          1.0,
+          3.0
+        ],
+        "labeled_minority_count": [
+          8,
+          32
+        ],
+        "unlabeled_minority_prevalence": [
+          0.02,
+          0.2
+        ]
+      },
+      "distribution": {
+        "dimensions": 2,
+        "covariance": "identity",
+        "majority_mean": "[-separation/2,0]",
+        "minority_means": "[separation/2,-1.5] and [separation/2,1.5]",
+        "minority_mode_weights": [
+          0.5,
+          0.5
+        ],
+        "labeled_majority_count": 200,
+        "unlabeled_count": 400,
+        "test_count": 4000,
+        "test_minority_prevalence": 0.2,
+        "labeled_sampling": "fixed class counts; iid equal-probability minority modes, never redrawn",
+        "unlabeled_and_test_sampling": "iid Bernoulli classes and iid equal-probability minority modes, never redrawn",
+        "seed_derivation": "SeedSequence([dataset_seed,cell_index,stream]); stream 0=L, 1=U, 2=test"
+      },
+      "methods": [
+        "parent",
+        "budget",
+        "unconstrained",
+        "count_matched",
+        "threshold_matched",
+        "weighted_pl",
+        "nores"
+      ],
+      "fixed": {
+        "threshold": 0.9,
+        "exposure_rate": 0.025,
+        "endpoint_cap": 5,
+        "guide": "unchanged three-fold sigmoid-calibrated logistic regression",
+        "radius": "unchanged 95th percentile clean-minority leave-one-out distances",
+        "postcheck": "unchanged common U-candidate rejection",
+        "parent": "unchanged default UGO-SMOTE, allow_provisional=True, seed42",
+        "final_classifier": "LogisticRegression(max_iter=1000,random_state=42)",
+        "decision_threshold": 0.5,
+        "threads": 1
+      },
+      "primary_mechanism": "budget minus count_matched descendant-weighted oracle expected endpoint error, among paired active runs",
+      "secondary_mechanisms": [
+        "realized descendant-weighted lineage error",
+        "oracle U-child expected error",
+        "oracle expected error of all retained added minority training weight",
+        "eligible and usable endpoint counts; selected diversity and effective endpoint count",
+        "continuous exposure binding and loose-allocation infeasibility frequencies",
+        "minority-mode expected training mass and test recall"
+      ],
+      "outcomes": [
+        "mcc",
+        "gmean",
+        "ap"
+      ],
+      "pairing": "same case L/U/test/preprocessing/guide/candidate bank across methods; each cell reports ten paired dataset seeds",
+      "inactive": "retain every case; lineage/child error null with zero descendants, never zero error; report reasons and denominators",
+      "binding": "nonempty usable bank; abs(continuous exposure-B)<=1e-7*max(1,B)",
+      "restrictive": "same log-utility continuous allocation with a loose exposure budget exceeds B by >1e-7*max(1,B)",
+      "mode_coverage": "fraction of two minority modes receiving >=1 oracle expected minority unit of added training mass; U children and total added minority mass separate; also test per-mode recall",
+      "effects": "budget minus each control; lower errors better, higher MCC/G-mean/AP better; mean, sample SD, SE, min/max and win/tie/loss (tolerance1e-10)",
+      "uncertainty": "ten dataset seeds per cell; no fold-independence claim or confirmatory significance tests; pooled effects average within seed across all eight cells first",
+      "runtime": "one thread, sequential cases; shared preparation plus incremental policy/final-fit/prediction times and total wall; shared cost is not standalone-method timing",
+      "decision_rule": {
+        "minimum_paired_active_seeds": 5,
+        "mechanism_practical_error_difference": 0.01,
+        "downstream_practical_difference": 0.005,
+        "promote": "No automatic adaptive extension. Even favorable effects need new confirmation and literature review.",
+        "reject_current_advantage": "If threshold_matched or weighted_pl matches or improves the primary error and MCC/G-mean/AP within the declared margins in every adequately active cell, reject the current claim of added value on this grid.",
+        "revise_or_inconclusive": "If fewer than five paired active seeds per cell or endpoints lack risk/diversity, report under-identification; do not change eligibility, seeds or grid. Mixed effects warrant a revised mechanism hypothesis, not added complexity."
+      },
+      "preserved_sha256": {
+        "src/exploratory_exposure.py": "a819e8114ffc575b1eeb6b0367e36511be7e776e9e28a2f54d271ac07ba80803",
+        "scripts/run_exposure_pilot.py": "7691c5e1bb1dd9fdc51891f4f8c0bb073b6ea855dd488cf7d57efe183fda75fb",
+        "docs/exploration/exposure_pilot_evidence.json": "fc6729bfd55ef99965a58a507c5b3596404e96b5881db1b46ab17adc15bfeb95"
+      }
+    },
+    "config_sha256": "6859d07c08039093c48503769c9f27748eaf9e34b7ba656c1ab2e10ea6346e53",
+    "git_head": "23b2afe7cc5e81c14f828ac5e2b752f61031d23d",
+    "source_sha256": {
+      "src/__init__.py": "e7ad2525c86662144b8632f49e860f25566d27b3c5402b395041ca7ca2c963b2",
+      "src/_validation.py": "98a654632ab529fe7bbeb7abc6a3489acaa3860ed60b4cf462e34791d298d66f",
+      "src/benchmark.py": "f4128e916e9d47271af2654c1e00e96697ebe4a3b42ae23099a689169762d5c4",
+      "src/bfch_smote.py": "3971978be7282a3503f743cb97eee86bbf195d26f94d8df6a2f057d630b2aa4d",
+      "src/classifier_backends.py": "7519373416c6590d2d7f8bc9c076684af0c629f472bdce8eca471cc9e5807397",
+      "src/classifier_errors.py": "cd1c958604738a99e133afd974619c688aa330bbd3d97f67ccc256af7ea39fc2",
+      "src/classifier_registry.py": "5903f0461352ca3371f3271996255ee41795e7ec66c3f64e0f560da63e7c3c73",
+      "src/comparators.py": "331fc3f20a901743499fc259558fce74f8c931ffe76a676c828addaae94a6a6d",
+      "src/comparison_report.py": "50c366cc833b79d8af5080c2a9fd8343258602bed069ebd0c35170d77ecb11af",
+      "src/config.py": "e4d162281842d83c2750e1bbb2828c523d4560f199851b15dbd75ef30f949768",
+      "src/data_loader.py": "5d008177af632783f38094a5a0af96665add9a6bf954ae957bdf8d7ac0578300",
+      "src/dataset_registry.py": "bb0693a7b2b651bb95e4edbdd61a440648abca6abd51cc04f3d8867b1980a791",
+      "src/ec_ebo.py": "a79018a83084f6454255dd2bb8deae8770e2bcd7f7e49d514c4920961c5628a3",
+      "src/ec_ebo_clustering.py": "bbbf84cab202be04fd62409ab80904f092cfcb2f9a816863d60f8bcca898dbdd",
+      "src/ec_ebo_entropy.py": "e49cc5988d7bffdcb336092628a615a6637c621f2e2843c96dbe58353d0b81c0",
+      "src/evaluation.py": "47793bb6b143c0ff4592ddd710a4a73b702cda506e46ef24a0cef51f127e869f",
+      "src/exploratory_exposure.py": "a819e8114ffc575b1eeb6b0367e36511be7e776e9e28a2f54d271ac07ba80803",
+      "src/generators.py": "2a9c138e1a3276de8945dbe1e89cb6703453384da930d78e99ce61214e75c207",
+      "src/imbalance_stats.py": "51040a4a77a737d86f4c1961497568c1300884e32a907279c4f30b1f334900ca",
+      "src/kernel_naive_bayes.py": "4178528785edac07d077980179cf5456e9ad4e4d860362e5215fad4a2c9a5069",
+      "src/leao.py": "7e76702bf3fccd15c6b035b772022d54921f8f1e61a5cd580568f7940ed290a5",
+      "src/mcsmote.py": "e762f6f33a539586437b470ff02922917b58f8d1678523e6fd39a71559c15cf8",
+      "src/metrics.py": "29fb99fd4cc0ec94b204085027d91f94574d0c5216e66811f91bd215c2170438",
+      "src/neural_classifiers.py": "962f8aa691ba413e56875ab188229c96d2274938f8ea191d93b0830c5c2a678e",
+      "src/noise_detection.py": "77d95d9d2487d7a8a38cc4fa4174dbdcb672d0b4a945728081d7be2fe6879383",
+      "src/pilot.py": "f374a23d5a4a3b23dcf89ec2af0a69732210c6cb06be3dfab0461ae2e44e85af",
+      "src/preprocessing.py": "6b5b1e286b90a262ada67ddf280ed6ed5cc00ad5bbffe80b527805062360d640",
+      "src/results.py": "2fa674093342cdfba2bf8c41d16aac1d3449186d7fa3dc88e34a0c0ce9b07d24",
+      "src/simulations.py": "70721c9a16c8dc25a00b9d80d56fa162decf9c1b68dd9217508b29908e87a197",
+      "src/sshr.py": "e45072b5ac3da8f95cef574a7cc92245b7502a685c181a1566cfa81287b1c89c",
+      "src/sshr_clustering.py": "9b5015b1587d858ce9cb270743ba39bb0ac1b0dcce756399082174c9cdb0f8db",
+      "src/sshr_evaluation.py": "810c977b030fb956e7e02d2e30c52cc069af2e3c838c1cf5afaefa9f0d643220",
+      "src/sshr_resampling.py": "0b68b388e5fa6fa27e269ddc60dad4e18322425d2e1ee550ca5b6df0b24933b9",
+      "src/sshr_study_report.py": "8c848883349f2306674c924677f9eb96c485bbdfc24d35b029d9c88a66072ba6",
+      "src/stopping.py": "e25ee45ddcb2b4bb069c62feb21d9f5d612c5c51b610722626d50c5afd8d05a5",
+      "src/ugo.py": "aeafccb68fad0a57a237ff4911d2f10305e6383c7cfb68af024d4d0645eb050d",
+      "src/uncertainty.py": "327de07580fbfdc61f78f8403dde9c9f4b5eea8c98ab5068f8289ea7810e402e",
+      "scripts/exposure_mechanism_diagnostic.py": "11600b4eceb41ad353c2dc43410e75e6ec48944d7e35276b95074a9006e499d1",
+      "scripts/pilot_paper_comparison.py": "d85ce8fc39ed58af917af4df22c2c0ab657b322fee48b4a2f0902d0731ee1650",
+      "scripts/plot_bfch_geometry.py": "8ce2a8556e0a375e9479486994166b3e4c3f803981bef5b83133663653bdd1d2",
+      "scripts/report_bfch_comparison.py": "e0b647649c3213be0e81651061404527c03fe5777b48f6466bcf5603b2831e3b",
+      "scripts/run_bfch_small_study.py": "72ef80de2ba819ffef08353fdfc57329d37eaa963b2aefa7d25ce0cca6d50199",
+      "scripts/run_ec_ebo_small_study.py": "398cce6447f27b01e0473e9a1162e850500d8aaa86cf546e512ab34fe7311a77",
+      "scripts/run_exposure_pilot.py": "7691c5e1bb1dd9fdc51891f4f8c0bb073b6ea855dd488cf7d57efe183fda75fb",
+      "scripts/run_sshr_small_study.py": "1ba65a55682dd0a8dbbc49c8c0159b29886c842b9e146a32d44b10f6d0b72ab3",
+      "scripts/run_sshr_study.py": "93509fcb6bb5fa0991a194b30f2aa5912f7c1807be2ed1b044048e2d2a034eec",
+      "scripts/setup_c50.py": "71244ffcddcc0398b11af36ed9399318ccdf0391ac4b3a6ca88f37c46311dd81",
+      "scripts/ugo_real_fold_smoke.py": "d3d0dcb1f44a37c269d22546e137f783e3a689e96f3d712ffd79915816d72fd9"
+    },
+    "python": "3.11.17",
+    "platform": "Linux-6.18.55-x86_64-with-glibc2.41",
+    "packages": {
+      "numpy": "1.26.4",
+      "scipy": "1.14.1",
+      "scikit-learn": "1.5.2"
+    }
+  },
+  "report_source_sha256": "6453f7859c01f6e81078a5d731ae196b647eff4df1dfe065157aed966d42e6c6",
+  "runtime": {
+    "wall_seconds": 11.411811726999986,
+    "shared_preparation": {
+      "n": 80,
+      "mean": 0.02173550796248378,
+      "sd": 0.008581975389640867,
+      "se": 0.0009594940176233611,
+      "minimum": 0.012677541999892128,
+      "maximum": 0.0538739670000723
+    },
+    "shared_preparation_total_seconds": 1.7388406369987024,
+    "diagnostic_total_seconds": 0.04017196199720274
+  },
+  "independent_record_reaggregation": "All 80 identities and 560 method records verified; summary exactly recomputed",
+  "decision": {
+    "adequately_active_cells": [
+      6,
+      7
+    ],
+    "controls": {
+      "threshold_matched": {
+        "cells": [
+          {
+            "cell_index": 6,
+            "tests": {
+              "oracle_endpoint_error": {
+                "paired_seeds": 5,
+                "budget_minus_control": 0.0,
+                "margin": 0.01,
+                "simpler_control_matches": true
+              },
+              "mcc": {
+                "paired_seeds": 5,
+                "budget_minus_control": 0.0,
+                "margin": 0.005,
+                "simpler_control_matches": true
+              },
+              "gmean": {
+                "paired_seeds": 5,
+                "budget_minus_control": 0.0,
+                "margin": 0.005,
+                "simpler_control_matches": true
+              },
+              "ap": {
+                "paired_seeds": 5,
+                "budget_minus_control": 0.0,
+                "margin": 0.005,
+                "simpler_control_matches": true
+              }
+            },
+            "matches": true
+          },
+          {
+            "cell_index": 7,
+            "tests": {
+              "oracle_endpoint_error": {
+                "paired_seeds": 8,
+                "budget_minus_control": -0.0002889582023557086,
+                "margin": 0.01,
+                "simpler_control_matches": true
+              },
+              "mcc": {
+                "paired_seeds": 8,
+                "budget_minus_control": 0.0003069379417484086,
+                "margin": 0.005,
+                "simpler_control_matches": true
+              },
+              "gmean": {
+                "paired_seeds": 8,
+                "budget_minus_control": 0.00025147534764524693,
+                "margin": 0.005,
+                "simpler_control_matches": true
+              },
+              "ap": {
+                "paired_seeds": 8,
+                "budget_minus_control": 2.3736525204612335e-05,
+                "margin": 0.005,
+                "simpler_control_matches": true
+              }
+            },
+            "matches": true
+          }
+        ],
+        "matches_every_adequately_active_cell": true
+      },
+      "weighted_pl": {
+        "cells": [
+          {
+            "cell_index": 6,
+            "tests": {
+              "oracle_endpoint_error": {
+                "paired_seeds": 5,
+                "budget_minus_control": 0.0,
+                "margin": 0.01,
+                "simpler_control_matches": true
+              },
+              "mcc": {
+                "paired_seeds": 5,
+                "budget_minus_control": 0.00040021256202462665,
+                "margin": 0.005,
+                "simpler_control_matches": true
+              },
+              "gmean": {
+                "paired_seeds": 5,
+                "budget_minus_control": 0.0007121666818336481,
+                "margin": 0.005,
+                "simpler_control_matches": true
+              },
+              "ap": {
+                "paired_seeds": 5,
+                "budget_minus_control": 7.735888297055737e-06,
+                "margin": 0.005,
+                "simpler_control_matches": true
+              }
+            },
+            "matches": true
+          },
+          {
+            "cell_index": 7,
+            "tests": {
+              "oracle_endpoint_error": {
+                "paired_seeds": 8,
+                "budget_minus_control": 0.0,
+                "margin": 0.01,
+                "simpler_control_matches": true
+              },
+              "mcc": {
+                "paired_seeds": 8,
+                "budget_minus_control": -6.950821848901445e-05,
+                "margin": 0.005,
+                "simpler_control_matches": true
+              },
+              "gmean": {
+                "paired_seeds": 8,
+                "budget_minus_control": 0.000679891292155746,
+                "margin": 0.005,
+                "simpler_control_matches": true
+              },
+              "ap": {
+                "paired_seeds": 8,
+                "budget_minus_control": 2.209134688846426e-06,
+                "margin": 0.005,
+                "simpler_control_matches": true
+              }
+            },
+            "matches": true
+          }
+        ],
+        "matches_every_adequately_active_cell": true
+      }
+    },
+    "outcome": "reject_current_added_value_claim_on_this_grid",
+    "recommendation": "Do not expand to adaptive UGO. Preserve this diagnostic as negative/limited evidence.",
+    "interpretation": "Descriptive preregistered practical-margin rule; not a statistical equivalence test or universal rejection"
+  }
+}
