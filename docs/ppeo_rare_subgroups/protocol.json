@@ -1,0 +1,202 @@
+{
+  "protocol_version": "ppeo-rare-subgroup-generator-diagnostic-v1",
+  "base_seed": 42,
+  "scope": "Paper-specified SPSDO component diagnostic; declared PHHC interpretation; no full PPEO evolutionary search or ensemble reproduction.",
+  "blocks": [
+    {
+      "block_id": 0,
+      "elongation": 1.0,
+      "angle_deg": 0.0,
+      "majority_offset": 2.4
+    },
+    {
+      "block_id": 1,
+      "elongation": 1.0,
+      "angle_deg": 0.0,
+      "majority_offset": 1.2
+    },
+    {
+      "block_id": 2,
+      "elongation": 1.0,
+      "angle_deg": 60.0,
+      "majority_offset": 2.4
+    },
+    {
+      "block_id": 3,
+      "elongation": 1.0,
+      "angle_deg": 60.0,
+      "majority_offset": 1.2
+    },
+    {
+      "block_id": 4,
+      "elongation": 6.0,
+      "angle_deg": 0.0,
+      "majority_offset": 2.4
+    },
+    {
+      "block_id": 5,
+      "elongation": 6.0,
+      "angle_deg": 0.0,
+      "majority_offset": 1.2
+    },
+    {
+      "block_id": 6,
+      "elongation": 6.0,
+      "angle_deg": 60.0,
+      "majority_offset": 2.4
+    },
+    {
+      "block_id": 7,
+      "elongation": 6.0,
+      "angle_deg": 60.0,
+      "majority_offset": 1.2
+    }
+  ],
+  "sample_counts": {
+    "fit": {
+      "main_minority": 80,
+      "rare_minority_each": 8,
+      "main_majority": 240,
+      "rare_majority_each_side": 60
+    },
+    "validation": {
+      "main_minority": 400,
+      "rare_minority_each": 40,
+      "main_majority": 1200,
+      "rare_majority_each_side": 300
+    },
+    "test": {
+      "main_minority": 4000,
+      "rare_minority_each": 400,
+      "main_majority": 12000,
+      "rare_majority_each_side": 3000
+    }
+  },
+  "synthetic_law": {
+    "dimension": 2,
+    "minority_main_center": [
+      -6.0,
+      0.0
+    ],
+    "minority_main_axes": [
+      0.8,
+      0.8
+    ],
+    "rare_centers": [
+      [
+        0.0,
+        -5.0
+      ],
+      [
+        0.0,
+        5.0
+      ]
+    ],
+    "rare_axes": "0.8 * [sqrt(elongation), 1/sqrt(elongation)]",
+    "majority_main_center": [
+      -2.0,
+      0.0
+    ],
+    "majority_main_axes": [
+      1.2,
+      1.2
+    ],
+    "rare_majority_centers": "rare_center +/- rare_transform @ [majority_offset,0]",
+    "sampling": "uniform area: radius sqrt(U), uniform angle",
+    "note": "Class and subgroup proportions fixed across independent fit/validation/test draws. True subgroup IDs and exact supports are evaluator-only. Normalized local overlap is independent of elongation/orientation; non-corresponding cross-class supports must be checked before fitting."
+  },
+  "reference": {
+    "partition": "paper Algorithm1 PHHC interpretation; nearest-centroid ties smallest index; original-only top-down impurity splitting and F1 rollback; connected components of Eqs4/7 in majority-labelled clusters are small prototypes",
+    "allocation": "fixed inverse-prototype-size weights; gap 384; shared prototype draw then uniform original anchor draw; no evolutionary optimization",
+    "large_generation": "one common original-only within-prototype SMOTE array reused identically by six geometry methods; k=min(floor(sqrt(n)),n-1); singleton copy",
+    "nores": "original fitting data only",
+    "ros": "duplicate anchors using same complete frozen quotas"
+  },
+  "methods": [
+    "spsdo",
+    "tuned_sphere",
+    "ellipsoid",
+    "screened_ellipsoid",
+    "symmetric_clip",
+    "paired_rejection",
+    "ros",
+    "nores"
+  ],
+  "eta": 0.9,
+  "max_attempts": 64,
+  "sphere_scales": [
+    0.25,
+    0.5,
+    0.75
+  ],
+  "shape": {
+    "estimator": "sklearn.covariance.LedoitWolf on original standardized fitting rows within prototype",
+    "normalization": "C *= d / trace(C); symmetric positive-definite square root L (L L^T = C)",
+    "fallback": "duplicate for n < max(3,d+1), deficient centered rank, non-positive trace, or failed factorization; record every reason and affected row count",
+    "conflicting_labels": "exact coincident opposite-label coordinates: preserve quota by flagged duplication; no strict margin certificate"
+  },
+  "learner": {
+    "class": "HistGradientBoostingClassifier",
+    "max_iter": 60,
+    "max_leaf_nodes": 7,
+    "min_samples_leaf": 8,
+    "learning_rate": 0.1,
+    "l2_regularization": 1.0,
+    "random_state": 42
+  },
+  "fpr_target": 0.05,
+  "threshold_rule": "validation only; lowest distinct score threshold with empirical majority FPR <= .05, or nextafter(max_score,+inf); predictions score>=threshold",
+  "sphere_selection": "maximize overall validation minority recall at its validation-selected threshold; tie by validation AP then larger scale; reuse selected fitted model (no refit); no subgroup IDs in selection",
+  "fit_budget": {
+    "final_models": 64,
+    "sphere_candidates_extra": 16,
+    "total_classifier_fits": 80,
+    "hard_limit_all_fits": 100,
+    "hard_limit_final_fits": 100
+  },
+  "metrics": [
+    "rare_1_recall",
+    "rare_2_recall",
+    "macro_rare_recall",
+    "overall_minority_recall",
+    "achieved_test_fpr",
+    "test_ap_independent_grouped_score_PR_integral",
+    "synthetic_outside_minority_support",
+    "synthetic_in_majority_support",
+    "synthetic_majority_only_intrusion",
+    "same_support_metrics_small_branch_only",
+    "fallback_reasons_and_counts",
+    "odd_copies",
+    "clipping_scales",
+    "generator_seconds",
+    "classifier_fit_seconds",
+    "prototype_counts_and_evaluator_only_rare_small_branch_coverage"
+  ],
+  "pairing": "compare identical dataset blocks, fitting observations, preprocessing, reference assignments, quotas and classifier settings; only small-prototype generation changes except explicit ROS/NORES controls",
+  "decision_gate": {
+    "purpose": "conservative diagnostic gate for whether a complete proposal is justified, not a significance test or superiority claim",
+    "primary_comparators": [
+      "tuned_sphere",
+      "screened_ellipsoid",
+      "paired_rejection",
+      "ros"
+    ],
+    "all_required": [
+      "mean paired macro-rare-recall gain >= 0.03 against EACH primary comparator",
+      "mean achieved FPR increase <= 0.01 against EACH primary comparator",
+      "mean AP loss <= 0.01 against EACH primary comparator",
+      "macro-rare-recall nonnegative paired gain in at least 6 of 8 blocks against EACH primary comparator",
+      "lower mean small-branch outside-minority-support rate than BOTH spsdo and unscreened ellipsoid",
+      "diagnostic includes nonzero rare-subgroup small-branch generation; geometric and count assertions pass"
+    ],
+    "if_fail": "Do not recommend developing a full extension; retain as negative/inconclusive mechanism diagnostic and specify one justified next action. Do not tune protocol after test inspection."
+  },
+  "reporting": "One independent draw per condition, no replicated inference; paired deltas and condition rows, no significance or general-superiority claims. Timing descriptive. Failure/unavailable records retained. No unpublished data/individual jobs/papers in Git; only new code/tests, protocol, provenance and aggregate condition-level evidence.",
+  "excluded": [
+    "UGO_Question_B_Provisional_Proposal.pdf",
+    "inactive RB-UGO/CSG designs",
+    "real-data benchmarks",
+    "full PPEO reproduction"
+  ],
+  "missing_starting_evidence": "Question_B_Paper_Review_and_Extension.md not found in checkout, fetched refs, Git path history, or uploaded files at initial inspection; requested branch/path/text asynchronously. Do not infer its contents or reopen unknown closed candidates."
+}
