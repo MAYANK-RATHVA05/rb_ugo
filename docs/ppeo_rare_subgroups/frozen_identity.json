@@ -1,0 +1,60 @@
+{
+  "installed_distributions": {
+    "cloudpickle": "3.1.2",
+    "contourpy": "1.3.3",
+    "cycler": "0.12.1",
+    "fonttools": "4.67.0",
+    "imbalanced-learn": "0.12.4",
+    "iniconfig": "2.3.1",
+    "joblib": "1.6.0",
+    "kiwisolver": "1.5.1",
+    "matplotlib": "3.9.2",
+    "numpy": "1.26.4",
+    "packaging": "26.3",
+    "pandas": "2.2.3",
+    "pillow": "13.0.0",
+    "pip": "26.2.1",
+    "pluggy": "1.7.0",
+    "pyparsing": "3.3.3",
+    "pytest": "8.3.4",
+    "python-dateutil": "2.9.0.post0",
+    "pytz": "2026.5",
+    "scikit-learn": "1.5.2",
+    "scipy": "1.14.1",
+    "seaborn": "0.13.2",
+    "setuptools": "84.0.0",
+    "six": "1.17.0",
+    "stochtree": "0.2.1",
+    "threadpoolctl": "3.7.0",
+    "tqdm": "4.67.1",
+    "tzdata": "2026.5",
+    "wheel": "0.48.0"
+  },
+  "original_repository_head": "3e5b713c773aa3dbaec8f7224d9cb85b9947b960",
+  "protocol_preregistration_commit": "54f2d49dc9563b0ada10d3b623c94fe3f523b93e",
+  "protocol_sha256": "587fe11a42d1315d83579c0fcf1a0009ff38965948447ac8ac27c9756a32e266",
+  "purpose": "Frozen before trained diagnostic classifiers or held-out outcome inspection; no source changes may reuse this run identity.",
+  "runtime": {
+    "numpy": "1.26.4",
+    "platform": "Linux-6.18.55-x86_64-with-glibc2.41",
+    "python": "3.11.17",
+    "scikit_learn": "1.5.2",
+    "scipy": "1.14.1"
+  },
+  "source_sha256": {
+    "AGENTS.md": "d6da286b5ee4c36fefc0f97735354456bc92e68c326b6a84b9818a7d325355b3",
+    "requirements-classifiers.txt": "fe1f66ef8092d5cec2867be3a26464930aaa6ce54fdfcad42f72758fac7d1620",
+    "requirements-dev.txt": "446698dabb39bf58615845cdf1edf3c68dee2d81dac6a7797d9fa153a3fa0f7c",
+    "requirements.txt": "a871d0fdfea0b8c461642ebf7316336f081b6f446485ac110cd64348a0f4a77e",
+    "scripts/diagnose_ppeo_geometry.py": "87b52d641bd146db1a2f0538b0650d5ecf28b6b1db2dc960b2c83727dedcad9c",
+    "src/ppeo_geometry.py": "92bd61dc08e95306978b59b90e230f6e7d1e8abee994de151b3c62c12be957bd",
+    "src/ppeo_reference.py": "5fd9a650f1d46c88799572a159b3d7fe821bf3e850bdb8d482ae55083e5f4bf7",
+    "tests/test_ppeo_diagnostic.py": "b0b3f4c89618f767e3737db9f5abf6dbc9db86aaeb825a2e9c103662dafd4b17",
+    "tests/test_ppeo_geometry.py": "aaf53f64efcfb9765f47deedd0295aa290ce1fcf70218b5871bde8dd80b57cf1"
+  },
+  "uploaded_pdf_sha256": {
+    "1-s2.0-S0925231226012889-main.pdf": "822e5a66ad16c49815b47762125fe81765b9e21de7d9aa270869538cdbac888c",
+    "journal.pone.0317396.pdf": "1ef0edcba684b618266cbf198db9a9f236b16b09a15f8da8f0feda613f983cf3",
+    "s41598-025-97248-0.pdf": "6680bf5ab6c52367cbe2430d5ffc4a73d8f084fed813f68229c60fc015aa55f0"
+  }
+}
