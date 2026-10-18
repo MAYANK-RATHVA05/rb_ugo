@@ -1,0 +1,97 @@
+{
+  "actual_classifier_fits": 80,
+  "aggregate_results_sha256": "ce751dc09eb327647a8c60b8167142945ada72e7e5d6e5fc6c71c853c63f2196",
+  "all_64_final_records_successful": true,
+  "all_development_criteria_passed": false,
+  "decision": "Do not advance to a full proposal: clipping has not shown the prespecified additional benefit beyond tuned sphere, screened ellipsoid and paired rejection.",
+  "final_models": 64,
+  "frozen_identity_sha256": "6ba2eeedd39142b812d5269270369bf6bfdd42013933090815347ba994544078",
+  "heldout_confusion_arithmetic_verified": true,
+  "independent_AP_implementation_crosschecked_in_unit_tests": true,
+  "independent_generator_replay": {
+    "actual_squared_distance_bounds_recomputed_for_both_paired_methods": true,
+    "additional_classifier_fits": 0,
+    "all_synthetic_support_counts_recomputed": true,
+    "fitting_data_prototype_quota_hashes_match": true,
+    "maximum_anchor_mean_error": 1.3322676295501878e-15,
+    "minimum_squared_distance_bound_residual": -2.3592239273284576e-16,
+    "regenerated_method_conditions": 56
+  },
+  "label_conflict_rows_observed": 0,
+  "limitations": [
+    "One independent draw per condition; isotropic angle variants share the same geometric law.",
+    "Disjoint geometry arms have ceiling rare recall; overlap shape estimation mostly falls back to copies.",
+    "Prototype/allocations are declared paper interpretations, not full PPEO or author-code reproduction.",
+    "Question_B_Paper_Review_and_Extension.md and EMDO primary source remain unverified."
+  ],
+  "matched_quotas_and_prototypes_verified": true,
+  "metric_audit_scope": "Confusion arithmetic and independent AP implementation/unit checks were audited. Row-level prediction scores were not persisted, so AP was not independently reconstructed post-run from saved predictions. Synthetic geometry and support counts were independently recalculated in a zero-classifier-fit replay.",
+  "minimum_clipping_constraint_slack": -2.220446049250313e-16,
+  "paired_geometric_constraints_verified_in_fitted_standardized_space": true,
+  "paired_mean_max_absolute_error": 1.3322676295501878e-15,
+  "primary_comparator_gate": {
+    "paired_rejection": {
+      "ap_loss_le_0_01": true,
+      "fpr_increase_le_0_01": true,
+      "mean_ap_delta": 0.0007128753052745018,
+      "mean_fpr_delta": -0.0013958333333333331,
+      "mean_rare_recall_delta": 0.004218749999999986,
+      "nonnegative_in_at_least_6_of_8": true,
+      "nonnegative_rare_recall_blocks": 7,
+      "recall_gain_ge_0_03": false
+    },
+    "ros": {
+      "ap_loss_le_0_01": true,
+      "fpr_increase_le_0_01": true,
+      "mean_ap_delta": 0.003427998698278173,
+      "mean_fpr_delta": 0.006265625,
+      "mean_rare_recall_delta": 0.03625,
+      "nonnegative_in_at_least_6_of_8": true,
+      "nonnegative_rare_recall_blocks": 7,
+      "recall_gain_ge_0_03": true
+    },
+    "screened_ellipsoid": {
+      "ap_loss_le_0_01": true,
+      "fpr_increase_le_0_01": true,
+      "mean_ap_delta": -0.0014904109473110189,
+      "mean_fpr_delta": -0.00040104166666666673,
+      "mean_rare_recall_delta": 0.003124999999999996,
+      "nonnegative_in_at_least_6_of_8": true,
+      "nonnegative_rare_recall_blocks": 7,
+      "recall_gain_ge_0_03": false
+    },
+    "tuned_sphere": {
+      "ap_loss_le_0_01": true,
+      "fpr_increase_le_0_01": true,
+      "mean_ap_delta": -0.002351199365398085,
+      "mean_fpr_delta": -0.0004947916666666668,
+      "mean_rare_recall_delta": 0.0018749999999999808,
+      "nonnegative_in_at_least_6_of_8": true,
+      "nonnegative_rare_recall_blocks": 6,
+      "recall_gain_ge_0_03": false
+    }
+  },
+  "proposed_fallback_rows": 1492,
+  "proposed_overlap_fallback_rows": 1492,
+  "proposed_overlap_small_generated_rows": 1532,
+  "proposed_small_generated_rows": 3000,
+  "protocol_sha256": "587fe11a42d1315d83579c0fcf1a0009ff38965948447ac8ac27c9756a32e266",
+  "purpose": "Independent post-run arithmetic, pairing, identity and registered decision audit; no classifier refits or parameter changes.",
+  "small_support_gate_passed": true,
+  "small_support_outside_mean_rates": {
+    "ellipsoid": 0.23728980342148534,
+    "spsdo": 0.2828384871512014,
+    "symmetric_clip": 0.19582043360642798
+  },
+  "software_validation": {
+    "errors": 0,
+    "failed": 0,
+    "focused_tests": 68,
+    "full_suite_passed": 806,
+    "skipped": 0
+  },
+  "source_and_runtime_identity_verified": true,
+  "sphere_candidate_fits": 24,
+  "strict_certificate_small_rows": 3000,
+  "validation_fpr_at_most_0_05_all_models": true
+}
