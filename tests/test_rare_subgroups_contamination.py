@@ -93,17 +93,21 @@ def test_execution_flag_must_be_boolean(value):
 
 
 def test_check_only_and_disabled_run_do_not_generate_fit_or_create_output(monkeypatch, tmp_path, capsys):
+    disabled = protocol.load_protocol()
+    disabled["execution_enabled"] = False
+    disabled_path = tmp_path / "disabled_protocol.json"
+    disabled_path.write_text(json.dumps(disabled))
     def forbidden(*args, **kwargs):
         raise AssertionError("Software stage must not generate research data or create manifests")
     for name in ("generate_case", "evaluate_case", "_manifest"):
         monkeypatch.setattr(cli, name, forbidden)
     output = tmp_path / "never-create"
-    assert cli.main(["--output", str(output)]) == 0
+    assert cli.main(["--config", str(disabled_path), "--output", str(output)]) == 0
     plan = json.loads(capsys.readouterr().out)
     assert plan["cases"] == 90 and plan["planned_score_rows"] == 630
     assert plan["max_classifier_fits"] == 1260 and plan["candidate_records"] == 810
     assert not plan["data_generated"] and not plan["execution_enabled"]
-    assert cli.main(["--run", "--output", str(output)]) == 2
+    assert cli.main(["--run", "--config", str(disabled_path), "--output", str(output)]) == 2
     assert "disabled" in capsys.readouterr().err
     assert not output.exists()
 
@@ -663,8 +667,8 @@ def test_training_rejects_invalid_inputs_before_any_fit(design, models, kind):
     assert not models
 
 
-def test_manifest_rejects_in_memory_enablement_that_is_absent_from_file():
+def test_manifest_rejects_runtime_execution_flag_that_disagrees_with_file():
     cfg = protocol.load_protocol()
-    cfg["execution_enabled"] = True
+    cfg["execution_enabled"] = not cfg["execution_enabled"]
     with pytest.raises(ValueError, match="committed configuration file"):
         cli._manifest(cfg, protocol.DEFAULT_PROTOCOL)

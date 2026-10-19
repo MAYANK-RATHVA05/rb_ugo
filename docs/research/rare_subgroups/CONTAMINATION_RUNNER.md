@@ -1,6 +1,6 @@
 # Contamination-study runner and software checks
 
-Status: the separate runner is implemented. **Research execution remains disabled and there are no contamination-study results.** Tests use reduced artificial fixtures; their numbers are not research evidence. The [prospective protocol](CONTAMINATION_PROTOCOL.md) and its scientific SHA-256 are unchanged from protocol commit `bff7ce5`.
+Status: the separate runner is implemented and the first frozen experiment is authorized. Measured results remain pending. Tests use reduced artificial fixtures; their numbers are not research evidence. The [prospective protocol](CONTAMINATION_PROTOCOL.md) and its scientific SHA-256 are unchanged from protocol commit `bff7ce5`.
 
 ## What you can run locally now
 
@@ -14,7 +14,7 @@ git pull --ff-only origin rare-subgroup-research
 .\.venv\Scripts\python.exe -m pytest -q tests\test_rare_subgroups_contamination.py tests\test_rare_subgroups_pilot.py tests\test_aw_smote.py
 ```
 
-Preflight prints **90 cases, 630 method evaluations, 810 AW candidate records and at most 1,260 classifier fits**. It generates no arrays, trains no model and creates no output directory. Omitting both mode flags also performs only preflight. An explicit `--run` currently returns an execution-disabled error before data generation or output creation.
+Preflight prints **90 cases, 630 method evaluations, 810 AW candidate records and at most 1,260 classifier fits**. It generates no arrays, trains no model and creates no output directory. Omitting both mode flags also performs only preflight. Execution metadata is now enabled for the authorized experiment; `--run` additionally requires a clean committed configuration and implementation.
 
 ## Implementation and isolation
 
@@ -34,9 +34,9 @@ SMOTE instrumentation observes the interpolation arguments after the library dra
 
 After selection, each fitted model uses the protocol's independently keyed uniform tie values to select the 100th largest calibration key. This gives 100 false positives among 2,000 calibration negatives when keys are unique. Duplicate keys fail explicitly without redrawing or trying another seed. Actual test FPR is measured separately. Selection AP uses unmodified probabilities, not tie values.
 
-## Files that a later authorized run will create
+## Files the authorized run will create
 
-Default future output root: `results\rare-subgroups-contamination-v1`. There is no research output there in this stage. One process may write a directory at a time.
+Default output root: `results\rare-subgroups-contamination-v1`. Freeze the enabled configuration in a clean commit before execution. One process may write a directory at a time.
 
 | Relative path | Contents |
 | --- | --- |
@@ -72,4 +72,4 @@ The focused checks cover keyed label-only pairing and zero-noise stream equivale
 
 Cloud verification with Python 3.11.17 and the pinned environment: **51 new contamination tests passed; 127 combined contamination/pilot/AW tests passed; 875 tests passed in the full suite**, with no failures or skips reported. The real CLI preflight, frozen design fingerprint, document links, prior paper/result fingerprints and absence of a contamination research output directory were also checked. These counts establish software behavior, not research performance or efficacy.
 
-After this software stage, the next stage is the authorized frozen experiment and its audit. No new sampler, additional classifier, real-data study or novelty claim is included here.
+The current stage runs the authorized frozen experiment and audits its saved evidence. No new sampler, additional classifier, real-data study or novelty claim is included here.

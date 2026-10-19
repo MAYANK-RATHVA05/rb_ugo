@@ -1,8 +1,8 @@
 {
-  "status": "software_checked_execution_disabled",
+  "status": "authorized_frozen_experiment",
   "date": "2026-10-19",
-  "execution_enabled": false,
-  "runner_status": "implemented_software_checks_complete",
+  "execution_enabled": true,
+  "runner_status": "authorized_for_frozen_experiment",
   "results_available": false,
   "protocol_document": "docs/research/rare_subgroups/CONTAMINATION_PROTOCOL.md",
   "design_hash_definition": "SHA256 UTF-8 json.dumps(scientific_design, sort_keys=True, separators=(comma,colon), ensure_ascii=False, allow_nan=False)",

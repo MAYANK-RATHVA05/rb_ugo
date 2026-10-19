@@ -49,7 +49,7 @@ a no-training preflight, independent selection/calibration, and resumable report
 Published comparison tables, figures and audit evidence are included with the pilot report.
 A separate [rare-group and label-contamination protocol](docs/research/rare_subgroups/CONTAMINATION_PROTOCOL.md)
 defines the follow-up experiment. Its [separate runner](docs/research/rare_subgroups/CONTAMINATION_RUNNER.md)
-and software checks are implemented; execution is disabled and measured results are pending.
+and software checks are implemented; the first frozen experiment is authorized and measured results are pending.
 
 ## Original UGO reproduction specification
 
