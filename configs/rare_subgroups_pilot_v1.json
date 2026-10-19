@@ -3,7 +3,10 @@
   "date": "2026-10-19",
   "status": "design_only_no_runner",
   "execution_enabled": false,
-  "implementation_status": "not_started",
+  "implementation_status": "independent_baseline_and_correctness_checks_complete",
+  "implementation_module": "src/aw_smote.py",
+  "implementation_tests": "tests/test_aw_smote.py",
+  "implementation_document": "docs/research/rare_subgroups/IMPLEMENTATION.md",
   "results_available": false,
   "protocol_document": "docs/research/rare_subgroups/PILOT_PROTOCOL.md",
   "source_register": "docs/research/rare_subgroups/SOURCE_REGISTER.json",
@@ -74,7 +77,7 @@
     "generated_count_reference": "original_fitting_class_counts_before_cleaning",
     "remove_final_minority_count": "100 - removed_originals + 900",
     "retention_control": "same_synthetic_rows_as_AW_REMOVE_restore_originals_not_extra_seeds",
-    "unsupported_conditions": ["no_valid_cluster", "nonpositive_epsilon", "invalid_quota", "requested_generation_count_not_met"],
+    "unsupported_conditions": ["no_valid_cluster", "nonpositive_epsilon", "invalid_quota", "requested_generation_count_not_met", "too_few_neighbors", "nonfinite_distances", "nonfinite_generation"],
     "silent_fallback": false
   },
   "aw_tuning": {
@@ -114,6 +117,6 @@
     "simple_controls": ["AW_REMOVE_TUNED", "ROS", "SMOTE", "WEIGHTED"],
     "statistical_significance_claim": false
   },
-  "before_execution": ["implement_independent_cited_AW_baseline", "pass_meaningful_correctness_checks", "validate_training_only_preprocessing_and_hidden_group_isolation", "freeze_runner_and_configuration_commit", "obtain_next_stage_authorization"],
+  "before_execution": ["implement_pilot_runner", "validate_runner_training_only_preprocessing_and_hidden_group_isolation", "freeze_runner_and_configuration_commit", "obtain_experiment_stage_authorization"],
   "deferred": ["author_KeepNoise_and_SoftNoise_reconstructions", "actual_label_contamination", "additional_classifiers", "real_datasets", "new_sampler", "novelty_or_efficacy_claims"]
 }

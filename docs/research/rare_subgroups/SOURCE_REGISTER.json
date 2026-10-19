@@ -50,6 +50,8 @@
   "research_status": {
     "new_sampler_claim": false,
     "pilot_results_available": false,
-    "conclusion": "Proceed to software correctness work under disclosed conventions, then evaluate the prospective pilot in a separately authorized stage."
+    "implementation_status": "independent_baseline_and_correctness_checks_complete",
+    "implementation_document": "IMPLEMENTATION.md",
+    "conclusion": "Baseline software follows disclosed conventions; pilot runner and research evaluation remain pending. No efficacy or novelty claim."
   }
 }

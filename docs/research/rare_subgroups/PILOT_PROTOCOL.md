@@ -2,6 +2,8 @@
 
 Status: design only, dated 19 October 2026. No data have been generated and no models have been fitted for this pilot. [The JSON configuration](../../../configs/rare_subgroups_pilot_v1.json) is a design record, not an executable runner configuration. Changes after observing pilot results require a new protocol version and must not be presented as preregistered.
 
+Software progress: the baseline and artificial-fixture checks are now available; see [IMPLEMENTATION.md](IMPLEMENTATION.md). The prospective distributions, selection rules, thresholds and decision gates below remain unchanged. Pilot data generation and model evaluation are still pending.
+
 ## Question and limits
 
 Does AW-style cleaning discard genuinely labeled rare minority observations, and does that reduce held-out rare-group recall under a validation-selected false-positive-rate target? Does any problem remain after simple baselines and DBSCAN parameter selection?

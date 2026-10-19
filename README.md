@@ -37,6 +37,12 @@ generator in `src/ec_ebo.py`. Part 4 makes `ec_ebo` an opt-in method in the
 same-fold evaluation runner. A [two-dataset descriptive comparison](docs/EC_EBO_SMALL_STUDY.md)
 records Part 5 results and their limits; it is not an author-paper benchmark.
 
+The `rare-subgroup-research` branch adds an independently written, paper-based
+AW-SMOTE baseline and a paired original-row retention control. The
+[source audit, pilot protocol and implementation notes](docs/research/rare_subgroups/README.md)
+distinguish disclosed conventions from verified paper rules. Only software
+checks have run for this work; the diagnostic pilot and research results remain pending.
+
 ## Original UGO reproduction specification
 
 Stage 4R-1 records the full-paper requirements in

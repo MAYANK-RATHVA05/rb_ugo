@@ -60,3 +60,5 @@ Keep the frozen author release as a source reference. Do not silently patch it a
 KeepNoise/SoftNoise are deferred until their unspecified mechanics can be resolved or documented as adaptations. The first pilot instead includes a narrowly defined **seed-filter-only retention control**: exactly the same eligible seeds and generated samples as AW-Remove, but all original observations are retained. This is not AW-KeepNoise, because excluded points still cannot generate samples.
 
 No novelty or efficacy conclusion is possible yet. A later pilot must first determine whether a repeatable subgroup problem survives ordinary controls.
+
+Implementation progress: the subsequently written baseline and its software checks are described in [IMPLEMENTATION.md](IMPLEMENTATION.md). This does not change the pinned author-source audit or establish published-score reproduction.
