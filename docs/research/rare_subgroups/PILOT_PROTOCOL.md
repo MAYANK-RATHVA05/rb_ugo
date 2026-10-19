@@ -1,8 +1,8 @@
 # Prospective rare-subgroup diagnostic pilot, version 1
 
-Status: prospective design, dated 19 October 2026, now authorized for its first execution. [The JSON configuration](../../../configs/rare_subgroups_pilot_v1.json) drives the frozen runner. Changes after observing pilot results require a new protocol version and must not be presented as preregistered.
+Status: prospective design frozen on commit `96671d7`, 19 October 2026, before its first execution. The [measured results](PILOT_RESULTS.md) are now available. The numerical design and decision rules below retain their pre-run values. Changes after observing pilot results require a new protocol version and must not be presented as preregistered.
 
-Software progress: the baseline and runner have artificial-fixture checks; see [IMPLEMENTATION.md](IMPLEMENTATION.md) and [RUNNER.md](RUNNER.md). The prospective distributions, selection rules, thresholds and decision gates below remain unchanged and are fingerprinted by the runner. Pilot data generation and model evaluation are still pending.
+Software progress: the baseline and runner have artificial-fixture checks; see [IMPLEMENTATION.md](IMPLEMENTATION.md) and [RUNNER.md](RUNNER.md). The distributions, selection rules, thresholds and decision gates below remain unchanged and are fingerprinted by the runner. The first pilot completed with all 210 evaluations successful; the criterion requiring at least two qualifying settings was not met.
 
 ## Question and limits
 

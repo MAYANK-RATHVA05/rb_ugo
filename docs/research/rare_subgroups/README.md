@@ -1,17 +1,18 @@
 # Rare minority subgroup research
 
-Status: AW baseline and pilot runner software checked, 19 October 2026. The frozen pilot is now authorized for execution; measured coverage and results will be recorded after it finishes.
+Status: the first frozen pilot completed on 19 October 2026: **30 cases, 210 successful evaluations, 420 classifier fits**. Its predeclared screen reports `trigger_not_met`; these results do not justify a new sampler.
 
 The question is whether density-based cleaning and sampling can neglect a genuine but sparsely observed minority subgroup. We first need to measure that behavior and check whether ordinary baselines or parameter selection already address it. A new algorithm is not yet justified.
 
 ## Read in this order
 
-1. [AW-SMOTE source audit](AW_SMOTE_SOURCE_AUDIT.md): what the supplied paper states, what its public code actually does, and the differences that must be resolved before evaluation.
-2. [Pilot protocol](PILOT_PROTOCOL.md): six controlled synthetic settings, five seeds, common baselines, independent evaluation, and explicit stop criteria.
-3. [Implementation and checks](IMPLEMENTATION.md): the independent AW sampler, paired retention control, diagnostics, and failure behavior.
-4. [Runner and local checks](RUNNER.md): partition isolation, selection/calibration, output files and checkpoint behavior.
-5. [Protocol configuration](../../../configs/rare_subgroups_pilot_v1.json): frozen scientific design and current execution status.
-6. [Source register](SOURCE_REGISTER.json): paper fingerprint and pinned author release.
+1. [Measured pilot results and figures](PILOT_RESULTS.md): subgroup loss, strong ordinary baselines, the complete screening result and limitations.
+2. [AW-SMOTE source audit](AW_SMOTE_SOURCE_AUDIT.md): what the supplied paper states and how the public code differs.
+3. [Pilot protocol](PILOT_PROTOCOL.md): six controlled synthetic settings, five seeds, common baselines, independent evaluation, and explicit stop criteria.
+4. [Implementation and checks](IMPLEMENTATION.md): the independent AW sampler, paired retention control, diagnostics, and failure behavior.
+5. [Runner and local checks](RUNNER.md): partition isolation, selection/calibration, output files and checkpoint behavior.
+6. [Protocol configuration](../../../configs/rare_subgroups_pilot_v1.json): frozen scientific design and current execution status.
+7. [Source register](SOURCE_REGISTER.json): paper fingerprint and pinned author release.
 
 ## Current conclusion
 
@@ -19,7 +20,7 @@ The author release cannot be treated as an exact executable version of the suppl
 
 The paper already discusses legitimate sparse observations being removed, includes KeepNoise and SoftNoise experiments, and proposes probability regularization. Simply retaining DBSCAN noise, reducing MinPts, or smoothing sampling weights would not establish novelty.
 
-The audited baseline and diagnostic runner are implemented with meaningful software checks. This establishes behavior under the disclosed conventions, not efficacy or novelty. The current stage runs the frozen pilot. Existing UGO/BFCH-SMOTE/EC-EBO/SSHR code and the 30-dataset study remain the historical baseline work; this pilot does not replace their results.
+The pilot confirms that cleaning can discard genuine rare originals, but only one setting met every predeclared comparison criterion and ordinary baselines already worked well. No new method is claimed. A further study would need a separately specified contamination comparison and achieved-FPR controls. Existing UGO/BFCH-SMOTE/EC-EBO/SSHR code and the 30-dataset study remain the historical baseline work; this pilot does not replace their results.
 
 ## Windows synchronization
 
@@ -31,4 +32,4 @@ git switch rare-subgroup-research
 git pull --ff-only origin rare-subgroup-research
 ```
 
-Open `docs\research\rare_subgroups\RUNNER.md` for check-only and explicit execution commands.
+Open `docs\research\rare_subgroups\PILOT_RESULTS.md` and `docs\research\rare_subgroups\pilot_v1\comparison.csv`. These published results are included in Git; viewing them requires no retraining.

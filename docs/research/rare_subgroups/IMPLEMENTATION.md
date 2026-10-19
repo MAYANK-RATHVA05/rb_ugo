@@ -1,6 +1,6 @@
 # AW baseline implementation and software checks
 
-Status: baseline software implemented, 19 October 2026. The [pilot runner](RUNNER.md) is now prepared; research experiments have not started. Software validation uses small artificial fixtures only; it produces no research performance table or research result.
+Status: baseline software implemented, 19 October 2026. The [pilot runner](RUNNER.md) has now completed its first experiment; [measured results](PILOT_RESULTS.md) are reported separately. The software tests described here use artificial fixtures and must not be confused with that research evaluation.
 
 ## What is implemented
 
@@ -90,4 +90,4 @@ The focused checks use independently hand-derived neighbor counts, density/fusio
 
 Validation of the baseline stage (`adf8f45`) in the cloud checkout, Python 3.11.17 with the repository environment: **53 focused tests passed; 801 tests passed in the complete suite**, with no reported skips or failures. Document links, JSON status, and the staged diff were also checked. These historical counts describe software verification, not measured research performance; the runner's current checks are documented separately.
 
-The runner now implements the protocol's partitions, hidden-group isolation, ordinary baselines and tuned AW selection, independent threshold calibration and report exports. Execution is authorized for the frozen pilot. KeepNoise/SoftNoise reconstruction and new sampling rules remain deferred.
+The runner now implements the protocol's partitions, hidden-group isolation, ordinary baselines and tuned AW selection, independent threshold calibration and report exports. The first frozen pilot is complete and independently audited. KeepNoise/SoftNoise reconstruction and new sampling rules remain deferred.

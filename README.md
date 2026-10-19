@@ -40,11 +40,13 @@ records Part 5 results and their limits; it is not an author-paper benchmark.
 The `rare-subgroup-research` branch adds an independently written, paper-based
 AW-SMOTE baseline and a paired original-row retention control. The
 [source audit, pilot protocol and implementation notes](docs/research/rare_subgroups/README.md)
-distinguish disclosed conventions from verified paper rules. Only software
-checks have run for this work; the diagnostic pilot and research results remain pending.
+distinguish disclosed conventions from verified paper rules. The
+[first measured synthetic pilot](docs/research/rare_subgroups/PILOT_RESULTS.md)
+completed all 210 evaluations across 30 cases. It found rare-group loss under
+cleaning, but the predeclared screen did not justify advancing a new sampler.
 The [prepared pilot runner](docs/research/rare_subgroups/RUNNER.md) supplies
 a no-training preflight, independent selection/calibration, and resumable reports.
-Execution of the frozen pilot is now authorized; results will be recorded after completion.
+Published comparison tables, figures and audit evidence are included with the pilot report.
 
 ## Original UGO reproduction specification
 

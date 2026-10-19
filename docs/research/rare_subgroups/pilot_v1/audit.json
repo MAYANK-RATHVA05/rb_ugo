@@ -1,0 +1,39 @@
+{
+  "status": "passed",
+  "run_commit": "96671d7536dabf1a6f7a4d3a628b80e371aa472f",
+  "run_id": "3fc760e3fba0f699171a9a72cb7a9d250c49ebd809e69ae92a181e2badbe3c9f",
+  "design_sha256": "3855c803f1226f9ceefa26a2b26473a63d33c47f8c6afd89ab27c5fe4d3b9bb5",
+  "case_records_checked": 30,
+  "prediction_metric_rows_checked": 210,
+  "metric_definitions_checked": 7,
+  "max_absolute_metric_recomputation_error": 4.440892098500626e-16,
+  "candidate_traces_checked": 270,
+  "synthetic_interpolations_checked": 243000,
+  "classifier_fits_in_original_run": 420,
+  "additional_classifier_fits_for_audit": 0,
+  "test_fpr_range": [
+    0.0081,
+    0.0597
+  ],
+  "calibration_fpr_range": [
+    0.0055,
+    0.05
+  ],
+  "checks": [
+    "record and prediction checksums",
+    "regenerated partition fingerprints",
+    "source-file fingerprints",
+    "original fitting-only scaling reconstruction",
+    "independent Euclidean radius and boundary-neighbor arithmetic",
+    "cluster maxima, quotas, density and sigmoid probabilities",
+    "interpolation provenance and output hashes",
+    "exact paired-generation identity",
+    "selection ordering and chosen candidate reuse",
+    "all held-out metric arithmetic and denominators",
+    "original group retention counts",
+    "calibration count bounds"
+  ],
+  "limitations": [
+    "Validation/calibration probability vectors are not stored. Their AP values and threshold minimality were not independently recomputed from raw vectors without refitting; recorded selection ordering, calibration count bounds and software isolation checks were verified."
+  ]
+}

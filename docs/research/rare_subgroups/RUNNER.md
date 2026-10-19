@@ -1,6 +1,6 @@
 # Rare-subgroup pilot runner
 
-Status: the frozen 30-case research pilot is authorized for execution. The numerical design and runner have software checks; this stage will record measured results after the run finishes.
+Status: the frozen 30-case pilot completed with **210 successful evaluations and 420 classifier fits** on run commit `96671d7`. Read [PILOT_RESULTS.md](PILOT_RESULTS.md) for measured findings, uncertainty and the unmet predeclared screen.
 
 ## Safe local check now
 
@@ -19,7 +19,7 @@ Check-only prints **30 cases, seven methods, at most 420 classifier fits, and 21
 `execution_enabled` is now true for the authorized experiment stage. Freeze that configuration and the runner in a clean commit before using `--run`; the CLI rejects uncommitted tracked changes or a disabled execution flag. Check-only remains the default mode. The explicit execution command is:
 
 ```powershell
-.\.venv\Scripts\python.exe -m scripts.run_rare_subgroups_pilot --run --output results\rare-subgroups-pilot-v1
+.\.venv\Scripts\python.exe -m scripts.run_rare_subgroups_pilot --run --output results\rare-subgroups-pilot-v1-local
 ```
 
 ## What the runner implements
@@ -39,9 +39,9 @@ The seven treatments are NORES, class-weighted forest, ROS, SMOTE, AW-Remove, se
 
 Every reported treatment gets its own calibration threshold from the same independent negative-only calibration partition. The rule uses `score >= threshold` and handles score ties conservatively. If no finite candidate meets the empirical FPR target, a null threshold plus `threshold_is_infinite=true` records the positive-infinity threshold. That is a legitimate all-negative operating point, not a failed metric or a population-FPR guarantee.
 
-## Files produced by a later run
+## Run outputs and published copies
 
-The default output location will be `results\rare-subgroups-pilot-v1`. Nothing is written there by check-only.
+The original cloud output location is `results\rare-subgroups-pilot-v1`. Compact published copies are under [pilot_v1](pilot_v1); they can be read directly after pulling Git. Nothing is written by check-only. Use a fresh output directory for a new local run: the original checkpoint identity includes the frozen run commit and metadata, so a later publication commit cannot resume it silently.
 
 | Path under the output directory | Contents |
 | --- | --- |
@@ -72,6 +72,6 @@ Screening uses the protocol's practical thresholds, with a 1e-12 numerical toler
 
 Software tests cover independent keyed streams and paired prefixes; unchanged fitting/selection when calibration features, test labels or group IDs are perturbed; original-training-only scaling; default and nondefault AP selection; no post-selection refit; paired AW generation; hand-derived calibration/F1/AP/recall/FPR arithmetic; explicit unsupported/prediction failures; same-seed summaries; screening boundaries; source/design rejection; and interruption/resume/checksum behavior. A small real forest fixture exercises the complete computation without running the research design.
 
-Cloud verification with Python 3.11.17 and the repository environment: **23 runner tests passed, 76 combined runner/AW tests passed, and 824 tests passed in the full suite**, with no reported failures or skips. The real check-only command, scientific-design fingerprint, local document links, JSON metadata and absence of a pilot output directory were also verified. These are software checks, not pilot performance results.
+Before the measured run, cloud verification with Python 3.11.17 and the repository environment found **23 runner tests passed, 76 combined runner/AW tests passed, and 824 tests passed in the full suite**, with no reported failures or skips. The real check-only command, scientific-design fingerprint, local document links, JSON metadata and then-absent pilot output directory were also verified. These are software checks; the measured results are reported separately above.
 
-The next stage is to enable and run the frozen pilot, inspect its coverage and diagnostics, and interpret the measured results before deciding whether any new method is warranted. This runner does not modify the previous UGO/BFCH-SMOTE/EC-EBO/SSHR implementations or their 30-dataset reports.
+The first measured pilot and its audit are complete. A follow-up must use a separately specified protocol rather than change this study's seeds, gates or controls after observing outcomes. This runner does not modify the previous UGO/BFCH-SMOTE/EC-EBO/SSHR implementations or their 30-dataset reports.

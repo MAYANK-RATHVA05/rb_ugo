@@ -49,11 +49,13 @@
   },
   "research_status": {
     "new_sampler_claim": false,
-    "pilot_results_available": false,
+    "pilot_results_available": true,
     "implementation_status": "independent_baseline_and_correctness_checks_complete",
     "implementation_document": "IMPLEMENTATION.md",
-    "runner_status": "authorized_for_frozen_pilot",
+    "runner_status": "completed_30_case_pilot",
     "runner_document": "RUNNER.md",
-    "conclusion": "Baseline and runner software follow the disclosed conventions; the first frozen pilot is authorized for execution. No efficacy or novelty claim before measured results."
+    "run_commit": "96671d7536dabf1a6f7a4d3a628b80e371aa472f",
+    "results_document": "PILOT_RESULTS.md",
+    "conclusion": "All 210 method evaluations succeeded. Rare-group loss is observed, but only one setting qualified (two required) and ordinary controls already performed well. The screen is trigger_not_met; no new-method novelty claim."
   }
 }
