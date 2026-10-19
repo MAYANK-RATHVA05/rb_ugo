@@ -1,6 +1,6 @@
 # Rare minority subgroup research
 
-Status: the clean pilot completed with **30 cases, 210 successful evaluations and 420 classifier fits**. The separate [contamination follow-up](CONTAMINATION_RESULTS.md) is now complete and audited: **90 cases, 630 successful evaluations and 1,260 classifier fits**. The clean pilot's screen was `trigger_not_met`; the contamination screen is `tradeoff_trigger_not_met`. Neither justifies a new sampler. A standalone [paper-aligned NADOS baseline](NADOS_BASELINE.md) is now specified for the next diagnostic; it has not been run on these research cases.
+Status: the clean pilot completed with **30 cases, 210 successful evaluations and 420 classifier fits**. The separate [contamination follow-up](CONTAMINATION_RESULTS.md) is now complete and audited: **90 cases, 630 successful evaluations and 1,260 classifier fits**. The clean pilot's screen was `trigger_not_met`; the contamination screen is `tradeoff_trigger_not_met`. Neither justifies a new sampler. A standalone [paper-aligned NADOS baseline](NADOS_BASELINE.md) and a separate [disabled 90-case diagnostic protocol](NADOS_DIAGNOSTIC_PROTOCOL.md) are now implemented; no NADOS research cases have been run.
 
 The question is whether density-based cleaning and sampling can neglect a genuine but sparsely observed minority subgroup. We first need to measure that behavior and check whether ordinary baselines or parameter selection already address it. A new algorithm is not yet justified.
 
@@ -17,6 +17,7 @@ Start with the latest [contamination results, figures and decision](CONTAMINATIO
 7. [Source register](SOURCE_REGISTER.json): paper fingerprint and pinned author release.
 8. [Contamination follow-up](CONTAMINATION_PROTOCOL.md), [runner and checks](CONTAMINATION_RUNNER.md), and [configuration](../../../configs/rare_subgroups_contamination_v1.json): paired training-label flips, independent tie calibration, seven controls and frozen stop rules. The first experiment and audit are complete.
 9. [NADOS baseline specification](NADOS_BASELINE.md): equations, source fingerprint, declared edge conventions and the boundary between sampler inputs and evaluator-only truth.
+10. [NADOS diagnostic protocol](NADOS_DIAGNOSTIC_PROTOCOL.md): exact reuse of the frozen 90 contamination cases, fixed diagnostics, execution gate and resumable runner contract.
 
 ## Current conclusion
 
@@ -26,7 +27,7 @@ The paper already discusses legitimate sparse observations being removed, includ
 
 The clean pilot confirms that cleaning can discard genuine rare originals, but only one setting met every predeclared comparison criterion and ordinary baselines already worked well. The contamination follow-up confirms rare-group loss, but no cell met the required contamination-specific AP-cost condition; class weighting meets the control tolerances in all six base settings. Corrupted-parent exposure is a useful diagnostic, not a novelty claim. Existing UGO/BFCH-SMOTE/EC-EBO/SSHR code and the 30-dataset study remain the historical baseline work; these diagnostic studies do not replace their results.
 
-NADOS already implements the broad idea of retaining original observations while gating synthetic seeds by reliability and allocating synthesis by a separate difficulty score. The next question is therefore narrower: whether that individual reliability gate rejects legitimate rare subgroups. The baseline implementation alone does not answer that question; integration requires a separately frozen protocol and explicit execution.
+NADOS already implements the broad idea of retaining original observations while gating synthetic seeds by reliability and allocating synthesis by a separate difficulty score. The next question is therefore narrower: whether that individual reliability gate rejects legitimate rare subgroups. The frozen diagnostic and software now exist, but execution remains disabled and therefore provides no result yet.
 
 ## Windows synchronization
 
