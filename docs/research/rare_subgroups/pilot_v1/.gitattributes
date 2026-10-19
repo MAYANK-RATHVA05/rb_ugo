@@ -1,0 +1,4 @@
+# Published evidence has recorded byte-level SHA-256 fingerprints.
+# Preserve original serialization across Windows and Linux checkouts.
+*.csv -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+*.json -text
