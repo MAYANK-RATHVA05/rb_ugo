@@ -58,18 +58,24 @@
     "results_document": "PILOT_RESULTS.md",
     "conclusion": "All 210 method evaluations succeeded. Rare-group loss is observed, but only one setting qualified (two required) and ordinary controls already performed well. The screen is trigger_not_met; no new-method novelty claim.",
     "contamination_follow_up": {
-      "status": "authorized_frozen_experiment",
+      "status": "completed_measured_experiment",
       "protocol_document": "CONTAMINATION_PROTOCOL.md",
       "configuration": "configs/rare_subgroups_contamination_v1.json",
-      "runner_status": "authorized_for_frozen_experiment",
+      "runner_status": "completed_90_case_experiment",
       "runner_document": "CONTAMINATION_RUNNER.md",
       "runner_module": "scripts.run_rare_subgroups_contamination",
       "execution_enabled": true,
-      "results_available": false,
+      "results_available": true,
       "relationship": "New design informed by the completed clean pilot; its original trigger_not_met outcome is unchanged.",
       "planned_cases": 90,
       "planned_method_rows": 630,
-      "max_classifier_fits": 1260
+      "max_classifier_fits": 1260,
+      "results_document": "CONTAMINATION_RESULTS.md",
+      "run_commit": "975020ab3cc3ba5e15cfd29499c7ee5b776a0116",
+      "successful_method_rows": 630,
+      "successful_AW_candidates": 810,
+      "screening_status": "tradeoff_trigger_not_met",
+      "conclusion": "No base setting met both frozen conditions; class weighting covers all six base settings under the declared ordinary-control tolerances. No new sampler is justified by this diagnostic."
     }
   }
 }

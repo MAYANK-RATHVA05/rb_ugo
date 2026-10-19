@@ -1,0 +1,44 @@
+{
+  "status": "passed",
+  "run_commit": "975020ab3cc3ba5e15cfd29499c7ee5b776a0116",
+  "run_id": "749554d54ed638f19ff0b35b5182f6a0101f3ce61f4328d20771e9c031c2982f",
+  "design_sha256": "adfdb2961963ff83b9552e84b06963689f938d853859d9bafc224106a08849db",
+  "case_records_checked": 90,
+  "prediction_metric_rows_checked": 630,
+  "selection_AP_vectors_checked": 810,
+  "calibration_vectors_and_cutoffs_checked": 630,
+  "AW_candidate_traces_checked": 810,
+  "AW_candidate_interpolations_checked": 720900,
+  "SMOTE_interpolations_checked": 80100,
+  "ROS_duplications_checked": 80100,
+  "summary_rows_checked": 1260,
+  "screening_status": "tradeoff_trigger_not_met",
+  "clean_probability_vectors_equal_to_first_pilot": 210,
+  "max_absolute_metric_error": 4.440892098500626e-16,
+  "max_absolute_selection_AP_error": 2.220446049250313e-16,
+  "test_fpr_range": [
+    0.03355,
+    0.06445
+  ],
+  "test_fpr_above_point05": 326,
+  "calibration_fpr_range": [
+    0.05,
+    0.05
+  ],
+  "classifier_fits_in_original_run": 1260,
+  "additional_classifier_fits_for_audit": 0,
+  "checks": [
+    "Frozen source/config/run identity and case/archive/array checksums",
+    "Independently regenerated Gaussian partitions and nested label corruption",
+    "Original-fitting-only scaling and shared feature/true-group identities",
+    "All saved candidate AP values and selected fit reuse",
+    "All negative-only tie cutoffs and all seven held-out metrics",
+    "DBSCAN label replay and independent radius/neighbors/weights/quotas",
+    "AW and SMOTE interpolation/output reconstruction; ROS output reconstruction",
+    "Original-group retention and corrupted-parent counts",
+    "All summary means/SDs and all predeclared screen/control decisions"
+  ],
+  "limitations": [
+    "Classifier fitting was not repeated; training isolation is covered by software tests and committed source. DBSCAN label verification replays the reference library, while radius/neighbor/weight arithmetic is independently reconstructed."
+  ]
+}

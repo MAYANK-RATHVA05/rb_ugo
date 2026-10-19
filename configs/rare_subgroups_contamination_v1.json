@@ -1,9 +1,9 @@
 {
-  "status": "authorized_frozen_experiment",
+  "status": "completed_measured_experiment",
   "date": "2026-10-19",
   "execution_enabled": true,
-  "runner_status": "authorized_for_frozen_experiment",
-  "results_available": false,
+  "runner_status": "completed_90_case_experiment",
+  "results_available": true,
   "protocol_document": "docs/research/rare_subgroups/CONTAMINATION_PROTOCOL.md",
   "design_hash_definition": "SHA256 UTF-8 json.dumps(scientific_design, sort_keys=True, separators=(comma,colon), ensure_ascii=False, allow_nan=False)",
   "design_sha256": "adfdb2961963ff83b9552e84b06963689f938d853859d9bafc224106a08849db",
@@ -379,5 +379,14 @@
   ],
   "runner_module": "scripts.run_rare_subgroups_contamination",
   "runner_document": "docs/research/rare_subgroups/CONTAMINATION_RUNNER.md",
-  "runner_tests": "tests/test_rare_subgroups_contamination.py"
+  "runner_tests": "tests/test_rare_subgroups_contamination.py",
+  "results_report": "docs/research/rare_subgroups/CONTAMINATION_RESULTS.md",
+  "run_commit": "975020ab3cc3ba5e15cfd29499c7ee5b776a0116",
+  "measured_results": {
+    "cases": 90,
+    "successful_method_rows": 630,
+    "successful_AW_candidates": 810,
+    "classifier_fits": 1260,
+    "screening_status": "tradeoff_trigger_not_met"
+  }
 }

@@ -1,6 +1,6 @@
 # Contamination-study runner and software checks
 
-Status: the separate runner is implemented and the first frozen experiment is authorized. Measured results remain pending. Tests use reduced artificial fixtures; their numbers are not research evidence. The [prospective protocol](CONTAMINATION_PROTOCOL.md) and its scientific SHA-256 are unchanged from protocol commit `bff7ce5`.
+Status: the first frozen experiment completed with **90 cases, 630 successful method evaluations and 1,260 classifier fits** on run commit `975020a`. Read the [audited results](CONTAMINATION_RESULTS.md) for the unmet screen and strong ordinary controls. Tests use reduced artificial fixtures; their numbers are not research evidence. The [prospective protocol](CONTAMINATION_PROTOCOL.md) and its scientific SHA-256 are unchanged from protocol commit `bff7ce5`.
 
 ## What you can run locally now
 
@@ -15,6 +15,8 @@ git pull --ff-only origin rare-subgroup-research
 ```
 
 Preflight prints **90 cases, 630 method evaluations, 810 AW candidate records and at most 1,260 classifier fits**. It generates no arrays, trains no model and creates no output directory. Omitting both mode flags also performs only preflight. Execution metadata is now enabled for the authorized experiment; `--run` additionally requires a clean committed configuration and implementation.
+
+The measured report, compact tables and figures are included in Git; viewing them requires no retraining. For a new local numerical run, use a fresh output directory, for example `results\rare-subgroups-contamination-v1-local`. The original cloud checkpoints belong to run commit `975020a` and will reject a different publication-commit identity.
 
 ## Implementation and isolation
 
@@ -34,9 +36,9 @@ SMOTE instrumentation observes the interpolation arguments after the library dra
 
 After selection, each fitted model uses the protocol's independently keyed uniform tie values to select the 100th largest calibration key. This gives 100 false positives among 2,000 calibration negatives when keys are unique. Duplicate keys fail explicitly without redrawing or trying another seed. Actual test FPR is measured separately. Selection AP uses unmodified probabilities, not tie values.
 
-## Files the authorized run will create
+## Run outputs and published copies
 
-Default output root: `results\rare-subgroups-contamination-v1`. Freeze the enabled configuration in a clean commit before execution. One process may write a directory at a time.
+Original cloud output root: `results\rare-subgroups-contamination-v1`. Compact measured copies are under [contamination_v1](contamination_v1). Freeze the enabled configuration in a clean commit before any new execution. One process may write a directory at a time.
 
 | Relative path | Contents |
 | --- | --- |
@@ -54,7 +56,7 @@ With zero corrupted rows, noise-retention fraction is null. Interpolation-parent
 
 Sampler trace IDs index the shuffled original fitting arrays. Map them through saved `fitting_stable_ids` to obtain the pre-shuffle identities used to choose corrupted observations.
 
-Saved selection/calibration vectors allow a later independent audit to recompute selection AP, tie cutoff and calibration counts as well as held-out metrics, addressing the first pilot's audit limitation. This software stage checks that capability on artificial fixtures; it does not claim to have audited an unrun research experiment.
+Saved selection/calibration vectors allowed the completed independent audit to recompute all 810 candidate AP values, 630 tie cutoffs/calibration counts and all held-out metrics, addressing the first pilot's audit limitation. The [audit helper](../../../scripts/audit_rare_subgroups_contamination.py) can repeat these checks from complete raw checkpoints without classifier refits; it optionally compares zero-noise probabilities with the first pilot. The [plot helper](../../../scripts/plot_rare_subgroups_contamination.py) needs only the published scores CSV and fits no models.
 
 ## Resuming and failures
 
@@ -70,6 +72,6 @@ Exit codes: 0 for preflight or full method coverage; 1 for traversal with partia
 
 The focused checks cover keyed label-only pairing and zero-noise stream equivalence; exact library-output/provenance equivalence; hand-derived tie calibration, F1/AP/recall and AP-interaction signs; four/five-seed and tolerance boundaries; distinct-base counting; same-control coverage across noise levels; hidden-truth/held-out isolation; default/nondefault fit reuse; unsupported/selection/scoring failures; full audit-vector retention; corruption detection; changed-identity rejection; and interruption/resume. A tiny real forest fixture exercises the complete computation without running a research cell.
 
-Cloud verification with Python 3.11.17 and the pinned environment: **51 new contamination tests passed; 127 combined contamination/pilot/AW tests passed; 875 tests passed in the full suite**, with no failures or skips reported. The real CLI preflight, frozen design fingerprint, document links, prior paper/result fingerprints and absence of a contamination research output directory were also checked. These counts establish software behavior, not research performance or efficacy.
+Before research execution, cloud verification with Python 3.11.17 and the pinned environment found **51 new contamination tests passed; 127 combined contamination/pilot/AW tests passed; 875 tests passed in the full suite**, with no failures or skips reported. The real CLI preflight, frozen design fingerprint, document links, prior paper/result fingerprints and then-absent contamination research output directory were also checked. These historical counts establish software behavior, not research performance or efficacy.
 
-The current stage runs the authorized frozen experiment and audits its saved evidence. No new sampler, additional classifier, real-data study or novelty claim is included here.
+The first experiment and its audit are complete. No new sampler, additional classifier, real-data study or novelty claim is included here. Further experiments require a separately specified stage.
