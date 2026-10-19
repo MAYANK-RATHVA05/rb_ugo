@@ -1,6 +1,6 @@
 # Rare minority subgroup research
 
-Status: the first frozen pilot completed on 19 October 2026: **30 cases, 210 successful evaluations, 420 classifier fits**. Its predeclared screen reports `trigger_not_met`; these results do not justify a new sampler. A separate [contamination follow-up protocol](CONTAMINATION_PROTOCOL.md) is now specified; its runner is not implemented, execution is disabled, and it has no results.
+Status: the first frozen pilot completed on 19 October 2026: **30 cases, 210 successful evaluations, 420 classifier fits**. Its predeclared screen reports `trigger_not_met`; these results do not justify a new sampler. The separate [contamination follow-up protocol](CONTAMINATION_PROTOCOL.md) and [runner/software checks](CONTAMINATION_RUNNER.md) are implemented. Contamination-study execution is disabled and it has no measured results.
 
 The question is whether density-based cleaning and sampling can neglect a genuine but sparsely observed minority subgroup. We first need to measure that behavior and check whether ordinary baselines or parameter selection already address it. A new algorithm is not yet justified.
 
@@ -13,7 +13,7 @@ The question is whether density-based cleaning and sampling can neglect a genuin
 5. [Runner and local checks](RUNNER.md): partition isolation, selection/calibration, output files and checkpoint behavior.
 6. [Protocol configuration](../../../configs/rare_subgroups_pilot_v1.json): frozen scientific design and current execution status.
 7. [Source register](SOURCE_REGISTER.json): paper fingerprint and pinned author release.
-8. [Contamination follow-up](CONTAMINATION_PROTOCOL.md) and [its configuration](../../../configs/rare_subgroups_contamination_v1.json): paired training-label flips, independent tie calibration, seven controls and prospective stop rules. Protocol only.
+8. [Contamination follow-up](CONTAMINATION_PROTOCOL.md), [runner and checks](CONTAMINATION_RUNNER.md), and [configuration](../../../configs/rare_subgroups_contamination_v1.json): paired training-label flips, independent tie calibration, seven controls and prospective stop rules. Software ready for preflight; research execution disabled.
 
 ## Current conclusion
 
@@ -35,4 +35,4 @@ git pull --ff-only origin rare-subgroup-research
 
 Open `docs\research\rare_subgroups\PILOT_RESULTS.md` and `docs\research\rare_subgroups\pilot_v1\comparison.csv`. These published results are included in Git; viewing them requires no retraining.
 
-For the current protocol stage, read `docs\research\rare_subgroups\CONTAMINATION_PROTOCOL.md`. No training command is provided for it because its runner does not exist yet. The next stage is software implementation and checks, followed by a separately authorized experiment stage.
+For the current software stage, read `docs\research\rare_subgroups\CONTAMINATION_RUNNER.md` for preflight and test commands. The next stage is the separately authorized experiment and its audit.

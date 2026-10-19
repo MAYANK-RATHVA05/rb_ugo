@@ -1,8 +1,8 @@
 {
-  "status": "frozen_protocol_only",
+  "status": "software_checked_execution_disabled",
   "date": "2026-10-19",
   "execution_enabled": false,
-  "runner_status": "not_implemented",
+  "runner_status": "implemented_software_checks_complete",
   "results_available": false,
   "protocol_document": "docs/research/rare_subgroups/CONTAMINATION_PROTOCOL.md",
   "design_hash_definition": "SHA256 UTF-8 json.dumps(scientific_design, sort_keys=True, separators=(comma,colon), ensure_ascii=False, allow_nan=False)",
@@ -376,5 +376,8 @@
     "pass_focused_and_required_repository_checks",
     "freeze_clean_implementation_commit",
     "receive_authorization_for_experiment_stage"
-  ]
+  ],
+  "runner_module": "scripts.run_rare_subgroups_contamination",
+  "runner_document": "docs/research/rare_subgroups/CONTAMINATION_RUNNER.md",
+  "runner_tests": "tests/test_rare_subgroups_contamination.py"
 }
