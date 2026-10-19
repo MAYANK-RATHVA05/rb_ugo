@@ -1,0 +1,15 @@
+{
+  "calibration_false_positives_per_case": 100,
+  "cases_verified": 90,
+  "classifier_fits_recorded": 90,
+  "classifier_refits_during_audit": 0,
+  "design_sha256": "c86301b697708983c3884256a0e055bde57f60ee3f7d8f5df5e42b6da9693b9f",
+  "generated_rows_reconstructed": 80100,
+  "maximum_metric_recomputation_error": 3.3306690738754696e-16,
+  "parent_design_sha256": "adfdb2961963ff83b9552e84b06963689f938d853859d9bafc224106a08849db",
+  "run_commit": "541cfaf1d1bf241f5e3cba97bb6ad9aaba974c13",
+  "run_id": "b0ba4c048143be42dba78cdfbec81db1c6df85cc59b2191b345a36cd968acdca",
+  "source_line_endings": "manifest Windows CRLF hashes matched committed text after explicit normalization",
+  "status": "passed",
+  "successful_rows_verified": 90
+}

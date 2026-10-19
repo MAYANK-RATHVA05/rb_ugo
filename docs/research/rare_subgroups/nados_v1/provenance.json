@@ -1,0 +1,9 @@
+{
+  "design_sha256": "c86301b697708983c3884256a0e055bde57f60ee3f7d8f5df5e42b6da9693b9f",
+  "parent_design_sha256": "adfdb2961963ff83b9552e84b06963689f938d853859d9bafc224106a08849db",
+  "published_files_derived_without_classifier_refits": true,
+  "raw_artifacts_committed": false,
+  "run_commit": "541cfaf1d1bf241f5e3cba97bb6ad9aaba974c13",
+  "run_id": "b0ba4c048143be42dba78cdfbec81db1c6df85cc59b2191b345a36cd968acdca",
+  "source": "user-supplied complete raw result archive"
+}

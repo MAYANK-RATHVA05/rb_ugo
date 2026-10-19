@@ -1,0 +1,12 @@
+{
+  "AW_retention_contaminated_parent_exposure": 0.27885122410546137,
+  "NADOS_contaminated_parent_exposure": 0.025273069679849342,
+  "cases": 90,
+  "interpretation": "descriptive frozen screen; not statistical significance or novelty evidence",
+  "qualifying_base_settings": 0,
+  "qualifying_cells": 0,
+  "relative_parent_exposure_reduction": 0.9093671911933545,
+  "required_qualifying_base_settings": 2,
+  "status": "diagnostic_trigger_not_met",
+  "successful_rows": 90
+}

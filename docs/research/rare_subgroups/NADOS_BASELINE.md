@@ -1,8 +1,8 @@
 # NADOS baseline specification
 
-Status: independently implemented, paper-aligned software baseline. No NADOS
-research experiment has been run in this repository, and this document contains
-no efficacy or novelty claim.
+Status: independently implemented, paper-aligned software baseline. The separate
+[90-case diagnostic](NADOS_DIAGNOSTIC_RESULTS.md) is complete and audited; this
+baseline specification itself contains no efficacy or novelty claim.
 
 ## Source and scope
 
@@ -76,6 +76,6 @@ locked.
 
 This stage provides the standalone baseline and software checks only. The
 separate [NADOS diagnostic protocol](NADOS_DIAGNOSTIC_PROTOCOL.md) now
-integrates it with the existing 90-case synthetic design. Execution is enabled
-for the first authorized run, but no NADOS research result exists yet. Cluster-Safe Oversampling and a
+integrates it with the existing 90-case synthetic design, and its first
+authorized experiment is complete. Cluster-Safe Oversampling and a
 proposed rare-subgroup-aware method are not implemented here.

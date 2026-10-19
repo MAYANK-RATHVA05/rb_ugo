@@ -164,7 +164,12 @@ def export_reports(directory: Path, records: dict[str, dict], config: dict) -> d
         if record is None:
             continue
         row = record["rows"][0]
-        flat = {**job, "case_id": record["case_id"], "status": row["status"]}
+        # Held-out metrics also contain ``rare_count`` (the fixed test-group
+        # denominator). Keep the fitting design count under an unambiguous
+        # name instead of allowing the metric to overwrite it.
+        flat = {"fit_rare_count": job["rare_count"], "rare_sigma": job["rare_sigma"],
+                "flipped_count": job["flipped_count"], "seed": job["seed"],
+                "case_id": record["case_id"], "status": row["status"]}
         if row["metrics"] is not None:
             flat.update(row["metrics"])
         rows.append(flat)

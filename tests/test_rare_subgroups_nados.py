@@ -1,13 +1,15 @@
-"""Artificial software fixtures only; the disabled 90-case study is never run."""
+"""Artificial fixtures only; tests never execute the full 90-case study."""
 from copy import deepcopy
 from dataclasses import replace
-import hashlib
+import csv
 import json
 
 import numpy as np
 import pytest
 from sklearn.base import BaseEstimator
+from sklearn.metrics import average_precision_score
 
+import scripts.audit_rare_subgroups_nados as audit
 import scripts.run_rare_subgroups_nados as cli
 from scripts.run_rare_subgroups_pilot import _save_predictions
 from src.nados import NADOSUnsupportedError
@@ -113,6 +115,25 @@ def test_sampler_retains_originals_reconstructs_rows_and_meets_budget(design):
     assert set(trace["generated_seed_indices"]) <= set(trace["eligible_indices"])
 
 
+def test_independent_audit_replays_nados_equations_and_rng(design):
+    job, data = first(design)
+    sampled = study.sample_nados(data.fitting.X, data.fitting.y, design, job["seed"])
+    row = {"output_X_sha256": sampled.metadata["output_X_sha256"],
+           "output_y_sha256": sampled.metadata["output_y_sha256"],
+           "generated_count": sampled.metadata["generated_count"]}
+    assert audit._audit_nados(sampled.trace, data.fitting.X, data.fitting.y, row, job["seed"]) == 14
+    damaged = {**sampled.trace, "reliability_scores": sampled.trace["reliability_scores"].copy()}
+    damaged["reliability_scores"][0] += .1
+    with pytest.raises(AssertionError):
+        audit._audit_nados(damaged, data.fitting.X, data.fitting.y, row, job["seed"])
+
+
+def test_independent_audit_ap_matches_reference():
+    labels = np.array([0, 1, 1, 0, 1, 0])
+    scores = np.array([.2, .8, .8, .1, .4, .4])
+    assert audit._ap(labels, scores) == pytest.approx(average_precision_score(labels, scores))
+
+
 def test_training_api_cannot_receive_hidden_metadata(design):
     X = np.arange(84, dtype=float).reshape(42, 2)
     y = np.r_[np.zeros(30, dtype=int), np.ones(12, dtype=int)]
@@ -208,6 +229,20 @@ def test_checkpoint_vectors_verify_and_corruption_is_rejected(design, tmp_path):
     path.write_bytes(path.read_bytes() + b"corrupt")
     with pytest.raises(ValueError, match="corrupt"):
         cli._verify_vectors(tmp_path, saved)
+
+
+def test_score_export_distinguishes_fitting_and_test_rare_counts(monkeypatch, tmp_path):
+    job = {"rare_count": 4, "rare_sigma": .35, "flipped_count": 5, "seed": 42}
+    record = {"case_id": "fixture", "rows": [{
+        "status": "success", "metrics": {"rare_count": 200, "rare_recall": .75},
+        "eligibility": None,
+    }]}
+    monkeypatch.setattr(cli, "planned_jobs", lambda config: [job])
+    cli.export_reports(tmp_path, {parent.case_id(job): record}, {})
+    with (tmp_path / "scores.csv").open(newline="", encoding="utf-8") as handle:
+        row = next(csv.DictReader(handle))
+    assert row["fit_rare_count"] == "4"
+    assert row["rare_count"] == "200"
 
 
 def test_resume_reuses_verified_case_without_refitting(monkeypatch, tmp_path, design):

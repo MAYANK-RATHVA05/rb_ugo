@@ -1,8 +1,8 @@
 {
-  "status": "execution_enabled_awaiting_first_run",
+  "status": "completed_measured_experiment",
   "date": "2026-10-19",
   "execution_enabled": true,
-  "results_available": false,
+  "results_available": true,
   "protocol_document": "docs/research/rare_subgroups/NADOS_DIAGNOSTIC_PROTOCOL.md",
   "design_hash_definition": "SHA256 UTF-8 json.dumps(scientific_design, sort_keys=True, separators=(comma,colon), ensure_ascii=False, allow_nan=False)",
   "design_sha256": "c86301b697708983c3884256a0e055bde57f60ee3f7d8f5df5e42b6da9693b9f",
@@ -115,5 +115,17 @@
     "receive_authorization_for_the_90_case_experiment"
   ],
   "runner_module": "scripts.run_rare_subgroups_nados",
-  "runner_tests": "tests/test_rare_subgroups_nados.py"
+  "runner_tests": "tests/test_rare_subgroups_nados.py",
+  "results_report": "docs/research/rare_subgroups/NADOS_DIAGNOSTIC_RESULTS.md",
+  "run_commit": "541cfaf1d1bf241f5e3cba97bb6ad9aaba974c13",
+  "measured_results": {
+    "cases": 90,
+    "successful_rows": 90,
+    "classifier_fits": 90,
+    "generated_rows": 80100,
+    "audit_status": "passed",
+    "screening_status": "diagnostic_trigger_not_met",
+    "qualifying_cells": 0,
+    "qualifying_base_settings": 0
+  }
 }

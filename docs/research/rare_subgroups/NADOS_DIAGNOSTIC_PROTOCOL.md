@@ -1,6 +1,8 @@
 # NADOS diagnostic on the frozen rare-subgroup contamination cases
 
-Status: **Part 2 software complete; execution enabled, first run pending**. This protocol adds a
+Status: **experiment complete and audited**. The frozen design below was executed
+without changing its scientific-design hash; see the
+[measured results](NADOS_DIAGNOSTIC_RESULTS.md). This protocol adds a
 fixed NADOS baseline to the exact 90 deterministic cases from the completed
 [contamination study](CONTAMINATION_PROTOCOL.md). It does not modify that
 study, propose a new sampler, or report NADOS research results.
@@ -83,13 +85,13 @@ reference. These are descriptive engineering cutoffs, not significance tests
 or novelty evidence. Failure of the screen means this route stops.
 
 The runner deliberately does not calculate that cross-study conclusion. It
-writes raw NADOS scores and eligibility diagnostics; a later audit must verify
-case identity and combine them with the already published parent rows.
+writes raw NADOS scores and eligibility diagnostics. The completed independent
+audit verified case identity and combined them with the published parent rows.
 
 ## Execution gate and commands
 
-The configuration now has `execution_enabled: true` following the separate
-authorization commit. Both the default command and `--check-only` validate
+The configuration has `execution_enabled: true` following the separate
+authorization and completed-run commits. Both the default command and `--check-only` validate
 metadata and print the 90-case budget without generating
 data, fitting models, or creating an output directory:
 
@@ -98,8 +100,9 @@ data, fitting models, or creating an output directory:
 ```
 
 The authorization commit changed only the execution flag after all focused and
-repository tests passed. The experiment has not yet run. Use the resumable
-command below from a clean tracked checkout:
+repository tests passed. The first experiment is complete; the same resumable
+command below verifies and reuses its checkpoints when run against the original
+local result directory:
 
 ```powershell
 .\.venv\Scripts\python.exe -m scripts.run_rare_subgroups_nados --run --output results\rare-subgroups-nados-v1
