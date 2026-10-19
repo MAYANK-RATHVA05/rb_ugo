@@ -47,6 +47,25 @@
     "fidelity": "Substantive paper/code differences; see AW_SMOTE_SOURCE_AUDIT.md",
     "evaluation_isolation": "Unverified: results.docx contains logs but the full runner is absent"
   },
+  "related_baselines": {
+    "nados": {
+      "title": "NADOS: Reliability-Gated Difficulty-Aware Oversampling for Noisy Imbalanced Classification",
+      "authors": ["Ednel Ashraff Misran", "Syahid Anuar", "Adam Mohd Khairuddin"],
+      "journal": "International Journal of Advanced Computer Science and Applications",
+      "year": 2026,
+      "volume": 17,
+      "number": 7,
+      "uploaded_filename": "Paper_9-NADOS_Reliability_Gated_Difficulty_Aware_Oversampling.pdf",
+      "sha256": "c6ff5e5b3b0f61f972dce9c5934e0f6e780e1026c771fd74235c4e93e854303e",
+      "pages": 10,
+      "method_locator": "Section III, equations for reliability/difficulty/priority and Algorithm 1",
+      "author_code_status": "Paper Section VIII.C says code may be provided on request; no author implementation was supplied for verification.",
+      "local_status": "independent_paper_aligned_baseline_software_complete_experiment_not_run",
+      "implementation": "src/nados.py",
+      "specification": "NADOS_BASELINE.md",
+      "novelty_effect": "NADOS already separates seed reliability from synthesis priority; retain-and-restrict alone is not a new contribution."
+    }
+  },
   "research_status": {
     "new_sampler_claim": false,
     "pilot_results_available": true,
