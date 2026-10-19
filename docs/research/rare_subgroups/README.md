@@ -1,6 +1,6 @@
 # Rare minority subgroup research
 
-Status: AW baseline and pilot runner software checked, 19 October 2026. No pilot training or new research results are included. Execution remains disabled; the runner is ready for a separate experiment stage.
+Status: AW baseline and pilot runner software checked, 19 October 2026. The frozen pilot is now authorized for execution; measured coverage and results will be recorded after it finishes.
 
 The question is whether density-based cleaning and sampling can neglect a genuine but sparsely observed minority subgroup. We first need to measure that behavior and check whether ordinary baselines or parameter selection already address it. A new algorithm is not yet justified.
 
@@ -19,7 +19,7 @@ The author release cannot be treated as an exact executable version of the suppl
 
 The paper already discusses legitimate sparse observations being removed, includes KeepNoise and SoftNoise experiments, and proposes probability regularization. Simply retaining DBSCAN noise, reducing MinPts, or smoothing sampling weights would not establish novelty.
 
-The audited baseline and diagnostic runner are implemented with meaningful software checks. This establishes behavior under the disclosed conventions, not efficacy or novelty. The next stage can enable and run the pilot. Existing UGO/BFCH-SMOTE/EC-EBO/SSHR code and the 30-dataset study remain the historical baseline work; this pilot does not replace their results.
+The audited baseline and diagnostic runner are implemented with meaningful software checks. This establishes behavior under the disclosed conventions, not efficacy or novelty. The current stage runs the frozen pilot. Existing UGO/BFCH-SMOTE/EC-EBO/SSHR code and the 30-dataset study remain the historical baseline work; this pilot does not replace their results.
 
 ## Windows synchronization
 
@@ -31,4 +31,4 @@ git switch rare-subgroup-research
 git pull --ff-only origin rare-subgroup-research
 ```
 
-Open `docs\research\rare_subgroups\RUNNER.md` and use its check-only command. Research execution is disabled in this stage.
+Open `docs\research\rare_subgroups\RUNNER.md` for check-only and explicit execution commands.

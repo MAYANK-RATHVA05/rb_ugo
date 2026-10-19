@@ -1,8 +1,8 @@
 {
   "protocol_id": "rare-subgroups-diagnostic-v1",
   "date": "2026-10-19",
-  "status": "runner_prepared_preflight_only",
-  "execution_enabled": false,
+  "status": "authorized_frozen_pilot",
+  "execution_enabled": true,
   "implementation_status": "independent_baseline_and_correctness_checks_complete",
   "implementation_module": "src/aw_smote.py",
   "implementation_tests": "tests/test_aw_smote.py",
@@ -10,7 +10,7 @@
   "runner_module": "scripts.run_rare_subgroups_pilot",
   "runner_tests": "tests/test_rare_subgroups_pilot.py",
   "runner_document": "docs/research/rare_subgroups/RUNNER.md",
-  "runner_status": "implemented_software_checks_only",
+  "runner_status": "authorized_for_frozen_pilot",
   "results_available": false,
   "protocol_document": "docs/research/rare_subgroups/PILOT_PROTOCOL.md",
   "source_register": "docs/research/rare_subgroups/SOURCE_REGISTER.json",
@@ -121,6 +121,6 @@
     "simple_controls": ["AW_REMOVE_TUNED", "ROS", "SMOTE", "WEIGHTED"],
     "statistical_significance_claim": false
   },
-  "before_execution": ["authorize_experiment_stage_and_enable_execution_metadata", "freeze_enabled_configuration_and_runner_in_clean_commit"],
+  "before_execution": ["run_from_frozen_clean_commit"],
   "deferred": ["author_KeepNoise_and_SoftNoise_reconstructions", "actual_label_contamination", "additional_classifiers", "real_datasets", "new_sampler", "novelty_or_efficacy_claims"]
 }

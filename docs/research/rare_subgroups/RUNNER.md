@@ -1,6 +1,6 @@
 # Rare-subgroup pilot runner
 
-Status: runner implemented and checked on reduced artificial software fixtures. The frozen 30-case research pilot has **not** run. Execution remains disabled in the configuration because this stage prepares software; there are no new research scores to present.
+Status: the frozen 30-case research pilot is authorized for execution. The numerical design and runner have software checks; this stage will record measured results after the run finishes.
 
 ## Safe local check now
 
@@ -16,7 +16,11 @@ git pull --ff-only origin rare-subgroup-research
 
 Check-only prints **30 cases, seven methods, at most 420 classifier fits, and 210 score rows**. It generates no arrays, fits no scaler/sampler/classifier, creates no output directory, and reads no raw datasets. Omitting both mode flags also performs only this check.
 
-The later experiment stage must enable `execution_enabled` in `configs/rare_subgroups_pilot_v1.json` and freeze that configuration and the runner in a clean commit before using `--run`. The CLI rejects `--run` while execution is disabled, or while tracked changes are uncommitted. These are the existing staged protocol requirements; the current stage does not run the pilot.
+`execution_enabled` is now true for the authorized experiment stage. Freeze that configuration and the runner in a clean commit before using `--run`; the CLI rejects uncommitted tracked changes or a disabled execution flag. Check-only remains the default mode. The explicit execution command is:
+
+```powershell
+.\.venv\Scripts\python.exe -m scripts.run_rare_subgroups_pilot --run --output results\rare-subgroups-pilot-v1
+```
 
 ## What the runner implements
 

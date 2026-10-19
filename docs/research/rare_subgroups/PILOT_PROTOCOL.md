@@ -1,6 +1,6 @@
 # Prospective rare-subgroup diagnostic pilot, version 1
 
-Status: prospective design, dated 19 October 2026. No data have been generated and no models have been fitted for this pilot. [The JSON configuration](../../../configs/rare_subgroups_pilot_v1.json) now drives the prepared runner, with research execution still disabled. Changes after observing pilot results require a new protocol version and must not be presented as preregistered.
+Status: prospective design, dated 19 October 2026, now authorized for its first execution. [The JSON configuration](../../../configs/rare_subgroups_pilot_v1.json) drives the frozen runner. Changes after observing pilot results require a new protocol version and must not be presented as preregistered.
 
 Software progress: the baseline and runner have artificial-fixture checks; see [IMPLEMENTATION.md](IMPLEMENTATION.md) and [RUNNER.md](RUNNER.md). The prospective distributions, selection rules, thresholds and decision gates below remain unchanged and are fingerprinted by the runner. Pilot data generation and model evaluation are still pending.
 

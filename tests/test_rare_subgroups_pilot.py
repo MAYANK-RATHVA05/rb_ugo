@@ -84,17 +84,23 @@ def test_frozen_design_rejects_changed_analysis_but_allows_progress_metadata(tmp
 
 
 def test_preflight_and_disabled_run_generate_no_data_fit_or_output(monkeypatch, tmp_path, capsys):
+    # Exercise the disabled gate explicitly, independent of the live stage's
+    # execution metadata. The production protocol can now be enabled for runs.
+    disabled = load_protocol()
+    disabled["execution_enabled"] = False
+    disabled_path = tmp_path / "disabled_protocol.json"
+    disabled_path.write_text(json.dumps(disabled))
     def forbidden(*args, **kwargs):
         raise AssertionError("No data generation, model fitting, or manifest creation is allowed")
     for name in ("generate_case", "evaluate_case", "_manifest"):
         monkeypatch.setattr(cli, name, forbidden)
     output = tmp_path / "must-not-exist"
-    assert cli.main(["--check-only", "--output", str(output)]) == 0
+    assert cli.main(["--check-only", "--config", str(disabled_path), "--output", str(output)]) == 0
     plan = json.loads(capsys.readouterr().out)
     assert plan["cases"] == 30 and plan["max_classifier_fits"] == 420
     assert plan["planned_score_rows"] == 210
     assert not plan["data_generated"] and not plan["models_fitted"]
-    assert cli.main(["--run", "--output", str(output)]) == 2
+    assert cli.main(["--run", "--config", str(disabled_path), "--output", str(output)]) == 2
     assert "disabled" in capsys.readouterr().err
     assert not output.exists()
 

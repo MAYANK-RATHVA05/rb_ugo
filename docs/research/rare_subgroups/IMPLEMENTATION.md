@@ -90,4 +90,4 @@ The focused checks use independently hand-derived neighbor counts, density/fusio
 
 Validation of the baseline stage (`adf8f45`) in the cloud checkout, Python 3.11.17 with the repository environment: **53 focused tests passed; 801 tests passed in the complete suite**, with no reported skips or failures. Document links, JSON status, and the staged diff were also checked. These historical counts describe software verification, not measured research performance; the runner's current checks are documented separately.
 
-The runner now implements the protocol's partitions, hidden-group isolation, ordinary baselines and tuned AW selection, independent threshold calibration and report exports. It remains disabled for research execution. The next stage can run the frozen pilot. KeepNoise/SoftNoise reconstruction and new sampling rules remain deferred.
+The runner now implements the protocol's partitions, hidden-group isolation, ordinary baselines and tuned AW selection, independent threshold calibration and report exports. Execution is authorized for the frozen pilot. KeepNoise/SoftNoise reconstruction and new sampling rules remain deferred.

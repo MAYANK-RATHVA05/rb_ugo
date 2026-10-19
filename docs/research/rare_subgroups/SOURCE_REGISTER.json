@@ -52,8 +52,8 @@
     "pilot_results_available": false,
     "implementation_status": "independent_baseline_and_correctness_checks_complete",
     "implementation_document": "IMPLEMENTATION.md",
-    "runner_status": "implemented_software_checks_only",
+    "runner_status": "authorized_for_frozen_pilot",
     "runner_document": "RUNNER.md",
-    "conclusion": "Baseline and runner software follow the disclosed conventions; the frozen research pilot remains unrun and execution is disabled. No efficacy or novelty claim."
+    "conclusion": "Baseline and runner software follow the disclosed conventions; the first frozen pilot is authorized for execution. No efficacy or novelty claim before measured results."
   }
 }
