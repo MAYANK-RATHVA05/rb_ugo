@@ -1,6 +1,6 @@
 # AW baseline implementation and software checks
 
-Status: baseline software implemented, 19 October 2026. The pilot runner and research experiments have not started. This stage uses small artificial software fixtures only; it produces no classifier performance table or research result.
+Status: baseline software implemented, 19 October 2026. The [pilot runner](RUNNER.md) is now prepared; research experiments have not started. Software validation uses small artificial fixtures only; it produces no research performance table or research result.
 
 ## What is implemented
 
@@ -88,6 +88,6 @@ Run from the repository root on Windows:
 
 The focused checks use independently hand-derived neighbor counts, density/fusion probabilities, quota totals and interpolation constraints. They also cover mixed feature/label order, duplicate/tied coordinates, two-dimensional Euclidean geometry, zero weights/quotas, diagnosed unsupported cases, paired retention, repeated calls/cloning, invalid input, and state clearing. A pipeline test uses a recording stub with no learned classifier to verify training-only scaling and that prediction data are neither fitted nor resampled.
 
-Validation in the cloud checkout, Python 3.11.17 with the repository environment: **53 focused tests passed; 801 tests passed in the complete suite**, with no reported skips or failures. Document links, JSON status, and the staged diff were also checked. These counts describe software verification, not measured research performance.
+Validation of the baseline stage (`adf8f45`) in the cloud checkout, Python 3.11.17 with the repository environment: **53 focused tests passed; 801 tests passed in the complete suite**, with no reported skips or failures. Document links, JSON status, and the staged diff were also checked. These historical counts describe software verification, not measured research performance; the runner's current checks are documented separately.
 
-The next authorized stage can build the pilot runner: generate the protocol's partitions, enforce hidden-group isolation, integrate the ordinary baselines and tuned AW selection, calibrate thresholds independently, and export coverage/diagnostics/scores. None of those research runs or efficacy/novelty conclusions are included here. KeepNoise/SoftNoise reconstruction and new sampling rules remain deferred.
+The runner now implements the protocol's partitions, hidden-group isolation, ordinary baselines and tuned AW selection, independent threshold calibration and report exports. It remains disabled for research execution. The next stage can run the frozen pilot. KeepNoise/SoftNoise reconstruction and new sampling rules remain deferred.

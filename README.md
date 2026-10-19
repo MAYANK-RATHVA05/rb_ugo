@@ -42,6 +42,9 @@ AW-SMOTE baseline and a paired original-row retention control. The
 [source audit, pilot protocol and implementation notes](docs/research/rare_subgroups/README.md)
 distinguish disclosed conventions from verified paper rules. Only software
 checks have run for this work; the diagnostic pilot and research results remain pending.
+The [prepared pilot runner](docs/research/rare_subgroups/RUNNER.md) supplies
+a no-training preflight, independent selection/calibration, and resumable reports;
+research execution is still disabled in the protocol configuration.
 
 ## Original UGO reproduction specification
 
