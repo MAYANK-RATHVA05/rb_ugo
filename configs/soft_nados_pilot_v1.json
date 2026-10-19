@@ -1,0 +1,53 @@
+{
+  "protocol_id": "soft-nados-feasibility-v1",
+  "status": "frozen_before_first_run",
+  "purpose": "Small feasibility screen; not final research evidence",
+  "scientific_design": {
+    "datasets": [
+      "sklearn_breast_cancer_malignant_vs_benign",
+      "sklearn_wine_class_2_vs_rest",
+      "sklearn_digits_1_vs_rest_fixed_3_to_1"
+    ],
+    "dataset_source": "scikit-learn 1.5.2 built-in loaders; no network download",
+    "folds": {
+      "kind": "StratifiedKFold",
+      "n_splits": 5,
+      "shuffle": true,
+      "random_state": 42
+    },
+    "training_label_noise": {
+      "kind": "symmetric class-conditional flips",
+      "rate_per_true_class": 0.10,
+      "fold_seed_offset": 1000,
+      "test_labels": "clean"
+    },
+    "preprocessing": "StandardScaler fitted on each training fold only",
+    "classifier": {
+      "kind": "LogisticRegression",
+      "max_iter": 2000,
+      "solver": "lbfgs",
+      "random_state": 42
+    },
+    "methods": ["NORES", "WEIGHTED", "NADOS", "SOFT_NADOS"],
+    "nados": {
+      "k_neighbors": 5,
+      "reliability_weight": 0.5,
+      "difficulty_weight": 0.5,
+      "reliability_threshold": 0.35,
+      "target_ratio": 1.0
+    },
+    "soft_nados": {
+      "temperature": 0.05,
+      "priority": "R*D*sigmoid((R-tau)/temperature)",
+      "selection": "fixed before first run; no tuning"
+    },
+    "metrics": ["f1", "gmean", "average_precision", "corrupted_parent_exposure"],
+    "decision_rule": {
+      "mean_f1_delta_soft_minus_nados_at_least": 0.005,
+      "dataset_f1_wins_required": 2,
+      "mean_average_precision_delta_at_least": -0.005,
+      "mean_exposure_increase_at_most": 0.05,
+      "all_conditions_required": true
+    }
+  }
+}
