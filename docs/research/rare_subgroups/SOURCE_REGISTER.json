@@ -1,0 +1,55 @@
+{
+  "audit_date": "2026-10-19",
+  "scope": "Static review of the supplied AW-SMOTE PDF and the linked public repository tip; no author code execution or pilot fitting.",
+  "paper": {
+    "title": "Adaptive Weighting–Synthetic Minority Oversampling Technique",
+    "authors": ["Shen Yan", "Haifeng Guo", "Xiaoming Su"],
+    "journal": "Mathematics",
+    "year": 2026,
+    "volume": 14,
+    "article": "3238",
+    "doi": "10.3390/math14173238",
+    "url": "https://doi.org/10.3390/math14173238",
+    "uploaded_filename": "mathematics-14-03238-v2.pdf",
+    "sha256": "52565ba72dde51afaf7567a5553d9760bceca25fc66701d550b17a8f93a266b6",
+    "pages": 32,
+    "locator_convention": "Printed PDF page numbers",
+    "key_sections": {
+      "method": {"pages": [6, 7, 8, 9, 10], "equations": "1–12", "algorithm": "1"},
+      "evaluation_setup": {"pages": [12, 13, 14, 15]},
+      "noise_handling": {"section": "4.10", "pages": [23, 24], "table": "15", "equation": "29"},
+      "parameter_sensitivity": {"section": "4.11", "pages": [24, 25]},
+      "regularization_discussion": {"section": "4.14", "pages": [28, 29], "equations": "33–36"},
+      "limitations": {"section": "5", "pages": [29, 30]}
+    }
+  },
+  "author_release": {
+    "repository": "https://github.com/guo-source-1/AWSMOTE",
+    "linked_by_paper_page": 9,
+    "branch_at_inspection": "main",
+    "commit": "f0dc14807e02292a096e261ca9af21b0d1300753",
+    "commit_date": "2026-08-27T18:33:28+08:00",
+    "commit_subject": "Add files via upload",
+    "history_scope": "Shallow clone of the tip; historical versions not audited",
+    "files": [
+      {"path": "README.md", "bytes": 9, "sha256": "5b313d40ad7999949b43c9ed9c1b36c940af2213ed7ad8b7d4661a5511b08b6f"},
+      {"path": "adw.py", "bytes": 7876, "sha256": "72c3d438093538d0c5c3d19bc5dc456be9cdc743a7b907bfec5abd2591d15124"},
+      {"path": "results.docx", "bytes": 42030, "sha256": "3dcc0cc32b4f8c06195453c94ae6cc90c0fe16662dcc27eb5c2a630b0e963362"}
+    ],
+    "sampler_class": "ADWSMOTE",
+    "evaluation_runner_present": false,
+    "tests_present": false,
+    "dependency_manifest_present": false,
+    "license_file_present": false,
+    "keepnoise_implementation_present": false,
+    "softnoise_implementation_present": false,
+    "author_files_vendored": false,
+    "fidelity": "Substantive paper/code differences; see AW_SMOTE_SOURCE_AUDIT.md",
+    "evaluation_isolation": "Unverified: results.docx contains logs but the full runner is absent"
+  },
+  "research_status": {
+    "new_sampler_claim": false,
+    "pilot_results_available": false,
+    "conclusion": "Proceed to software correctness work under disclosed conventions, then evaluate the prospective pilot in a separately authorized stage."
+  }
+}
