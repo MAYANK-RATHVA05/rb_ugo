@@ -1,0 +1,18 @@
+{
+  "protocol_id": "soft-nados-feasibility-v1",
+  "design_sha256": "93f66da35a0b5f65e6b20c961c101921b2f1616b9dd9d75407d028aa21d2ab46",
+  "status": "pilot_trigger_not_met",
+  "checks": {
+    "mean_f1": false,
+    "dataset_f1_wins": false,
+    "mean_average_precision": true,
+    "mean_exposure": true
+  },
+  "soft_minus_nados": {
+    "mean_dataset_f1": -0.009146545176995721,
+    "dataset_f1_wins": 0,
+    "mean_dataset_average_precision": 0.00032176340027293787,
+    "mean_corrupted_parent_exposure": -0.0027029638704061942
+  },
+  "scope": "Three-dataset feasibility screen; not confirmatory research evidence."
+}

@@ -201,15 +201,21 @@ def _report(summary: pd.DataFrame, decision: dict[str, Any], digest: str) -> str
     table.extend("| " + " | ".join(str(value) for value in row) + " |"
                  for row in display.itertuples(index=False, name=None))
     delta = decision["soft_minus_nados"]
+    conclusion = ("The frozen feasibility trigger was not met, so this exact Soft-NADOS "
+                  "formulation should not advance to the 30-dataset experiment."
+                  if decision["status"] == "pilot_trigger_not_met" else
+                  "The feasibility trigger was met; a separately frozen confirmatory study is required.")
     return (
         "# Soft-NADOS feasibility pilot\n\n"
-        f"Design SHA-256: `{digest}`. This is a small feasibility screen, not final evidence.\n\n"
+        f"Design SHA-256: `{digest}`. This is a small feasibility screen, not final evidence. "
+        "It uses three scikit-learn datasets, five stratified folds, 10% training-only "
+        "symmetric label noise and one logistic-regression classifier. Values are five-fold means.\n\n"
         + "\n".join(table)
         + "\n\n## Frozen decision\n\n"
         f"Status: **{decision['status']}**. Soft-NADOS minus NADOS: mean dataset F1 "
         f"{delta['mean_dataset_f1']:+.4f}, F1 wins {delta['dataset_f1_wins']}/3, "
         f"mean AP {delta['mean_dataset_average_precision']:+.4f}, and mean corrupted-parent "
-        f"exposure {delta['mean_corrupted_parent_exposure']:+.4f}.\n"
+        f"exposure {delta['mean_corrupted_parent_exposure']:+.4f}. {conclusion}\n"
     )
 
 

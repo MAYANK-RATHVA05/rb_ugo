@@ -1,7 +1,12 @@
 {
   "protocol_id": "soft-nados-feasibility-v1",
-  "status": "frozen_before_first_run",
+  "status": "completed_first_run",
   "purpose": "Small feasibility screen; not final research evidence",
+  "execution": {
+    "first_run_source_commit": "f6073d35fcf6b37c49586c00b636f2d604324f1d",
+    "design_sha256": "93f66da35a0b5f65e6b20c961c101921b2f1616b9dd9d75407d028aa21d2ab46",
+    "decision": "pilot_trigger_not_met"
+  },
   "scientific_design": {
     "datasets": [
       "sklearn_breast_cancer_malignant_vs_benign",
