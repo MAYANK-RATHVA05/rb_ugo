@@ -78,17 +78,22 @@ def test_execution_flag_must_be_boolean(value):
 
 
 def test_check_only_and_disabled_run_do_no_work(monkeypatch, tmp_path, capsys):
+    disabled = study.load_protocol()
+    disabled["execution_enabled"] = False
+    disabled_path = tmp_path / "disabled.json"
+    disabled_path.write_text(json.dumps(disabled), encoding="utf-8")
     def forbidden(*args, **kwargs):
         raise AssertionError("Disabled preflight must not generate cases, fit models or create a manifest")
     monkeypatch.setattr(cli, "generate_case", forbidden)
     monkeypatch.setattr(cli, "evaluate_case", forbidden)
     monkeypatch.setattr(cli, "_manifest", forbidden)
     output = tmp_path / "never-create"
-    assert cli.main(["--check-only", "--output", str(output)]) == 0
+    arguments = ["--config", str(disabled_path), "--output", str(output)]
+    assert cli.main(["--check-only", *arguments]) == 0
     plan = json.loads(capsys.readouterr().out)
     assert plan["cases"] == plan["max_classifier_fits"] == plan["planned_score_rows"] == 90
     assert not plan["execution_enabled"] and not plan["data_generated"] and not output.exists()
-    assert cli.main(["--run", "--output", str(output)]) == 2
+    assert cli.main(["--run", *arguments]) == 2
     assert "disabled" in capsys.readouterr().err and not output.exists()
 
 
