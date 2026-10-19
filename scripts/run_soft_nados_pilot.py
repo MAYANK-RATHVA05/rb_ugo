@@ -195,11 +195,16 @@ def _report(summary: pd.DataFrame, decision: dict[str, Any], digest: str) -> str
     display = summary.copy()
     for column in ("f1", "gmean", "average_precision", "corrupted_parent_exposure"):
         display[column] = display[column].map(lambda value: "" if pd.isna(value) else f"{value:.4f}")
+    columns = list(display.columns)
+    table = ["| " + " | ".join(columns) + " |",
+             "| " + " | ".join("---" for _ in columns) + " |"]
+    table.extend("| " + " | ".join(str(value) for value in row) + " |"
+                 for row in display.itertuples(index=False, name=None))
     delta = decision["soft_minus_nados"]
     return (
         "# Soft-NADOS feasibility pilot\n\n"
         f"Design SHA-256: `{digest}`. This is a small feasibility screen, not final evidence.\n\n"
-        + display.to_markdown(index=False)
+        + "\n".join(table)
         + "\n\n## Frozen decision\n\n"
         f"Status: **{decision['status']}**. Soft-NADOS minus NADOS: mean dataset F1 "
         f"{delta['mean_dataset_f1']:+.4f}, F1 wins {delta['dataset_f1_wins']}/3, "
