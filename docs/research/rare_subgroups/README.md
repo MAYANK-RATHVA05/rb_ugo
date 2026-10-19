@@ -1,6 +1,6 @@
 # Rare minority subgroup research
 
-Status: the clean pilot completed with **30 cases, 210 successful evaluations and 420 classifier fits**. The separate [contamination follow-up](CONTAMINATION_RESULTS.md) is now complete and audited: **90 cases, 630 successful evaluations and 1,260 classifier fits**. The clean pilot's screen was `trigger_not_met`; the contamination screen is `tradeoff_trigger_not_met`. Neither justifies a new sampler. A standalone [paper-aligned NADOS baseline](NADOS_BASELINE.md) and a separate [disabled 90-case diagnostic protocol](NADOS_DIAGNOSTIC_PROTOCOL.md) are now implemented; no NADOS research cases have been run.
+Status: the clean pilot completed with **30 cases, 210 successful evaluations and 420 classifier fits**. The separate [contamination follow-up](CONTAMINATION_RESULTS.md) is now complete and audited: **90 cases, 630 successful evaluations and 1,260 classifier fits**. The clean pilot's screen was `trigger_not_met`; the contamination screen is `tradeoff_trigger_not_met`. Neither justifies a new sampler. A standalone [paper-aligned NADOS baseline](NADOS_BASELINE.md) and a separate 90-case diagnostic protocol are implemented and enabled for an authorized first run; no NADOS research cases have been run yet.
 
 The question is whether density-based cleaning and sampling can neglect a genuine but sparsely observed minority subgroup. We first need to measure that behavior and check whether ordinary baselines or parameter selection already address it. A new algorithm is not yet justified.
 
@@ -27,7 +27,7 @@ The paper already discusses legitimate sparse observations being removed, includ
 
 The clean pilot confirms that cleaning can discard genuine rare originals, but only one setting met every predeclared comparison criterion and ordinary baselines already worked well. The contamination follow-up confirms rare-group loss, but no cell met the required contamination-specific AP-cost condition; class weighting meets the control tolerances in all six base settings. Corrupted-parent exposure is a useful diagnostic, not a novelty claim. Existing UGO/BFCH-SMOTE/EC-EBO/SSHR code and the 30-dataset study remain the historical baseline work; these diagnostic studies do not replace their results.
 
-NADOS already implements the broad idea of retaining original observations while gating synthetic seeds by reliability and allocating synthesis by a separate difficulty score. The next question is therefore narrower: whether that individual reliability gate rejects legitimate rare subgroups. The frozen diagnostic and software now exist, but execution remains disabled and therefore provides no result yet.
+NADOS already implements the broad idea of retaining original observations while gating synthetic seeds by reliability and allocating synthesis by a separate difficulty score. The next question is therefore narrower: whether that individual reliability gate rejects legitimate rare subgroups. The frozen diagnostic and software now exist and execution is enabled, but the experiment has not run and therefore provides no result yet.
 
 ## Windows synchronization
 

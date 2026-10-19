@@ -76,6 +76,6 @@ locked.
 
 This stage provides the standalone baseline and software checks only. The
 separate [NADOS diagnostic protocol](NADOS_DIAGNOSTIC_PROTOCOL.md) now
-integrates it with the existing 90-case synthetic design, but execution remains
-disabled and no NADOS research result exists. Cluster-Safe Oversampling and a
+integrates it with the existing 90-case synthetic design. Execution is enabled
+for the first authorized run, but no NADOS research result exists yet. Cluster-Safe Oversampling and a
 proposed rare-subgroup-aware method are not implemented here.

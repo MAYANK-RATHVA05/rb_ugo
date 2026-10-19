@@ -1,6 +1,6 @@
 # NADOS diagnostic on the frozen rare-subgroup contamination cases
 
-Status: **Part 2 software complete; execution disabled**. This protocol adds a
+Status: **Part 2 software complete; execution enabled, first run pending**. This protocol adds a
 fixed NADOS baseline to the exact 90 deterministic cases from the completed
 [contamination study](CONTAMINATION_PROTOCOL.md). It does not modify that
 study, propose a new sampler, or report NADOS research results.
@@ -88,18 +88,18 @@ case identity and combine them with the already published parent rows.
 
 ## Execution gate and commands
 
-The configuration has `execution_enabled: false`. Both the default command and
-`--check-only` validate metadata and print the 90-case budget without generating
+The configuration now has `execution_enabled: true` following the separate
+authorization commit. Both the default command and `--check-only` validate
+metadata and print the 90-case budget without generating
 data, fitting models, or creating an output directory:
 
 ```powershell
 .\.venv\Scripts\python.exe -m scripts.run_rare_subgroups_nados --check-only
 ```
 
-Passing `--run` currently fails before creating results. A later authorized
-experiment requires a disclosed commit that changes only the execution flag,
-all focused and repository tests passing, and a clean tracked checkout. The
-eventual resumable command is:
+The authorization commit changed only the execution flag after all focused and
+repository tests passed. The experiment has not yet run. Use the resumable
+command below from a clean tracked checkout:
 
 ```powershell
 .\.venv\Scripts\python.exe -m scripts.run_rare_subgroups_nados --run --output results\rare-subgroups-nados-v1

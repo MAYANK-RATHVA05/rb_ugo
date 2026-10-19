@@ -52,8 +52,8 @@ defines the follow-up experiment. Its [separate runner](docs/research/rare_subgr
 and software checks are implemented. Its [audited measured results](docs/research/rare_subgroups/CONTAMINATION_RESULTS.md)
 cover all 630 evaluations: the predeclared tradeoff trigger was not met, and class weighting met the control tolerances across all six base settings.
 An independently implemented [paper-aligned NADOS baseline](docs/research/rare_subgroups/NADOS_BASELINE.md)
-and [disabled diagnostic protocol](docs/research/rare_subgroups/NADOS_DIAGNOSTIC_PROTOCOL.md)
-are prepared to reuse those exact 90 cases. No NADOS research run or result is reported yet.
+and [diagnostic protocol](docs/research/rare_subgroups/NADOS_DIAGNOSTIC_PROTOCOL.md)
+are prepared to reuse those exact 90 cases. Execution is enabled for the first run; no NADOS result is reported yet.
 
 ## Original UGO reproduction specification
 
