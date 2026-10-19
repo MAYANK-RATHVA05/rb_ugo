@@ -56,6 +56,18 @@
     "runner_document": "RUNNER.md",
     "run_commit": "96671d7536dabf1a6f7a4d3a628b80e371aa472f",
     "results_document": "PILOT_RESULTS.md",
-    "conclusion": "All 210 method evaluations succeeded. Rare-group loss is observed, but only one setting qualified (two required) and ordinary controls already performed well. The screen is trigger_not_met; no new-method novelty claim."
+    "conclusion": "All 210 method evaluations succeeded. Rare-group loss is observed, but only one setting qualified (two required) and ordinary controls already performed well. The screen is trigger_not_met; no new-method novelty claim.",
+    "contamination_follow_up": {
+      "status": "frozen_protocol_only",
+      "protocol_document": "CONTAMINATION_PROTOCOL.md",
+      "configuration": "configs/rare_subgroups_contamination_v1.json",
+      "runner_status": "not_implemented",
+      "execution_enabled": false,
+      "results_available": false,
+      "relationship": "New design informed by the completed clean pilot; its original trigger_not_met outcome is unchanged.",
+      "planned_cases": 90,
+      "planned_method_rows": 630,
+      "max_classifier_fits": 1260
+    }
   }
 }

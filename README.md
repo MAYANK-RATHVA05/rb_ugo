@@ -47,6 +47,8 @@ cleaning, but the predeclared screen did not justify advancing a new sampler.
 The [prepared pilot runner](docs/research/rare_subgroups/RUNNER.md) supplies
 a no-training preflight, independent selection/calibration, and resumable reports.
 Published comparison tables, figures and audit evidence are included with the pilot report.
+A separate [rare-group and label-contamination protocol](docs/research/rare_subgroups/CONTAMINATION_PROTOCOL.md)
+defines the follow-up experiment. Its implementation and measured results are pending; execution is disabled.
 
 ## Original UGO reproduction specification
 

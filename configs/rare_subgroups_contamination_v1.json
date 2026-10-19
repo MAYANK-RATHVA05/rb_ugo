@@ -1,0 +1,380 @@
+{
+  "status": "frozen_protocol_only",
+  "date": "2026-10-19",
+  "execution_enabled": false,
+  "runner_status": "not_implemented",
+  "results_available": false,
+  "protocol_document": "docs/research/rare_subgroups/CONTAMINATION_PROTOCOL.md",
+  "design_hash_definition": "SHA256 UTF-8 json.dumps(scientific_design, sort_keys=True, separators=(comma,colon), ensure_ascii=False, allow_nan=False)",
+  "design_sha256": "adfdb2961963ff83b9552e84b06963689f938d853859d9bafc224106a08849db",
+  "scientific_design": {
+    "seeds": [
+      42,
+      43,
+      44,
+      45,
+      46
+    ],
+    "distribution": {
+      "features": 2,
+      "majority": {
+        "label": 0,
+        "mean": [
+          0.0,
+          0.0
+        ],
+        "isotropic_sigma": 1.0
+      },
+      "common_minority": {
+        "label": 1,
+        "mean": [
+          3.0,
+          0.0
+        ],
+        "isotropic_sigma": 0.35
+      },
+      "rare_minority": {
+        "label": 1,
+        "mean": [
+          0.0,
+          3.0
+        ],
+        "isotropic_sigma_grid": [
+          0.35,
+          0.9
+        ]
+      },
+      "training_label_corruption": true,
+      "fit_counts": {
+        "true_majority": 1000,
+        "true_total_minority": 100,
+        "rare_grid": [
+          4,
+          8,
+          16
+        ],
+        "true_common": "100 - n_rare",
+        "observed_majority": "1000 - m",
+        "observed_minority": "100 + m",
+        "total_rows": 1100
+      },
+      "selection_counts": {
+        "majority": 2000,
+        "common": 180,
+        "rare": 20
+      },
+      "calibration_counts": {
+        "majority": 2000,
+        "common": 0,
+        "rare": 0
+      },
+      "test_counts": {
+        "majority": 20000,
+        "common": 1800,
+        "rare": 200
+      },
+      "partition_ids": {
+        "fitting": 1,
+        "selection": 2,
+        "calibration": 3,
+        "test": 4
+      },
+      "component_ids": {
+        "majority": 0,
+        "common": 1,
+        "rare": 2,
+        "shuffle": 99
+      },
+      "rng": "default_rng(SeedSequence([seed, partition_id, component_id]))",
+      "paired_draws": "Share standard-normal component pools across settings within a seed; take fitting prefixes and scale rare draws",
+      "fitting_pool_sizes": {
+        "common": 100,
+        "rare": 16
+      },
+      "group_ids": "evaluator_only_never_model_sampler_or_selection_input"
+    },
+    "preprocessing": {
+      "scaler": "StandardScaler",
+      "fit_on": "original_fitting_X_only"
+    },
+    "classifier": {
+      "class": "RandomForestClassifier",
+      "n_estimators": 100,
+      "criterion": "gini",
+      "max_depth": null,
+      "min_samples_split": 2,
+      "min_samples_leaf": 1,
+      "max_features": 1.0,
+      "bootstrap": true,
+      "n_jobs": 1,
+      "random_state": "replicate_seed",
+      "class_weight": null,
+      "version_source": "requirements.txt"
+    },
+    "methods": [
+      "NORES",
+      "WEIGHTED",
+      "ROS",
+      "SMOTE",
+      "AW_REMOVE",
+      "AW_SEED_FILTER_RETAIN",
+      "AW_REMOVE_TUNED"
+    ],
+    "weighted_control_class_weight": "balanced",
+    "smote_k_neighbors": 5,
+    "sampler_random_state": "replicate_seed_in_fresh_instance",
+    "aw_conventions": {
+      "name": "AW-paper-conventions",
+      "fidelity": "paper_based_with_declared_gap_resolutions_not_exact_verified_reproduction",
+      "minority_label": 1,
+      "boundary_k_other_rows": 5,
+      "epsilon_k_other_minority_rows": 5,
+      "epsilon_percentile": 65,
+      "percentile_method": "linear",
+      "dbscan_min_samples": 2,
+      "dbscan_algorithm": "brute",
+      "metric": "euclidean",
+      "exclude_query_by": "row_index",
+      "boundary_ties": "distance_then_original_fitting_row_id",
+      "cluster_weight": "maximum_majority_neighbor_count",
+      "all_cluster_weights_zero": "uniform_across_valid_clusters",
+      "within_cluster_boundary_sum_zero": "uniform_within_cluster",
+      "density_delta": 1e-08,
+      "theta": 0.2,
+      "gamma": 5,
+      "quota_rounding": "floor(normalized_weight*N + 0.5)",
+      "quota_correction": "first_maximum_weight_cluster_in_DBSCAN_label_order",
+      "seed_allocation": "categorical",
+      "partner_pool": "all_other_members_of_same_cluster",
+      "interpolation_lambda_uniform": [
+        0.0,
+        1.0
+      ],
+      "interpolation_upper_endpoint_exclusive": true,
+      "generated_count": "original_observed_n0_minus_n1 = 900 - 2*m",
+      "generated_count_reference": "observed_fitting_class_counts_before_cleaning",
+      "remove_final_minority_count": "1000 - m - removed_observed_minority_originals",
+      "retention_control": "same_synthetic_rows_as_AW_REMOVE_restore_originals_not_extra_seeds",
+      "unsupported_conditions": [
+        "no_valid_cluster",
+        "nonpositive_epsilon",
+        "invalid_quota",
+        "requested_generation_count_not_met",
+        "too_few_neighbors",
+        "nonfinite_distances",
+        "nonfinite_generation"
+      ],
+      "silent_fallback": false
+    },
+    "aw_tuning": {
+      "min_samples_grid": [
+        2,
+        3,
+        5
+      ],
+      "epsilon_percentile_grid": [
+        50,
+        65,
+        80
+      ],
+      "objective": "aggregate_selection_positive_class_average_precision",
+      "tie_break": "prefer_default_then_ascending_min_samples_then_percentile",
+      "reuse_default_fit": true,
+      "refit_after_selection": false,
+      "test_unselected_candidates": false
+    },
+    "protocol_id": "rare-subgroups-contamination-v1",
+    "base_reference": {
+      "config": "configs/rare_subgroups_pilot_v1.json",
+      "commit": "81add1aabdd8d378949248a8fa036134600d4e95",
+      "design_sha256": "3855c803f1226f9ceefa26a2b26473a63d33c47f8c6afd89ab27c5fe4d3b9bb5",
+      "relationship": "new_prospective_follow_up_informed_by_completed_clean_pilot_not_its_confirmatory_extension"
+    },
+    "label_corruption": {
+      "flipped_majority_count_grid": [
+        0,
+        5,
+        10
+      ],
+      "mechanism": "one_way_0_to_1_on_original_fitting_majority_rows_only",
+      "ordering": "default_rng(SeedSequence([seed, 5, 100])).permutation(1000)",
+      "selection": "first_m_stable_pre_shuffle_majority_row_ids",
+      "nested_prefixes": true,
+      "same_order_across_rare_counts_and_spreads": true,
+      "same_features_true_labels_group_ids_and_shuffle_across_m": true,
+      "flip_genuine_minority_labels": false,
+      "corrupt_selection_calibration_or_test": false,
+      "corruption_fraction_all_fitting": "m / 1100",
+      "corruption_fraction_observed_minority": "m / (100 + m)",
+      "observed_imbalance_ratio": "(1000 - m) / (100 + m)",
+      "evaluator_only": [
+        "true_y",
+        "latent_group_id",
+        "corrupted_row_flag"
+      ],
+      "algorithm_inputs": [
+        "X",
+        "observed_y"
+      ]
+    },
+    "threshold": {
+      "target_empirical_calibration_fpr": 0.05,
+      "calibration_negatives": 2000,
+      "target_false_positive_count": 100,
+      "selection_data": "independent_clean_calibration_negatives_only",
+      "tie_uniforms": "default_rng(SeedSequence([seed, partition_id, 101])).random(n_partition_rows)",
+      "share_tie_uniforms": "all_methods_and_cells_within_seed_and_partition",
+      "score_key": "lexicographic_(positive_probability, independent_uniform)",
+      "threshold": "100th_largest_calibration_key_one_based",
+      "positive_prediction": "p > t OR (p == t AND u >= u_star)",
+      "duplicate_calibration_keys": "record_failure_no_redraw_or_seed_replacement",
+      "no_uniforms_in": [
+        "features",
+        "sampler",
+        "classifier",
+        "AP",
+        "AW_selection"
+      ],
+      "record": [
+        "score_threshold",
+        "tie_cutoff",
+        "calibration_FP",
+        "calibration_FPR",
+        "test_FP",
+        "test_FPR",
+        "tie_partition_fingerprints"
+      ],
+      "test_label_threshold_selection": false,
+      "population_fpr_guarantee": false,
+      "operating_point_comparability_gate": "mean_absolute_paired_test_FPR_difference <= 0.01"
+    },
+    "metrics": {
+      "primary": "test_rare_group_recall_at_negative_calibration_selected_randomized_tie_threshold",
+      "additional": [
+        "common_group_recall",
+        "overall_positive_recall",
+        "actual_test_FPR",
+        "achieved_calibration_FPR",
+        "positive_class_F1",
+        "average_precision",
+        "worst_group_recall",
+        "contamination_specific_paired_AP_interaction"
+      ],
+      "average_precision_definition": "sklearn.metrics.average_precision_score_noninterpolated",
+      "denominators_required": true,
+      "summary": "all_paired_cases_then_mean_and_sample_SD_per_setting_over_seeds",
+      "missing_results": "retain_status_report_coverage_use_identical_completed_case_sets"
+    },
+    "diagnostics": {
+      "originals": [
+        "rare_valid_retained_count_and_fraction",
+        "common_valid_retained_count_and_fraction",
+        "mislabeled_majority_retained_count_and_fraction",
+        "observed_class_counts_before_and_after_sampling"
+      ],
+      "zero_noise_denominator": "noise_retention_fraction_null_when_m_equals_0",
+      "synthetic_provenance": [
+        "clean_clean_parent_count",
+        "clean_corrupt_parent_count",
+        "corrupt_corrupt_parent_count",
+        "seed_and_partner_original_row_ids"
+      ],
+      "ROS_provenance": "duplicated_original_row_ids_and_corrupted_parent_fraction",
+      "synthetic_true_class_oracle": false,
+      "identical_AW_remove_retention_synthetic_rows": true,
+      "save_vectors": [
+        "selection_y_and_all_successful_candidate_probabilities",
+        "calibration_y_and_all_reported_method_probabilities",
+        "test_y_true_groups_and_all_reported_method_probabilities",
+        "calibration_and_test_tie_uniforms"
+      ],
+      "model_evaluator_boundary": "hidden_fitting_truth_read_only_after_training_and_selection_lock",
+      "instrumentation_requirement": "SMOTE and ROS logging must preserve reference library output rows and RNG behavior"
+    },
+    "budget": {
+      "base_settings": 6,
+      "noise_levels": 3,
+      "settings": 18,
+      "seeds_per_setting": 5,
+      "paired_cases": 90,
+      "fixed_methods": 6,
+      "reported_methods": 7,
+      "aw_grid_candidates_per_case": 9,
+      "candidate_records": 810,
+      "extra_grid_fits_after_default_reuse": 8,
+      "max_classifier_fits_per_case": 14,
+      "max_classifier_fits": 1260,
+      "planned_report_rows": 630,
+      "clean_cases_rerun_with_new_identity_and_threshold": true,
+      "automatic_retries": false
+    },
+    "screening_rules": {
+      "scope": "descriptive_prospective_screen_not_significance_or_new_method_authorization",
+      "minimum_coverage": "all_630_reported_rows_success_on_identical_5_seeds_and_clean_noise_pairs",
+      "inclusive_boundary_tolerance": 1e-12,
+      "strict_positive_cutoff": 1e-12,
+      "contaminated_levels": [
+        5,
+        10
+      ],
+      "rare_protection": {
+        "minimum_total_removed_genuine_rare_originals": 1,
+        "minimum_mean_retention_minus_remove_rare_recall": 0.05,
+        "minimum_strict_positive_seed_differences": 4,
+        "minimum_mean_retention_minus_remove_common_recall": -0.02,
+        "maximum_mean_absolute_paired_test_fpr_difference": 0.01
+      },
+      "noise_tradeoff": {
+        "minimum_total_removed_mislabeled_originals": 1,
+        "AP_interaction": "(AP_retain_m - AP_retain_0) - (AP_remove_m - AP_remove_0)",
+        "maximum_mean_AP_interaction": -0.02,
+        "minimum_strict_negative_seed_interactions": 4
+      },
+      "qualification": "rare_protection_AND_noise_tradeoff_at_same_base_setting_and_contaminated_level",
+      "minimum_distinct_qualifying_base_settings": 2,
+      "two_noise_levels_in_same_base_setting_count_as": 1,
+      "simple_controls": [
+        "NORES",
+        "WEIGHTED",
+        "ROS",
+        "SMOTE",
+        "AW_REMOVE_TUNED"
+      ],
+      "simple_control_coverage": {
+        "same_control_required_across_all_3_noise_levels_within_base_setting": true,
+        "minimum_mean_rare_recall": "retention_mean - 0.02",
+        "minimum_mean_common_recall": "retention_mean - 0.02",
+        "minimum_mean_AP": "max(retention_mean, removal_mean) - 0.01",
+        "maximum_mean_absolute_paired_test_fpr_difference_from_retention": 0.01,
+        "control_can_differ_between_base_settings": true,
+        "claim_deployable_oracle_selection": false
+      },
+      "status_priority": [
+        "incomplete_coverage",
+        "tradeoff_trigger_not_met",
+        "simple_controls_suffice",
+        "residual_tradeoff_requires_replication"
+      ],
+      "residual_status_is_novelty_or_efficacy_evidence": false
+    },
+    "deferred": [
+      "new_sampler",
+      "KeepNoise_or_SoftNoise_reconstruction",
+      "asymmetric_1_to_0_or_feature_corruption",
+      "more_noise_levels_or_seeds",
+      "additional_classifiers",
+      "real_subgroup_datasets",
+      "prior_30_dataset_benchmark",
+      "statistical_significance_or_novelty_claims"
+    ]
+  },
+  "before_execution": [
+    "implement_separate_loader_and_runner_with_design_hash_enforcement",
+    "validate_label_only_pairing_and_hidden_truth_isolation",
+    "validate_tie_threshold_and_selection_arithmetic",
+    "save_validation_calibration_test_vectors_for_independent_audit",
+    "pass_focused_and_required_repository_checks",
+    "freeze_clean_implementation_commit",
+    "receive_authorization_for_experiment_stage"
+  ]
+}
