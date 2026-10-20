@@ -1,0 +1,14 @@
+{
+  "status": "passed",
+  "cases": 30,
+  "test_score_rows": 150,
+  "candidate_selections_checked": 150,
+  "classifier_refits": 0,
+  "standard_and_original_HS_shared_tree_checks": 30,
+  "original_and_augmented_node_counts_replayed": 60,
+  "unique_tree_fits_verified": 1110,
+  "CSV_summaries_and_decision_recomputed": true,
+  "max_metric_error": 0.0,
+  "source_commit": "dcd686d5fef29908d085d7e3d13cce427659110b",
+  "limits": "Validation AP/F1 selection arithmetic checked from recorded candidate scores; validation probability vectors were not saved. Training/selection isolation is covered by source and tests."
+}

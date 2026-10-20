@@ -7,11 +7,12 @@ import json
 from pathlib import Path
 
 import numpy as np
+import pandas as pd
 from imblearn.over_sampling import SMOTE
 from sklearn.preprocessing import StandardScaler
 
 from scripts.run_original_support_hs_pilot import cases,case_name,json_write,source_hashes
-from src.original_support_hs_study import load_config,array_hash,score_probabilities
+from src.original_support_hs_study import load_config,array_hash,score_probabilities,paired_summary,decision
 
 
 def route(X,left,right,feature,threshold):
@@ -54,7 +55,9 @@ def audit(directory):
     manifest=json.loads((directory/'manifest.json').read_text())
     assert manifest['design_sha256']==config['design_sha256']
     assert manifest['source_hashes']==source_hashes(), 'Run source differs from current audit source.'
-    max_error=0.; rows=0; validated_cases=0
+    max_error=0.; rows=0; validated_cases=0; reconstructed_rows=[]; total_fits=0
+    score_export=pd.read_csv(directory/'scores.csv').set_index(['case_id','arm'])
+    selection_export=pd.read_csv(directory/'selection.csv').set_index(['case_id','arm','candidate_index'])
     for case in cases(design):
         name=case_name(case)
         record=json.loads((directory/'cases'/(name+'.json')).read_text())
@@ -75,6 +78,12 @@ def audit(directory):
         assert array_hash(aug_X)==record['augmentation_X_sha256']
         assert array_hash(aug_y)==record['augmentation_y_sha256']
         assert len(record['candidates'])==60
+        total_fits+=record['fits']
+        for candidate in record['candidates']:
+            exported=selection_export.loc[(name,candidate['arm'],candidate['candidate_index'])]
+            for metric in ['average_precision','minority_f1']:
+                assert abs(exported[metric]-candidate[metric])<1e-12
+            assert json.loads(exported['parameters'])==candidate['parameters']
         for arm in design['arms']:
             candidate=[r for r in record['candidates'] if r['arm']==arm]
             assert len(candidate)==12
@@ -90,10 +99,13 @@ def audit(directory):
                 for metric,value in recomputed.items():
                     error=abs(row[metric]-value); max_error=max(max_error,error)
                     assert error<1e-12
+                    assert abs(score_export.loc[(name,arm),metric]-value)<1e-12
                 if case.test.groups is not None:
                     expected=float(np.mean(scores[case.test.groups==2]>=.5))
                     assert row['rare_recall']==expected
                 rows+=1
+                reconstructed_rows.append({'case_id':name,'dataset':case.dataset,'seed':case.seed,
+                                           'concentration':case.concentration,**row})
             B='B_SMOTE_STANDARD_HS'; C='C_SMOTE_ORIGINAL_HS'
             for suffix in ['left','right','feature','threshold','raw','original_counts','augmented_counts']:
                 np.testing.assert_array_equal(vectors[B+'__'+suffix],vectors[C+'__'+suffix])
@@ -115,11 +127,29 @@ def audit(directory):
                 np.testing.assert_allclose(shrunk,get('shrunk'),rtol=0,atol=1e-12)
                 np.testing.assert_allclose(shrunk[leaves,1],vectors[arm],rtol=0,atol=1e-12)
         validated_cases+=1
-    assert validated_cases==30 and rows==150
+    assert validated_cases==30 and rows==150 and total_fits==1110
+    reconstructed=pd.DataFrame(reconstructed_rows)
+    recorded_decision=json.loads((directory/'decision.json').read_text())
+    expected_decision=decision(reconstructed,design,[])
+    for key,value in expected_decision.items():
+        assert recorded_decision[key]==value
+    expected_paired=pd.DataFrame(paired_summary(reconstructed))
+    pd.testing.assert_frame_equal(pd.read_csv(directory/'paired.csv'),expected_paired,
+                                  check_dtype=False,atol=1e-12,rtol=1e-12)
+    expected_summary=(reconstructed.groupby(['dataset','concentration','arm'],dropna=False)
+                      .agg(n=('seed','count'),AP_mean=('average_precision','mean'),
+                           AP_sd=('average_precision','std'),F1_mean=('minority_f1','mean'),
+                           F1_sd=('minority_f1','std'),rare_recall_mean=('rare_recall','mean'),
+                           tuning_seconds_mean=('selection_seconds_including_shared_base','mean'))
+                      .reset_index())
+    pd.testing.assert_frame_equal(pd.read_csv(directory/'summary.csv'),expected_summary,
+                                  check_dtype=False,atol=1e-12,rtol=1e-12)
     return {'status':'passed','cases':validated_cases,'test_score_rows':rows,
             'candidate_selections_checked':150,'classifier_refits':0,
             'standard_and_original_HS_shared_tree_checks':30,
             'original_and_augmented_node_counts_replayed':60,
+            'unique_tree_fits_verified':total_fits,
+            'CSV_summaries_and_decision_recomputed':True,
             'max_metric_error':max_error,'source_commit':manifest['source_commit'],
             'limits':'Validation AP/F1 selection arithmetic checked from recorded candidate scores; validation probability vectors were not saved. Training/selection isolation is covered by source and tests.'}
 

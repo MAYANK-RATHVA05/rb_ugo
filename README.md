@@ -443,3 +443,14 @@ The 30 variants come from 10 source families; this is a descriptive comparison
 of our implementations, not a reproduction of the papers' reported scores.
 The [three-page figure pack](docs/presentation/figures/Imbalanced_Learning_30_Dataset_Figures.pdf)
 visualizes F1/FPR tradeoffs, dataset-level consistency and SSHR's unlabelled-pool ablation.
+
+## Original-support-aware hierarchical shrinkage pilot
+
+The separate [bounded HS pilot](docs/research/original_support_hs/RESULTS.md)
+compares tuned standard and original-support HS on identical oversampled trees,
+with tuned SMOTE-tree, weighted-tree and no-resampling controls. All 30 cases
+completed and passed a raw-evidence audit. The frozen advancement trigger was
+not met; no larger benchmark was launched. The [source audit](docs/research/original_support_hs/SOURCE_AUDIT.md)
+and [prospective protocol](docs/research/original_support_hs/PROTOCOL.md) document
+the count substitution, zero-support rule, uniform-inflation equivalence and
+incomplete external novelty search. Previous algorithms/results are preserved.

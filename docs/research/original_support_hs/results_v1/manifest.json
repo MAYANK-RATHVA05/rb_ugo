@@ -1,0 +1,21 @@
+{
+  "protocol_id": "original-support-hs-v1",
+  "design_sha256": "7330b7ab05d3a7dbe1699fb94c980c6e66ad09dea157b716390f77497cc8ff1f",
+  "source_commit": "dcd686d5fef29908d085d7e3d13cce427659110b",
+  "source_hashes": {
+    "src/original_support_hs.py": "02b0fb406b62a6469d89e782849f6efd133b09f9d0e22a77fbbc52e763aa0506",
+    "src/original_support_hs_study.py": "3c0e1db27aab41ba5e2503d9d5841ad4b6607cc1fb7086b392bbef244b1f924a",
+    "scripts/run_original_support_hs_pilot.py": "c0987b01bf425f1348a9c065688f8433c2bd0b3cbaa7421723d3213f38963e5f",
+    "configs/original_support_hs_v1.json": "dfdc4edfb4bf4982bb9a8504184777c103a232abfbf494e93cbd7f791a295355"
+  },
+  "packages": {
+    "numpy": "1.26.4",
+    "pandas": "2.2.3",
+    "scipy": "1.14.1",
+    "scikit-learn": "1.5.2",
+    "imbalanced-learn": "0.12.4"
+  },
+  "planned_cases": 30,
+  "planned_validation_candidates": 1800,
+  "planned_unique_tree_fits": 1110
+}

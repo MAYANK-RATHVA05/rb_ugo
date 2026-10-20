@@ -1,0 +1,31 @@
+{
+  "status": "advancement_trigger_not_met",
+  "checks": {
+    "complete_coverage": true,
+    "real_dataset_AP_wins": false,
+    "real_macro_AP": false,
+    "real_macro_F1": true,
+    "synthetic_macro_AP": false,
+    "synthetic_rare_recall": true,
+    "no_large_real_AP_loss": true
+  },
+  "real_mean_AP_deltas": {
+    "ecoli4": 0.0,
+    "glass6": 0.0,
+    "yeast4": 0.009999295506779433
+  },
+  "real_macro_AP_delta": 0.003333098502259811,
+  "real_macro_F1_delta": -0.008254878218975116,
+  "synthetic_macro_AP_delta": 0.00031649995120210567,
+  "synthetic_macro_rare_recall_delta": 0.08066666666666666,
+  "failure_count": 0,
+  "scope": "Bounded feasibility decision; no significance, verified novelty or generality claim.",
+  "source_commit": "dcd686d5fef29908d085d7e3d13cce427659110b",
+  "design_sha256": "7330b7ab05d3a7dbe1699fb94c980c6e66ad09dea157b716390f77497cc8ff1f",
+  "completed_cases": 30,
+  "completed_scores": 150,
+  "completed_validation_candidates": 1800,
+  "successful_tree_fits": 1110,
+  "runtime_seconds": 10.943516931001795,
+  "failures": []
+}
