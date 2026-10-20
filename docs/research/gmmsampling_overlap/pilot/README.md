@@ -33,3 +33,8 @@ Summary CSVs and a read-only reconstruction audit require no classifier refits.
 Synthetic labels, densities and genuine subgroups are fully controlled here;
 results cannot establish real-data usefulness, causal synthetic label correctness,
 novelty or statistical certainty from five paired seeds.
+
+The pilot is now completed: [results and failed advancement decision](RESULTS.md).
+[Compact evidence tables](evidence/README.md) are committed. Raw probability and
+proposal arrays remain local under ignored results/; six lossless condition bundles
+are available at /workspace/gmmsampling-overlap-evidence/ with tracked SHA256 hashes.

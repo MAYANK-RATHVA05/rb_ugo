@@ -1,0 +1,10 @@
+{
+  "source_commit": "4d95e20ed14aa6909ae2293fa29260428d6ee7d9",
+  "configuration_sha256": "18d4da2db97732677b9a32509d64ae74373ff94b7b9a82d1c9adbfd932e2a078",
+  "python": "3.11.17",
+  "numpy": "1.26.4",
+  "scipy": "1.14.1",
+  "sklearn": "1.5.2",
+  "author_commit": "7a89dd674a7a10d73ac03548a2ee9b48cd04c654",
+  "author_file_sha256": "5134a5fff4fbc77e2f32d7c9aa570b6158e91297b166624e38bb808e07a4df9e"
+}

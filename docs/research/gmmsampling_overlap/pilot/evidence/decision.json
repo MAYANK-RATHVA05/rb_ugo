@@ -1,0 +1,21 @@
+{
+  "advancement_passed": false,
+  "checks": {
+    "complete_accounting": true,
+    "pair_gain_0.5": false,
+    "subgroup_safeguard_0.5": true,
+    "other_safeguards_0.5": true,
+    "weak_control_0.5": true,
+    "fresh_fraction_0.5": true,
+    "pair_gain_0.9": false,
+    "subgroup_safeguard_0.9": true,
+    "other_safeguards_0.9": true,
+    "weak_control_0.9": true,
+    "fresh_fraction_0.9": true,
+    "primary_ap_vs_A": false,
+    "primary_ap_vs_D": false,
+    "coverage_vs_B": false,
+    "distinct_from_NORES": false,
+    "distinct_from_WEIGHTED": false
+  }
+}

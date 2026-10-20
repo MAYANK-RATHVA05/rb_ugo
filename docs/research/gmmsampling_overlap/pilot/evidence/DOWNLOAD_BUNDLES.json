@@ -1,0 +1,32 @@
+[
+  {
+    "file": "gmmsampling_delta-4.0_common-0.5.tar.gz",
+    "bytes": 15193069,
+    "sha256": "591988a01cc37baa7a7b15793b384f469c727c37036f58a313c9beb104f1b609"
+  },
+  {
+    "file": "gmmsampling_delta-4.0_common-0.9.tar.gz",
+    "bytes": 15159458,
+    "sha256": "d9ed3fdb1dd522ae1cf5e69014e07e89543ff7f5973e3e61f152812083658b6a"
+  },
+  {
+    "file": "gmmsampling_delta-1.5_common-0.5.tar.gz",
+    "bytes": 15288201,
+    "sha256": "2c80f47c5cef855893e5502347680c68869b40966f829e68df5f2ca3566a7c03"
+  },
+  {
+    "file": "gmmsampling_delta-1.5_common-0.9.tar.gz",
+    "bytes": 15260848,
+    "sha256": "5d0fea739dbcfa6fafea208129ea3f11f9f014adc866780b1817fe867a5df23c"
+  },
+  {
+    "file": "gmmsampling_delta-0.0_common-0.5.tar.gz",
+    "bytes": 16083349,
+    "sha256": "d942dca614e5b2d702d90a0445d6fd55218151983fbb0ae0d21d74df0758b58e"
+  },
+  {
+    "file": "gmmsampling_delta-0.0_common-0.9.tar.gz",
+    "bytes": 15778993,
+    "sha256": "d936a27b6e5b96e44b743851548eba00f2f04dbb1828ebd707fa315a59f05051"
+  }
+]

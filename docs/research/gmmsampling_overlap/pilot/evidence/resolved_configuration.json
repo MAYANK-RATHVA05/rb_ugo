@@ -1,0 +1,102 @@
+{
+  "version": 1,
+  "seeds": [
+    42,
+    43,
+    44,
+    45,
+    46
+  ],
+  "deltas": [
+    4.0,
+    1.5,
+    0.0
+  ],
+  "common_proportions": [
+    0.5,
+    0.9
+  ],
+  "partition_counts": {
+    "fit": [
+      1000,
+      100,
+      100
+    ],
+    "validation": [
+      1000,
+      100,
+      100
+    ],
+    "test": [
+      5000,
+      1000,
+      1000
+    ]
+  },
+  "stream_ids": {
+    "fit": 100,
+    "validation": 200,
+    "test": 300
+  },
+  "minority_labels": [
+    1,
+    2
+  ],
+  "target": 550,
+  "safe_k_grid": [
+    5,
+    7,
+    11
+  ],
+  "gate_tau_grid": [
+    0.0,
+    0.55,
+    0.7
+  ],
+  "gate_safe_k": 7,
+  "retry_limit": 20,
+  "gmm": {
+    "max_components": 4,
+    "valid_size": 0.25,
+    "n_init": 10,
+    "max_iter": 100,
+    "tol": 0.001,
+    "reg_covar": 1e-06
+  },
+  "classifier_C": [
+    0.1,
+    1.0,
+    10.0
+  ],
+  "classifier_max_iter": 2000,
+  "selection": [
+    "validation_macro_ap",
+    "validation_macro_f1",
+    "grid_order"
+  ],
+  "methods": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "NORES",
+    "WEIGHTED"
+  ],
+  "criteria": {
+    "partial_pair_reduction": 0.02,
+    "partial_seed_wins": 4,
+    "subgroup_loss": 0.02,
+    "minority_majority_increase": 0.01,
+    "macro_ap_gain": 0.005,
+    "macro_f1_loss": 0.01,
+    "C_vs_B_worst_recall_gain": 0.03,
+    "C_vs_B_pair_increase": 0.01,
+    "weak_ap_f1_loss": 0.01,
+    "fresh_fraction": 0.75,
+    "simple_pair_tolerance": 0.01,
+    "simple_subgroup_tolerance": 0.01,
+    "simple_ap_tolerance": 0.005
+  },
+  "author_commit": "7a89dd674a7a10d73ac03548a2ee9b48cd04c654",
+  "author_file_sha256": "5134a5fff4fbc77e2f32d7c9aa570b6158e91297b166624e38bb808e07a4df9e"
+}
