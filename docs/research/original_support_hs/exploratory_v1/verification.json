@@ -1,0 +1,23 @@
+{
+  "status": "passed",
+  "cases": 30,
+  "prediction_vectors": 60,
+  "classifier_refits": 0,
+  "preprocessing_refits": 0,
+  "new_synthetic_rows": 0,
+  "required_test_artifacts_missing": [],
+  "unavailable_artifacts": [
+    "validation probability vectors; cannot calibrate thresholds on validation"
+  ],
+  "original_decision_sha256": "5593e7e8d031211514ab0d5451f235608e143e0023b4971e65fce947062a5199",
+  "original_decision": "advancement_trigger_not_met",
+  "fixed_threshold": 0.5,
+  "exploratory_precision_floors": [
+    0.25,
+    0.5,
+    0.75,
+    0.9
+  ],
+  "matched_precision_policy": "maximum recall at a common minimum precision; tied scores remain whole; no interpolation; report actual precision and infeasible cases",
+  "thresholds_for_deployment_selected": false
+}
