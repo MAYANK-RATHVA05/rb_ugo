@@ -1,0 +1,208 @@
+{
+  "protocol_id": "original-support-hs-v1",
+  "status": "frozen_before_run",
+  "scientific_design": {
+    "seeds": [
+      42,
+      43,
+      44,
+      45,
+      46
+    ],
+    "datasets": [
+      {
+        "dataset_id": "ecoli4",
+        "relative_path": "data/raw/ugo74_approx/ecoli4.dat",
+        "sha256": "1890c32ba2550cfe106d0524ebf6a42c2b50730f6521bd4f22eb58e7bda86bcb",
+        "target_column": "Class",
+        "positive_label": "positive",
+        "rows": 336,
+        "input_features": 7,
+        "minority_count": 20,
+        "fidelity": "name_alias_and_class_counts_match_author_preprocessing_unverified"
+      },
+      {
+        "dataset_id": "glass6",
+        "relative_path": "data/raw/ugo74_approx/glass6.dat",
+        "sha256": "aab1a0cc86ccb6ce766034eb915756698748b58e8164e6b0f663b13290668dee",
+        "target_column": "Class",
+        "positive_label": "positive",
+        "rows": 214,
+        "input_features": 9,
+        "minority_count": 29,
+        "fidelity": "name_alias_and_class_counts_match_author_preprocessing_unverified"
+      },
+      {
+        "dataset_id": "yeast4",
+        "relative_path": "data/raw/ugo74_approx/yeast4.dat",
+        "sha256": "2e50d1b43c97875d2071859428d718487086e695a1a6ec559336ccadb40c1ff0",
+        "target_column": "Class",
+        "positive_label": "positive",
+        "rows": 1484,
+        "input_features": 8,
+        "minority_count": 51,
+        "fidelity": "name_alias_and_class_counts_match_author_preprocessing_unverified"
+      }
+    ],
+    "real_split": "Exact-coordinate group-disjoint: StratifiedGroupKFold(5, shuffle=True, seed) first test fold; StratifiedGroupKFold(4, shuffle=True, seed+100) first validation fold among remainder. No redraw.",
+    "preprocessing": "StandardScaler on original fitting X only; no refit after selection",
+    "smote": {
+      "k_neighbors": 3,
+      "sampling_strategy": 1.0,
+      "seed": "replicate seed",
+      "on_insufficient_minority": "record failure; no redraw or fallback"
+    },
+    "synthetic": {
+      "name": "two_dimensional_two_minority_components",
+      "fitting_counts": [
+        1000,
+        80,
+        20
+      ],
+      "validation_counts": [
+        1000,
+        80,
+        20
+      ],
+      "test_counts": [
+        5000,
+        400,
+        100
+      ],
+      "majority_mean": [
+        0.0,
+        0.0
+      ],
+      "majority_sd": [
+        1.05,
+        1.05
+      ],
+      "common_mean": [
+        -2.0,
+        0.0
+      ],
+      "common_sd": [
+        0.7,
+        0.9
+      ],
+      "rare_mean": [
+        1.6,
+        1.0
+      ],
+      "rare_sd": [
+        0.45,
+        0.6
+      ],
+      "partition_streams": [
+        100,
+        200,
+        300
+      ],
+      "concentration_levels": [
+        0.0,
+        0.5,
+        1.0
+      ],
+      "concentration_rule": "SMOTE interpolation; q=(1-c)*uniform+c*Gaussian anchor weights, bandwidth .75 in standardized fitting space; anchor minority row with largest first feature (ties original order); 3 nearest minority partners; fixed class gap; original labels/features only; same generation uniforms across levels"
+    },
+    "tree_grid": [
+      {
+        "max_depth": 2,
+        "min_samples_leaf": 1
+      },
+      {
+        "max_depth": 2,
+        "min_samples_leaf": 5
+      },
+      {
+        "max_depth": 3,
+        "min_samples_leaf": 1
+      },
+      {
+        "max_depth": 3,
+        "min_samples_leaf": 5
+      },
+      {
+        "max_depth": 4,
+        "min_samples_leaf": 1
+      },
+      {
+        "max_depth": 4,
+        "min_samples_leaf": 5
+      },
+      {
+        "max_depth": 5,
+        "min_samples_leaf": 1
+      },
+      {
+        "max_depth": 5,
+        "min_samples_leaf": 5
+      },
+      {
+        "max_depth": 8,
+        "min_samples_leaf": 1
+      },
+      {
+        "max_depth": 8,
+        "min_samples_leaf": 5
+      },
+      {
+        "max_depth": null,
+        "min_samples_leaf": 1
+      },
+      {
+        "max_depth": null,
+        "min_samples_leaf": 5
+      }
+    ],
+    "hs_tree_grid": [
+      {
+        "max_leaf_nodes": null,
+        "min_samples_leaf": 1
+      }
+    ],
+    "relative_lambdas": [
+      0.0,
+      0.001,
+      0.003,
+      0.01,
+      0.03,
+      0.1,
+      0.3,
+      1.0,
+      3.0,
+      10.0,
+      30.0,
+      100.0
+    ],
+    "lambda_scale": "relative_lambda * support root count for each HS scheme; includes exact uniform-inflation rescaling control",
+    "arms": [
+      "A_SMOTE_TREE",
+      "B_SMOTE_STANDARD_HS",
+      "C_SMOTE_ORIGINAL_HS",
+      "D_WEIGHTED_TREE",
+      "E_NORES_TREE"
+    ],
+    "budget": "12 validation candidates per arm; one shared fixed full augmented CART for B/C, lambda tuned only; 37 unique tree fits per case, 30 cases, 1110 total fits; no final refit",
+    "selection": "maximize untouched validation AP; ties validation minority F1 at probability >=.5; remaining ties grid order; test inaccessible until all selections locked",
+    "metrics": [
+      "average_precision",
+      "minority_f1",
+      "rare_recall_only_known_synthetic_groups"
+    ],
+    "uncertainty": "paired C-minus-B deltas over five seeds; mean, sample SD and descriptive t(4) 95% interval; overlapping real-data splits are not independent datasets",
+    "zero_support": "for lambda>0 parent support zero gives factor zero; for lambda=0 identity even if support zero; parent support positive gives N/(N+lambda)",
+    "advancement": {
+      "minimum_real_datasets_with_mean_AP_gain_at_least_0_01": 2,
+      "real_macro_AP_gain_at_least": 0.01,
+      "real_macro_F1_delta_at_least": -0.01,
+      "synthetic_macro_AP_gain_at_least": 0.005,
+      "synthetic_macro_rare_recall_delta_at_least": -0.02,
+      "no_real_dataset_mean_AP_loss_below": -0.02,
+      "complete_coverage_required": true,
+      "all_required": true,
+      "secondary": "C versus A,D,E contextual only; C versus tuned B decides advancement"
+    }
+  },
+  "design_sha256": "7330b7ab05d3a7dbe1699fb94c980c6e66ad09dea157b716390f77497cc8ff1f"
+}

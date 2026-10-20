@@ -1,0 +1,18 @@
+{
+  "author_repository_commit": "0020b6a08671e2ccd9463581ac59f92e867bd8f8",
+  "author_file_sha256": "aa4b63ba63d6a68404fe0c4c6b1ceacafdd35c65e7330a337b61a6c778cdfd40",
+  "method": "AST-extracted unmodified _shrink_tree and _values_are_normalized from pinned source, isolated from package import side effects",
+  "comparisons": 60,
+  "tree_fixtures": 10,
+  "lambdas": [
+    0,
+    0.1,
+    1,
+    10,
+    100,
+    1000
+  ],
+  "max_absolute_node_probability_difference": 4.440892098500626e-16,
+  "status": "passed",
+  "fixture_seed": 7020
+}
