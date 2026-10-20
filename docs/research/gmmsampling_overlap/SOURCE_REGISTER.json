@@ -1,0 +1,173 @@
+{
+  "audited_on": "2026-10-20",
+  "scope": "report only; no estimator, GMM or sampler executed",
+  "sources": [
+    {
+      "id": "GMMSampling-paper",
+      "url": "https://doi.org/10.1007/s10994-023-06416-8",
+      "status": "supplied_full_text_read",
+      "title": "GMMSampling: a new model-based, data difficulty-driven resampling method for multi-class imbalanced data",
+      "authors": [
+        "Iwo Naglik",
+        "Mateusz Lango"
+      ],
+      "publication": "online 2023; Machine Learning 113:5183-5202 (2024)",
+      "sha256": "3ccc4e7787f0304dfcfba824b1e97510016bf16882bd475a95778cc0353a945c",
+      "limitation": "Section 5, printed 5200, PDF page 18/20"
+    },
+    {
+      "id": "GMMSampling-develop",
+      "url": "https://github.com/damian-horna/multi-imbalance",
+      "status": "static_code_inspected_no_execution",
+      "commit": "7a89dd674a7a10d73ac03548a2ee9b48cd04c654",
+      "file": "multi_imbalance/resampling/gmm_sampler.py",
+      "sha256": "5134a5fff4fbc77e2f32d7c9aa570b6158e91297b166624e38bb808e07a4df9e"
+    },
+    {
+      "id": "GMMSampling-feature",
+      "url": "https://github.com/damian-horna/multi-imbalance/tree/GMMSampler",
+      "status": "same_sampler_bytes_as_develop",
+      "commit": "aff0cafe8e6b508e544966dd6a30ffff93eac563",
+      "sha256": "5134a5fff4fbc77e2f32d7c9aa570b6158e91297b166624e38bb808e07a4df9e"
+    },
+    {
+      "id": "GMMSampling-master",
+      "url": "https://github.com/damian-horna/multi-imbalance",
+      "status": "sampler_absent_at_inspected_tip",
+      "commit": "e2535f5f7f8e1f4d51f8ffe53a775e92056162a8"
+    },
+    {
+      "id": "SOMM-2025-publisher",
+      "url": "https://link.springer.com/article/10.1007/s10115-025-02394-6",
+      "status": "HTTP_403_full_text_and_final_revision_unverified",
+      "pdf_attempt": "https://link.springer.com/content/pdf/10.1007/s10115-025-02394-6.pdf",
+      "crossref_attempt": "https://api.crossref.org/works/10.1007/s10115-025-02394-6"
+    },
+    {
+      "id": "SOMM-matching-repository",
+      "url": "https://github.com/hadi1453/Synthetic-Over-sampling-with-the-Minority-and-Majority-classes-for-imbalance-problems",
+      "status": "README_and_R_source_inspected_publisher_linkage_unverified",
+      "commit": "8c406e8018e1122c551304332bceefe1e7837fa3",
+      "file": "SOMM - Function.R",
+      "sha256": "bf4ba3c0f946f23291f4df6d351615372ed5d9dcd8308c092300459d2669a436",
+      "note": "Tip dated 2023-07-04; matches SOMM method name/description but README does not cite requested 2025 DOI."
+    },
+    {
+      "id": "NDESO-2025-publisher",
+      "url": "https://www.techscience.com/cmc/v83n3/61046/html",
+      "status": "HTTP_403_published_full_text_unverified",
+      "pdf_attempt": "https://www.techscience.com/cmc/v83n3/61046/pdf"
+    },
+    {
+      "id": "NDESO-matching-repository",
+      "url": "https://github.com/goshlive/imbalanced-ndeso",
+      "status": "README_and_source_inspected_published_revision_linkage_unverified",
+      "commit": "aefd3b4be0966f42bc1b49031d392f31a048f67e",
+      "file": "ndeso.py",
+      "sha256": "6932095b05d46e3777cb4988f4feb1fff75b441c40268881dff860845d484f62",
+      "readme_sha256": "9eee5f914719e2b16dae50d6fe1f53ac6fa4169437230f06d4a94c84ca9ce72d",
+      "author_header": "Developed by I.M. Putrama; source date 2024-04-28"
+    },
+    {
+      "id": "NDESO-author-linked-preprint",
+      "url": "https://arxiv.org/abs/2501.04099",
+      "status": "README_link_verified_PDF_access_HTTP_403",
+      "pdf_attempt": "https://arxiv.org/pdf/2501.04099"
+    },
+    {
+      "id": "JSM-2026-MCD",
+      "url": "https://ww2.amstat.org/meetings/jsm/2026/onlineprogram/abstract.cfm?sid=6951&tid=7350",
+      "status": "HTTP_403_abstract_unread",
+      "note": "User-supplied description: overlap-aware oversampling via MCD-regularized Gaussian mixtures. Author names, full title, MCD definition, objective, sampling rule, multiclass scope and exact equivalence unverified."
+    },
+    {
+      "id": "SOUP-2019",
+      "url": "https://github.com/damian-horna/multi-imbalance/blob/7a89dd674a7a10d73ac03548a2ee9b48cd04c654/multi_imbalance/resampling/soup.py",
+      "status": "reference_implementation_and_GMMSampling_primary_discussion_inspected_original_article_not_read",
+      "doi": null,
+      "sha256": "f1908965288924d8b5dd0ab2b7d7e417a5e99a89f91777b9b64171684c4ac2e0"
+    },
+    {
+      "id": "SMOM-2017",
+      "url": "https://github.com/damian-horna/multi-imbalance/blob/7a89dd674a7a10d73ac03548a2ee9b48cd04c654/multi_imbalance/resampling/smom.py",
+      "status": "reference_implementation_and_GMMSampling_primary_discussion_inspected_original_article_not_read",
+      "doi": "10.1016/j.patcog.2017.07.024",
+      "sha256": "b90f8092af7dcb7ba800a493e6d7940aca6e524ff17c5859c78502e03d9258a3"
+    },
+    {
+      "id": "MC-CCR-2020",
+      "url": "https://doi.org/10.1016/j.knosys.2020.106223",
+      "status": "verified_bibliography_and_mechanism_in_GMMSampling_primary_related_work_original_full_text_unread"
+    },
+    {
+      "id": "MDO-2015-2016",
+      "url": "https://github.com/damian-horna/multi-imbalance/blob/e2535f5f7f8e1f4d51f8ffe53a775e92056162a8/multi_imbalance/resampling/mdo.py",
+      "status": "bibliographic_detail_from_GMMSampling_and_reference_repo_original_full_text_unread",
+      "note": "GMMSampling cites Abdi and Hashemi (2015); reference repository cites To combat multi-class imbalanced problems by means of over-sampling techniques, TKDE 28 (2016), 238-251. Original-article DOI/full text unverified."
+    },
+    {
+      "id": "difficulty-study-2022",
+      "url": "https://doi.org/10.1016/j.eswa.2022.116962",
+      "status": "cited_and_discussed_in_GMMSampling_primary_reference_original_full_text_unread"
+    }
+  ],
+  "searches": [
+    {
+      "query": "NDESO in:readme oversampling",
+      "service": "GitHub repository search (not authenticated code search)",
+      "result_count_at_audit": 1,
+      "inspected_top_page": true,
+      "interpretation": "discovery only; not exhaustive literature search"
+    },
+    {
+      "query": "SOMM in:readme imbalanced",
+      "service": "GitHub repository search (not authenticated code search)",
+      "result_count_at_audit": 6,
+      "inspected_top_page": true,
+      "interpretation": "discovery only; not exhaustive literature search"
+    },
+    {
+      "query": "\"s10115-025-02394-6\" in:readme",
+      "service": "GitHub repository search (not authenticated code search)",
+      "result_count_at_audit": 0,
+      "inspected_top_page": true,
+      "interpretation": "discovery only; not exhaustive literature search"
+    },
+    {
+      "query": "\"MCD-regularized\" in:readme",
+      "service": "GitHub repository search (not authenticated code search)",
+      "result_count_at_audit": 0,
+      "inspected_top_page": true,
+      "interpretation": "discovery only; not exhaustive literature search"
+    },
+    {
+      "query": "\"GMMSampling\" in:readme",
+      "service": "GitHub repository search (not authenticated code search)",
+      "result_count_at_audit": 1,
+      "inspected_top_page": true,
+      "interpretation": "discovery only; not exhaustive literature search"
+    },
+    {
+      "query": "\"oversampling\" \"density ratio\" in:readme",
+      "service": "GitHub repository search (not authenticated code search)",
+      "result_count_at_audit": 34,
+      "inspected_top_page": true,
+      "interpretation": "discovery only; not exhaustive literature search"
+    },
+    {
+      "query": "\"MC-CCR\" in:readme",
+      "service": "GitHub repository search (not authenticated code search)",
+      "result_count_at_audit": 4,
+      "inspected_top_page": true,
+      "interpretation": "discovery only; not exhaustive literature search"
+    }
+  ],
+  "blocked_searches": [
+    "Google query GMMSampling overlap: HTTP 403",
+    "DuckDuckGo query GMMSampling minority overlap rejection: HTTP 403",
+    "GitHub code search returned login-only shell; code-search results unavailable"
+  ],
+  "novelty_verified": false,
+  "exact_equivalent_found_in_inspected_sources": false,
+  "recommendation": "refine_before_implementation"
+}
